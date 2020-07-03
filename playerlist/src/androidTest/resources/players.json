@@ -1,0 +1,1593 @@
+{
+  "_internal": {
+    "pubDateTime": "2020-03-18 12:11:45.811 EDT",
+    "igorPath": "S3,1584547889621,1584547898729|router,1584547898729,1584547898734|domUpdater,1584547899380,1584547905069|feedProducer,1584547905183,1584547913081",
+    "xslt": "NBA/xsl/league/roster/marty_active_players.xsl",
+    "xsltForceRecompile": "true",
+    "xsltInCache": "false",
+    "xsltCompileTimeMillis": "105",
+    "xsltTransformTimeMillis": "5980",
+    "consolidatedDomKey": "prod__transform__marty_active_players__1536562996661",
+    "endToEndTimeMillis": "23460"
+  },
+  "league": {
+    "standard": [
+      {
+        "firstName": "Steven",
+        "lastName": "Adams",
+        "temporaryDisplayName": "Adams, Steven",
+        "personId": "203500",
+        "teamId": "1610612760",
+        "jersey": "12",
+        "isActive": true,
+        "pos": "C",
+        "heightFeet": "6",
+        "heightInches": "11",
+        "heightMeters": "2.11",
+        "weightPounds": "265",
+        "weightKilograms": "120.2",
+        "dateOfBirthUTC": "1993-07-20",
+        "teamSitesOnly": {
+          "playerCode": "steven_adams",
+          "posFull": "Center",
+          "displayAffiliation": "Pittsburgh/New Zealand",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612760",
+            "seasonStart": "2013",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "1610612760",
+          "pickNum": "12",
+          "roundNum": "1",
+          "seasonYear": "2013"
+        },
+        "nbaDebutYear": "2013",
+        "yearsPro": "6",
+        "collegeName": "Pittsburgh",
+        "lastAffiliation": "Pittsburgh/New Zealand",
+        "country": "New Zealand"
+      },
+      {
+        "firstName": "Bam",
+        "lastName": "Adebayo",
+        "temporaryDisplayName": "Adebayo, Bam",
+        "personId": "1628389",
+        "teamId": "1610612748",
+        "jersey": "13",
+        "isActive": true,
+        "pos": "C-F",
+        "heightFeet": "6",
+        "heightInches": "9",
+        "heightMeters": "2.06",
+        "weightPounds": "255",
+        "weightKilograms": "115.7",
+        "dateOfBirthUTC": "1997-07-18",
+        "teamSitesOnly": {
+          "playerCode": "bam_adebayo",
+          "posFull": "Center-Forward",
+          "displayAffiliation": "Kentucky/USA",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612748",
+            "seasonStart": "2017",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "1610612748",
+          "pickNum": "14",
+          "roundNum": "1",
+          "seasonYear": "2017"
+        },
+        "nbaDebutYear": "2017",
+        "yearsPro": "2",
+        "collegeName": "Kentucky",
+        "lastAffiliation": "Kentucky/USA",
+        "country": "USA"
+      },
+      {
+        "firstName": "LaMarcus",
+        "lastName": "Aldridge",
+        "temporaryDisplayName": "Aldridge, LaMarcus",
+        "personId": "200746",
+        "teamId": "1610612759",
+        "jersey": "12",
+        "isActive": true,
+        "pos": "C-F",
+        "heightFeet": "6",
+        "heightInches": "11",
+        "heightMeters": "2.11",
+        "weightPounds": "250",
+        "weightKilograms": "113.4",
+        "dateOfBirthUTC": "1985-07-19",
+        "teamSitesOnly": {
+          "playerCode": "lamarcus_aldridge",
+          "posFull": "Center-Forward",
+          "displayAffiliation": "Texas/USA",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612757",
+            "seasonStart": "2006",
+            "seasonEnd": "2014"
+          },
+          {
+            "teamId": "1610612759",
+            "seasonStart": "2015",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "1610612741",
+          "pickNum": "2",
+          "roundNum": "1",
+          "seasonYear": "2006"
+        },
+        "nbaDebutYear": "2006",
+        "yearsPro": "13",
+        "collegeName": "Texas",
+        "lastAffiliation": "Texas/USA",
+        "country": "USA"
+      },
+      {
+        "firstName": "Kyle",
+        "lastName": "Alexander",
+        "temporaryDisplayName": "Alexander, Kyle",
+        "personId": "1629734",
+        "teamId": "1610612748",
+        "jersey": "17",
+        "isActive": true,
+        "pos": "F-C",
+        "heightFeet": "6",
+        "heightInches": "10",
+        "heightMeters": "2.08",
+        "weightPounds": "216",
+        "weightKilograms": "98.0",
+        "dateOfBirthUTC": "1996-10-21",
+        "teamSitesOnly": {
+          "playerCode": "kyle_alexander",
+          "posFull": "Forward-Center",
+          "displayAffiliation": "Tennessee/Canada",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612748",
+            "seasonStart": "2019",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "",
+          "pickNum": "",
+          "roundNum": "",
+          "seasonYear": ""
+        },
+        "nbaDebutYear": "",
+        "yearsPro": "0",
+        "collegeName": "Tennessee",
+        "lastAffiliation": "Tennessee/Canada",
+        "country": "Canada"
+      },
+      {
+        "firstName": "Nickeil",
+        "lastName": "Alexander-Walker",
+        "temporaryDisplayName": "Alexander-Walker, Nickeil",
+        "personId": "1629638",
+        "teamId": "1610612740",
+        "jersey": "0",
+        "isActive": true,
+        "pos": "G",
+        "heightFeet": "6",
+        "heightInches": "5",
+        "heightMeters": "1.96",
+        "weightPounds": "205",
+        "weightKilograms": "93.0",
+        "dateOfBirthUTC": "1998-09-02",
+        "teamSitesOnly": {
+          "playerCode": "nickeil_alexander-walker",
+          "posFull": "Guard",
+          "displayAffiliation": "Virginia Tech/Canada",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612740",
+            "seasonStart": "2019",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "1610612751",
+          "pickNum": "17",
+          "roundNum": "1",
+          "seasonYear": "2019"
+        },
+        "nbaDebutYear": "2019",
+        "yearsPro": "0",
+        "collegeName": "Virginia Tech",
+        "lastAffiliation": "Virginia Tech/Canada",
+        "country": "Canada"
+      },
+      {
+        "firstName": "Grayson",
+        "lastName": "Allen",
+        "temporaryDisplayName": "Allen, Grayson",
+        "personId": "1628960",
+        "teamId": "1610612763",
+        "jersey": "3",
+        "isActive": true,
+        "pos": "G",
+        "heightFeet": "6",
+        "heightInches": "4",
+        "heightMeters": "1.93",
+        "weightPounds": "198",
+        "weightKilograms": "89.8",
+        "dateOfBirthUTC": "1995-10-08",
+        "teamSitesOnly": {
+          "playerCode": "grayson_allen",
+          "posFull": "Guard",
+          "displayAffiliation": "Duke/USA",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612762",
+            "seasonStart": "2018",
+            "seasonEnd": "2018"
+          },
+          {
+            "teamId": "1610612763",
+            "seasonStart": "2019",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "1610612762",
+          "pickNum": "21",
+          "roundNum": "1",
+          "seasonYear": "2018"
+        },
+        "nbaDebutYear": "2018",
+        "yearsPro": "1",
+        "collegeName": "Duke",
+        "lastAffiliation": "Duke University/USA",
+        "country": "USA"
+      },
+      {
+        "firstName": "Jarrett",
+        "lastName": "Allen",
+        "temporaryDisplayName": "Allen, Jarrett",
+        "personId": "1628386",
+        "teamId": "1610612751",
+        "jersey": "31",
+        "isActive": true,
+        "pos": "C",
+        "heightFeet": "6",
+        "heightInches": "11",
+        "heightMeters": "2.11",
+        "weightPounds": "243",
+        "weightKilograms": "110.2",
+        "dateOfBirthUTC": "1998-04-21",
+        "teamSitesOnly": {
+          "playerCode": "jarrett_allen",
+          "posFull": "Center",
+          "displayAffiliation": "Texas/USA",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612751",
+            "seasonStart": "2017",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "1610612751",
+          "pickNum": "22",
+          "roundNum": "1",
+          "seasonYear": "2017"
+        },
+        "nbaDebutYear": "2017",
+        "yearsPro": "2",
+        "collegeName": "Texas",
+        "lastAffiliation": "Texas/USA",
+        "country": "USA"
+      },
+      {
+        "firstName": "Kadeem",
+        "lastName": "Allen",
+        "temporaryDisplayName": "Allen, Kadeem",
+        "personId": "1628443",
+        "teamId": "1610612752",
+        "jersey": "0",
+        "isActive": true,
+        "pos": "G",
+        "heightFeet": "6",
+        "heightInches": "1",
+        "heightMeters": "1.85",
+        "weightPounds": "200",
+        "weightKilograms": "90.7",
+        "dateOfBirthUTC": "1993-01-15",
+        "teamSitesOnly": {
+          "playerCode": "kadeem_allen",
+          "posFull": "Guard",
+          "displayAffiliation": "Arizona/USA",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612738",
+            "seasonStart": "2017",
+            "seasonEnd": "2017"
+          },
+          {
+            "teamId": "1610612752",
+            "seasonStart": "2018",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "1610612738",
+          "pickNum": "53",
+          "roundNum": "2",
+          "seasonYear": "2017"
+        },
+        "nbaDebutYear": "2017",
+        "yearsPro": "2",
+        "collegeName": "Arizona",
+        "lastAffiliation": "Arizona/USA",
+        "country": "USA"
+      },
+      {
+        "firstName": "Al-Farouq",
+        "lastName": "Aminu",
+        "temporaryDisplayName": "Aminu, Al-Farouq",
+        "personId": "202329",
+        "teamId": "1610612753",
+        "jersey": "2",
+        "isActive": true,
+        "pos": "F",
+        "heightFeet": "6",
+        "heightInches": "8",
+        "heightMeters": "2.03",
+        "weightPounds": "220",
+        "weightKilograms": "99.8",
+        "dateOfBirthUTC": "1990-09-21",
+        "teamSitesOnly": {
+          "playerCode": "al-farouq_aminu",
+          "posFull": "Forward",
+          "displayAffiliation": "Wake Forest/USA",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612746",
+            "seasonStart": "2010",
+            "seasonEnd": "2010"
+          },
+          {
+            "teamId": "1610612740",
+            "seasonStart": "2011",
+            "seasonEnd": "2013"
+          },
+          {
+            "teamId": "1610612742",
+            "seasonStart": "2014",
+            "seasonEnd": "2014"
+          },
+          {
+            "teamId": "1610612757",
+            "seasonStart": "2015",
+            "seasonEnd": "2018"
+          },
+          {
+            "teamId": "1610612753",
+            "seasonStart": "2019",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "1610612746",
+          "pickNum": "8",
+          "roundNum": "1",
+          "seasonYear": "2010"
+        },
+        "nbaDebutYear": "2010",
+        "yearsPro": "9",
+        "collegeName": "Wake Forest",
+        "lastAffiliation": "Wake Forest/USA",
+        "country": "USA"
+      },
+      {
+        "firstName": "Kyle",
+        "lastName": "Anderson",
+        "temporaryDisplayName": "Anderson, Kyle",
+        "personId": "203937",
+        "teamId": "1610612763",
+        "jersey": "1",
+        "isActive": true,
+        "pos": "F-G",
+        "heightFeet": "6",
+        "heightInches": "9",
+        "heightMeters": "2.06",
+        "weightPounds": "230",
+        "weightKilograms": "104.3",
+        "dateOfBirthUTC": "1993-09-20",
+        "teamSitesOnly": {
+          "playerCode": "kyle_anderson",
+          "posFull": "Forward-Guard",
+          "displayAffiliation": "UCLA/USA",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612759",
+            "seasonStart": "2014",
+            "seasonEnd": "2017"
+          },
+          {
+            "teamId": "1610612763",
+            "seasonStart": "2018",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "1610612759 1610616839",
+          "pickNum": "30",
+          "roundNum": "1",
+          "seasonYear": "2014"
+        },
+        "nbaDebutYear": "2014",
+        "yearsPro": "5",
+        "collegeName": "UCLA",
+        "lastAffiliation": "UCLA/USA",
+        "country": "USA"
+      },
+      {
+        "firstName": "Giannis",
+        "lastName": "Antetokounmpo",
+        "temporaryDisplayName": "Antetokounmpo, Giannis",
+        "personId": "203507",
+        "teamId": "1610612749",
+        "jersey": "34",
+        "isActive": true,
+        "pos": "F",
+        "heightFeet": "6",
+        "heightInches": "11",
+        "heightMeters": "2.11",
+        "weightPounds": "242",
+        "weightKilograms": "109.8",
+        "dateOfBirthUTC": "1994-12-06",
+        "teamSitesOnly": {
+          "playerCode": "giannis_antetokounmpo",
+          "posFull": "Forward",
+          "displayAffiliation": "Greece",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612749",
+            "seasonStart": "2013",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "1610612749",
+          "pickNum": "15",
+          "roundNum": "1",
+          "seasonYear": "2013"
+        },
+        "nbaDebutYear": "2013",
+        "yearsPro": "6",
+        "collegeName": " ",
+        "lastAffiliation": "Filathlitikos/Greece",
+        "country": "Greece"
+      },
+      {
+        "firstName": "Kostas",
+        "lastName": "Antetokounmpo",
+        "temporaryDisplayName": "Antetokounmpo, Kostas",
+        "personId": "1628961",
+        "teamId": "1610612747",
+        "jersey": "37",
+        "isActive": true,
+        "pos": "F",
+        "heightFeet": "6",
+        "heightInches": "10",
+        "heightMeters": "2.08",
+        "weightPounds": "200",
+        "weightKilograms": "90.7",
+        "dateOfBirthUTC": "1997-11-20",
+        "teamSitesOnly": {
+          "playerCode": "kostas_antetokounmpo",
+          "posFull": "Forward",
+          "displayAffiliation": "Dayton/Greece",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612742",
+            "seasonStart": "2018",
+            "seasonEnd": "2018"
+          },
+          {
+            "teamId": "1610612747",
+            "seasonStart": "2019",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "1610612755",
+          "pickNum": "60",
+          "roundNum": "2",
+          "seasonYear": "2018"
+        },
+        "nbaDebutYear": "2018",
+        "yearsPro": "1",
+        "collegeName": "University of Dayton",
+        "lastAffiliation": "University of Dayton/Greece",
+        "country": "Greece"
+      },
+      {
+        "firstName": "Thanasis",
+        "lastName": "Antetokounmpo",
+        "temporaryDisplayName": "Antetokounmpo, Thanasis",
+        "personId": "203648",
+        "teamId": "1610612749",
+        "jersey": "43",
+        "isActive": true,
+        "pos": "F",
+        "heightFeet": "6",
+        "heightInches": "6",
+        "heightMeters": "1.98",
+        "weightPounds": "219",
+        "weightKilograms": "99.3",
+        "dateOfBirthUTC": "1992-07-18",
+        "teamSitesOnly": {
+          "playerCode": "thanasis_antetokounmpo",
+          "posFull": "Forward",
+          "displayAffiliation": "Greece",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612752",
+            "seasonStart": "2015",
+            "seasonEnd": "2015"
+          },
+          {
+            "teamId": "1610612749",
+            "seasonStart": "2019",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "1610612752",
+          "pickNum": "51",
+          "roundNum": "2",
+          "seasonYear": "2014"
+        },
+        "nbaDebutYear": "2015",
+        "yearsPro": "1",
+        "collegeName": " ",
+        "lastAffiliation": "Panathinaikos/Greece",
+        "country": "Greece"
+      },
+      {
+        "firstName": "Carmelo",
+        "lastName": "Anthony",
+        "temporaryDisplayName": "Anthony, Carmelo",
+        "personId": "2546",
+        "teamId": "1610612757",
+        "jersey": "00",
+        "isActive": true,
+        "pos": "F",
+        "heightFeet": "6",
+        "heightInches": "8",
+        "heightMeters": "2.03",
+        "weightPounds": "238",
+        "weightKilograms": "108.0",
+        "dateOfBirthUTC": "1984-05-29",
+        "teamSitesOnly": {
+          "playerCode": "carmelo_anthony",
+          "posFull": "Forward",
+          "displayAffiliation": "Syracuse/USA",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612743",
+            "seasonStart": "2003",
+            "seasonEnd": "2010"
+          },
+          {
+            "teamId": "1610612752",
+            "seasonStart": "2010",
+            "seasonEnd": "2016"
+          },
+          {
+            "teamId": "1610612760",
+            "seasonStart": "2017",
+            "seasonEnd": "2017"
+          },
+          {
+            "teamId": "1610612745",
+            "seasonStart": "2018",
+            "seasonEnd": "2018"
+          },
+          {
+            "teamId": "1610612757",
+            "seasonStart": "2019",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "1610612743",
+          "pickNum": "3",
+          "roundNum": "1",
+          "seasonYear": "2003"
+        },
+        "nbaDebutYear": "2003",
+        "yearsPro": "16",
+        "collegeName": "Syracuse",
+        "lastAffiliation": "Syracuse/USA",
+        "country": "USA"
+      },
+      {
+        "firstName": "OG",
+        "lastName": "Anunoby",
+        "temporaryDisplayName": "Anunoby, OG",
+        "personId": "1628384",
+        "teamId": "1610612761",
+        "jersey": "3",
+        "isActive": true,
+        "pos": "F",
+        "heightFeet": "6",
+        "heightInches": "7",
+        "heightMeters": "2.01",
+        "weightPounds": "232",
+        "weightKilograms": "105.2",
+        "dateOfBirthUTC": "1997-07-17",
+        "teamSitesOnly": {
+          "playerCode": "og_anunoby",
+          "posFull": "Forward",
+          "displayAffiliation": "Indiana/England",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612761",
+            "seasonStart": "2017",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "1610612761",
+          "pickNum": "23",
+          "roundNum": "1",
+          "seasonYear": "2017"
+        },
+        "nbaDebutYear": "2017",
+        "yearsPro": "2",
+        "collegeName": "Indiana",
+        "lastAffiliation": "Indiana/United Kingdom",
+        "country": "United Kingdom"
+      },
+      {
+        "firstName": "Ryan",
+        "lastName": "Arcidiacono",
+        "temporaryDisplayName": "Arcidiacono, Ryan",
+        "personId": "1627853",
+        "teamId": "1610612741",
+        "jersey": "51",
+        "isActive": true,
+        "pos": "G",
+        "heightFeet": "6",
+        "heightInches": "3",
+        "heightMeters": "1.9",
+        "weightPounds": "195",
+        "weightKilograms": "88.5",
+        "dateOfBirthUTC": "1994-03-26",
+        "teamSitesOnly": {
+          "playerCode": "ryan_arcidiacono",
+          "posFull": "Guard",
+          "displayAffiliation": "Villanova/USA",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612741",
+            "seasonStart": "2017",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "",
+          "pickNum": "",
+          "roundNum": "",
+          "seasonYear": ""
+        },
+        "nbaDebutYear": "2017",
+        "yearsPro": "2",
+        "collegeName": "Villanova",
+        "lastAffiliation": "Villanova/USA",
+        "country": "USA"
+      },
+      {
+        "firstName": "Trevor",
+        "lastName": "Ariza",
+        "temporaryDisplayName": "Ariza, Trevor",
+        "personId": "2772",
+        "teamId": "1610612757",
+        "jersey": "8",
+        "isActive": true,
+        "pos": "F",
+        "heightFeet": "6",
+        "heightInches": "8",
+        "heightMeters": "2.03",
+        "weightPounds": "215",
+        "weightKilograms": "97.5",
+        "dateOfBirthUTC": "1985-06-30",
+        "teamSitesOnly": {
+          "playerCode": "trevor_ariza",
+          "posFull": "Forward",
+          "displayAffiliation": "UCLA/USA",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612752",
+            "seasonStart": "2004",
+            "seasonEnd": "2005"
+          },
+          {
+            "teamId": "1610612753",
+            "seasonStart": "2005",
+            "seasonEnd": "2007"
+          },
+          {
+            "teamId": "1610612747",
+            "seasonStart": "2007",
+            "seasonEnd": "2008"
+          },
+          {
+            "teamId": "1610612745",
+            "seasonStart": "2009",
+            "seasonEnd": "2009"
+          },
+          {
+            "teamId": "1610612740",
+            "seasonStart": "2010",
+            "seasonEnd": "2011"
+          },
+          {
+            "teamId": "1610612764",
+            "seasonStart": "2012",
+            "seasonEnd": "2013"
+          },
+          {
+            "teamId": "1610612745",
+            "seasonStart": "2014",
+            "seasonEnd": "2017"
+          },
+          {
+            "teamId": "1610612756",
+            "seasonStart": "2018",
+            "seasonEnd": "2018"
+          },
+          {
+            "teamId": "1610612764",
+            "seasonStart": "2018",
+            "seasonEnd": "2018"
+          },
+          {
+            "teamId": "1610612758",
+            "seasonStart": "2019",
+            "seasonEnd": "2019"
+          },
+          {
+            "teamId": "1610612757",
+            "seasonStart": "2019",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "1610612752",
+          "pickNum": "43",
+          "roundNum": "2",
+          "seasonYear": "2004"
+        },
+        "nbaDebutYear": "2004",
+        "yearsPro": "15",
+        "collegeName": "UCLA",
+        "lastAffiliation": "UCLA/USA",
+        "country": "USA"
+      },
+      {
+        "firstName": "D.J.",
+        "lastName": "Augustin",
+        "temporaryDisplayName": "Augustin, D.J.",
+        "personId": "201571",
+        "teamId": "1610612753",
+        "jersey": "14",
+        "isActive": true,
+        "pos": "G",
+        "heightFeet": "5",
+        "heightInches": "11",
+        "heightMeters": "1.8",
+        "weightPounds": "183",
+        "weightKilograms": "83.0",
+        "dateOfBirthUTC": "1987-11-10",
+        "teamSitesOnly": {
+          "playerCode": "d.j._augustin",
+          "posFull": "Guard",
+          "displayAffiliation": "Texas/USA",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612766",
+            "seasonStart": "2008",
+            "seasonEnd": "2011"
+          },
+          {
+            "teamId": "1610612754",
+            "seasonStart": "2012",
+            "seasonEnd": "2012"
+          },
+          {
+            "teamId": "1610612741",
+            "seasonStart": "2013",
+            "seasonEnd": "2013"
+          },
+          {
+            "teamId": "1610612761",
+            "seasonStart": "2013",
+            "seasonEnd": "2013"
+          },
+          {
+            "teamId": "1610612765",
+            "seasonStart": "2014",
+            "seasonEnd": "2014"
+          },
+          {
+            "teamId": "1610612760",
+            "seasonStart": "2014",
+            "seasonEnd": "2015"
+          },
+          {
+            "teamId": "1610612743",
+            "seasonStart": "2015",
+            "seasonEnd": "2015"
+          },
+          {
+            "teamId": "1610612753",
+            "seasonStart": "2016",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "1610612766",
+          "pickNum": "9",
+          "roundNum": "1",
+          "seasonYear": "2008"
+        },
+        "nbaDebutYear": "2008",
+        "yearsPro": "11",
+        "collegeName": "Texas",
+        "lastAffiliation": "Texas/USA",
+        "country": "USA"
+      },
+      {
+        "firstName": "Deandre",
+        "lastName": "Ayton",
+        "temporaryDisplayName": "Ayton, Deandre",
+        "personId": "1629028",
+        "teamId": "1610612756",
+        "jersey": "22",
+        "isActive": true,
+        "pos": "C",
+        "heightFeet": "6",
+        "heightInches": "11",
+        "heightMeters": "2.11",
+        "weightPounds": "250",
+        "weightKilograms": "113.4",
+        "dateOfBirthUTC": "1998-07-23",
+        "teamSitesOnly": {
+          "playerCode": "deandre_ayton",
+          "posFull": "Center",
+          "displayAffiliation": "Arizona/Bahamas",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612756",
+            "seasonStart": "2018",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "1610612756",
+          "pickNum": "1",
+          "roundNum": "1",
+          "seasonYear": "2018"
+        },
+        "nbaDebutYear": "2018",
+        "yearsPro": "1",
+        "collegeName": "Arizona",
+        "lastAffiliation": "University of Arizona/Bahamas",
+        "country": "Bahamas"
+      },
+      {
+        "firstName": "Dwayne",
+        "lastName": "Bacon",
+        "temporaryDisplayName": "Bacon, Dwayne",
+        "personId": "1628407",
+        "teamId": "1610612766",
+        "jersey": "7",
+        "isActive": true,
+        "pos": "G-F",
+        "heightFeet": "6",
+        "heightInches": "6",
+        "heightMeters": "1.98",
+        "weightPounds": "221",
+        "weightKilograms": "100.2",
+        "dateOfBirthUTC": "1995-08-30",
+        "teamSitesOnly": {
+          "playerCode": "dwayne_bacon",
+          "posFull": "Guard-Forward",
+          "displayAffiliation": "Florida State/USA",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612766",
+            "seasonStart": "2017",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "1610612740",
+          "pickNum": "40",
+          "roundNum": "2",
+          "seasonYear": "2017"
+        },
+        "nbaDebutYear": "2017",
+        "yearsPro": "2",
+        "collegeName": "Florida State",
+        "lastAffiliation": "Florida State/USA",
+        "country": "USA"
+      },
+      {
+        "firstName": "Marvin",
+        "lastName": "Bagley III",
+        "temporaryDisplayName": "Bagley III, Marvin",
+        "personId": "1628963",
+        "teamId": "1610612758",
+        "jersey": "35",
+        "isActive": true,
+        "pos": "F",
+        "heightFeet": "6",
+        "heightInches": "11",
+        "heightMeters": "2.11",
+        "weightPounds": "235",
+        "weightKilograms": "106.6",
+        "dateOfBirthUTC": "1999-03-14",
+        "teamSitesOnly": {
+          "playerCode": "marvin_bagley_iii",
+          "posFull": "Forward",
+          "displayAffiliation": "Duke/USA",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612758",
+            "seasonStart": "2018",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "1610612758",
+          "pickNum": "2",
+          "roundNum": "1",
+          "seasonYear": "2018"
+        },
+        "nbaDebutYear": "2018",
+        "yearsPro": "1",
+        "collegeName": "Duke",
+        "lastAffiliation": "Duke University/USA",
+        "country": "USA"
+      },
+      {
+        "firstName": "Lonzo",
+        "lastName": "Ball",
+        "temporaryDisplayName": "Ball, Lonzo",
+        "personId": "1628366",
+        "teamId": "1610612740",
+        "jersey": "2",
+        "isActive": true,
+        "pos": "G",
+        "heightFeet": "6",
+        "heightInches": "6",
+        "heightMeters": "1.98",
+        "weightPounds": "190",
+        "weightKilograms": "86.2",
+        "dateOfBirthUTC": "1997-10-27",
+        "teamSitesOnly": {
+          "playerCode": "lonzo_ball",
+          "posFull": "Guard",
+          "displayAffiliation": "UCLA/USA",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612747",
+            "seasonStart": "2017",
+            "seasonEnd": "2018"
+          },
+          {
+            "teamId": "1610612740",
+            "seasonStart": "2019",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "1610612747",
+          "pickNum": "2",
+          "roundNum": "1",
+          "seasonYear": "2017"
+        },
+        "nbaDebutYear": "2017",
+        "yearsPro": "2",
+        "collegeName": "UCLA",
+        "lastAffiliation": "UCLA/USA",
+        "country": "USA"
+      },
+      {
+        "firstName": "Mo",
+        "lastName": "Bamba",
+        "temporaryDisplayName": "Bamba, Mo",
+        "personId": "1628964",
+        "teamId": "1610612753",
+        "jersey": "5",
+        "isActive": true,
+        "pos": "C",
+        "heightFeet": "7",
+        "heightInches": "0",
+        "heightMeters": "2.13",
+        "weightPounds": "231",
+        "weightKilograms": "104.8",
+        "dateOfBirthUTC": "1998-05-12",
+        "teamSitesOnly": {
+          "playerCode": "mohamed_bamba",
+          "posFull": "Center",
+          "displayAffiliation": "Texas/USA",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612753",
+            "seasonStart": "2018",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "1610612753",
+          "pickNum": "6",
+          "roundNum": "1",
+          "seasonYear": "2018"
+        },
+        "nbaDebutYear": "2018",
+        "yearsPro": "1",
+        "collegeName": "University of Texas at Austin",
+        "lastAffiliation": "University of Texas at Austin/USA",
+        "country": "USA"
+      }
+    ],
+    "africa": [],
+    "sacramento": [
+      {
+        "firstName": "Kyle",
+        "lastName": "Alexander",
+        "temporaryDisplayName": "Alexander, Kyle",
+        "personId": "57001",
+        "teamId": "1610612748",
+        "jersey": "74",
+        "isActive": true,
+        "pos": "F",
+        "heightFeet": "6",
+        "heightInches": "11",
+        "heightMeters": "2.11",
+        "weightPounds": "220",
+        "weightKilograms": "99.8",
+        "dateOfBirthUTC": "1996-10-21",
+        "teamSitesOnly": {
+          "playerCode": "sl_kylealexander",
+          "posFull": "Forward",
+          "displayAffiliation": "Tennessee",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612748",
+            "seasonStart": "2019",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "",
+          "pickNum": "",
+          "roundNum": "",
+          "seasonYear": ""
+        },
+        "nbaDebutYear": "",
+        "yearsPro": "0",
+        "collegeName": "Tennessee",
+        "lastAffiliation": "Tennessee",
+        "country": ""
+      },
+      {
+        "firstName": "Marcus",
+        "lastName": "Allen",
+        "temporaryDisplayName": "Allen, Marcus",
+        "personId": "1629305",
+        "teamId": "1610612747",
+        "jersey": "14",
+        "isActive": true,
+        "pos": "G",
+        "heightFeet": "6",
+        "heightInches": "3",
+        "heightMeters": "1.9",
+        "weightPounds": "189",
+        "weightKilograms": "85.7",
+        "dateOfBirthUTC": "1994-09-14",
+        "teamSitesOnly": {
+          "playerCode": "marcus_allen",
+          "posFull": "Guard",
+          "displayAffiliation": "Stanford/USA",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612747",
+            "seasonStart": "2019",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "",
+          "pickNum": "",
+          "roundNum": "",
+          "seasonYear": ""
+        },
+        "nbaDebutYear": "",
+        "yearsPro": "0",
+        "collegeName": "Stanford",
+        "lastAffiliation": "Stanford/USA",
+        "country": "USA"
+      },
+      {
+        "firstName": "Rosco",
+        "lastName": "Allen",
+        "temporaryDisplayName": "Allen, Rosco",
+        "personId": "1627839",
+        "teamId": "1610612747",
+        "jersey": "3",
+        "isActive": true,
+        "pos": "F",
+        "heightFeet": "6",
+        "heightInches": "10",
+        "heightMeters": "2.08",
+        "weightPounds": "215",
+        "weightKilograms": "97.5",
+        "dateOfBirthUTC": "1993-05-05",
+        "teamSitesOnly": {
+          "playerCode": "rosco_allen",
+          "posFull": "Forward",
+          "displayAffiliation": "",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612747",
+            "seasonStart": "2019",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "",
+          "pickNum": "",
+          "roundNum": "",
+          "seasonYear": ""
+        },
+        "nbaDebutYear": "",
+        "yearsPro": "0",
+        "collegeName": "Stanford",
+        "lastAffiliation": "Stanford",
+        "country": "Hungary"
+      }
+    ],
+    "vegas": [
+      {
+        "firstName": "Muhammad-Ali",
+        "lastName": "Abdur-Rahkman",
+        "temporaryDisplayName": "Abdur-Rahkman, Muhammad-Ali",
+        "personId": "1629240",
+        "teamId": "1610612739",
+        "jersey": "39",
+        "isActive": true,
+        "pos": "G",
+        "heightFeet": "6",
+        "heightInches": "4",
+        "heightMeters": "1.93",
+        "weightPounds": "190",
+        "weightKilograms": "86.2",
+        "dateOfBirthUTC": "1994-09-01",
+        "teamSitesOnly": {
+          "playerCode": "muhammad-ali_abdur-rahkman",
+          "posFull": "Guard",
+          "displayAffiliation": "",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612739",
+            "seasonStart": "2019",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "",
+          "pickNum": "",
+          "roundNum": "",
+          "seasonYear": ""
+        },
+        "nbaDebutYear": "",
+        "yearsPro": "0",
+        "collegeName": "Michigan",
+        "lastAffiliation": "Michigan/USA",
+        "country": "USA"
+      },
+      {
+        "firstName": "Abudushalamu",
+        "lastName": "Abudurexiti",
+        "temporaryDisplayName": "Abudurexiti, Abudushalamu",
+        "personId": "1629105",
+        "teamId": "45",
+        "jersey": "23",
+        "isActive": true,
+        "pos": "F",
+        "heightFeet": "6",
+        "heightInches": "8",
+        "heightMeters": "2.03",
+        "weightPounds": "",
+        "weightKilograms": "",
+        "dateOfBirthUTC": "1996-05-20",
+        "teamSitesOnly": {
+          "playerCode": "abudushalamu_abudurexiti",
+          "posFull": "Forward",
+          "displayAffiliation": "",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612744",
+            "seasonStart": "2018",
+            "seasonEnd": "2018"
+          },
+          {
+            "teamId": "45",
+            "seasonStart": "2019",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "",
+          "pickNum": "",
+          "roundNum": "",
+          "seasonYear": ""
+        },
+        "nbaDebutYear": "",
+        "yearsPro": "0",
+        "collegeName": " ",
+        "lastAffiliation": "China",
+        "country": "China"
+      },
+      {
+        "firstName": "Jalen",
+        "lastName": "Adams",
+        "temporaryDisplayName": "Adams, Jalen",
+        "personId": "56561",
+        "teamId": "1610612740",
+        "jersey": "20",
+        "isActive": true,
+        "pos": "G",
+        "heightFeet": "6",
+        "heightInches": "3",
+        "heightMeters": "1.9",
+        "weightPounds": "195",
+        "weightKilograms": "88.5",
+        "dateOfBirthUTC": "1995-12-11",
+        "teamSitesOnly": {
+          "playerCode": "sl_jalenadams",
+          "posFull": "Guard",
+          "displayAffiliation": "Connecticut",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612740",
+            "seasonStart": "2019",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "",
+          "pickNum": "",
+          "roundNum": "",
+          "seasonYear": ""
+        },
+        "nbaDebutYear": "",
+        "yearsPro": "0",
+        "collegeName": "Connecticut",
+        "lastAffiliation": "Connecticut",
+        "country": ""
+      },
+      {
+        "firstName": "Jaylen",
+        "lastName": "Adams",
+        "temporaryDisplayName": "Adams, Jaylen",
+        "personId": "1629121",
+        "teamId": "1610612737",
+        "jersey": "10",
+        "isActive": true,
+        "pos": "G",
+        "heightFeet": "6",
+        "heightInches": "2",
+        "heightMeters": "1.88",
+        "weightPounds": "190",
+        "weightKilograms": "86.2",
+        "dateOfBirthUTC": "1996-05-04",
+        "teamSitesOnly": {
+          "playerCode": "jaylen_adams",
+          "posFull": "Guard",
+          "displayAffiliation": "St. Bonaventure/USA",
+          "freeAgentCode": ""
+        },
+        "teams": [
+          {
+            "teamId": "1610612737",
+            "seasonStart": "2019",
+            "seasonEnd": "2019"
+          }
+        ],
+        "draft": {
+          "teamId": "",
+          "pickNum": "",
+          "roundNum": "",
+          "seasonYear": ""
+        },
+        "nbaDebutYear": "2018",
+        "yearsPro": "1",
+        "collegeName": "St. Bonaventure",
+        "lastAffiliation": "St. Bonaventure/USA",
+        "country": "USA"
+      }
+    ],
+    "utah": [
+      {
+        "firstName": "Muhammad-Ali",
+        "lastName": "Abdur-Rahkman",
+        "temporaryDisplayName": "Abdur-Rahkman, Muhammad-Ali",
+        "personId": "1629240",
+        "teamId": "1610612739",
+        "jersey": "39",
+        "isActive": true,
+        "pos": "G",
+        "heightFeet": "-",
+        "heightInches": "-",
+        "heightMeters": "",
+        "weightPounds": "",
+        "weightKilograms": "",
+        "dateOfBirthUTC": "",
+        "teamSitesOnly": {
+          "playerCode": "muhammad-ali_abdur-rahkman",
+          "posFull": "Guard",
+          "displayAffiliation": "",
+          "freeAgentCode": ""
+        },
+        "teams": [],
+        "draft": {
+          "teamId": "",
+          "pickNum": "",
+          "roundNum": "",
+          "seasonYear": ""
+        },
+        "nbaDebutYear": "",
+        "yearsPro": "",
+        "collegeName": "",
+        "lastAffiliation": "",
+        "country": ""
+      },
+      {
+        "firstName": "Peyton",
+        "lastName": "Aldridge",
+        "temporaryDisplayName": "Aldridge, Peyton",
+        "personId": "57313",
+        "teamId": "1610612763",
+        "jersey": "19",
+        "isActive": true,
+        "pos": "F",
+        "heightFeet": "-",
+        "heightInches": "-",
+        "heightMeters": "",
+        "weightPounds": "",
+        "weightKilograms": "",
+        "dateOfBirthUTC": "",
+        "teamSitesOnly": {
+          "playerCode": "sl_peytonaldridge",
+          "posFull": "Forward",
+          "displayAffiliation": "Davidson",
+          "freeAgentCode": ""
+        },
+        "teams": [],
+        "draft": {
+          "teamId": "",
+          "pickNum": "",
+          "roundNum": "",
+          "seasonYear": ""
+        },
+        "nbaDebutYear": "",
+        "yearsPro": "",
+        "collegeName": "",
+        "lastAffiliation": "",
+        "country": ""
+      },
+      {
+        "firstName": "Travis",
+        "lastName": "Bader",
+        "temporaryDisplayName": "Bader, Travis",
+        "personId": "204293",
+        "teamId": "1610612759",
+        "jersey": "31",
+        "isActive": true,
+        "pos": "G",
+        "heightFeet": "-",
+        "heightInches": "-",
+        "heightMeters": "",
+        "weightPounds": "",
+        "weightKilograms": "",
+        "dateOfBirthUTC": "",
+        "teamSitesOnly": {
+          "playerCode": "travis_bader",
+          "posFull": "Guard",
+          "displayAffiliation": "",
+          "freeAgentCode": ""
+        },
+        "teams": [],
+        "draft": {
+          "teamId": "",
+          "pickNum": "",
+          "roundNum": "",
+          "seasonYear": ""
+        },
+        "nbaDebutYear": "",
+        "yearsPro": "",
+        "collegeName": "",
+        "lastAffiliation": "",
+        "country": ""
+      },
+      {
+        "firstName": "Jordan",
+        "lastName": "Barnett",
+        "temporaryDisplayName": "Barnett, Jordan",
+        "personId": "1629153",
+        "teamId": "1610612759",
+        "jersey": "35",
+        "isActive": true,
+        "pos": "F",
+        "heightFeet": "-",
+        "heightInches": "-",
+        "heightMeters": "",
+        "weightPounds": "",
+        "weightKilograms": "",
+        "dateOfBirthUTC": "",
+        "teamSitesOnly": {
+          "playerCode": "jordan_barnett",
+          "posFull": "Forward",
+          "displayAffiliation": "",
+          "freeAgentCode": ""
+        },
+        "teams": [],
+        "draft": {
+          "teamId": "",
+          "pickNum": "",
+          "roundNum": "",
+          "seasonYear": ""
+        },
+        "nbaDebutYear": "",
+        "yearsPro": "",
+        "collegeName": "",
+        "lastAffiliation": "",
+        "country": ""
+      },
+      {
+        "firstName": "Jaron",
+        "lastName": "Blossomgame",
+        "temporaryDisplayName": "Blossomgame, Jaron",
+        "personId": "1628417",
+        "teamId": "1610612739",
+        "jersey": "44",
+        "isActive": true,
+        "pos": "F",
+        "heightFeet": "-",
+        "heightInches": "-",
+        "heightMeters": "",
+        "weightPounds": "",
+        "weightKilograms": "",
+        "dateOfBirthUTC": "",
+        "teamSitesOnly": {
+          "playerCode": "jaron_blossomgame",
+          "posFull": "Forward",
+          "displayAffiliation": "Clemson/USA",
+          "freeAgentCode": ""
+        },
+        "teams": [],
+        "draft": {
+          "teamId": "",
+          "pickNum": "",
+          "roundNum": "",
+          "seasonYear": ""
+        },
+        "nbaDebutYear": "",
+        "yearsPro": "",
+        "collegeName": "",
+        "lastAffiliation": "",
+        "country": ""
+      },
+      {
+        "firstName": "Marques",
+        "lastName": "Bolden",
+        "temporaryDisplayName": "Bolden, Marques",
+        "personId": "57383",
+        "teamId": "1610612739",
+        "jersey": "38",
+        "isActive": true,
+        "pos": "C",
+        "heightFeet": "-",
+        "heightInches": "-",
+        "heightMeters": "",
+        "weightPounds": "",
+        "weightKilograms": "",
+        "dateOfBirthUTC": "",
+        "teamSitesOnly": {
+          "playerCode": "sl_marquesbolden",
+          "posFull": "Center",
+          "displayAffiliation": "Duke",
+          "freeAgentCode": ""
+        },
+        "teams": [],
+        "draft": {
+          "teamId": "",
+          "pickNum": "",
+          "roundNum": "",
+          "seasonYear": ""
+        },
+        "nbaDebutYear": "",
+        "yearsPro": "",
+        "collegeName": "",
+        "lastAffiliation": "",
+        "country": ""
+      }
+    ]
+  }
+}

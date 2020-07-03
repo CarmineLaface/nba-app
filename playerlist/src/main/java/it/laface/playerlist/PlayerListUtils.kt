@@ -1,0 +1,26 @@
+package it.laface.playerlist
+
+import it.laface.domain.CallState
+import it.laface.domain.PlayerModel
+import it.laface.domain.fullName
+
+fun mapContentToShow(
+    playerListCallState: CallState<List<PlayerModel>>,
+    nameToFilter: String
+): ContentToShow =
+    when (playerListCallState) {
+        is CallState.Success -> {
+            val filteredList = playerListCallState.result.filter { player ->
+                player.fullName.contains(nameToFilter, true)
+            }
+            if (filteredList.isEmpty()) {
+                ContentToShow.Placeholder
+            } else {
+                ContentToShow.Success(filteredList)
+            }
+        }
+        is CallState.Error -> {
+            ContentToShow.Error
+        }
+        CallState.InProgress, CallState.NotStarted -> ContentToShow.Loading
+    }

@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+            android:id="@+id/news"
+            android:icon="@drawable/news"
+            android:title="@string/news" />
+    <item
+            android:id="@+id/players"
+            android:icon="@drawable/group"
+            android:title="@string/players" />
+    <item
+            android:id="@+id/ranking"
+            android:icon="@drawable/ranking"
+            android:title="@string/ranking" />
+    <item
+            android:id="@+id/schedule"
+            android:icon="@drawable/calendar"
+            android:title="@string/schedule" />
+    <!--<item
+            android:id="@+id/profile"
+            android:title="@string/settings"
+            android:icon="@drawable/settings"
+            />-->
+</menu >

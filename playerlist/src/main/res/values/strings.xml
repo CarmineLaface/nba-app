@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="player_name">Player name</string>
+    <string name="no_results">No results</string>
+    <string name="players">Players</string>
+</resources>

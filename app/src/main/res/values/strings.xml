@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Fanta Nba</string>
+
+    <string name="team_image_url">https://it.global.nba.com/media/img/teams/00/logos/%s_logo.png</string>
+    <string name="player_image_url">
+        https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/%s.png
+    </string>
+    <string name="players">Players</string>
+    <string name="schedule">Schedule</string>
+</resources>
