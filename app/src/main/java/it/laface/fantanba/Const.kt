@@ -1,9 +1,5 @@
 package it.laface.fantanba
 
-/**
- * Created by Carmine Laface on 19/11/2018.
- */
-
 val teamsAbbreviation: Map<String, String> = mapOf(
     "hawks" to "atl",
     "nets" to "bkn",
