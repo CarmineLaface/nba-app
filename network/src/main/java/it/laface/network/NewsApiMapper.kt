@@ -13,7 +13,7 @@ class NewsApiMapper(private val newsApi: NbaNews) : NewsDataSource {
             response.posts.map { post ->
                 Article(
                     title = post.title,
-                    date = post.date.getFullDayName,
+                    date = post.date,
                     htmlContent = post.content,
                     imageUrl = post.imageUrl,
                     link = post.meta.link

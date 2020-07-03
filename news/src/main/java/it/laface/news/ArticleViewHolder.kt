@@ -5,6 +5,7 @@ import android.text.Html
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import it.laface.common.util.getFullDayName
 import it.laface.common.view.BaseViewHolder
 import it.laface.domain.Article
 import it.laface.news.databinding.ItemNewsBinding
@@ -15,6 +16,7 @@ class ArticleViewHolder(
 ) : BaseViewHolder<Article>(binding.root, onItemClicked) {
 
     override fun bind(item: Article) {
+        super.bind(item)
         binding.titleTextView.text = item.title
         binding.imageView.bindImage(item.imageUrl, R.drawable.placeholder_image)
         val htmlSource = item.htmlContent
@@ -23,7 +25,7 @@ class ArticleViewHolder(
         } else {
             Html.fromHtml(htmlSource)
         }
-        super.bind(item)
+        binding.dateTextView.text = item.date.getFullDayName
     }
 
     private fun ImageView.bindImage(uri: String, placeholderResId: Int) {

@@ -41,16 +41,16 @@
             android:id="@+id/dateTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/open_sans"
-            android:textSize="14sp"
+            android:textSize="12sp"
             tools:text="20 Luglio 1992" />
 
         <TextView
             android:id="@+id/bodyTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:fontFamily="@font/open_sans"
             android:maxLines="3"
