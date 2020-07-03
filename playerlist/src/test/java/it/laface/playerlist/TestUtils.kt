@@ -1,14 +1,9 @@
 package it.laface.playerlist
 
 import it.laface.domain.PlayerModel
-import java.io.InputStreamReader
 
-fun Any.openResources(fileName: String): InputStreamReader =
-    InputStreamReader(javaClass.classLoader!!.getResourceAsStream(fileName))
-
-fun Any.getPlayerListResponse(): List<PlayerModel> {
-    // return Gson().fromJson(openResources("players.json")", PlayerListResponse::class.java)
-    return listOf(
+fun getPlayerListResponse(): List<PlayerModel> =
+    listOf(
         PlayerModel(
             name = "firstName",
             surname = "lastName",
@@ -26,4 +21,3 @@ fun Any.getPlayerListResponse(): List<PlayerModel> {
             position = "C"
         )
     )
-}

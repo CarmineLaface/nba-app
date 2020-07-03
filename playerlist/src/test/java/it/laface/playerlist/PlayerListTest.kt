@@ -1,13 +1,10 @@
-package it.laface.getPlayers
+package it.laface.playerlist
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import it.laface.domain.NetworkError
 import it.laface.domain.NetworkResult
 import it.laface.domain.PlayerModel
 import it.laface.domain.PlayersDataSource
-import it.laface.playerlist.ContentToShow
-import it.laface.playerlist.PlayerListViewModel
-import it.laface.playerlist.getPlayerListResponse
 import it.laface.test.mock
 import it.laface.test.shouldBe
 import it.laface.test.thenReturn

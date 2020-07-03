@@ -1,7 +1,6 @@
 package it.laface.network
 
 import it.laface.api.NbaNews
-import it.laface.common.util.getFullDayName
 import it.laface.domain.Article
 import it.laface.domain.NetworkResult
 import it.laface.domain.NewsDataSource

@@ -28,9 +28,9 @@ object ActivityRegister : Application.ActivityLifecycleCallbacks, ActivityProvid
         }
     }
 
-    override fun onActivityPaused(activity: Activity) : Unit = Unit
+    override fun onActivityPaused(activity: Activity): Unit = Unit
 
-    override fun onActivityStopped(activity: Activity) : Unit = Unit
+    override fun onActivityStopped(activity: Activity): Unit = Unit
 
     override fun onActivityDestroyed(activity: Activity) {
         if (currentActivity == activity) {
