@@ -8,8 +8,7 @@ import java.net.HttpURLConnection.HTTP_INTERNAL_ERROR
 fun <T> successfulResponse(contentBody: T): Response<T> =
     Response.success(contentBody)
 
-fun <T> errorResponse(httpCode: Int = HTTP_INTERNAL_ERROR, jsonErrorBody: String = "error"): Response<T> =
-    Response.error(
-        httpCode,
-        jsonErrorBody.toResponseBody("application/json".toMediaType())
-    )
+fun <T> errorResponse(httpCode: Int = HTTP_INTERNAL_ERROR, jsonErrorBody: String = "error"): Response<T> {
+    val responseBody = jsonErrorBody.toResponseBody("application/json".toMediaType())
+    return Response.error(httpCode, responseBody)
+}

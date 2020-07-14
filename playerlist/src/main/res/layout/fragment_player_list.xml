@@ -29,22 +29,29 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playerNameEditText"
+        app:layout_constraintTop_toBottomOf="@+id/playerNameTextInputLayout"
         tools:listitem="@layout/item_player" />
 
-    <EditText
-        android:id="@+id/playerNameEditText"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/playerNameTextInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="@string/player_name"
         android:inputType="textPersonName"
         android:padding="8dp"
+        app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titleTextView" />
+        app:layout_constraintTop_toBottomOf="@id/titleTextView">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/playerNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/emptyListPlaceholder"
@@ -56,7 +63,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playerNameEditText"
+        app:layout_constraintTop_toBottomOf="@+id/playerNameTextInputLayout"
         tools:visibility="visible" />
 
     <Button
@@ -69,7 +76,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playerNameEditText"
+        app:layout_constraintTop_toBottomOf="@+id/playerNameTextInputLayout"
         tools:visibility="visible" />
 
     <ProgressBar
@@ -81,7 +88,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playerNameEditText"
+        app:layout_constraintTop_toBottomOf="@+id/playerNameTextInputLayout"
         tools:visibility="visible" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

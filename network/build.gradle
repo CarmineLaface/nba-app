@@ -37,11 +37,10 @@ dependencies {
     implementation project(":common")
     implementation project(":domain")
 
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     //Retrofit
-    implementation 'com.squareup.okhttp3:okhttp:4.7.2'
+    implementation 'com.squareup.okhttp3:okhttp:4.8.0'
 
     //Json Converter
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'

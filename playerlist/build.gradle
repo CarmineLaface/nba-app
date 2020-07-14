@@ -41,10 +41,9 @@ android {
 }
 
 dependencies {
-    api project(":common")
+    implementation project(":common")
     implementation project(":domain")
 
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     //Android core
@@ -68,7 +67,6 @@ dependencies {
     debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
     testImplementation "androidx.arch.core:core-testing:2.1.0"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
-    testImplementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     testImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     testImplementation 'androidx.test:runner:1.2.0'
     testImplementation 'androidx.test:rules:1.2.0'
@@ -76,5 +74,4 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test:rules:1.2.0'
-    androidTestImplementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 }

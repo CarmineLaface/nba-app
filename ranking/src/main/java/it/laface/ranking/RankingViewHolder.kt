@@ -9,7 +9,6 @@ import com.bumptech.glide.request.RequestOptions
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.BaseViewHolder
 import it.laface.common.view.inflater
-import it.laface.common.view.setList
 import it.laface.domain.RankedTeam
 import it.laface.domain.imageUrl
 import kotlinx.android.synthetic.main.item_team.view.*

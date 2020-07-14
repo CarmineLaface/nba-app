@@ -21,7 +21,7 @@ object CustomFragmentFactory : FragmentFactory() {
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {
         return when (className) {
             PlayerListFragment::class.java.name -> PlayerListFragment(nbaApi)
-            NewsFragment::class.java.name -> NewsFragment(nbaNewsApi)
+            NewsFragment::class.java.name -> NewsFragment(nbaNewsApi, ActivityRegister)
             RankingFragment::class.java.name -> RankingFragment(nbaApi)
             else -> super.instantiate(classLoader, className)
         }

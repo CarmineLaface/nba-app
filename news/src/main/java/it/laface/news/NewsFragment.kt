@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import it.laface.common.ActivityRegister
+import it.laface.common.ActivityProvider
 import it.laface.common.util.BrowserProviderImpl
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.inflater
@@ -19,12 +19,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class NewsFragment(dataSource: NewsDataSource) : Fragment() {
+class NewsFragment(dataSource: NewsDataSource, activityProvider: ActivityProvider) : Fragment() {
 
     private val viewModel: NewsViewModel by viewModels {
         NewsViewModel(
             dataSource,
-            BrowserProviderImpl(ActivityRegister),
+            BrowserProviderImpl(activityProvider),
             Dispatchers.IO
         )
     }
