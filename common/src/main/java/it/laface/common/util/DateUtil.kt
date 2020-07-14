@@ -1,3 +1,5 @@
+@file:Suppress("MagicNumber")
+
 package it.laface.common.util
 
 import java.util.Calendar
