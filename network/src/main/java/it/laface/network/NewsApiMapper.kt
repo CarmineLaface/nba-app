@@ -1,11 +1,12 @@
 package it.laface.network
 
 import it.laface.api.NbaNews
-import it.laface.domain.Article
+import it.laface.domain.model.Article
 import it.laface.domain.NetworkResult
-import it.laface.domain.NewsDataSource
+import it.laface.domain.datasource.NewsDataSource
 
-class NewsApiMapper(private val newsApi: NbaNews) : NewsDataSource {
+class NewsApiMapper(private val newsApi: NbaNews) :
+    NewsDataSource {
 
     override suspend fun getNews(limit: Int, offset: Int): NetworkResult<List<Article>> {
         return newsApi.getNews(limit, offset).toNetworkResult { response ->

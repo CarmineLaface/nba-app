@@ -3,9 +3,9 @@ package it.laface.news
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import it.laface.common.util.BrowserProvider
-import it.laface.domain.Article
+import it.laface.domain.model.Article
 import it.laface.domain.NetworkResult
-import it.laface.domain.NewsDataSource
+import it.laface.domain.datasource.NewsDataSource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch

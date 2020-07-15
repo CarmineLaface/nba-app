@@ -1,6 +1,6 @@
 package it.laface.playerlist
 
-import it.laface.domain.PlayerModel
+import it.laface.domain.model.PlayerModel
 
 fun getPlayerListResponse(): List<PlayerModel> =
     listOf(

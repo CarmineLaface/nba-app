@@ -37,6 +37,7 @@ dependencies {
     implementation project(":domain")
     implementation project(":news")
     implementation project(":playerlist")
+    implementation project(":schedule")
     implementation project(":ranking")
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')

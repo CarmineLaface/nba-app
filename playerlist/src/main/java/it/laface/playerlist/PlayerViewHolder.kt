@@ -4,9 +4,9 @@ import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import it.laface.common.view.BaseViewHolder
-import it.laface.domain.PlayerModel
-import it.laface.domain.fullName
-import it.laface.domain.imageUrl
+import it.laface.domain.model.PlayerModel
+import it.laface.domain.model.fullName
+import it.laface.domain.model.imageUrl
 import kotlinx.android.synthetic.main.item_player.view.*
 
 class PlayerViewHolder(

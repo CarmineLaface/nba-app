@@ -7,6 +7,7 @@ import androidx.fragment.app.commit
 import it.laface.news.NewsFragment
 import it.laface.playerlist.PlayerListFragment
 import it.laface.ranking.RankingFragment
+import it.laface.schedule.ScheduleFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
@@ -17,10 +18,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         setBottomNavigation()
 
-        val firstFragmentClass = NewsFragment::class.java
-
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
+                val firstFragmentClass = NewsFragment::class.java
                 add(R.id.container, firstFragmentClass, null, firstFragmentClass.name)
             }
         }
@@ -46,8 +46,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             R.id.news -> NewsFragment::class.java
             R.id.players -> PlayerListFragment::class.java
             R.id.ranking -> RankingFragment::class.java
-            R.id.schedule -> Nothing::class.java
-            else -> throw IllegalStateException("itemId not found")
+            R.id.schedule -> ScheduleFragment::class.java
+            else -> NewsFragment::class.java
         } as Class<Fragment>
     }
 }

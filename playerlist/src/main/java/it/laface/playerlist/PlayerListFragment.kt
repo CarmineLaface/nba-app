@@ -11,7 +11,8 @@ import it.laface.common.view.BaseAdapter
 import it.laface.common.view.goneUnless
 import it.laface.common.view.inflate
 import it.laface.common.viewModels
-import it.laface.domain.PlayersDataSource
+import it.laface.domain.datasource.PlayersDataSource
+import it.laface.domain.model.PlayerModel
 import it.laface.playerlist.databinding.FragmentPlayerListBinding
 import kotlinx.coroutines.Dispatchers
 
@@ -52,7 +53,7 @@ class PlayerListFragment(dataSource: PlayersDataSource) : Fragment() {
 
     private fun FragmentPlayerListBinding.bindContentToShow(
         contentToShow: ContentToShow,
-        playersAdapter: BaseAdapter<it.laface.domain.PlayerModel>
+        playersAdapter: BaseAdapter<PlayerModel>
     ) {
         if (contentToShow is ContentToShow.Success) {
             playersRecyclerView.visibility = View.VISIBLE

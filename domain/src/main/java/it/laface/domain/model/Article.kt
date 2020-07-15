@@ -1,4 +1,4 @@
-package it.laface.domain
+package it.laface.domain.model
 
 import java.util.Date
 

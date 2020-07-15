@@ -11,8 +11,8 @@ import it.laface.common.util.BrowserProviderImpl
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.inflater
 import it.laface.common.viewModels
-import it.laface.domain.Article
-import it.laface.domain.NewsDataSource
+import it.laface.domain.model.Article
+import it.laface.domain.datasource.NewsDataSource
 import it.laface.news.databinding.FragmentNewsBinding
 import it.laface.news.databinding.ItemNewsBinding
 import kotlinx.coroutines.Dispatchers

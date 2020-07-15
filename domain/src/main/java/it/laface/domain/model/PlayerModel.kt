@@ -1,4 +1,4 @@
-package it.laface.domain
+package it.laface.domain.model
 
 data class PlayerModel(
     val name: String,

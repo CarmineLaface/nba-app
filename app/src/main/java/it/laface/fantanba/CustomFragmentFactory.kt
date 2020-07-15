@@ -8,6 +8,7 @@ import it.laface.network.NewsApiMapper
 import it.laface.news.NewsFragment
 import it.laface.playerlist.PlayerListFragment
 import it.laface.ranking.RankingFragment
+import it.laface.schedule.ScheduleFragment
 
 object CustomFragmentFactory : FragmentFactory() {
 
@@ -23,6 +24,7 @@ object CustomFragmentFactory : FragmentFactory() {
             PlayerListFragment::class.java.name -> PlayerListFragment(nbaApi)
             NewsFragment::class.java.name -> NewsFragment(nbaNewsApi, ActivityRegister)
             RankingFragment::class.java.name -> RankingFragment(nbaApi)
+            ScheduleFragment::class.java.name -> ScheduleFragment(nbaApi)
             else -> super.instantiate(classLoader, className)
         }
     }

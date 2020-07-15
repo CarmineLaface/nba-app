@@ -6,8 +6,8 @@ import androidx.lifecycle.viewModelScope
 import it.laface.common.combine
 import it.laface.domain.CallState
 import it.laface.domain.NetworkResult
-import it.laface.domain.PlayerModel
-import it.laface.domain.PlayersDataSource
+import it.laface.domain.model.PlayerModel
+import it.laface.domain.datasource.PlayersDataSource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 

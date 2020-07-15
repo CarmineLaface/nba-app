@@ -1,4 +1,7 @@
-package it.laface.domain
+package it.laface.domain.datasource
+
+import it.laface.domain.NetworkResult
+import it.laface.domain.model.Article
 
 interface NewsDataSource {
 

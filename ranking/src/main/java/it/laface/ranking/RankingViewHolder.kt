@@ -9,8 +9,8 @@ import com.bumptech.glide.request.RequestOptions
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.BaseViewHolder
 import it.laface.common.view.inflater
-import it.laface.domain.RankedTeam
-import it.laface.domain.imageUrl
+import it.laface.domain.model.RankedTeam
+import it.laface.domain.model.imageUrl
 import kotlinx.android.synthetic.main.item_team.view.*
 
 class RankingViewHolder(private val contentView: RecyclerView) :

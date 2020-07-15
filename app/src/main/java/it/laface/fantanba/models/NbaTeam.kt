@@ -1,6 +1,5 @@
 package it.laface.fantanba.models
 
-// import android.graphics.drawable.Drawable
 import it.laface.fantanba.teamsAbbreviation
 
 /**

@@ -7,7 +7,6 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
-import java.util.concurrent.TimeUnit
 
 object NetworkManager {
 
@@ -20,12 +19,9 @@ object NetworkManager {
     }
 
     private fun getClient(): OkHttpClient {
-        return OkHttpClient.Builder().apply {
-            addInterceptor(IOExceptionInterceptor())
-            connectTimeout(timeout, TimeUnit.SECONDS)
-            readTimeout(timeout, TimeUnit.SECONDS)
-            writeTimeout(timeout, TimeUnit.SECONDS)
-        }.build()
+        return OkHttpClient.Builder()
+            .addInterceptor(IOExceptionInterceptor())
+            .build()
     }
 
     fun getNbaNewsApi(): NbaNews {
@@ -45,6 +41,4 @@ object NetworkManager {
             .build()
             .create()
     }
-
-    private const val timeout: Long = 10
 }

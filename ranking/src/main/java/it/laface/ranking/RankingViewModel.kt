@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import it.laface.domain.CallState
 import it.laface.domain.NetworkResult
-import it.laface.domain.RankingDataSource
-import it.laface.domain.RankingLists
+import it.laface.domain.datasource.RankingDataSource
+import it.laface.domain.model.RankingLists
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
