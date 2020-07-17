@@ -9,10 +9,11 @@ import androidx.lifecycle.lifecycleScope
 import it.laface.common.ActivityProvider
 import it.laface.common.util.BrowserProviderImpl
 import it.laface.common.view.BaseAdapter
+import it.laface.common.view.goneUnless
 import it.laface.common.view.inflater
 import it.laface.common.viewModels
-import it.laface.domain.model.Article
 import it.laface.domain.datasource.NewsDataSource
+import it.laface.domain.model.Article
 import it.laface.news.databinding.FragmentNewsBinding
 import it.laface.news.databinding.ItemNewsBinding
 import kotlinx.coroutines.Dispatchers
@@ -41,20 +42,32 @@ class NewsFragment(dataSource: NewsDataSource, activityProvider: ActivityProvide
             }.root
 
     private fun FragmentNewsBinding.setView() {
-        val adapter = getNewsAdapter()
-        newsRecyclerView.adapter = adapter
+        val newsAdapter = getNewsAdapter()
+        newsRecyclerView.adapter = newsAdapter
 
         lifecycleScope.launch {
-            viewModel.contentToShow.collect {
-                if (it is ContentToShow.Success) {
-                    adapter.list = it.filteredList
-                }
+            viewModel.contentToShow.collect { contentToShow ->
+                bindContentToShow(contentToShow, newsAdapter)
             }
         }
         retryButton.setOnClickListener {
             viewModel.onRetry()
         }
         swipeRefreshLayout.setOnRefreshListener(viewModel::onRefresh)
+    }
+
+    private fun FragmentNewsBinding.bindContentToShow(
+        contentToShow: ContentToShow,
+        newsAdapter: BaseAdapter<Article>
+    ) {
+        if (contentToShow is ContentToShow.Success) {
+            newsRecyclerView.visibility = View.VISIBLE
+            newsAdapter.list = contentToShow.filteredList
+        } else {
+            newsRecyclerView.visibility = View.GONE
+        }
+        progressBar.goneUnless(contentToShow is ContentToShow.Loading)
+        retryButton.goneUnless(contentToShow is ContentToShow.Error)
     }
 
     private fun getNewsAdapter(): BaseAdapter<Article> =

@@ -24,7 +24,7 @@ interface NbaServices {
 
     @GET("/prod/v2/{year}/schedule.json")
     suspend fun leagueSchedule(@Path(value = "year") year: String = nbaSeason):
-            Response<ScheduleResponse>
+        Response<ScheduleResponse>
 
     /*@GET("/v2015/json/mobile_teams/nba/2018/teams/{teamSlug}_roster.json")
     suspend fun teamRoster(@Path(value = "teamSlug", encoded = true) teamSlug: String)

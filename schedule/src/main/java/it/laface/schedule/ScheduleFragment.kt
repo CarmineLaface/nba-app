@@ -10,7 +10,6 @@ import it.laface.common.view.BaseAdapter
 import it.laface.common.view.inflater
 import it.laface.common.viewModels
 import it.laface.domain.datasource.ScheduleDataSource
-import it.laface.domain.model.Article
 import it.laface.domain.model.Game
 import it.laface.schedule.databinding.FragmentScheduleBinding
 import it.laface.schedule.databinding.ItemGameBinding
@@ -53,7 +52,7 @@ class ScheduleFragment(dataSource: ScheduleDataSource) : Fragment() {
         }
 
         calendarView.setOnDateChangeListener { _, year, month, day ->
-            viewModel.selectedDate.value = Date(year-1900, month, day)
+            viewModel.selectedDate.value = Date(year - 1900, month, day)
         }
     }
 

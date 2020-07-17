@@ -1,7 +1,9 @@
 package it.laface.schedule
 
 import it.laface.common.view.BaseViewHolder
+import it.laface.common.view.bindImage
 import it.laface.domain.model.Game
+import it.laface.domain.model.imageUrl
 import it.laface.schedule.databinding.ItemGameBinding
 
 class GameViewHolder(
@@ -9,7 +11,10 @@ class GameViewHolder(
 ) : BaseViewHolder<Game>(binding.root) {
 
     override fun bind(item: Game) {
-        binding.homeTextView.text = item.homeTeam.id
-        binding.visitorTextView.text = item.visitorTeam.id
+        binding.homeTeamNameTextView.text = item.homeTeam.name
+        binding.homeTeamLogoImageView.bindImage(item.homeTeam.imageUrl, R.drawable.circle_grey)
+
+        binding.visitorTeamNameTextView.text = item.visitorTeam.name
+        binding.visitorTeamLogoImageView.bindImage(item.visitorTeam.imageUrl, R.drawable.circle_grey)
     }
 }

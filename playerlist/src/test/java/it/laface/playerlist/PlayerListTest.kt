@@ -3,8 +3,8 @@ package it.laface.playerlist
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import it.laface.domain.NetworkError
 import it.laface.domain.NetworkResult
-import it.laface.domain.model.PlayerModel
 import it.laface.domain.datasource.PlayersDataSource
+import it.laface.domain.model.PlayerModel
 import it.laface.test.mock
 import it.laface.test.shouldBe
 import it.laface.test.thenReturn
