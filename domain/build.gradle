@@ -4,7 +4,6 @@ apply plugin: 'io.gitlab.arturbosch.detekt'
 apply from: '../ktlint.gradle'
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     //Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"

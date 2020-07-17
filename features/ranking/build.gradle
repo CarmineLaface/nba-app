@@ -1,8 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'io.gitlab.arturbosch.detekt'
-apply from: '../ktlint.gradle'
+apply from: '../../ktlint.gradle'
 
 android {
     compileSdkVersion versions.compileSdk
@@ -36,8 +35,8 @@ android {
 }
 
 dependencies {
-    implementation project(":common")
-    implementation project(":domain")
+    api project(":common")
+    api project(":domain")
 
     //Android core
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -48,8 +47,8 @@ dependencies {
     //UI
     implementation "com.google.android.material:material:${versions.material}"
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     implementation "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
 
     testImplementation project(":test")
     testImplementation 'junit:junit:4.13'

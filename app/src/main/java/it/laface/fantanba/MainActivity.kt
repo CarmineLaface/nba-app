@@ -4,11 +4,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import it.laface.fantanba.R
 import it.laface.news.NewsFragment
 import it.laface.playerlist.PlayerListFragment
 import it.laface.ranking.RankingFragment
 import it.laface.schedule.ScheduleFragment
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
@@ -27,10 +28,11 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     private fun setBottomNavigation() {
-        bottom_navigation.setOnNavigationItemSelectedListener { item ->
-            moveTo(getBottomNavigationSection(item.itemId))
-            return@setOnNavigationItemSelectedListener true
-        }
+        findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+            .setOnNavigationItemSelectedListener { item ->
+                moveTo(getBottomNavigationSection(item.itemId))
+                return@setOnNavigationItemSelectedListener true
+            }
     }
 
     private fun moveTo(newFragment: Class<Fragment>) {

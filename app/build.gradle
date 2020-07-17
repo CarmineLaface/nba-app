@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'io.gitlab.arturbosch.detekt'
 apply from: '../ktlint.gradle'
 
@@ -33,12 +32,10 @@ android {
 
 dependencies {
     implementation project(":network")
-    implementation project(":common")
-    implementation project(":domain")
-    implementation project(":news")
-    implementation project(":playerlist")
-    implementation project(":schedule")
-    implementation project(":ranking")
+    implementation project(":features:news")
+    implementation project(":features:playerlist")
+    implementation project(":features:schedule")
+    implementation project(":features:ranking")
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
