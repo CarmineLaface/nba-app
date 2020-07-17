@@ -19,8 +19,6 @@ fun mapContentToShow(
                 ContentToShow.Success(filteredList)
             }
         }
-        is CallState.Error -> {
-            ContentToShow.Error
-        }
+        is CallState.Error -> ContentToShow.Error
         CallState.InProgress, CallState.NotStarted -> ContentToShow.Loading
     }

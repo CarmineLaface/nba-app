@@ -6,11 +6,18 @@ import it.laface.domain.model.Game
 import kotlinx.coroutines.flow.FlowCollector
 import java.util.Date
 
-suspend fun FlowCollector<List<Game>>.getListToShow(date: Date, callState: CallState<List<Game>>) {
-    val filteredList = if (callState is CallState.Success) {
-        callState.result.filter { it.date isSameDay date }
-    } else {
-        emptyList()
+suspend fun FlowCollector<ContentToShow>.getListToShow(date: Date, callState: CallState<List<Game>>) {
+    val contentToShow = when (callState) {
+        is CallState.Success -> {
+            val filteredList = callState.result.filter { it.date isSameDay date }
+            if (filteredList.isEmpty()) {
+                ContentToShow.Placeholder
+            } else {
+                ContentToShow.Success(filteredList)
+            }
+        }
+        is CallState.Error -> ContentToShow.Error
+        CallState.InProgress, CallState.NotStarted -> ContentToShow.Loading
     }
-    emit(filteredList)
+    emit(contentToShow)
 }

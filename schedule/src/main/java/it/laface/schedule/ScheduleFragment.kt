@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import it.laface.common.view.BaseAdapter
+import it.laface.common.view.goneUnless
 import it.laface.common.view.inflater
 import it.laface.common.viewModels
 import it.laface.domain.datasource.ScheduleDataSource
@@ -41,19 +42,33 @@ class ScheduleFragment(dataSource: ScheduleDataSource) : Fragment() {
             .root
 
     private fun FragmentScheduleBinding.setView() {
-        val adapter = getGameAdapter()
-        gameRecyclerView.adapter = adapter
+        val gameAdapter = getGameAdapter()
+        gameRecyclerView.adapter = gameAdapter
 
         lifecycleScope.launch {
-            viewModel.gamesToShow.collect {
-                println("gamesToShow.collect $it")
-                adapter.list = it
+            viewModel.gamesToShow.collect { contentToShow ->
+                bindContentToShow(contentToShow, gameAdapter)
             }
         }
 
+        calendarView.date = viewModel.selectedDate.value.time
         calendarView.setOnDateChangeListener { _, year, month, day ->
-            viewModel.selectedDate.value = Date(year - 1900, month, day)
+            viewModel.selectedDate.value = Date(year - BASE_YEAR, month, day)
         }
+    }
+
+    private fun FragmentScheduleBinding.bindContentToShow(
+        contentToShow: ContentToShow,
+        gameAdapter: BaseAdapter<Game>
+    ) {
+        if (contentToShow is ContentToShow.Success) {
+            gameRecyclerView.visibility = View.VISIBLE
+            gameAdapter.list = contentToShow.filteredList
+        } else {
+            gameRecyclerView.visibility = View.GONE
+        }
+        progressBar.goneUnless(contentToShow is ContentToShow.Loading)
+        emptyListPlaceholder.goneUnless(contentToShow is ContentToShow.Placeholder)
     }
 
     private fun getGameAdapter(): BaseAdapter<Game> =
@@ -62,4 +77,8 @@ class ScheduleFragment(dataSource: ScheduleDataSource) : Fragment() {
                 ItemGameBinding.inflate(parent.inflater, parent, false)
             )
         }
+
+    companion object {
+        private const val BASE_YEAR = 1900
+    }
 }

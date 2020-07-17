@@ -21,16 +21,14 @@ class ScheduleViewModel(
 
     val selectedDate: MutableStateFlow<Date> = MutableStateFlow(Date())
     private val scheduleCallState: MutableStateFlow<CallState<List<Game>>> =
-        MutableStateFlow(CallState.NotStarted)
+        MutableStateFlow(CallState.InProgress)
 
-    val gamesToShow: Flow<List<Game>> =
+    val gamesToShow: Flow<ContentToShow> =
         selectedDate.combineTransform(scheduleCallState) { date, callState ->
             getListToShow(date, callState)
         }
 
     init {
-        scheduleCallState.value = CallState.InProgress
-
         viewModelScope.launch(jobDispatcher) {
             scheduleCallState.value = when (val response = dataSource.getSchedule()) {
                 is NetworkResult.Success ->
