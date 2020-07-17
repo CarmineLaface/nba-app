@@ -10,10 +10,12 @@ import androidx.lifecycle.observe
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.goneUnless
 import it.laface.common.view.inflate
+import it.laface.common.view.inflater
 import it.laface.common.viewModels
 import it.laface.domain.datasource.PlayersDataSource
 import it.laface.domain.model.PlayerModel
 import it.laface.playerlist.databinding.FragmentPlayerListBinding
+import it.laface.playerlist.databinding.ItemPlayerBinding
 import kotlinx.coroutines.Dispatchers
 
 class PlayerListFragment(dataSource: PlayersDataSource) : Fragment() {
@@ -33,7 +35,9 @@ class PlayerListFragment(dataSource: PlayersDataSource) : Fragment() {
 
     private fun FragmentPlayerListBinding.setView() {
         val playersAdapter = BaseAdapter { parent ->
-            PlayerViewHolder(parent.inflate(R.layout.item_player))
+            PlayerViewHolder(
+                ItemPlayerBinding.inflate(parent.inflater, parent, false)
+            )
         }
         playersRecyclerView.adapter = playersAdapter
         viewModel.contentToShow.observe(viewLifecycleOwner) {

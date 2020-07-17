@@ -33,12 +33,6 @@ class NbaApiMapper(private val api: NbaServices) :
     }
 
     override suspend fun getRanking(): NetworkResult<RankingLists> {
-        fun toDomain(team: NbaTeam) = RankedTeam(
-            rankingPosition = team.rankingPosition,
-            id = team.id,
-            code = team.info.tricode,
-            name = "${team.info.name} ${team.info.nickname}"
-        )
         return api.ranking().toNetworkResult { response ->
             val conference = response.league.standard.conference
             RankingLists(

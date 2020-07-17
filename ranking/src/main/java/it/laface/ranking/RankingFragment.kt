@@ -31,10 +31,10 @@ class RankingFragment(dataSource: RankingDataSource) : Fragment(R.layout.fragmen
         FragmentRankingBinding
             .inflate(inflater, container, false)
             .apply {
-                lifecycleScope.launch { setView() }
+                setView()
             }.root
 
-    private suspend fun FragmentRankingBinding.setView() {
+    private fun FragmentRankingBinding.setView() {
         val viewPagerAdapter = BaseAdapter {
             RankingViewHolder(RecyclerView(it.context))
         }.apply {
@@ -47,10 +47,12 @@ class RankingFragment(dataSource: RankingDataSource) : Fragment(R.layout.fragmen
             viewPager.currentItem = tab.position
         }.attach()
 
-        viewModel.rankingListsCallState.collect {
-            if (it is CallState.Success) {
-                viewPagerAdapter.list =
-                    listOf(it.result.westCoastRanking, it.result.eastCoastRanking)
+        lifecycleScope.launch {
+            viewModel.rankingListsCallState.collect {
+                if (it is CallState.Success) {
+                    viewPagerAdapter.list =
+                        listOf(it.result.westCoastRanking, it.result.eastCoastRanking)
+                }
             }
         }
     }

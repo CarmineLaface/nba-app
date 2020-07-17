@@ -1,6 +1,5 @@
 package it.laface.ranking
 
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -10,10 +9,15 @@ import it.laface.common.view.bindImage
 import it.laface.common.view.inflater
 import it.laface.domain.model.RankedTeam
 import it.laface.domain.model.imageUrl
-import kotlinx.android.synthetic.main.item_team.view.*
+import it.laface.ranking.databinding.ItemTeamBinding
 
-class RankingViewHolder(private val contentView: RecyclerView) :
-    BaseViewHolder<List<RankedTeam>>(contentView, {}) {
+class RankingViewHolder(contentView: RecyclerView) : BaseViewHolder<List<RankedTeam>>(contentView) {
+
+    private val adapter: BaseAdapter<RankedTeam> = BaseAdapter { parent ->
+        TeamViewHolder(
+            ItemTeamBinding.inflate(parent.inflater, parent, false)
+        )
+    }
 
     init {
         contentView.layoutParams = ViewGroup.LayoutParams(
@@ -21,23 +25,20 @@ class RankingViewHolder(private val contentView: RecyclerView) :
             ViewGroup.LayoutParams.MATCH_PARENT
         )
         contentView.layoutManager = LinearLayoutManager(contentView.context)
-        contentView.adapter = BaseAdapter { parent ->
-            TeamViewHolder(
-                parent.inflater.inflate(R.layout.item_team, parent, false)
-            )
-        }
+        contentView.adapter = adapter
     }
 
     override fun bind(item: List<RankedTeam>) {
-        contentView.setList(item)
+        adapter.list = item
     }
 }
 
-class TeamViewHolder(itemView: View) : BaseViewHolder<RankedTeam>(itemView, {}) {
+class TeamViewHolder(private val binding: ItemTeamBinding) :
+    BaseViewHolder<RankedTeam>(binding.root) {
 
     override fun bind(item: RankedTeam) {
-        itemView.tv_position.text = item.rankingPosition
-        itemView.tv_name.text = item.name
-        itemView.iv_photo.bindImage(item.imageUrl, R.drawable.circle_grey)
+        binding.positionTextView.text = item.rankingPosition
+        binding.teamNameTextView.text = item.name
+        binding.teamLogoImageView.bindImage(item.imageUrl, R.drawable.circle_grey)
     }
 }

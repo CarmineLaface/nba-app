@@ -37,16 +37,18 @@ class NewsFragment(dataSource: NewsDataSource, activityProvider: ActivityProvide
         FragmentNewsBinding
             .inflate(inflater, container, false)
             .apply {
-                lifecycleScope.launch { setView() }
+                setView()
             }.root
 
-    private suspend fun FragmentNewsBinding.setView() {
+    private fun FragmentNewsBinding.setView() {
         val adapter = getNewsAdapter()
         newsRecyclerView.adapter = adapter
 
-        viewModel.contentToShow.collect {
-            if (it is ContentToShow.Success) {
-                adapter.list = it.filteredList
+        lifecycleScope.launch {
+            viewModel.contentToShow.collect {
+                if (it is ContentToShow.Success) {
+                    adapter.list = it.filteredList
+                }
             }
         }
         retryButton.setOnClickListener {

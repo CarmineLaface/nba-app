@@ -58,9 +58,6 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     implementation "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
 
-    //Image loader
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
-
     testImplementation project(":test")
     testImplementation 'junit:junit:4.13'
     testImplementation "org.robolectric:robolectric:4.3.1"
