@@ -24,12 +24,16 @@ class PlayerListViewModel(
             mapContentToShow(callState!!, nameToFilter!!)
         }
 
-    fun onRetry() {
+    init {
         getPlayers()
     }
 
-    fun getPlayers() {
+    fun onRetry() {
         playerListCallState.value = CallState.InProgress
+        getPlayers()
+    }
+
+    private fun getPlayers() {
         viewModelScope.launch(jobDispatcher) {
             val callState = when (val response = dataSource.getPlayers()) {
                 is NetworkResult.Success -> {

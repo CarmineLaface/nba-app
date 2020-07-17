@@ -3,26 +3,26 @@ package it.laface.api.models
 import com.google.gson.annotations.SerializedName
 
 data class RankingResponse(
-    val league: League
+    @SerializedName("league") val league: League
 )
 
 data class League(
-    val standard: Standard
+    @SerializedName("standard") val standard: Standard
 )
 
 data class Standard(
-    val conference: Conference
+    @SerializedName("conference") val conference: Conference
 )
 
 data class Conference(
-    val east: List<NbaTeam>,
-    val west: List<NbaTeam>
+    @SerializedName("east") val east: List<NbaTeam>,
+    @SerializedName("west") val west: List<NbaTeam>
 )
 
 data class NbaTeam(
     @SerializedName("teamId") val id: String,
-    val win: String,
-    val loss: String,
+    @SerializedName("win") val win: String,
+    @SerializedName("loss") val loss: String,
     @SerializedName("confRank") val rankingPosition: String,
     @SerializedName("teamSitesOnly") val info: TeamInfo
 )

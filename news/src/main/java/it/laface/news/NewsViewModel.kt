@@ -19,8 +19,11 @@ class NewsViewModel(
 
     val contentToShow: MutableStateFlow<ContentToShow> = MutableStateFlow(ContentToShow.Loading)
 
-    fun getNews() {
-        contentToShow.value = ContentToShow.Loading
+    init {
+        getNews()
+    }
+
+    private fun getNews() {
         viewModelScope.launch(jobDispatcher) {
             contentToShow.value = when (val response = dataSource.getNews()) {
                 is NetworkResult.Success -> {
@@ -41,6 +44,7 @@ class NewsViewModel(
     }
 
     fun onRetry() {
+        contentToShow.value = ContentToShow.Loading
         getNews()
     }
 

@@ -22,11 +22,6 @@ class PlayerListFragment(dataSource: PlayersDataSource) : Fragment() {
         PlayerListViewModel(dataSource, Dispatchers.IO)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel.getPlayers()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

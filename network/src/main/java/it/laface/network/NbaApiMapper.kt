@@ -3,13 +3,14 @@ package it.laface.network
 import it.laface.api.NbaServices
 import it.laface.api.models.NbaTeam
 import it.laface.domain.NetworkResult
-import it.laface.domain.model.PlayerModel
 import it.laface.domain.datasource.PlayersDataSource
-import it.laface.domain.model.RankedTeam
 import it.laface.domain.datasource.RankingDataSource
 import it.laface.domain.datasource.ScheduleDataSource
 import it.laface.domain.model.Game
+import it.laface.domain.model.PlayerModel
+import it.laface.domain.model.RankedTeam
 import it.laface.domain.model.RankingLists
+import it.laface.domain.model.Team
 
 class NbaApiMapper(private val api: NbaServices) :
     PlayersDataSource,
@@ -47,7 +48,16 @@ class NbaApiMapper(private val api: NbaServices) :
         }
     }
 
-    override suspend fun getSchedule(): List<Game> {
-        return listOf()
+    override suspend fun getSchedule(): NetworkResult<List<Game>> {
+        return api.leagueSchedule().toNetworkResult { response ->
+            response.league.gameList
+                .map { gameResponse ->
+                    Game(
+                        date = gameResponse.date,
+                        homeTeam = Team(gameResponse.homeTeam.teamId, "", ""),
+                        visitorTeam = Team(gameResponse.visitorTeam.teamId, "", "")
+                    )
+                }
+        }
     }
 }

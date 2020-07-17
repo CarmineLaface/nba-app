@@ -4,10 +4,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.BaseViewHolder
+import it.laface.common.view.bindImage
 import it.laface.common.view.inflater
 import it.laface.domain.model.RankedTeam
 import it.laface.domain.model.imageUrl
@@ -39,9 +38,6 @@ class TeamViewHolder(itemView: View) : BaseViewHolder<RankedTeam>(itemView, {}) 
     override fun bind(item: RankedTeam) {
         itemView.tv_position.text = item.rankingPosition
         itemView.tv_name.text = item.name
-        Glide.with(itemView.context)
-            .load(item.imageUrl)
-            .apply(RequestOptions.placeholderOf(R.drawable.circle_grey))
-            .into(itemView.iv_photo)
+        itemView.iv_photo.bindImage(item.imageUrl, R.drawable.circle_grey)
     }
 }

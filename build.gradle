@@ -6,11 +6,11 @@ buildscript {
             compileSdk: 30,
             targetSdk: 30,
             constraintlayout: '2.0.0-beta8',
-            material: '1.2.0-beta01'
+            material: '1.2.0-rc01'
     ]
     ext {
         kotlin_version = '1.3.72'
-        coroutines_version = '1.3.7'
+        coroutines_version = '1.3.8'
         fragment_version = '1.2.5'
     }
     repositories {

@@ -5,7 +5,10 @@ import android.content.res.Configuration
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.annotation.LayoutRes
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 
 val ViewGroup.inflater: LayoutInflater
     get() = LayoutInflater.from(context)
@@ -19,3 +22,10 @@ fun View.goneUnless(condition: Boolean) {
 
 val Context.isLandScape: Boolean
     get() = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+
+fun ImageView.bindImage(uri: String, placeholderResId: Int) {
+    Glide.with(context)
+        .load(uri)
+        .apply(RequestOptions.placeholderOf(placeholderResId))
+        .into(this)
+}

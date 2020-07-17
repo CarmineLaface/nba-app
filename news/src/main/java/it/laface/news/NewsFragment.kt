@@ -29,11 +29,6 @@ class NewsFragment(dataSource: NewsDataSource, activityProvider: ActivityProvide
         )
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel.getNews()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
