@@ -8,8 +8,9 @@ import it.laface.domain.model.imageUrl
 import it.laface.playerlist.databinding.ItemPlayerBinding
 
 class PlayerViewHolder(
-    private val binding: ItemPlayerBinding
-) : BaseViewHolder<PlayerModel>(binding.root, {}) {
+    private val binding: ItemPlayerBinding,
+    onItemClicked: (PlayerModel) -> Unit
+) : BaseViewHolder<PlayerModel>(binding.root, onItemClicked) {
 
     override fun bind(item: PlayerModel) {
         super.bind(item)

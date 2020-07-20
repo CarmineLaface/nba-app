@@ -30,17 +30,11 @@ android {
     buildFeatures {
         viewBinding = true
     }
-    testOptions {
-        unitTests {
-            includeAndroidResources = true
-        }
-    }
 }
 
 dependencies {
     api project(":common")
     api project(":domain")
-
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     //Android core
@@ -52,20 +46,5 @@ dependencies {
     //UI
     implementation "com.google.android.material:material:${versions.material}"
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     implementation "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
-
-    testImplementation project(":test")
-    testImplementation 'junit:junit:4.13'
-    testImplementation "org.robolectric:robolectric:4.3.1"
-    debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
-    testImplementation "androidx.arch.core:core-testing:2.1.0"
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
-    testImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    testImplementation 'androidx.test:runner:1.2.0'
-    testImplementation 'androidx.test:rules:1.2.0'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test:rules:1.2.0'
 }

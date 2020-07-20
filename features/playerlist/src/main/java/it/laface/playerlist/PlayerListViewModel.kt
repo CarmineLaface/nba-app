@@ -8,11 +8,13 @@ import it.laface.domain.CallState
 import it.laface.domain.NetworkResult
 import it.laface.domain.datasource.PlayersDataSource
 import it.laface.domain.model.PlayerModel
+import it.laface.domain.navigation.PlayerDetailNavigationProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 
 class PlayerListViewModel(
     private val dataSource: PlayersDataSource,
+    private val navigationProvider: PlayerDetailNavigationProvider,
     private val jobDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
@@ -43,6 +45,10 @@ class PlayerListViewModel(
             }
             playerListCallState.postValue(callState)
         }
+    }
+
+    fun onPlayerSelected(playerModel: PlayerModel) {
+        navigationProvider.navigateToPlayerDetail(playerModel)
     }
 
     fun setNameToFilter(text: String) {

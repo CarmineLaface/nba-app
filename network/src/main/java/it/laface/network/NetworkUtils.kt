@@ -10,7 +10,7 @@ import java.net.HttpURLConnection.HTTP_BAD_REQUEST
 import java.net.HttpURLConnection.HTTP_INTERNAL_ERROR
 import java.net.HttpURLConnection.HTTP_UNAUTHORIZED
 
-fun <T, R> Response<T>.toNetworkResult(block: (T) -> R): NetworkResult<R> {
+inline fun <T, R> Response<T>.toNetworkResult(block: (T) -> R): NetworkResult<R> {
     val body = body()
     return if (isSuccessful && body != null) {
         NetworkResult.Success(block(body))

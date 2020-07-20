@@ -31,11 +31,13 @@ android {
 }
 
 dependencies {
+    implementation project(":navigation")
     implementation project(":network")
     implementation project(":features:news")
     implementation project(":features:playerlist")
     implementation project(":features:schedule")
     implementation project(":features:ranking")
+    implementation project(":features:playerdetail")
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 

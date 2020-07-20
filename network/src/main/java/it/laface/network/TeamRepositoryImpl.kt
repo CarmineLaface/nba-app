@@ -2,15 +2,17 @@ package it.laface.network
 
 import it.laface.api.NbaServices
 import it.laface.domain.NetworkResult
+import it.laface.domain.datasource.TeamRepository
+import it.laface.domain.mapSuccess
 import it.laface.domain.model.RankedTeam
 
-class TeamRepository(private val api: NbaServices) {
+class TeamRepositoryImpl(private val api: NbaServices): TeamRepository {
 
-    fun save(teamList: List<RankedTeam>) {
+    override suspend fun save(teamList: List<RankedTeam>) {
         Cache.teamList = teamList
     }
 
-    suspend fun get(): NetworkResult<List<RankedTeam>> =
+    override suspend fun getTeamList(): NetworkResult<List<RankedTeam>> =
         Cache.teamList?.let {
             NetworkResult.Success(it)
         } ?: api.ranking().toNetworkResult { response ->
@@ -20,5 +22,12 @@ class TeamRepository(private val api: NbaServices) {
             val completeList = westCoastRanking + eastCoastRanking
             save(completeList)
             return@toNetworkResult completeList
+        }
+
+    override suspend fun getTeam(teamId: String): NetworkResult<RankedTeam> =
+        getTeamList().mapSuccess { teamList ->
+            teamList.first { team ->
+                team.id == teamId
+            }
         }
 }
