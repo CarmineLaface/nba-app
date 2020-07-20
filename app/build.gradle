@@ -37,7 +37,6 @@ dependencies {
     implementation project(":features:schedule")
     implementation project(":features:ranking")
 
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     //Android

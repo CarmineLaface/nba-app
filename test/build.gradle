@@ -17,7 +17,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -42,5 +42,5 @@ dependencies {
 
     //Test
     implementation 'junit:junit:4.13'
-    implementation 'org.mockito:mockito-core:3.4.0'
+    implementation 'org.mockito:mockito-core:3.4.3'
 }

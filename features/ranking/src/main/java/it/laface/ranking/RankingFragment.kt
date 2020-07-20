@@ -47,7 +47,7 @@ class RankingFragment(dataSource: RankingDataSource) : Fragment(R.layout.fragmen
             viewPager.currentItem = tab.position
         }.attach()
 
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.rankingListsCallState.collect {
                 if (it is CallState.Success) {
                     viewPagerAdapter.list =

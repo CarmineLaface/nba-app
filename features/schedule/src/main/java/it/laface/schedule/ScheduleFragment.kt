@@ -45,7 +45,7 @@ class ScheduleFragment(dataSource: ScheduleDataSource) : Fragment() {
         val gameAdapter = getGameAdapter()
         gameRecyclerView.adapter = gameAdapter
 
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.gamesToShow.collect { contentToShow ->
                 bindContentToShow(contentToShow, gameAdapter)
             }
