@@ -4,6 +4,6 @@ import java.util.Date
 
 data class Game(
     val date: Date,
-    val homeTeam: RankedTeam,
-    val visitorTeam: RankedTeam
+    val homeTeam: NbaTeam,
+    val visitorTeam: NbaTeam
 )

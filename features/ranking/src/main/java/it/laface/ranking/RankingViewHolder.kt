@@ -8,6 +8,7 @@ import it.laface.common.view.BaseViewHolder
 import it.laface.common.view.bindImage
 import it.laface.common.view.inflater
 import it.laface.domain.model.RankedTeam
+import it.laface.domain.model.fullName
 import it.laface.domain.model.imageUrl
 import it.laface.ranking.databinding.ItemTeamBinding
 
@@ -38,7 +39,7 @@ class TeamViewHolder(private val binding: ItemTeamBinding) :
 
     override fun bind(item: RankedTeam) {
         binding.positionTextView.text = item.rankingPosition
-        binding.teamNameTextView.text = item.name
-        binding.teamLogoImageView.bindImage(item.imageUrl, R.drawable.circle_grey)
+        binding.teamNameTextView.text = item.teamInfo.fullName
+        binding.teamLogoImageView.bindImage(item.teamInfo.imageUrl, R.drawable.circle_grey)
     }
 }

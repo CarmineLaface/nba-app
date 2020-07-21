@@ -10,7 +10,7 @@ import it.laface.domain.model.PlayerModel
 import it.laface.domain.navigation.PlayerDetailNavigationProvider
 
 @Suppress("UNCHECKED_CAST")
-class NavigationProvider(private val navigator: Navigator): PlayerDetailNavigationProvider {
+class NavigationProvider(private val navigator: Navigator) : PlayerDetailNavigationProvider {
 
     override fun navigateToPlayerDetail(player: PlayerModel) {
         val fragmentClass = PlayerDetailFragment::class.java
@@ -21,10 +21,7 @@ class NavigationProvider(private val navigator: Navigator): PlayerDetailNavigati
             arguments = arguments,
             tag = fragmentClass.name
         )
-        val navigation = Navigation(
-            type = NavigationType.Replace(),
-            destination = page
-        )
+        val navigation = Navigation(NavigationType.Replace(page))
 
         navigator.navigate(navigation)
     }

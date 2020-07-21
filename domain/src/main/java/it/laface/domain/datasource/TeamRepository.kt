@@ -1,11 +1,9 @@
 package it.laface.domain.datasource
 
-import it.laface.domain.NetworkResult
-import it.laface.domain.model.RankedTeam
+import it.laface.domain.model.NbaTeam
 
 interface TeamRepository {
 
-    suspend fun save(teamList: List<RankedTeam>)
-    suspend fun getTeamList(): NetworkResult<List<RankedTeam>>
-    suspend fun getTeam(teamId: String): NetworkResult<RankedTeam>
+    suspend fun getTeamList(): List<NbaTeam>
+    suspend fun getTeam(teamId: String): NbaTeam
 }

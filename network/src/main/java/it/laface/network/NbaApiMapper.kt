@@ -6,10 +6,9 @@ import it.laface.domain.datasource.PlayersDataSource
 import it.laface.domain.datasource.RankingDataSource
 import it.laface.domain.datasource.ScheduleDataSource
 import it.laface.domain.datasource.TeamRepository
-import it.laface.domain.flatMapSuccess
 import it.laface.domain.model.Game
+import it.laface.domain.model.NbaTeam
 import it.laface.domain.model.PlayerModel
-import it.laface.domain.model.RankedTeam
 import it.laface.domain.model.RankingLists
 
 class NbaApiMapper(private val api: NbaServices, private val teamRepository: TeamRepository) :
@@ -28,7 +27,6 @@ class NbaApiMapper(private val api: NbaServices, private val teamRepository: Tea
             val conference = response.league.standard.conference
             val westCoastRanking = conference.west.map(::toDomain)
             val eastCoastRanking = conference.east.map(::toDomain)
-            teamRepository.save((westCoastRanking + eastCoastRanking))
             RankingLists(
                 westCoastRanking = westCoastRanking,
                 eastCoastRanking = eastCoastRanking
@@ -37,12 +35,10 @@ class NbaApiMapper(private val api: NbaServices, private val teamRepository: Tea
     }
 
     override suspend fun getSchedule(): NetworkResult<List<Game>> {
-        return teamRepository.getTeamList().flatMapSuccess {
-            getLeagueSchedule(it)
-        }
+        return getLeagueSchedule(teamRepository.getTeamList())
     }
 
-    private suspend fun getLeagueSchedule(teamList: List<RankedTeam>): NetworkResult<List<Game>> =
+    private suspend fun getLeagueSchedule(teamList: List<NbaTeam>): NetworkResult<List<Game>> =
         api.leagueSchedule().toNetworkResult { response ->
             response.league.gameList
                 .filter { gameResponse ->

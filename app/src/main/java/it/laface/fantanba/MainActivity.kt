@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import it.laface.fantanba.R
 import it.laface.news.NewsFragment
 import it.laface.playerlist.PlayerListFragment
 import it.laface.ranking.RankingFragment

@@ -11,7 +11,7 @@ data class PlayerModel(
     val teamId: String,
     val jerseyNumber: String,
     val position: String
-): Parcelable
+) : Parcelable
 
 val PlayerModel.imageUrl: String
     get() = "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/$id.png"

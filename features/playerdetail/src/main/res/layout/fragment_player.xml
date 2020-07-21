@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/playerImageView"
-        android:layout_width="90dp"
-        android:layout_height="99dp"
+        android:layout_width="130dp"
+        android:layout_height="95dp"
         android:layout_margin="16dp"
         android:importantForAccessibility="no"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,6 +26,8 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:textSize="24sp"
+        android:textColor="@color/darkGrey"
+        android:fontFamily="@font/open_sans_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/playerImageView"
         app:layout_constraintTop_toTopOf="@id/playerImageView"
@@ -40,9 +42,54 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:textSize="24sp"
+        android:textColor="@color/darkGrey"
+        android:fontFamily="@font/open_sans_bold"
         app:layout_constraintEnd_toEndOf="@id/nameTextView"
         app:layout_constraintStart_toStartOf="@id/nameTextView"
         app:layout_constraintTop_toBottomOf="@id/nameTextView"
         app:layout_constraintBottom_toBottomOf="@id/playerImageView"
         tools:text="Antetokounmpo" />
+
+    <TextView
+        android:id="@+id/teamTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/team"
+        android:layout_margin="16dp"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playerImageView" />
+
+    <TextView
+        android:id="@+id/teamNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Milwaukee Bucks"
+        android:layout_marginStart="16dp"
+        android:textSize="16sp"
+        android:fontFamily="@font/open_sans_bold"
+        app:layout_constraintStart_toEndOf="@id/teamTextView"
+        app:layout_constraintBottom_toBottomOf="@id/teamTextView"
+        app:layout_constraintTop_toTopOf="@+id/teamTextView" />
+
+    <TextView
+        android:id="@+id/jerseyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/jersey_number"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/teamTextView"
+        app:layout_constraintTop_toBottomOf="@id/teamTextView" />
+
+    <TextView
+        android:id="@+id/jerseyNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="34"
+        android:layout_marginStart="16dp"
+        android:textSize="16sp"
+        android:fontFamily="@font/open_sans_bold"
+        app:layout_constraintStart_toEndOf="@id/jerseyTextView"
+        app:layout_constraintBottom_toBottomOf="@id/jerseyTextView"
+        app:layout_constraintTop_toTopOf="@+id/jerseyTextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,11 +15,11 @@ data class Standard(
 )
 
 data class Conference(
-    @SerializedName("east") val east: List<NbaTeam>,
-    @SerializedName("west") val west: List<NbaTeam>
+    @SerializedName("east") val east: List<TeamResponseModel>,
+    @SerializedName("west") val west: List<TeamResponseModel>
 )
 
-data class NbaTeam(
+data class TeamResponseModel(
     @SerializedName("teamId") val id: String,
     @SerializedName("win") val win: String,
     @SerializedName("loss") val loss: String,

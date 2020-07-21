@@ -2,7 +2,6 @@ package it.laface.fantanba
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
-import it.laface.api.NbaServices
 import it.laface.common.navigation.Navigator
 import it.laface.domain.datasource.TeamRepository
 import it.laface.navigation.NavigationHandler
@@ -22,10 +21,7 @@ object CustomFragmentFactory : FragmentFactory() {
     private val navigator: Navigator by lazy {
         NavigationHandler(ActivityRegister, R.id.container)
     }
-    private val nbaServices: NbaServices by lazy(NetworkManager::getNbaApi)
-    private val teamRepository: TeamRepository by lazy {
-        TeamRepositoryImpl(nbaServices)
-    }
+    private val teamRepository: TeamRepository by lazy(::TeamRepositoryImpl)
     private val nbaApiMapper: NbaApiMapper by lazy {
         NbaApiMapper(NetworkManager.getNbaApi(), teamRepository)
     }

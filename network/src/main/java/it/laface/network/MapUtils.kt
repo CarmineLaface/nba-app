@@ -1,15 +1,21 @@
 package it.laface.network
 
 import it.laface.api.models.NbaPlayer
-import it.laface.api.models.NbaTeam
+import it.laface.api.models.TeamResponseModel
+import it.laface.domain.model.NbaTeam
 import it.laface.domain.model.PlayerModel
 import it.laface.domain.model.RankedTeam
 
-fun toDomain(team: NbaTeam) = RankedTeam(
+fun toDomain(team: TeamResponseModel) = RankedTeam(
     rankingPosition = team.rankingPosition.toIntString,
-    id = team.id,
-    code = team.info.tricode,
-    name = "${team.info.name} ${team.info.nickname}"
+    teamInfo = NbaTeam(
+        id = team.id,
+        key = team.info.key,
+        code = team.info.code,
+        name = team.info.name,
+        tricode = team.info.tricode,
+        nickname = team.info.nickname
+    )
 )
 
 fun toDomain(nbaPlayer: NbaPlayer) = PlayerModel(

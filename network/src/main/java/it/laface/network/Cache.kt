@@ -1,8 +1,15 @@
 package it.laface.network
 
-import it.laface.domain.model.RankedTeam
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import it.laface.domain.model.NbaTeam
+import it.laface.network.Const.jsonTeamList
+import java.lang.reflect.Type
 
 object Cache {
 
-    var teamList: List<RankedTeam>? = null
+    val teamList2: List<NbaTeam> by lazy {
+        val listType: Type = object : TypeToken<List<NbaTeam>>() {}.type
+        Gson().fromJson<List<NbaTeam>>(jsonTeamList, listType)
+    }
 }
