@@ -13,18 +13,20 @@ import it.laface.common.view.inflater
 import it.laface.common.viewModels
 import it.laface.domain.datasource.PlayersDataSource
 import it.laface.domain.model.PlayerModel
-import it.laface.domain.navigation.PlayerDetailNavigationProvider
+import it.laface.domain.navigation.Navigator
+import it.laface.domain.navigation.PlayerDetailPageProvider
 import it.laface.playerlist.databinding.FragmentPlayerListBinding
 import it.laface.playerlist.databinding.ItemPlayerBinding
 import kotlinx.coroutines.Dispatchers
 
 class PlayerListFragment(
     dataSource: PlayersDataSource,
-    navigationProvider: PlayerDetailNavigationProvider
+    pageProvider: PlayerDetailPageProvider,
+    navigator: Navigator
 ) : Fragment() {
 
     private val viewModel: PlayerListViewModel by viewModels {
-        PlayerListViewModel(dataSource, navigationProvider, Dispatchers.IO)
+        PlayerListViewModel(dataSource, pageProvider, navigator, Dispatchers.IO)
     }
 
     override fun onCreateView(

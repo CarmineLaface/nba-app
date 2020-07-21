@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import it.laface.domain.navigation.Navigator
 import it.laface.common.util.requireParcelable
 import it.laface.common.view.bindImage
 import it.laface.common.viewModels
@@ -16,12 +17,13 @@ import it.laface.playerdetail.databinding.FragmentPlayerBinding
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class PlayerDetailFragment(teamRepository: TeamRepository) : Fragment() {
+class PlayerDetailFragment(teamRepository: TeamRepository, navigator: Navigator) : Fragment() {
 
     private val viewModel: PlayerDetailViewModel by viewModels {
         PlayerDetailViewModel(
             requireParcelable(ARGUMENT_KEY),
-            teamRepository
+            teamRepository,
+            navigator
         )
     }
 
@@ -43,6 +45,10 @@ class PlayerDetailFragment(teamRepository: TeamRepository) : Fragment() {
         playerImageView.bindImage(viewModel.player.imageUrl, R.drawable.player_placeholder)
 
         jerseyNameTextView.text = viewModel.player.jerseyNumber
+
+        backImageView.setOnClickListener {
+            viewModel.goBack()
+        }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.team.collect { team ->

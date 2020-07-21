@@ -30,6 +30,7 @@ android {
 }
 
 dependencies {
+    api project(":domain")
     api project(":common")
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 

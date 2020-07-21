@@ -8,13 +8,16 @@ import it.laface.domain.CallState
 import it.laface.domain.NetworkResult
 import it.laface.domain.datasource.PlayersDataSource
 import it.laface.domain.model.PlayerModel
-import it.laface.domain.navigation.PlayerDetailNavigationProvider
+import it.laface.domain.navigation.NavigationInfo
+import it.laface.domain.navigation.Navigator
+import it.laface.domain.navigation.PlayerDetailPageProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 
 class PlayerListViewModel(
     private val dataSource: PlayersDataSource,
-    private val navigationProvider: PlayerDetailNavigationProvider,
+    private val pageProvider: PlayerDetailPageProvider,
+    private val navigator: Navigator,
     private val jobDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
@@ -48,7 +51,8 @@ class PlayerListViewModel(
     }
 
     fun onPlayerSelected(playerModel: PlayerModel) {
-        navigationProvider.navigateToPlayerDetail(playerModel)
+        val playerPage = pageProvider.getPlayerDetailPage(playerModel)
+        navigator.navigate(NavigationInfo.Forward(playerPage))
     }
 
     fun setNameToFilter(text: String) {

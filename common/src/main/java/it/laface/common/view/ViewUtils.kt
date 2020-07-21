@@ -23,9 +23,13 @@ fun View.goneUnless(condition: Boolean) {
 val Context.isLandScape: Boolean
     get() = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
-fun ImageView.bindImage(uri: String, placeholderResId: Int) {
+fun ImageView.bindImage(uri: String, placeholderResId: Int = 0) {
     Glide.with(context)
         .load(uri)
-        .apply(RequestOptions.placeholderOf(placeholderResId))
+        .apply {
+            if (placeholderResId != 0) {
+                apply(RequestOptions.placeholderOf(placeholderResId))
+            }
+        }
         .into(this)
 }

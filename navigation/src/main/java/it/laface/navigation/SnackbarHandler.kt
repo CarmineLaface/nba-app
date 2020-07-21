@@ -4,19 +4,17 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.snackbar.Snackbar
 import it.laface.common.ActivityProvider
-import it.laface.common.navigation.EventType
-import it.laface.common.navigation.MessageEmitter
-import it.laface.common.navigation.SnackbarAction
-import it.laface.common.navigation.SnackbarInfo
-import it.laface.common.navigation.Text
+import it.laface.domain.navigation.MessageEmitter
+import it.laface.domain.navigation.SnackbarAction
+import it.laface.domain.navigation.SnackbarInfo
+import it.laface.domain.navigation.Text
 
 class SnackbarHandler(private val activityProvider: ActivityProvider) : MessageEmitter {
 
-    override fun show(snackbar: EventType.SnackBar) {
+    override fun show(snackbar: SnackbarInfo) {
         val view: View = getView() ?: return
-        val snackbarInfo = snackbar.info
-        with(make(snackbarInfo, view)) {
-            snackbarInfo.action?.let {
+        with(make(snackbar, view)) {
+            snackbar.action?.let {
                 setAction(it)
             }
             show()

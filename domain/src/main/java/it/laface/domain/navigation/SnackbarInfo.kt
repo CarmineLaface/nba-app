@@ -1,4 +1,4 @@
-package it.laface.common.navigation
+package it.laface.domain.navigation
 
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_INDEFINITE
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_LONG
