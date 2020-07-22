@@ -2,6 +2,8 @@ package it.laface.domain.model
 
 data class RankedTeam(
     val rankingPosition: String,
+    val wins: String,
+    val losses: String,
     val teamInfo: NbaTeam
 )
 

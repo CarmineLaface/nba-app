@@ -38,6 +38,7 @@ dependencies {
     implementation project(":features:schedule")
     implementation project(":features:ranking")
     implementation project(":features:playerdetail")
+    implementation project(":features:team")
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 

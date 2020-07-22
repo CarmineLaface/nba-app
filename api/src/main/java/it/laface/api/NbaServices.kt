@@ -4,16 +4,11 @@ import it.laface.api.ApiHelper.nbaSeason
 import it.laface.api.models.PlayerListResponse
 import it.laface.api.models.RankingResponse
 import it.laface.api.models.ScheduleResponse
-import it.laface.api.models.TeamConfigurationResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface NbaServices {
-
-    @GET("/prod/{year}/teams_config.json")
-    suspend fun teamConfig(@Path(value = "year") year: String = nbaSeason):
-        Response<TeamConfigurationResponse>
 
     @GET("/prod/v1/{year}/players.json")
     suspend fun playerList(@Path(value = "year") year: String = nbaSeason):
@@ -34,33 +29,13 @@ interface NbaServices {
     suspend fun teamSchedule(@Path(value = "teamId", encoded = true) teamId: String)
             : Response<ScheduleRes>*/
 
-    /*
-
-    @GET("/v2015/json/mobile_teams/nba/2018/players/playercard_{playerId}_02.json")
-    suspend fun playerCard(@Path(value = "playerId", encoded = true) playerId: String)
-            : Response<PlayerCardRes>*/
-
     //region UNUSED
     /*
-    @GET("/json/ge/{teamSlug}/default.json")
-    fun teamBackgroundImages(@Path(value = "teamSlug", encoded = true) teamSlug: String)
-            : Response<TeamDefaultRes>
 
     @GET("/prod/v1/2018/players/{playerId}_profile.json")
     fun playerProfile(@Path(value = "playerId", encoded = true) playerId: String)
             : Response<PlayerProfileRes>
 
-    @GET("/prod/v1/2018/teams.json")
-    fun teamList(): Response<TeamListRes>
-
-
-    @GET("/json/ge/brands.json")
-    fun teamBrand(): Response<List<NbaTeam>>
-
-
-    @GET("/json/bios/player_{playerId}.json")
-    fun playerDetail(@Path(value = "playerId", encoded = true) playerId: String)
-            : Response<PlayerInfoRes>
             */
     //endregion
 

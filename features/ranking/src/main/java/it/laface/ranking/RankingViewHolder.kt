@@ -12,11 +12,13 @@ import it.laface.domain.model.fullName
 import it.laface.domain.model.imageUrl
 import it.laface.ranking.databinding.ItemTeamBinding
 
-class RankingViewHolder(contentView: RecyclerView) : BaseViewHolder<List<RankedTeam>>(contentView) {
+class RankingViewHolder(contentView: RecyclerView, onTeamClicked: (RankedTeam) -> Unit) :
+    BaseViewHolder<List<RankedTeam>>(contentView) {
 
     private val adapter: BaseAdapter<RankedTeam> = BaseAdapter { parent ->
         TeamViewHolder(
-            ItemTeamBinding.inflate(parent.inflater, parent, false)
+            ItemTeamBinding.inflate(parent.inflater, parent, false),
+            onTeamClicked
         )
     }
 
@@ -34,10 +36,11 @@ class RankingViewHolder(contentView: RecyclerView) : BaseViewHolder<List<RankedT
     }
 }
 
-class TeamViewHolder(private val binding: ItemTeamBinding) :
-    BaseViewHolder<RankedTeam>(binding.root) {
+class TeamViewHolder(private val binding: ItemTeamBinding, onItemClicked: (RankedTeam) -> Unit) :
+    BaseViewHolder<RankedTeam>(binding.root, onItemClicked) {
 
     override fun bind(item: RankedTeam) {
+        super.bind(item)
         binding.positionTextView.text = item.rankingPosition
         binding.teamNameTextView.text = item.teamInfo.fullName
         binding.teamLogoImageView.bindImage(item.teamInfo.imageUrl, R.drawable.circle_grey)

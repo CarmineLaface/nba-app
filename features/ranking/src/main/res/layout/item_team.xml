@@ -20,7 +20,6 @@
             android:background="@color/darkGrey"
             android:fontFamily="@font/open_sans_semibold"
             android:gravity="center_vertical"
-            android:importantForAccessibility="no"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
             android:textColor="@android:color/white"
@@ -50,10 +49,42 @@
             android:layout_marginStart="16dp"
             android:fontFamily="@font/open_sans_semibold"
             android:textSize="18sp"
+            android:maxLines="1"
+            android:ellipsize="end"
             app:layout_constraintBottom_toBottomOf="@+id/teamLogoImageView"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/winsTextView"
             app:layout_constraintStart_toEndOf="@+id/teamLogoImageView"
             app:layout_constraintTop_toTopOf="@+id/teamLogoImageView"
-            tools:text="Prova" />
+            tools:text="Los Angeles Lakers" />
+
+        <TextView
+            android:id="@+id/winsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:gravity="center_vertical"
+            android:paddingStart="2dp"
+            android:paddingEnd="2dp"
+            android:textColor="@color/success_green"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/lossesTextView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="18" />
+
+        <TextView
+            android:id="@+id/lossesTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:gravity="center_vertical"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textColor="@color/error_red"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="18" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

@@ -5,7 +5,11 @@ import androidx.lifecycle.viewModelScope
 import it.laface.domain.CallState
 import it.laface.domain.NetworkResult
 import it.laface.domain.datasource.RankingDataSource
+import it.laface.domain.model.RankedTeam
 import it.laface.domain.model.RankingLists
+import it.laface.domain.navigation.NavigationInfo
+import it.laface.domain.navigation.Navigator
+import it.laface.domain.navigation.TeamPageProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
@@ -13,7 +17,9 @@ import kotlinx.coroutines.launch
 @Suppress("EXPERIMENTAL_API_USAGE")
 class RankingViewModel(
     private val dataSource: RankingDataSource,
-    private val jobDispatcher: CoroutineDispatcher
+    private val jobDispatcher: CoroutineDispatcher,
+    private val teamPageProvider: TeamPageProvider,
+    private val navigator: Navigator
 ) : ViewModel() {
 
     val rankingListsCallState: MutableStateFlow<CallState<RankingLists>> =
@@ -32,5 +38,10 @@ class RankingViewModel(
                 is NetworkResult.Error -> CallState.Error(response.error)
             }
         }
+    }
+
+    fun onTeamClicked(team: RankedTeam) {
+        val teamPage = teamPageProvider.getTeamPage(team.teamInfo)
+        navigator.navigateForward(teamPage)
     }
 }

@@ -7,4 +7,8 @@ interface Navigator {
     fun navigateBack() {
         navigate(NavigationInfo.Back)
     }
+
+    fun navigateForward(page: Page) {
+        navigate(NavigationInfo.Forward(page))
+    }
 }

@@ -1,18 +1,20 @@
 package it.laface.playerdetail
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import it.laface.domain.navigation.Navigator
 import it.laface.common.util.requireParcelable
 import it.laface.common.view.bindImage
 import it.laface.common.viewModels
 import it.laface.domain.datasource.TeamRepository
 import it.laface.domain.model.fullName
 import it.laface.domain.model.imageUrl
+import it.laface.domain.navigation.Navigator
 import it.laface.playerdetail.databinding.FragmentPlayerBinding
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -53,12 +55,21 @@ class PlayerDetailFragment(teamRepository: TeamRepository, navigator: Navigator)
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.team.collect { team ->
                 teamNameTextView.text = team.fullName
+                team.rgbColor?.let { setTeamColor(it) }
             }
         }
     }
 
+    private fun FragmentPlayerBinding.setTeamColor(rgbColor: String) {
+        val color = Color.parseColor(rgbColor)
+        teamNameTextView.setTextColor(color)
+        jerseyNameTextView.setTextColor(color)
+        toolbar.setBackgroundColor(color)
+        backImageView.backgroundTintList = ColorStateList.valueOf(color)
+    }
+
     companion object {
 
-        const val ARGUMENT_KEY = "ARGUMENT_KEY"
+        internal const val ARGUMENT_KEY = "ARGUMENT_KEY"
     }
 }

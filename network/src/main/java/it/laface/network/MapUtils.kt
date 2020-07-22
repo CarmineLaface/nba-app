@@ -8,6 +8,8 @@ import it.laface.domain.model.RankedTeam
 
 fun toDomain(team: TeamResponseModel) = RankedTeam(
     rankingPosition = team.rankingPosition.toIntString,
+    wins = team.win.toIntString,
+    losses = team.loss.toIntString,
     teamInfo = NbaTeam(
         id = team.id,
         key = team.info.key,

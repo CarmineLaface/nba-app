@@ -1,7 +1,7 @@
 package it.laface.network
 
 object Const {
-    val jsonTeamList: String =
+    const val jsonTeamList: String =
         """
 [
   {
@@ -10,6 +10,7 @@ object Const {
     "teamName": "Milwaukee",
     "teamCode": "bucks",
     "teamNickname": "Bucks",
+    "primary":"#00471b",
     "teamTricode": "MIL"
   },
   {
@@ -18,6 +19,7 @@ object Const {
     "teamName": "Toronto",
     "teamCode": "raptors",
     "teamNickname": "Raptors",
+    "primary":"#ce1141",
     "teamTricode": "TOR"
   },
   {
@@ -26,6 +28,7 @@ object Const {
     "teamName": "Boston",
     "teamCode": "celtics",
     "teamNickname": "Celtics",
+    "primary":"#008348",
     "teamTricode": "BOS"
   },
   {
@@ -34,6 +37,7 @@ object Const {
     "teamName": "Miami",
     "teamCode": "heat",
     "teamNickname": "Heat",
+    "primary":"#98002e",
     "teamTricode": "MIA"
   },
   {
@@ -42,6 +46,7 @@ object Const {
     "teamName": "Indiana",
     "teamCode": "pacers",
     "teamNickname": "Pacers",
+    "primary":"#00275d",
     "teamTricode": "IND"
   },
   {
@@ -50,6 +55,7 @@ object Const {
     "teamName": "Philadelphia",
     "teamCode": "sixers",
     "teamNickname": "76ers",
+    "primary":"#ed174c",
     "teamTricode": "PHI"
   },
   {
@@ -58,6 +64,7 @@ object Const {
     "teamName": "Brooklyn",
     "teamCode": "nets",
     "teamNickname": "Nets",
+    "primary":"#464646",
     "teamTricode": "BKN"
   },
   {
@@ -66,6 +73,7 @@ object Const {
     "teamName": "Orlando",
     "teamCode": "magic",
     "teamNickname": "Magic",
+    "primary":"#007dc5",
     "teamTricode": "ORL"
   },
   {
@@ -74,6 +82,7 @@ object Const {
     "teamName": "Washington",
     "teamCode": "wizards",
     "teamNickname": "Wizards",
+    "primary":"#002b5c",
     "teamTricode": "WAS"
   },
   {
@@ -82,6 +91,7 @@ object Const {
     "teamName": "Charlotte",
     "teamCode": "hornets",
     "teamNickname": "Hornets",
+    "primary":"#1d8cab",
     "teamTricode": "CHA"
   },
   {
@@ -90,6 +100,7 @@ object Const {
     "teamName": "Chicago",
     "teamCode": "bulls",
     "teamNickname": "Bulls",
+    "primary":"#ce1141",
     "teamTricode": "CHI"
   },
   {
@@ -98,6 +109,7 @@ object Const {
     "teamName": "New York",
     "teamCode": "knicks",
     "teamNickname": "Knicks",
+    "primary":"#f58426",
     "teamTricode": "NYK"
   },
   {
@@ -106,6 +118,7 @@ object Const {
     "teamName": "Detroit",
     "teamCode": "pistons",
     "teamNickname": "Pistons",
+    "primary":"#ed174c",
     "teamTricode": "DET"
   },
   {
@@ -114,6 +127,7 @@ object Const {
     "teamName": "Atlanta",
     "teamCode": "hawks",
     "teamNickname": "Hawks",
+    "primary":"#e13a3e",
     "teamTricode": "ATL"
   },
   {
@@ -122,6 +136,7 @@ object Const {
     "teamName": "Cleveland",
     "teamCode": "cavaliers",
     "teamNickname": "Cavaliers",
+    "primary":"#860038",
     "teamTricode": "CLE"
   },
   {
@@ -130,6 +145,7 @@ object Const {
     "teamName": "Los Angeles",
     "teamCode": "lakers",
     "teamNickname": "Lakers",
+    "primary":"#552582",
     "teamTricode": "LAL"
   },
   {
@@ -138,6 +154,7 @@ object Const {
     "teamName": "LA",
     "teamCode": "clippers",
     "teamNickname": "Clippers",
+    "primary":"#ed174c",
     "teamTricode": "LAC"
   },
   {
@@ -146,6 +163,7 @@ object Const {
     "teamName": "Denver",
     "teamCode": "nuggets",
     "teamNickname": "Nuggets",
+    "primary":"#4d90cd",
     "teamTricode": "DEN"
   },
   {
@@ -154,6 +172,7 @@ object Const {
     "teamName": "Utah",
     "teamCode": "jazz",
     "teamNickname": "Jazz",
+    "primary":"#00275d",
     "teamTricode": "UTA"
   },
   {
@@ -162,6 +181,7 @@ object Const {
     "teamName": "Oklahoma City",
     "teamCode": "thunder",
     "teamNickname": "Thunder",
+    "primary":"#007dc3",
     "teamTricode": "OKC"
   },
   {
@@ -170,6 +190,7 @@ object Const {
     "teamName": "Houston",
     "teamCode": "rockets",
     "teamNickname": "Rockets",
+    "primary":"#ce1138",
     "teamTricode": "HOU"
   },
   {
@@ -178,6 +199,7 @@ object Const {
     "teamName": "Dallas",
     "teamCode": "mavericks",
     "teamNickname": "Mavericks",
+    "primary":"#007dc5",
     "teamTricode": "DAL"
   },
   {
@@ -186,6 +208,7 @@ object Const {
     "teamName": "Memphis",
     "teamCode": "grizzlies",
     "teamNickname": "Grizzlies",
+    "primary":"#bed4e9",
     "teamTricode": "MEM"
   },
   {
@@ -194,6 +217,7 @@ object Const {
     "teamName": "Portland",
     "teamCode": "blazers",
     "teamNickname": "Trail Blazers",
+    "primary":"#e43a3e",
     "teamTricode": "POR"
   },
   {
@@ -202,6 +226,7 @@ object Const {
     "teamName": "New Orleans",
     "teamCode": "pelicans",
     "teamNickname": "Pelicans",
+    "primary":"#002b5c",
     "teamTricode": "NOP"
   },
   {
@@ -210,6 +235,7 @@ object Const {
     "teamName": "Sacramento",
     "teamCode": "kings",
     "teamNickname": "Kings",
+    "primary":"#393996",
     "teamTricode": "SAC"
   },
   {
@@ -218,6 +244,7 @@ object Const {
     "teamName": "San Antonio",
     "teamCode": "spurs",
     "teamNickname": "Spurs",
+    "primary":"#788287",
     "teamTricode": "SAS"
   },
   {
@@ -226,6 +253,7 @@ object Const {
     "teamName": "Phoenix",
     "teamCode": "suns",
     "teamNickname": "Suns",
+    "primary":"#e56020",
     "teamTricode": "PHX"
   },
   {
@@ -234,6 +262,7 @@ object Const {
     "teamName": "Minnesota",
     "teamCode": "timberwolves",
     "teamNickname": "Timberwolves",
+    "primary":"#005083",
     "teamTricode": "MIN"
   },
   {
@@ -242,6 +271,7 @@ object Const {
     "teamName": "Golden State",
     "teamCode": "warriors",
     "teamNickname": "Warriors",
+    "primary":"#006bb6",
     "teamTricode": "GSW"
   }
 ]

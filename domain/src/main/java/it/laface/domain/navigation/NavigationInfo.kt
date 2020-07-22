@@ -15,7 +15,7 @@ sealed class NavigationInfo {
     object Back : NavigationInfo()
 }
 
-enum class ForwardNavigationType{
+enum class ForwardNavigationType {
     Add,
     Replace
 }

@@ -1,10 +1,10 @@
 package it.laface.playerdetail
 
 import androidx.lifecycle.ViewModel
-import it.laface.domain.navigation.Navigator
 import it.laface.domain.datasource.TeamRepository
 import it.laface.domain.model.NbaTeam
 import it.laface.domain.model.PlayerModel
+import it.laface.domain.navigation.Navigator
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -23,6 +23,6 @@ class PlayerDetailViewModel(
     }
 
     fun navigateToTeamPage() {
-
+        TODO()
     }
 }

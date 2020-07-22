@@ -12,15 +12,26 @@ import it.laface.common.view.BaseAdapter
 import it.laface.common.viewModels
 import it.laface.domain.CallState
 import it.laface.domain.datasource.RankingDataSource
+import it.laface.domain.navigation.Navigator
+import it.laface.domain.navigation.TeamPageProvider
 import it.laface.ranking.databinding.FragmentRankingBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class RankingFragment(dataSource: RankingDataSource) : Fragment(R.layout.fragment_ranking) {
+class RankingFragment(
+    dataSource: RankingDataSource,
+    teamPageProvider: TeamPageProvider,
+    navigator: Navigator
+) : Fragment() {
 
     private val viewModel: RankingViewModel by viewModels {
-        RankingViewModel(dataSource, Dispatchers.IO)
+        RankingViewModel(
+            dataSource = dataSource,
+            jobDispatcher = Dispatchers.IO,
+            teamPageProvider = teamPageProvider,
+            navigator = navigator
+        )
     }
 
     override fun onCreateView(
@@ -36,7 +47,7 @@ class RankingFragment(dataSource: RankingDataSource) : Fragment(R.layout.fragmen
 
     private fun FragmentRankingBinding.setView() {
         val viewPagerAdapter = BaseAdapter {
-            RankingViewHolder(RecyclerView(it.context))
+            RankingViewHolder(RecyclerView(it.context), viewModel::onTeamClicked)
         }.apply {
             list = listOf(emptyList(), emptyList())
         }

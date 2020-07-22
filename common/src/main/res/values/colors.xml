@@ -3,4 +3,9 @@
 
     <color name="darkGrey">#3C3C3C</color>
 
+    <color name="error_red">#fa3535</color>
+
+    <!-- colori scadenziere e calendario -->
+
+    <color name="success_green">#00A878</color>
 </resources>
