@@ -7,7 +7,6 @@ import it.laface.domain.NetworkResult
 import it.laface.domain.datasource.RankingDataSource
 import it.laface.domain.model.RankedTeam
 import it.laface.domain.model.RankingLists
-import it.laface.domain.navigation.NavigationInfo
 import it.laface.domain.navigation.Navigator
 import it.laface.domain.navigation.TeamPageProvider
 import kotlinx.coroutines.CoroutineDispatcher

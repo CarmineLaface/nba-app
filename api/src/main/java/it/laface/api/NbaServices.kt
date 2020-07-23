@@ -4,6 +4,7 @@ import it.laface.api.ApiHelper.nbaSeason
 import it.laface.api.models.PlayerListResponse
 import it.laface.api.models.RankingResponse
 import it.laface.api.models.ScheduleResponse
+import it.laface.api.models.TeamRosterResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -21,10 +22,13 @@ interface NbaServices {
     suspend fun leagueSchedule(@Path(value = "year") year: String = nbaSeason):
         Response<ScheduleResponse>
 
-    /*@GET("/v2015/json/mobile_teams/nba/2018/teams/{teamSlug}_roster.json")
-    suspend fun teamRoster(@Path(value = "teamSlug", encoded = true) teamSlug: String)
-            : Response<TeamRosterRes>
+    @GET("/v2015/json/mobile_teams/nba/{year}/teams/{teamSlug}_roster.json")
+    suspend fun teamRoster(
+        @Path(value = "teamSlug") teamSlug: String,
+        @Path(value = "year") year: String = nbaSeason
+    ): Response<TeamRosterResponse>
 
+/*
     @GET("/prod/v1/2018/teams/{teamId}/schedule.json")
     suspend fun teamSchedule(@Path(value = "teamId", encoded = true) teamId: String)
             : Response<ScheduleRes>*/

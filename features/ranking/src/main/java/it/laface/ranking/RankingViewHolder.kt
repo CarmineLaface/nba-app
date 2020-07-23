@@ -43,6 +43,8 @@ class TeamViewHolder(private val binding: ItemTeamBinding, onItemClicked: (Ranke
         super.bind(item)
         binding.positionTextView.text = item.rankingPosition
         binding.teamNameTextView.text = item.teamInfo.fullName
+        binding.winsTextView.text = item.wins
+        binding.lossesTextView.text = item.losses
         binding.teamLogoImageView.bindImage(item.teamInfo.imageUrl, R.drawable.circle_grey)
     }
 }

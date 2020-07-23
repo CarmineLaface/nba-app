@@ -30,7 +30,7 @@ class ScheduleViewModel(
 
     init {
         viewModelScope.launch(jobDispatcher) {
-            scheduleCallState.value = when (val response = dataSource.getSchedule()) {
+            scheduleCallState.value = when (val response = dataSource.getLeagueSchedule()) {
                 is NetworkResult.Success ->
                     CallState.Success(response.value)
                 is NetworkResult.Error ->

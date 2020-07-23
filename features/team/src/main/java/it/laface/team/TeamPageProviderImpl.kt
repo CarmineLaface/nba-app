@@ -6,7 +6,7 @@ import it.laface.domain.model.NbaTeam
 import it.laface.domain.navigation.Page
 import it.laface.domain.navigation.TeamPageProvider
 
-object TeamPageProviderImpl: TeamPageProvider {
+object TeamPageProviderImpl : TeamPageProvider {
 
     override fun getTeamPage(team: NbaTeam): Page {
         val fragmentClass = TeamFragment::class.java

@@ -15,6 +15,7 @@ import it.laface.playerdetail.PlayerDetailFragment
 import it.laface.playerlist.PlayerListFragment
 import it.laface.ranking.RankingFragment
 import it.laface.schedule.ScheduleFragment
+import it.laface.team.TeamFragment
 import it.laface.team.TeamPageProviderImpl
 
 object CustomFragmentFactory : FragmentFactory() {
@@ -42,6 +43,8 @@ object CustomFragmentFactory : FragmentFactory() {
                 ScheduleFragment(nbaApiMapper)
             PlayerDetailFragment::class.java.name ->
                 PlayerDetailFragment(teamRepository, navigator)
+            TeamFragment::class.java.name ->
+                TeamFragment(nbaApiMapper, nbaApiMapper)
             else -> super.instantiate(classLoader, className)
         }
     }

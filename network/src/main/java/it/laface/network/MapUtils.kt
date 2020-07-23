@@ -1,6 +1,7 @@
 package it.laface.network
 
 import it.laface.api.models.NbaPlayer
+import it.laface.api.models.PlayerResponse
 import it.laface.api.models.TeamResponseModel
 import it.laface.domain.model.NbaTeam
 import it.laface.domain.model.PlayerModel
@@ -27,6 +28,15 @@ fun toDomain(nbaPlayer: NbaPlayer) = PlayerModel(
     teamId = nbaPlayer.teamId,
     jerseyNumber = nbaPlayer.jerseyNumber,
     position = nbaPlayer.position
+)
+
+fun PlayerResponse.toDomain(teamId: String) = PlayerModel(
+    name = name,
+    surname = surname,
+    id = id.toString(),
+    teamId = teamId,
+    jerseyNumber = jerseyNumber,
+    position = position
 )
 
 val String.toIntString: String

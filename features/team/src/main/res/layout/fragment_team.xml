@@ -1,70 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/toolbar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        tools:background="@android:color/holo_blue_dark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/backImageView"
+        <FrameLayout
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimaryDark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/backImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="?attr/colorPrimaryDark"
+                android:contentDescription="@string/back"
+                android:padding="16dp"
+                app:srcCompat="@drawable/ic_arrow_back_24dp" />
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/teamImageView"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="16dp"
+            android:importantForAccessibility="no"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintVertical_bias="0.0"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/cityNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/open_sans_bold"
+            android:maxLines="1"
+            android:textColor="@color/darkGrey"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/teamImageView"
+            app:layout_constraintTop_toTopOf="@id/teamImageView"
+            tools:text="Los Angeles" />
+
+        <TextView
+            android:id="@+id/nicknameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/open_sans_bold"
+            android:maxLines="1"
+            android:textColor="@color/darkGrey"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@id/cityNameTextView"
+            app:layout_constraintStart_toStartOf="@id/cityNameTextView"
+            app:layout_constraintTop_toBottomOf="@id/cityNameTextView"
+            tools:text="Lakers" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/teamInfoButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            app:srcCompat="@drawable/ic_arrow_back_24dp"
-            android:contentDescription="@string/back" />
-    </FrameLayout>
+            android:text="@string/team_info"
+            app:layout_constraintBottom_toBottomOf="@id/teamImageView"
+            app:layout_constraintStart_toStartOf="@id/cityNameTextView"
+            app:layout_constraintTop_toBottomOf="@id/nicknameTextView"
+            app:layout_constraintVertical_bias="1.0" />
 
-    <ImageView
-        android:id="@+id/teamImageView"
-        android:layout_width="130dp"
-        android:layout_height="95dp"
-        android:layout_margin="16dp"
-        android:importantForAccessibility="no"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintVertical_bias="0.0"
-        tools:srcCompat="@tools:sample/avatars" />
+        <TextView
+            android:id="@+id/scheduleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:text="@string/schedule"
+            android:textColor="@color/darkGrey"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/teamImageView"
+            app:layout_constraintTop_toBottomOf="@id/teamImageView" />
 
-    <TextView
-        android:id="@+id/cityNameTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:ellipsize="end"
-        android:fontFamily="@font/open_sans_bold"
-        android:maxLines="1"
-        android:textColor="@color/darkGrey"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@id/nicknameTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/teamImageView"
-        app:layout_constraintTop_toTopOf="@id/teamImageView"
-        app:layout_constraintVertical_chainStyle="packed"
-        tools:text="Los Angeles" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/gamesRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/teamImageView"
+            app:layout_constraintTop_toBottomOf="@id/scheduleTextView"
+            tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_teamgame"
+            tools:orientation="horizontal" />
 
-    <TextView
-        android:id="@+id/nicknameTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:fontFamily="@font/open_sans_bold"
-        android:maxLines="1"
-        android:textColor="@color/darkGrey"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@id/teamImageView"
-        app:layout_constraintEnd_toEndOf="@id/cityNameTextView"
-        app:layout_constraintStart_toStartOf="@id/cityNameTextView"
-        app:layout_constraintTop_toBottomOf="@id/cityNameTextView"
-        tools:text="Lakers" />
-    
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/rosterTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:text="@string/roster"
+            android:textColor="@color/darkGrey"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/teamImageView"
+            app:layout_constraintTop_toBottomOf="@id/gamesRecyclerView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rosterRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingStart="4dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="4dp"
+            android:paddingBottom="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/teamImageView"
+            app:layout_constraintTop_toBottomOf="@id/rosterTextView"
+            tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            android:nestedScrollingEnabled="false"
+            tools:listitem="@layout/item_teamplayer"
+            tools:spanCount="3" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
