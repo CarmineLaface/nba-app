@@ -10,8 +10,8 @@ import it.laface.network.NetworkManager
 import it.laface.network.NewsApiMapper
 import it.laface.network.TeamRepositoryImpl
 import it.laface.news.NewsFragment
-import it.laface.playerdetail.PageProvider
 import it.laface.playerdetail.PlayerDetailFragment
+import it.laface.playerdetail.PlayerPageProvider
 import it.laface.playerlist.PlayerListFragment
 import it.laface.ranking.RankingFragment
 import it.laface.schedule.ScheduleFragment
@@ -34,7 +34,7 @@ object CustomFragmentFactory : FragmentFactory() {
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {
         return when (className) {
             PlayerListFragment::class.java.name ->
-                PlayerListFragment(nbaApiMapper, PageProvider, navigator)
+                PlayerListFragment(nbaApiMapper, PlayerPageProvider, navigator)
             NewsFragment::class.java.name ->
                 NewsFragment(nbaNewsApi, ActivityRegister)
             RankingFragment::class.java.name ->
@@ -44,7 +44,7 @@ object CustomFragmentFactory : FragmentFactory() {
             PlayerDetailFragment::class.java.name ->
                 PlayerDetailFragment(teamRepository, navigator)
             TeamFragment::class.java.name ->
-                TeamFragment(nbaApiMapper, nbaApiMapper)
+                TeamFragment(nbaApiMapper, nbaApiMapper, navigator, PlayerPageProvider)
             else -> super.instantiate(classLoader, className)
         }
     }

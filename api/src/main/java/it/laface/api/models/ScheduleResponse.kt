@@ -8,7 +8,10 @@ class ScheduleResponse(
 )
 
 data class ScheduleLeague(
-    @SerializedName("standard") val gameList: List<GameResponse>
+    @SerializedName("standard") val standardGameList: List<GameResponse>,
+    @SerializedName("sacramento") val sacramentoGameList: List<GameResponse>,
+    @SerializedName("vegas") val vegasGameList: List<GameResponse>,
+    @SerializedName("utah") val utahGameList: List<GameResponse>
 )
 
 data class GameResponse(
@@ -21,5 +24,6 @@ data class GameResponse(
 )
 
 data class IdTeam(
-    @SerializedName("teamId") val teamId: String
+    @SerializedName("teamId") val teamId: String,
+    @SerializedName("score") val score: String? = null
 )

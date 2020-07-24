@@ -5,6 +5,7 @@ import it.laface.api.models.PlayerListResponse
 import it.laface.api.models.RankingResponse
 import it.laface.api.models.ScheduleResponse
 import it.laface.api.models.TeamRosterResponse
+import it.laface.api.models.TeamScheduleResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -28,20 +29,15 @@ interface NbaServices {
         @Path(value = "year") year: String = nbaSeason
     ): Response<TeamRosterResponse>
 
-/*
     @GET("/prod/v1/2018/teams/{teamId}/schedule.json")
-    suspend fun teamSchedule(@Path(value = "teamId", encoded = true) teamId: String)
-            : Response<ScheduleRes>*/
+    suspend fun teamSchedule(@Path(value = "teamId") teamId: String):
+        Response<TeamScheduleResponse>
 
-    //region UNUSED
     /*
-
     @GET("/prod/v1/2018/players/{playerId}_profile.json")
     fun playerProfile(@Path(value = "playerId", encoded = true) playerId: String)
             : Response<PlayerProfileRes>
-
             */
-    //endregion
 
     companion object {
 

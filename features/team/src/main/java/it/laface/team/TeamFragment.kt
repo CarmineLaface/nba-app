@@ -21,6 +21,8 @@ import it.laface.domain.CallState
 import it.laface.domain.datasource.ScheduleDataSource
 import it.laface.domain.datasource.TeamRosterDataSource
 import it.laface.domain.model.imageUrl
+import it.laface.domain.navigation.Navigator
+import it.laface.domain.navigation.PlayerDetailPageProvider
 import it.laface.team.databinding.FragmentTeamBinding
 import it.laface.team.databinding.ItemTeamgameBinding
 import it.laface.team.databinding.ItemTeamplayerBinding
@@ -30,7 +32,9 @@ import kotlinx.coroutines.launch
 
 class TeamFragment(
     rosterDataSource: TeamRosterDataSource,
-    scheduleDataSource: ScheduleDataSource
+    scheduleDataSource: ScheduleDataSource,
+    navigator: Navigator,
+    playerPageProvider: PlayerDetailPageProvider
 ) : Fragment() {
 
     private val viewModel: TeamViewModel by viewModels {
@@ -38,7 +42,9 @@ class TeamFragment(
             team = requireParcelable(ARGUMENT_KEY),
             rosterDataSource = rosterDataSource,
             scheduleDataSource = scheduleDataSource,
-            jobDispatcher = Dispatchers.IO
+            jobDispatcher = Dispatchers.IO,
+            navigator = navigator,
+            playerPageProvider = playerPageProvider
         )
     }
 
@@ -96,8 +102,9 @@ class TeamFragment(
     private fun setRoaster(recyclerView: RecyclerView) {
         val rosterAdapter = BaseAdapter { parent ->
             PlayerViewHolder(
-                ItemTeamplayerBinding.inflate(parent.inflater, parent, false)
-            ) {}
+                ItemTeamplayerBinding.inflate(parent.inflater, parent, false),
+                viewModel::playerSelected
+            )
         }
         val spans = if (requireContext().isLandScape) 5 else 3
         recyclerView.layoutManager = GridLayoutManager(requireContext(), spans)

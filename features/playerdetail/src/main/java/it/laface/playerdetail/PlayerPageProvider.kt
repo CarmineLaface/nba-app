@@ -7,7 +7,7 @@ import it.laface.domain.navigation.Page
 import it.laface.domain.navigation.PlayerDetailPageProvider
 
 @Suppress("UNCHECKED_CAST")
-object PageProvider : PlayerDetailPageProvider {
+object PlayerPageProvider : PlayerDetailPageProvider {
 
     override fun getPlayerDetailPage(player: PlayerModel): Page {
         val fragmentClass = PlayerDetailFragment::class.java

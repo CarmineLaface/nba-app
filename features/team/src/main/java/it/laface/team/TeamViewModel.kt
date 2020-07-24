@@ -9,8 +9,9 @@ import it.laface.domain.datasource.TeamRosterDataSource
 import it.laface.domain.model.Game
 import it.laface.domain.model.NbaTeam
 import it.laface.domain.model.PlayerModel
+import it.laface.domain.navigation.Navigator
+import it.laface.domain.navigation.PlayerDetailPageProvider
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
@@ -19,7 +20,9 @@ class TeamViewModel(
     val team: NbaTeam,
     private val rosterDataSource: TeamRosterDataSource,
     private val scheduleDataSource: ScheduleDataSource,
-    private val jobDispatcher: CoroutineDispatcher
+    private val jobDispatcher: CoroutineDispatcher,
+    private val navigator: Navigator,
+    private val playerPageProvider: PlayerDetailPageProvider
 ) : ViewModel() {
 
     val rosterCallState: MutableStateFlow<CallState<List<PlayerModel>>> =
@@ -30,6 +33,7 @@ class TeamViewModel(
 
     init {
         getRoster()
+        getSchedule()
     }
 
     private fun getRoster() {
@@ -46,12 +50,17 @@ class TeamViewModel(
 
     private fun getSchedule() {
         viewModelScope.launch(jobDispatcher) {
-            when (val response = scheduleDataSource.getTeamSchedule(team)) {
+            scheduleCallState.value = when (val response = scheduleDataSource.getTeamSchedule(team)) {
                 is NetworkResult.Success -> {
-                    TODO()
+                    CallState.Success(response.value)
                 }
-                is NetworkResult.Error -> TODO()
+                is NetworkResult.Error ->
+                    CallState.Error(response.error)
             }
         }
+    }
+
+    fun playerSelected(player: PlayerModel) {
+        navigator.navigateForward(playerPageProvider.getPlayerDetailPage(player))
     }
 }

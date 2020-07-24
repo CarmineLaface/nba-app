@@ -1,6 +1,7 @@
 package it.laface.network
 
 import it.laface.api.NbaServices
+import it.laface.api.models.ScheduleLeague
 import it.laface.domain.NetworkResult
 import it.laface.domain.datasource.PlayersDataSource
 import it.laface.domain.datasource.RankingDataSource
@@ -45,29 +46,32 @@ class NbaApiMapper(private val api: NbaServices, private val teamRepository: Tea
     }
 
     override suspend fun getTeamSchedule(team: NbaTeam): NetworkResult<List<Game>> {
-        TODO()
+        return api.teamSchedule(team.id).toNetworkResult { response ->
+            mapSchedule(response.league, teamRepository.getTeamList())
+        }
     }
 
     override suspend fun getLeagueSchedule(): NetworkResult<List<Game>> {
-        return getLeagueSchedule(teamRepository.getTeamList())
+        return api.leagueSchedule().toNetworkResult { response ->
+            mapSchedule(response.league, teamRepository.getTeamList())
+        }
     }
 
-    private suspend fun getLeagueSchedule(teamList: List<NbaTeam>): NetworkResult<List<Game>> =
-        api.leagueSchedule().toNetworkResult { response ->
-            response.league.gameList
-                .filter { gameResponse ->
-                    val homeTeamId = gameResponse.homeTeam.teamId
-                    val visitorTeamId = gameResponse.visitorTeam.teamId
-                    teamList.any { it.id == homeTeamId } && teamList.any { it.id == visitorTeamId }
-                }
-                .map { gameResponse ->
-                    val homeTeamId = gameResponse.homeTeam.teamId
-                    val visitorTeamId = gameResponse.visitorTeam.teamId
-                    Game(
-                        date = gameResponse.date,
-                        homeTeam = teamList.first { it.id == homeTeamId },
-                        visitorTeam = teamList.first { it.id == visitorTeamId }
-                    )
-                }
-        }
+    // TODO move this and fix including all games
+    private fun mapSchedule(schedule: ScheduleLeague, teamList: List<NbaTeam>): List<Game> =
+        schedule.standardGameList
+            .filter { gameResponse ->
+                val homeTeamId = gameResponse.homeTeam.teamId
+                val visitorTeamId = gameResponse.visitorTeam.teamId
+                teamList.any { it.id == homeTeamId } && teamList.any { it.id == visitorTeamId }
+            }
+            .map { gameResponse ->
+                val homeTeamId = gameResponse.homeTeam.teamId
+                val visitorTeamId = gameResponse.visitorTeam.teamId
+                Game(
+                    date = gameResponse.date,
+                    homeTeam = teamList.first { it.id == homeTeamId },
+                    visitorTeam = teamList.first { it.id == visitorTeamId }
+                )
+            }
 }
