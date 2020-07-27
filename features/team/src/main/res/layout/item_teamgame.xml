@@ -17,6 +17,22 @@
         android:padding="8dp"
         tools:background="@android:color/white">
 
+        <TextView
+            android:id="@+id/dateTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/darkGrey"
+            android:textSize="14sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Mon, 01 September 2022"/>
+
         <ImageView
             android:id="@+id/homeTeamLogoImageView"
             android:layout_width="40dp"
@@ -24,26 +40,55 @@
             android:importantForAccessibility="no"
             app:layout_constraintEnd_toStartOf="@+id/vsTextView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dateTextView"
             tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/homeScoreTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/darkGrey"
+            android:textSize="14sp"
+            android:gravity="center_horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/vsTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/homeTeamLogoImageView"
+            tools:text="TBD" />
+
+        <TextView
+            android:id="@+id/homeTeamCityTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/darkGrey"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/vsTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/homeScoreTextView"
+            tools:text="Home team city" />
 
         <TextView
             android:id="@+id/homeTeamNameTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:layout_marginBottom="4dp"
-            android:fontFamily="@font/open_sans_semibold"
+            android:fontFamily="@font/open_sans"
             android:textColor="@color/darkGrey"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:maxLines="1"
             android:ellipsize="end"
             android:gravity="center_horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/vsTextView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/homeTeamLogoImageView"
-            tools:text="Home Team" />
+            app:layout_constraintTop_toBottomOf="@+id/homeTeamCityTextView"
+            tools:text="Home team name" />
 
         <TextView
             android:id="@+id/vsTextView"
@@ -55,7 +100,7 @@
             app:layout_constraintEnd_toStartOf="@+id/visitorTeamLogoImageView"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/homeTeamLogoImageView"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/dateTextView" />
 
         <ImageView
             android:id="@+id/visitorTeamLogoImageView"
@@ -64,25 +109,54 @@
             android:importantForAccessibility="no"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/vsTextView"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dateTextView"
             tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/visitorScoreTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/darkGrey"
+            android:textSize="14sp"
+            android:gravity="center_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/vsTextView"
+            app:layout_constraintTop_toBottomOf="@+id/visitorTeamLogoImageView"
+            tools:text="TBD" />
+
+        <TextView
+            android:id="@+id/visitorTeamCityTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@color/darkGrey"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/vsTextView"
+            app:layout_constraintTop_toBottomOf="@+id/visitorScoreTextView"
+            tools:text="Visitor Team" />
 
         <TextView
             android:id="@+id/visitorTeamNameTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:layout_marginBottom="4dp"
-            android:fontFamily="@font/open_sans_semibold"
+            android:fontFamily="@font/open_sans"
             android:textColor="@color/darkGrey"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:maxLines="1"
             android:ellipsize="end"
             android:gravity="center_horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/vsTextView"
-            app:layout_constraintTop_toBottomOf="@+id/visitorTeamLogoImageView"
+            app:layout_constraintTop_toBottomOf="@+id/visitorTeamCityTextView"
             tools:text="Visitor Team" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

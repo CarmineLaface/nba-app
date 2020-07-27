@@ -3,17 +3,19 @@ package it.laface.team
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.ViewPager
 import it.laface.common.util.requireParcelable
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.bindImage
+import it.laface.common.view.dpToPx
 import it.laface.common.view.inflater
 import it.laface.common.view.isLandScape
 import it.laface.common.viewModels
@@ -61,7 +63,7 @@ class TeamFragment(
             .root
 
     private fun FragmentTeamBinding.setView() {
-        cityNameTextView.text = viewModel.team.name
+        cityNameTextView.text = viewModel.team.cityName
         nicknameTextView.text = viewModel.team.nickname
 
         teamImageView.bindImage(viewModel.team.imageUrl)
@@ -70,7 +72,7 @@ class TeamFragment(
             // TODO
         }
 
-        setSchedule(gamesRecyclerView)
+        setSchedule(gamesViewPager)
         setRoaster(rosterRecyclerView)
 
         viewModel.team.rgbColor?.let {
@@ -78,22 +80,25 @@ class TeamFragment(
             toolbar.setBackgroundColor(color)
             backImageView.backgroundTintList = ColorStateList.valueOf(color)
         }
+        backImageView.setOnClickListener {
+            viewModel.navigateBack()
+        }
     }
 
-    private fun setSchedule(recyclerView: RecyclerView) {
-        val scheduleAdapter = BaseAdapter { parent ->
+    private fun setSchedule(viewPager: ViewPager) {
+        val scheduleAdapter = BasePagerAdapter(PAGE_WIDTH_PERCENTAGE) { parent ->
             GameViewHolder(
                 ItemTeamgameBinding.inflate(parent.inflater, parent, false)
             )
         }
-        recyclerView.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        recyclerView.adapter = scheduleAdapter
+        viewPager.pageMargin = resources.dpToPx(PAGE_MARGIN_DP).toInt()
+        viewPager.adapter = scheduleAdapter
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.scheduleCallState.collect { callState ->
-                when (callState) {
-                    is CallState.Success -> scheduleAdapter.list = callState.result
+                if (callState is CallState.Success) {
+                    scheduleAdapter.list = callState.result
+                    viewPager.currentItem = viewModel.scrollScheduleToIndex()
                 }
             }
         }
@@ -112,8 +117,8 @@ class TeamFragment(
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.rosterCallState.collect { callState ->
-                when (callState) {
-                    is CallState.Success -> rosterAdapter.list = callState.result
+                if (callState is CallState.Success) {
+                    rosterAdapter.list = callState.result
                 }
             }
         }
@@ -121,6 +126,8 @@ class TeamFragment(
 
     companion object {
 
+        private const val PAGE_MARGIN_DP = 8f
+        private const val PAGE_WIDTH_PERCENTAGE = .8f
         internal const val ARGUMENT_KEY = "ARGUMENT_KEY"
     }
 }

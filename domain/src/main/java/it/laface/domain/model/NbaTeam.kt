@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
 data class NbaTeam(
     @SerializedName("teamId") val id: String,
     @SerializedName("teamKey") val key: String,
-    @SerializedName("teamName") val name: String,
+    @SerializedName("teamName") val cityName: String,
     @SerializedName("teamCode") val code: String,
     @SerializedName("teamNickname") val nickname: String,
     @SerializedName("teamTricode") val tricode: String,
@@ -19,4 +19,4 @@ val NbaTeam.imageUrl: String
     get() = "https://it.global.nba.com/media/img/teams/00/logos/${tricode}_logo.png"
 
 val NbaTeam.fullName: String
-    get() = "$name $nickname"
+    get() = "$cityName $nickname"

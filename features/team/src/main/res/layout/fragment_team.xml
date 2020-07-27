@@ -94,17 +94,18 @@
             app:layout_constraintStart_toStartOf="@id/teamImageView"
             app:layout_constraintTop_toBottomOf="@id/teamImageView" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/gamesRecyclerView"
-            android:layout_width="match_parent"
+        <it.laface.team.CustomViewPager
+            android:id="@+id/gamesViewPager"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:layout_marginTop="16dp"
+            android:paddingStart="48dp"
+            android:paddingEnd="48dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/teamImageView"
-            app:layout_constraintTop_toBottomOf="@id/scheduleTextView"
-            tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_teamgame"
-            tools:orientation="horizontal" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/scheduleTextView" />
 
         <TextView
             android:id="@+id/rosterTextView"
@@ -117,11 +118,11 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/teamImageView"
-            app:layout_constraintTop_toBottomOf="@id/gamesRecyclerView" />
+            app:layout_constraintTop_toBottomOf="@id/gamesViewPager" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rosterRecyclerView"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
             android:paddingStart="4dp"
@@ -130,7 +131,7 @@
             android:paddingBottom="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/teamImageView"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rosterTextView"
             tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             android:nestedScrollingEnabled="false"

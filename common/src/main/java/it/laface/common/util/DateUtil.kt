@@ -15,6 +15,17 @@ val Calendar.getFullDayName: String
         return "$day $monthName $year"
     }
 
+/**
+ * @return date like: "Mon, 01 January 2017"
+ */
+val Calendar.getCompleteDayName: String
+    get() {
+        val locale = Locale.getDefault()
+        val dayName = getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, locale)
+        val monthName = getDisplayName(Calendar.MONTH, Calendar.LONG, locale)
+        return "$dayName, $day $monthName $year"
+    }
+
 val Calendar.day: String
     get() = when (val value = get(Calendar.DAY_OF_MONTH)) {
         in 0..9 -> "0$value"

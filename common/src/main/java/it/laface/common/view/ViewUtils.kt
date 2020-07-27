@@ -2,6 +2,8 @@ package it.laface.common.view
 
 import android.content.Context
 import android.content.res.Configuration
+import android.content.res.Resources
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +21,9 @@ fun ViewGroup.inflate(@LayoutRes layoutResId: Int): View =
 fun View.goneUnless(condition: Boolean) {
     visibility = if (condition) View.VISIBLE else View.GONE
 }
+
+fun Resources.dpToPx(dpValue: Float): Float =
+    TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8F, displayMetrics)
 
 val Context.isLandScape: Boolean
     get() = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE

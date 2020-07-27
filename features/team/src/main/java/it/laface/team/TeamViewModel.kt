@@ -14,6 +14,7 @@ import it.laface.domain.navigation.PlayerDetailPageProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
+import java.util.Date
 
 @Suppress("EXPERIMENTAL_API_USAGE")
 class TeamViewModel(
@@ -62,5 +63,17 @@ class TeamViewModel(
 
     fun playerSelected(player: PlayerModel) {
         navigator.navigateForward(playerPageProvider.getPlayerDetailPage(player))
+    }
+
+    fun scrollScheduleToIndex(): Int {
+        val schedule = scheduleCallState.value
+        return if (schedule is CallState.Success) {
+            val today = Date()
+            schedule.result.indexOfFirst { it.date.after(today) }
+        } else 0
+    }
+
+    fun navigateBack() {
+        navigator.navigateBack()
     }
 }

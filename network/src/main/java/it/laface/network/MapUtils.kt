@@ -15,7 +15,7 @@ fun toDomain(team: TeamResponseModel) = RankedTeam(
         id = team.id,
         key = team.info.key,
         code = team.info.code,
-        name = team.info.name,
+        cityName = team.info.name,
         tricode = team.info.tricode,
         nickname = team.info.nickname
     )
