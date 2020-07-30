@@ -47,6 +47,7 @@ class PlayerDetailFragment(teamRepository: TeamRepository, navigator: Navigator)
         playerImageView.bindImage(viewModel.player.imageUrl, R.drawable.player_placeholder)
 
         jerseyNameTextView.text = viewModel.player.jerseyNumber
+        positionValueTextView.text = viewModel.player.position
 
         backImageView.setOnClickListener {
             viewModel.goBack()
@@ -64,6 +65,7 @@ class PlayerDetailFragment(teamRepository: TeamRepository, navigator: Navigator)
         val color = Color.parseColor(rgbColor)
         teamNameTextView.setTextColor(color)
         jerseyNameTextView.setTextColor(color)
+        positionValueTextView.setTextColor(color)
         toolbar.setBackgroundColor(color)
         backImageView.backgroundTintList = ColorStateList.valueOf(color)
     }

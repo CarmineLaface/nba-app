@@ -2,4 +2,5 @@
 <resources>
     <string name="team">Team</string>
     <string name="jersey_number">Jersey number</string>
+    <string name="position">Position</string>
 </resources>

@@ -2,6 +2,7 @@
 
 package it.laface.common.util
 
+import android.annotation.SuppressLint
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
@@ -19,9 +20,10 @@ val Calendar.getFullDayName: String
  * @return date like: "Mon, 01 January 2017"
  */
 val Calendar.getCompleteDayName: String
+    @SuppressLint("DefaultLocale")
     get() {
         val locale = Locale.getDefault()
-        val dayName = getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, locale)
+        val dayName = getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, locale)?.capitalize()
         val monthName = getDisplayName(Calendar.MONTH, Calendar.LONG, locale)
         return "$dayName, $day $monthName $year"
     }

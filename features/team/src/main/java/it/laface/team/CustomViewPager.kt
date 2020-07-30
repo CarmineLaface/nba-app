@@ -5,8 +5,8 @@ import android.util.AttributeSet
 import androidx.viewpager.widget.ViewPager
 
 class CustomViewPager
-@JvmOverloads constructor(context: Context, attrs: AttributeSet? = null)
-    : ViewPager(context, attrs) {
+@JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
+    ViewPager(context, attrs) {
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         var height = 0
@@ -19,5 +19,4 @@ class CustomViewPager
         val newHeight = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY)
         super.onMeasure(widthMeasureSpec, newHeight)
     }
-
 }

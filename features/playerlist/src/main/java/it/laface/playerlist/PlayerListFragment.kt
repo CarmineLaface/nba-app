@@ -16,6 +16,7 @@ import it.laface.domain.datasource.PlayersDataSource
 import it.laface.domain.model.PlayerModel
 import it.laface.domain.navigation.Navigator
 import it.laface.domain.navigation.PlayerDetailPageProvider
+import it.laface.domain.navigation.StatsPageProvider
 import it.laface.playerlist.databinding.FragmentPlayerListBinding
 import it.laface.playerlist.databinding.ItemPlayerBinding
 import kotlinx.coroutines.Dispatchers
@@ -23,11 +24,18 @@ import kotlinx.coroutines.Dispatchers
 class PlayerListFragment(
     dataSource: PlayersDataSource,
     pageProvider: PlayerDetailPageProvider,
-    navigator: Navigator
+    navigator: Navigator,
+    statsPageProvider: StatsPageProvider
 ) : Fragment() {
 
     private val viewModel: PlayerListViewModel by viewModels {
-        PlayerListViewModel(dataSource, pageProvider, navigator, Dispatchers.IO)
+        PlayerListViewModel(
+            dataSource = dataSource,
+            pageProvider = pageProvider,
+            navigator = navigator,
+            jobDispatcher = Dispatchers.IO,
+            statsPageProvider = statsPageProvider
+        )
     }
 
     override fun onCreateView(
@@ -55,6 +63,9 @@ class PlayerListFragment(
             viewModel.setNameToFilter(text.toString())
         }
         retryButton.setOnClickListener { viewModel.onRetry() }
+        cardLeaders.root.setOnClickListener {
+            viewModel.goToStatsPage()
+        }
     }
 
     private fun FragmentPlayerListBinding.bindContentToShow(

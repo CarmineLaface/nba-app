@@ -28,7 +28,7 @@ object Const {
     "teamName": "Boston",
     "teamCode": "celtics",
     "teamNickname": "Celtics",
-    "primary":"#008348",
+    "primary":"#007A33",
     "teamTricode": "BOS"
   },
   {
@@ -64,7 +64,7 @@ object Const {
     "teamName": "Brooklyn",
     "teamCode": "nets",
     "teamNickname": "Nets",
-    "primary":"#464646",
+    "primary":"#000000",
     "teamTricode": "BKN"
   },
   {
@@ -91,7 +91,7 @@ object Const {
     "teamName": "Charlotte",
     "teamCode": "hornets",
     "teamNickname": "Hornets",
-    "primary":"#1d8cab",
+    "primary":"#00848E",
     "teamTricode": "CHA"
   },
   {
@@ -118,7 +118,7 @@ object Const {
     "teamName": "Detroit",
     "teamCode": "pistons",
     "teamNickname": "Pistons",
-    "primary":"#ed174c",
+    "primary":"#C8102E",
     "teamTricode": "DET"
   },
   {
@@ -127,7 +127,7 @@ object Const {
     "teamName": "Atlanta",
     "teamCode": "hawks",
     "teamNickname": "Hawks",
-    "primary":"#e13a3e",
+    "primary":"#E13A3E",
     "teamTricode": "ATL"
   },
   {
@@ -145,7 +145,7 @@ object Const {
     "teamName": "Los Angeles",
     "teamCode": "lakers",
     "teamNickname": "Lakers",
-    "primary":"#552582",
+    "primary":"#fdba33",
     "teamTricode": "LAL"
   },
   {
@@ -163,7 +163,7 @@ object Const {
     "teamName": "Denver",
     "teamCode": "nuggets",
     "teamNickname": "Nuggets",
-    "primary":"#4d90cd",
+    "primary":"#0E2240",
     "teamTricode": "DEN"
   },
   {
@@ -181,7 +181,7 @@ object Const {
     "teamName": "Oklahoma City",
     "teamCode": "thunder",
     "teamNickname": "Thunder",
-    "primary":"#007dc3",
+    "primary":"#007AC1",
     "teamTricode": "OKC"
   },
   {
@@ -199,7 +199,7 @@ object Const {
     "teamName": "Dallas",
     "teamCode": "mavericks",
     "teamNickname": "Mavericks",
-    "primary":"#007dc5",
+    "primary":"#006BB6",
     "teamTricode": "DAL"
   },
   {
@@ -208,7 +208,7 @@ object Const {
     "teamName": "Memphis",
     "teamCode": "grizzlies",
     "teamNickname": "Grizzlies",
-    "primary":"#bed4e9",
+    "primary":"#5D76A9",
     "teamTricode": "MEM"
   },
   {
@@ -226,7 +226,7 @@ object Const {
     "teamName": "New Orleans",
     "teamCode": "pelicans",
     "teamNickname": "Pelicans",
-    "primary":"#002b5c",
+    "primary":"#0C2340",
     "teamTricode": "NOP"
   },
   {
@@ -271,7 +271,7 @@ object Const {
     "teamName": "Golden State",
     "teamCode": "warriors",
     "teamNickname": "Warriors",
-    "primary":"#006bb6",
+    "primary":"#1D428A",
     "teamTricode": "GSW"
   }
 ]
@@ -282,108 +282,6 @@ object Const {
         {
           "teams": {
             "config": [
-              {
-                "teamId": "1610612737",
-                "tricode": "ATL",
-                "ttsName": "Atlanta Hawks",
-                "primaryColor": "#e21a37"
-              },
-              {
-                "teamId": "1610612751",
-                "tricode": "BKN",
-                "ttsName": "Brooklyn Nets",
-                "primaryColor": "#000000"
-              },
-              {
-                "teamId": "1610612738",
-                "tricode": "BOS",
-                "ttsName": "Boston Celtics",
-                "primaryColor": "#00611b"
-              },
-              {
-                "teamId": "1610612766",
-                "tricode": "CHA",
-                "ttsName": "Charlotte Hornets",
-                "primaryColor": "#00848e"
-              },
-              {
-                "teamId": "1610612741",
-                "tricode": "CHI",
-                "ttsName": "Chicago Bulls",
-                "primaryColor": "#b00203"
-              },
-              {
-                "teamId": "1610612742",
-                "tricode": "DAL",
-                "ttsName": "Dallas Mavericks",
-                "primaryColor": "#006bb6"
-              },
-              {
-                "teamId": "1610612743",
-                "tricode": "DEN",
-                "ttsName": "Denver Nuggets",
-                "primaryColor": "#0e2240"
-              },
-              {
-                "teamId": "1610612765",
-                "tricode": "DET",
-                "ttsName": "Detroit Pistons",
-                "primaryColor": "#fa002c"
-              },
-              {
-                "teamId": "1610612744",
-                "tricode": "GSW",
-                "ttsName": "Golden State Warriors",
-                "primaryColor": "#003399"
-              },
-              {
-                "teamId": "1610612745",
-                "tricode": "HOU",
-                "ttsName": "Houston Rockets",
-                "primaryColor": "#cd212b"
-              },
-              {
-                "teamId": "1610612754",
-                "tricode": "IND",
-                "ttsName": "Indiana Pacers",
-                "primaryColor": "#ffb517"
-              },
-              {
-                "teamId": "1610612746",
-                "tricode": "LAC",
-                "ttsName": "L.A. Clippers",
-                "primaryColor": "#ed174b"
-              },
-              {
-                "teamId": "1610612747",
-                "tricode": "LAL",
-                "ttsName": "L.A. Lakers",
-                "primaryColor": "#fdba33"
-              },
-              {
-                "teamId": "1610612763",
-                "tricode": "MEM",
-                "ttsName": "Memphis Grizzlies",
-                "primaryColor": "#5d76a9"
-              },
-              {
-                "teamId": "1610612750",
-                "tricode": "MIN",
-                "ttsName": "Minnesota Timberwolves",
-                "primaryColor": "#2b6291"
-              },
-              {
-                "teamId": "1610612740",
-                "tricode": "NOP",
-                "ttsName": "New Orleans Pelicans",
-                "primaryColor": "#0c2340"
-              },
-              {
-                "teamId": "1610612760",
-                "tricode": "OKC",
-                "ttsName": "Oklahoma City Thunder",
-                "primaryColor": "#002d62"
-              },
               {
                 "teamId": "1610612753",
                 "tricode": "ORL",

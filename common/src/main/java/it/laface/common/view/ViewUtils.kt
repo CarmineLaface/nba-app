@@ -23,7 +23,7 @@ fun View.goneUnless(condition: Boolean) {
 }
 
 fun Resources.dpToPx(dpValue: Float): Float =
-    TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8F, displayMetrics)
+    TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue, displayMetrics)
 
 val Context.isLandScape: Boolean
     get() = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE

@@ -110,4 +110,24 @@
         app:layout_constraintTop_toTopOf="@+id/jerseyTextView"
         tools:text="34" />
 
+    <TextView
+        android:id="@+id/positionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/position"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/jerseyTextView"
+        app:layout_constraintTop_toBottomOf="@id/jerseyTextView" />
+
+    <TextView
+        android:id="@+id/positionValueTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/open_sans_bold"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/positionTextView"
+        app:layout_constraintStart_toEndOf="@id/positionTextView"
+        app:layout_constraintTop_toTopOf="@+id/positionTextView"
+        tools:text="G" />
 </androidx.constraintlayout.widget.ConstraintLayout>

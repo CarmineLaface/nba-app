@@ -14,14 +14,14 @@ interface NbaServices {
 
     @GET("/prod/v1/{year}/players.json")
     suspend fun playerList(@Path(value = "year") year: String = nbaSeason):
-            Response<PlayerListResponse>
+        Response<PlayerListResponse>
 
     @GET("/prod/v1/current/standings_conference.json")
     suspend fun ranking(): Response<RankingResponse>
 
     @GET("/prod/v2/{year}/schedule.json")
     suspend fun leagueSchedule(@Path(value = "year") year: String = nbaSeason):
-            Response<ScheduleResponse>
+        Response<ScheduleResponse>
 
     @GET("/v2015/json/mobile_teams/nba/{year}/teams/{teamSlug}_roster.json")
     suspend fun teamRoster(

@@ -22,6 +22,6 @@ enum class ForwardNavigationType {
 
 data class Page(
     val fragmentClass: Class<Fragment>,
-    val arguments: Bundle,
+    val arguments: Bundle? = null,
     val tag: String? = null
 )

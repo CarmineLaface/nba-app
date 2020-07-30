@@ -10,6 +10,7 @@ import it.laface.domain.datasource.PlayersDataSource
 import it.laface.domain.model.PlayerModel
 import it.laface.domain.navigation.Navigator
 import it.laface.domain.navigation.PlayerDetailPageProvider
+import it.laface.domain.navigation.StatsPageProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 
@@ -17,7 +18,8 @@ class PlayerListViewModel(
     private val dataSource: PlayersDataSource,
     private val pageProvider: PlayerDetailPageProvider,
     private val navigator: Navigator,
-    private val jobDispatcher: CoroutineDispatcher
+    private val jobDispatcher: CoroutineDispatcher,
+    private val statsPageProvider: StatsPageProvider
 ) : ViewModel() {
 
     private val playerListCallState: MutableLiveData<CallState<List<PlayerModel>>> =
@@ -58,5 +60,9 @@ class PlayerListViewModel(
         if (text != nameToFilter.value) {
             nameToFilter.postValue(text)
         }
+    }
+
+    fun goToStatsPage() {
+        navigator.navigateForward(statsPageProvider.getStatsPage())
     }
 }

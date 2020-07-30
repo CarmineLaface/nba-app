@@ -3,7 +3,6 @@ package it.laface.team
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +16,6 @@ import it.laface.common.view.BaseAdapter
 import it.laface.common.view.bindImage
 import it.laface.common.view.dpToPx
 import it.laface.common.view.inflater
-import it.laface.common.view.isLandScape
 import it.laface.common.viewModels
 import it.laface.domain.CallState
 import it.laface.domain.datasource.ScheduleDataSource
@@ -111,7 +109,7 @@ class TeamFragment(
                 viewModel::playerSelected
             )
         }
-        val spans = if (requireContext().isLandScape) 5 else 3
+        val spans = resources.getInteger(R.integer.roster_columns)
         recyclerView.layoutManager = GridLayoutManager(requireContext(), spans)
         recyclerView.adapter = rosterAdapter
 

@@ -14,7 +14,10 @@ data class PlayerModel(
 ) : Parcelable
 
 val PlayerModel.imageUrl: String
-    get() = "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/$id.png"
+    get() = getPlayerImageUrl(id)
 
 val PlayerModel.fullName: String
     get() = "$name $surname"
+
+fun getPlayerImageUrl(playerId: String): String =
+    "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/$playerId.png"

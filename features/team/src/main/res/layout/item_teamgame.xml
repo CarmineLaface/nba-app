@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    tools:layout_width="300dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
     android:layout_marginStart="8dp"
@@ -50,7 +51,7 @@
             android:layout_marginTop="4dp"
             android:fontFamily="@font/open_sans_semibold"
             android:textColor="@color/darkGrey"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:gravity="center_horizontal"
             app:layout_constraintEnd_toStartOf="@+id/vsTextView"
             app:layout_constraintStart_toStartOf="parent"
@@ -95,12 +96,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/versus"
+            tools:text="188 - 123"
             android:textColor="@color/darkGrey"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/visitorTeamLogoImageView"
+            app:layout_constraintBottom_toBottomOf="@id/visitorTeamLogoImageView"
+            app:layout_constraintEnd_toStartOf="@id/visitorTeamLogoImageView"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/homeTeamLogoImageView"
-            app:layout_constraintTop_toBottomOf="@id/dateTextView" />
+            app:layout_constraintStart_toEndOf="@id/homeTeamLogoImageView" />
 
         <ImageView
             android:id="@+id/visitorTeamLogoImageView"
@@ -119,7 +120,7 @@
             android:layout_marginTop="4dp"
             android:fontFamily="@font/open_sans_semibold"
             android:textColor="@color/darkGrey"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:gravity="center_horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/vsTextView"

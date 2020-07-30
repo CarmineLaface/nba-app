@@ -3,10 +3,12 @@ package it.laface.network
 import com.google.gson.GsonBuilder
 import it.laface.api.NbaNews
 import it.laface.api.NbaServices
+import it.laface.api.NbaStats
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
+import java.util.concurrent.TimeUnit.SECONDS
 
 object NetworkManager {
 
@@ -21,6 +23,7 @@ object NetworkManager {
     private fun getClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(IOExceptionInterceptor())
+            .callTimeout(SECONDS_TIMEOUT, SECONDS)
             .build()
     }
 
@@ -41,4 +44,15 @@ object NetworkManager {
             .build()
             .create()
     }
+
+    fun getStatsApi(): NbaStats {
+        return Retrofit.Builder()
+            .baseUrl(NbaStats.BASE_URL)
+            .addConverterFactory(getConverter(NbaStats.DATE_FORMAT))
+            .client(getClient())
+            .build()
+            .create()
+    }
+
+    private const val SECONDS_TIMEOUT = 10L
 }
