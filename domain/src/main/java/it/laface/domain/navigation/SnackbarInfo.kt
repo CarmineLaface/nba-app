@@ -1,9 +1,5 @@
 package it.laface.domain.navigation
 
-import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_INDEFINITE
-import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_LONG
-import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT
-
 data class SnackbarInfo(
     val text: Text,
     val duration: SnackbarDuration,
@@ -33,10 +29,10 @@ sealed class Text {
     class ResIdText(val value: Int) : Text()
 }
 
-enum class SnackbarDuration(val durationRef: Int) {
-    Indefinite(LENGTH_INDEFINITE),
-    Short(LENGTH_SHORT),
-    Long(LENGTH_LONG);
+enum class SnackbarDuration {
+    Indefinite,
+    Short,
+    Long;
 
     companion object {
         val DEFAULT: SnackbarDuration

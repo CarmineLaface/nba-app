@@ -2,8 +2,6 @@ package it.laface.statistics
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import it.laface.domain.CallState
-import it.laface.domain.CallState.InProgress
 import it.laface.domain.NetworkResult
 import it.laface.domain.datasource.StatsDataSource
 import it.laface.domain.model.StatsGroup
@@ -19,8 +17,8 @@ class StatsViewModel(
     private val jobDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
-    val statsCallState: MutableStateFlow<CallState<List<StatsGroup>>> =
-        MutableStateFlow(InProgress)
+    val statsCallState: MutableStateFlow<ContentToShow> =
+        MutableStateFlow(ContentToShow.Loading)
 
     init {
         getStats()
@@ -30,12 +28,16 @@ class StatsViewModel(
         viewModelScope.launch(jobDispatcher) {
             statsCallState.value = when (val response = statsDataSource.getLeaders()) {
                 is NetworkResult.Success -> {
-                    CallState.Success(response.value)
+                    ContentToShow.Success(response.value)
                 }
                 is NetworkResult.Error ->
-                    CallState.Error(response.error)
+                    ContentToShow.Error
             }
         }
+    }
+
+    fun onStatsClicked(group: StatsGroup) {
+        TODO()
     }
 
     fun navigateBack() {

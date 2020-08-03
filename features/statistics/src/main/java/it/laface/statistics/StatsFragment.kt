@@ -6,12 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.GridLayoutManager
 import it.laface.common.view.BaseAdapter
+import it.laface.common.view.goneUnless
 import it.laface.common.view.inflater
 import it.laface.common.viewModels
 import it.laface.domain.CallState.Success
 import it.laface.domain.datasource.StatsDataSource
+import it.laface.domain.model.StatsGroup
 import it.laface.domain.navigation.Navigator
 import it.laface.statistics.databinding.FragmentStatsBinding
 import it.laface.statistics.databinding.ItemStatisticBinding
@@ -47,19 +48,31 @@ class StatsFragment(
     private fun FragmentStatsBinding.setView() {
         val groupAdapter = BaseAdapter { parent ->
             StatsGroupViewHolder(
-                ItemStatisticBinding.inflate(parent.inflater, parent, false)
-            ) {}
+                ItemStatisticBinding.inflate(parent.inflater, parent, false),
+                viewModel::onStatsClicked
+            )
         }
-        groupRecyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+        backImageView.setOnClickListener {
+            viewModel.navigateBack()
+        }
         groupRecyclerView.adapter = groupAdapter
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.statsCallState.collect {
-                when (it) {
-                    is Success -> {
-                        groupAdapter.list = it.result
-                    }
-                }
+            viewModel.statsCallState.collect { contentToShow ->
+                bindContentToShow(contentToShow, groupAdapter)
             }
         }
+    }
+
+    private fun FragmentStatsBinding.bindContentToShow(
+        contentToShow: ContentToShow,
+        newsAdapter: BaseAdapter<StatsGroup>
+    ) {
+        if (contentToShow is ContentToShow.Success) {
+            groupRecyclerView.visibility = View.VISIBLE
+            newsAdapter.list = contentToShow.statsGroup
+        } else {
+            groupRecyclerView.visibility = View.GONE
+        }
+        progressBar.goneUnless(contentToShow is ContentToShow.Loading)
     }
 }

@@ -4,6 +4,7 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
+// TODO remove all @SerializedName
 @Parcelize
 data class NbaTeam(
     @SerializedName("teamId") val id: String,

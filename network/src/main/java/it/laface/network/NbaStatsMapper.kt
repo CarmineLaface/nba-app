@@ -10,10 +10,10 @@ class NbaStatsMapper(private val api: NbaStats) : StatsDataSource {
 
     override suspend fun getLeaders(): NetworkResult<List<StatsGroup>> {
         val playerStats = api.getPlayersStats().toNetworkResult { response ->
-            response.groups[0].sections.map(::toDomain)
+            response.sections.map(::toDomain)
         }
         val advancedLeadersStats = api.getAdvancedLeadersStats().toNetworkResult { response ->
-            response.groups[0].sections.map(::toDomain)
+            response.sections.map(::toDomain)
         }
         return if (playerStats is Success && advancedLeadersStats is Success) {
             Success(playerStats.value + advancedLeadersStats.value)

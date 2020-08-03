@@ -8,5 +8,6 @@ data class StatsGroup(
 data class Leader(
     val playerId: String,
     val playerName: String,
+    val position: Int,
     val teamId: String
 )
