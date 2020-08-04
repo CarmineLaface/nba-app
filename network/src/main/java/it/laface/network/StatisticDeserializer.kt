@@ -40,11 +40,12 @@ object StatisticDeserializer : JsonDeserializer<PlayerStatsResponse> {
     private fun JsonArray.getLeaders(keyName: String): List<Player> {
         return map { jsonElement ->
             val playerJsonObject = jsonElement.asJsonObject
+            val customValue = playerJsonObject[keyName].asJsonPrimitive.asString
             Player(
                 playerId = playerJsonObject["PLAYER_ID"].asInt,
                 playerName = playerJsonObject["PLAYER_NAME"].asString,
                 teamId = playerJsonObject["TEAM_ID"].asInt,
-                value = playerJsonObject[keyName].asJsonPrimitive.asString
+                value = customValue
             )
         }
     }

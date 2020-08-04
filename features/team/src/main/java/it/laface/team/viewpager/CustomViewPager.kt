@@ -1,4 +1,4 @@
-package it.laface.team
+package it.laface.team.viewpager
 
 import android.content.Context
 import android.util.AttributeSet

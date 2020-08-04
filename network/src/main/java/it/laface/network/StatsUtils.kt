@@ -1,18 +1,31 @@
 package it.laface.network
 
 import it.laface.api.models.Player
-import it.laface.api.models.StatsSection
 import it.laface.domain.model.Leader
-import it.laface.domain.model.StatsGroup
+import it.laface.domain.model.StatsSection
 
-fun toDomain(index: Int, player: Player) = Leader(
-    playerName = player.playerName,
-    playerId = player.playerId.toString(),
-    position = index,
-    teamId = player.teamId.toString()
-)
+fun toDomain(index: Int, player: Player): Leader =
+    Leader(
+        playerName = player.playerName,
+        playerId = player.playerId.toString(),
+        position = index + 1,
+        teamId = player.teamId.toString(),
+        customValue = player.value.parseCustomValue()
+    )
 
-fun toDomain(group: StatsSection) = StatsGroup(
-    title = group.title,
-    players = group.players.mapIndexed(::toDomain)
-)
+fun toDomain(group: it.laface.api.models.StatsSection): StatsSection =
+    StatsSection(
+        title = group.title,
+        players = group.players.mapIndexed(::toDomain)
+    )
+
+@Suppress("MagicNumber")
+fun String.parseCustomValue(): String {
+    if (contains('.').not()) return this
+    val pointIndex = indexOf('.')
+    return if (startsWith("0.")) {
+        substring(1, pointIndex + 3)
+    } else {
+        substring(0, pointIndex + 2)
+    }
+}

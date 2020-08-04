@@ -1,7 +1,6 @@
 package it.laface.playerdetail
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import it.laface.domain.model.PlayerModel
 import it.laface.domain.navigation.Page
 import it.laface.domain.navigation.PlayerDetailPageProvider
@@ -14,7 +13,7 @@ object PlayerPageProvider : PlayerDetailPageProvider {
         val arguments = Bundle(1)
         arguments.putParcelable(PlayerDetailFragment.ARGUMENT_KEY, player)
         return Page(
-            fragmentClass = fragmentClass as Class<Fragment>,
+            fragmentClass = fragmentClass,
             arguments = arguments,
             tag = fragmentClass.name
         )

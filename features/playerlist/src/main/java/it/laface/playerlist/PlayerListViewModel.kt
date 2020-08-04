@@ -1,9 +1,7 @@
 package it.laface.playerlist
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import it.laface.common.combine
 import it.laface.domain.CallState
 import it.laface.domain.NetworkResult
 import it.laface.domain.datasource.PlayersDataSource
@@ -12,22 +10,26 @@ import it.laface.domain.navigation.Navigator
 import it.laface.domain.navigation.PlayerDetailPageProvider
 import it.laface.domain.navigation.StatsPageProvider
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 
+@Suppress("EXPERIMENTAL_API_USAGE")
 class PlayerListViewModel(
     private val dataSource: PlayersDataSource,
-    private val pageProvider: PlayerDetailPageProvider,
+    private val playerDetailPageProvider: PlayerDetailPageProvider,
     private val navigator: Navigator,
     private val jobDispatcher: CoroutineDispatcher,
     private val statsPageProvider: StatsPageProvider
 ) : ViewModel() {
 
-    private val playerListCallState: MutableLiveData<CallState<List<PlayerModel>>> =
-        MutableLiveData(CallState.NotStarted)
-    val nameToFilter: MutableLiveData<String> = MutableLiveData("")
-    val contentToShow: MutableLiveData<ContentToShow> =
+    private val playerListCallState: MutableStateFlow<CallState<List<PlayerModel>>> =
+        MutableStateFlow(CallState.NotStarted)
+    val nameToFilter: MutableStateFlow<String> = MutableStateFlow("")
+    val contentToShow: Flow<ContentToShow> =
         playerListCallState.combine(nameToFilter) { callState, nameToFilter ->
-            mapContentToShow(callState!!, nameToFilter!!)
+            mapContentToShow(callState, nameToFilter)
         }
 
     init {
@@ -41,24 +43,23 @@ class PlayerListViewModel(
 
     private fun getPlayers() {
         viewModelScope.launch(jobDispatcher) {
-            val callState = when (val response = dataSource.getPlayers()) {
+            playerListCallState.value = when (val response = dataSource.getPlayers()) {
                 is NetworkResult.Success -> {
                     CallState.Success(response.value)
                 }
                 is NetworkResult.Error -> CallState.Error(response.error)
             }
-            playerListCallState.postValue(callState)
         }
     }
 
     fun onPlayerSelected(playerModel: PlayerModel) {
-        val playerPage = pageProvider.getPlayerDetailPage(playerModel)
+        val playerPage = playerDetailPageProvider.getPlayerDetailPage(playerModel)
         navigator.navigateForward(playerPage)
     }
 
     fun setNameToFilter(text: String) {
         if (text != nameToFilter.value) {
-            nameToFilter.postValue(text)
+            nameToFilter.value = text
         }
     }
 

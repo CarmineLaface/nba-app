@@ -7,8 +7,10 @@ import it.laface.common.view.bindImage
 import it.laface.domain.model.Game
 import it.laface.domain.model.imageUrl
 import it.laface.team.databinding.ItemTeamgameBinding
+import it.laface.team.viewpager.PageViewHolder
 
-class GameViewHolder(private val binding: ItemTeamgameBinding) : PageViewHolder<Game> {
+class GameViewHolder(private val binding: ItemTeamgameBinding) :
+    PageViewHolder<Game> {
 
     override val view: View
         get() = binding.root

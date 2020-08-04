@@ -1,4 +1,4 @@
-package it.laface.team
+package it.laface.team.viewpager
 
 import android.view.View
 import android.view.ViewGroup

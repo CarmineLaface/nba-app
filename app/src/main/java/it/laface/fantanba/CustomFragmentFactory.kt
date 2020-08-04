@@ -19,6 +19,7 @@ import it.laface.ranking.RankingFragment
 import it.laface.schedule.ScheduleFragment
 import it.laface.statistics.StatsFragment
 import it.laface.statistics.StatsPageProviderImpl
+import it.laface.statistics.detail.LeadersPageProviderImpl
 import it.laface.team.TeamFragment
 import it.laface.team.TeamPageProviderImpl
 
@@ -53,7 +54,7 @@ object CustomFragmentFactory : FragmentFactory() {
             TeamFragment::class.java.name ->
                 TeamFragment(nbaApiMapper, nbaApiMapper, navigator, PlayerPageProvider)
             StatsFragment::class.java.name ->
-                StatsFragment(navigator, nbaStatsApi)
+                StatsFragment(navigator, LeadersPageProviderImpl, nbaStatsApi)
             else -> super.instantiate(classLoader, className)
         }
     }

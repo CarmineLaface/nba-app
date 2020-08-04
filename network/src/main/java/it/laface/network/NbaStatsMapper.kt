@@ -4,11 +4,11 @@ import it.laface.api.NbaStats
 import it.laface.domain.NetworkResult
 import it.laface.domain.NetworkResult.Success
 import it.laface.domain.datasource.StatsDataSource
-import it.laface.domain.model.StatsGroup
+import it.laface.domain.model.StatsSection
 
 class NbaStatsMapper(private val api: NbaStats) : StatsDataSource {
 
-    override suspend fun getLeaders(): NetworkResult<List<StatsGroup>> {
+    override suspend fun getLeaders(): NetworkResult<List<StatsSection>> {
         val playerStats = api.getPlayersStats().toNetworkResult { response ->
             response.sections.map(::toDomain)
         }

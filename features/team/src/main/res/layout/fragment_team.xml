@@ -94,7 +94,7 @@
             app:layout_constraintStart_toStartOf="@id/teamImageView"
             app:layout_constraintTop_toBottomOf="@id/teamImageView" />
 
-        <it.laface.team.CustomViewPager
+        <it.laface.team.viewpager.CustomViewPager
             android:id="@+id/gamesViewPager"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

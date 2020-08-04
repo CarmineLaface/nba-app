@@ -1,5 +1,6 @@
 package it.laface.navigation
 
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
@@ -10,6 +11,7 @@ import it.laface.domain.navigation.NavigationInfo
 import it.laface.domain.navigation.Navigator
 import it.laface.domain.navigation.Page
 
+@Suppress("UNCHECKED_CAST")
 class NavigationHandler(
     private val activityProvider: ActivityProvider,
     private val containerViewResId: Int
@@ -33,8 +35,9 @@ class NavigationHandler(
     }
 
     private fun replace(page: Page, addToBackStack: Boolean) {
+        val fragmentClass = page.fragmentClass as? Class<out Fragment> ?: return
         manager?.commit {
-            replace(containerViewResId, page.fragmentClass, page.arguments, page.tag)
+            replace(containerViewResId, fragmentClass, page.arguments, page.tag)
             if (addToBackStack) {
                 addToBackStack(page.tag)
             }
@@ -42,8 +45,9 @@ class NavigationHandler(
     }
 
     private fun add(page: Page, addToBackStack: Boolean) {
+        val fragmentClass = page.fragmentClass as? Class<out Fragment> ?: return
         manager?.commit {
-            add(containerViewResId, page.fragmentClass, page.arguments, page.tag)
+            add(containerViewResId, fragmentClass, page.arguments, page.tag)
             if (addToBackStack) {
                 addToBackStack(page.tag)
             }

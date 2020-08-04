@@ -1,7 +1,6 @@
 package it.laface.team
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import it.laface.domain.model.NbaTeam
 import it.laface.domain.navigation.Page
 import it.laface.domain.navigation.TeamPageProvider
@@ -13,7 +12,7 @@ object TeamPageProviderImpl : TeamPageProvider {
         val arguments = Bundle(1)
         arguments.putParcelable(TeamFragment.ARGUMENT_KEY, team)
         return Page(
-            fragmentClass = fragmentClass as Class<Fragment>,
+            fragmentClass = fragmentClass,
             arguments = arguments,
             tag = fragmentClass.name
         )

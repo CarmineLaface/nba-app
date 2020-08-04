@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.observe
+import androidx.lifecycle.lifecycleScope
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.goneUnless
 import it.laface.common.view.inflater
@@ -20,10 +20,12 @@ import it.laface.domain.navigation.StatsPageProvider
 import it.laface.playerlist.databinding.FragmentPlayerListBinding
 import it.laface.playerlist.databinding.ItemPlayerBinding
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class PlayerListFragment(
     dataSource: PlayersDataSource,
-    pageProvider: PlayerDetailPageProvider,
+    playerDetailPageProvider: PlayerDetailPageProvider,
     navigator: Navigator,
     statsPageProvider: StatsPageProvider
 ) : Fragment() {
@@ -31,7 +33,7 @@ class PlayerListFragment(
     private val viewModel: PlayerListViewModel by viewModels {
         PlayerListViewModel(
             dataSource = dataSource,
-            pageProvider = pageProvider,
+            playerDetailPageProvider = playerDetailPageProvider,
             navigator = navigator,
             jobDispatcher = Dispatchers.IO,
             statsPageProvider = statsPageProvider
@@ -55,10 +57,12 @@ class PlayerListFragment(
             )
         }
         playersRecyclerView.adapter = playersAdapter
-        viewModel.contentToShow.observe(viewLifecycleOwner) {
-            bindContentToShow(it, playersAdapter)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.contentToShow.collect { contentToShow ->
+                bindContentToShow(contentToShow, playersAdapter)
+            }
+            playerNameEditText.setText(viewModel.nameToFilter.value)
         }
-        playerNameEditText.setText(viewModel.nameToFilter.value)
         playerNameEditText.doAfterTextChanged { text ->
             viewModel.setNameToFilter(text.toString())
         }

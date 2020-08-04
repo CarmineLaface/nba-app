@@ -10,24 +10,26 @@ import it.laface.common.view.BaseAdapter
 import it.laface.common.view.goneUnless
 import it.laface.common.view.inflater
 import it.laface.common.viewModels
-import it.laface.domain.CallState.Success
 import it.laface.domain.datasource.StatsDataSource
-import it.laface.domain.model.StatsGroup
+import it.laface.domain.model.StatsSection
 import it.laface.domain.navigation.Navigator
 import it.laface.statistics.databinding.FragmentStatsBinding
 import it.laface.statistics.databinding.ItemStatisticBinding
+import it.laface.statistics.detail.LeadersPageProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class StatsFragment(
     navigator: Navigator,
+    leadersPageProvider: LeadersPageProvider,
     statsDataSource: StatsDataSource
 ) : Fragment() {
 
     private val viewModel: StatsViewModel by viewModels {
         StatsViewModel(
             navigator = navigator,
+            leadersPageProvider = leadersPageProvider,
             statsDataSource = statsDataSource,
             jobDispatcher = Dispatchers.IO
         )
@@ -65,11 +67,11 @@ class StatsFragment(
 
     private fun FragmentStatsBinding.bindContentToShow(
         contentToShow: ContentToShow,
-        newsAdapter: BaseAdapter<StatsGroup>
+        newsAdapter: BaseAdapter<StatsSection>
     ) {
         if (contentToShow is ContentToShow.Success) {
             groupRecyclerView.visibility = View.VISIBLE
-            newsAdapter.list = contentToShow.statsGroup
+            newsAdapter.list = contentToShow.statsSections
         } else {
             groupRecyclerView.visibility = View.GONE
         }

@@ -1,7 +1,6 @@
 package it.laface.domain.navigation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import it.laface.domain.navigation.ForwardNavigationType.Replace
 
 sealed class NavigationInfo {
@@ -21,7 +20,7 @@ enum class ForwardNavigationType {
 }
 
 data class Page(
-    val fragmentClass: Class<Fragment>,
+    val fragmentClass: Class<*>,
     val arguments: Bundle? = null,
     val tag: String? = null
 )

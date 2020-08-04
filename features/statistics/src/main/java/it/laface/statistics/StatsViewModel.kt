@@ -4,8 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import it.laface.domain.NetworkResult
 import it.laface.domain.datasource.StatsDataSource
-import it.laface.domain.model.StatsGroup
+import it.laface.domain.model.StatsSection
 import it.laface.domain.navigation.Navigator
+import it.laface.statistics.detail.LeadersPageProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
@@ -13,6 +14,7 @@ import kotlinx.coroutines.launch
 @Suppress("EXPERIMENTAL_API_USAGE")
 class StatsViewModel(
     private val navigator: Navigator,
+    private val leadersPageProvider: LeadersPageProvider,
     private val statsDataSource: StatsDataSource,
     private val jobDispatcher: CoroutineDispatcher
 ) : ViewModel() {
@@ -36,8 +38,8 @@ class StatsViewModel(
         }
     }
 
-    fun onStatsClicked(group: StatsGroup) {
-        TODO()
+    fun onStatsClicked(section: StatsSection) {
+        navigator.navigateForward(leadersPageProvider.getLeadersPage(section))
     }
 
     fun navigateBack() {

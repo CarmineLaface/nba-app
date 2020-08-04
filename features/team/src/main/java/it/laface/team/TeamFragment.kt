@@ -1,7 +1,5 @@
 package it.laface.team
 
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +24,7 @@ import it.laface.domain.navigation.PlayerDetailPageProvider
 import it.laface.team.databinding.FragmentTeamBinding
 import it.laface.team.databinding.ItemTeamgameBinding
 import it.laface.team.databinding.ItemTeamplayerBinding
+import it.laface.team.viewpager.BasePagerAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -66,29 +65,23 @@ class TeamFragment(
 
         teamImageView.bindImage(viewModel.team.imageUrl)
 
-        teamInfoButton.setOnClickListener {
-            // TODO
-        }
+        teamInfoButton.setOnClickListener { /* TODO */ }
 
         setSchedule(gamesViewPager)
         setRoaster(rosterRecyclerView)
 
-        viewModel.team.rgbColor?.let {
-            val color = Color.parseColor(it)
-            toolbar.setBackgroundColor(color)
-            backImageView.backgroundTintList = ColorStateList.valueOf(color)
-        }
         backImageView.setOnClickListener {
             viewModel.navigateBack()
         }
     }
 
     private fun setSchedule(viewPager: ViewPager) {
-        val scheduleAdapter = BasePagerAdapter(PAGE_WIDTH_PERCENTAGE) { parent ->
-            GameViewHolder(
-                ItemTeamgameBinding.inflate(parent.inflater, parent, false)
-            )
-        }
+        val scheduleAdapter =
+            BasePagerAdapter(PAGE_WIDTH_PERCENTAGE) { parent ->
+                GameViewHolder(
+                    ItemTeamgameBinding.inflate(parent.inflater, parent, false)
+                )
+            }
         viewPager.pageMargin = resources.dpToPx(PAGE_MARGIN_DP).toInt()
         viewPager.adapter = scheduleAdapter
 
