@@ -21,7 +21,7 @@ class GameViewHolder(private val binding: ItemTeamgameBinding) :
         binding.homeTeamCityTextView.text = item.homeTeam.cityName
         binding.homeTeamNameTextView.text = item.homeTeam.nickname
         binding.homeTeamLogoImageView.bindImage(item.homeTeam.imageUrl, R.drawable.circle_grey)
-        binding.homeScoreTextView.text = item.homeScore ?: "TBD"
+        binding.homeScoreTextView.text = item.homeScore ?: "-"
 
         binding.visitorTeamCityTextView.text = item.visitorTeam.cityName
         binding.visitorTeamNameTextView.text = item.visitorTeam.nickname
@@ -29,6 +29,6 @@ class GameViewHolder(private val binding: ItemTeamgameBinding) :
             item.visitorTeam.imageUrl,
             R.drawable.circle_grey
         )
-        binding.visitorScoreTextView.text = item.visitorScore ?: "TBD"
+        binding.visitorScoreTextView.text = item.visitorScore ?: "-"
     }
 }

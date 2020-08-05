@@ -11,7 +11,12 @@ interface BrowserProvider {
 
 class BrowserProviderImpl(private val activityProvider: ActivityProvider) : BrowserProvider {
 
-    private val customTabsIntent: CustomTabsIntent by lazy(CustomTabsIntent.Builder()::build)
+    private val customTabsIntent: CustomTabsIntent by lazy(
+        CustomTabsIntent.Builder()
+            .addDefaultShareMenuItem()
+            .setShowTitle(true)
+        ::build
+    )
 
     override fun openWebPage(url: String) {
         activityProvider.currentActivity?.let { activity ->

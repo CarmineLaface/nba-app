@@ -58,7 +58,7 @@ class StatsFragment(
             viewModel.navigateBack()
         }
         groupRecyclerView.adapter = groupAdapter
-        viewLifecycleOwner.lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
             viewModel.statsCallState.collect { contentToShow ->
                 bindContentToShow(contentToShow, groupAdapter)
             }

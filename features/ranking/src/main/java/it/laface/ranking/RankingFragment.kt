@@ -58,7 +58,7 @@ class RankingFragment(
             viewPager.currentItem = tab.position
         }.attach()
 
-        viewLifecycleOwner.lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
             viewModel.rankingListsCallState.collect {
                 if (it is CallState.Success) {
                     viewPagerAdapter.list =

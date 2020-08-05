@@ -57,7 +57,7 @@ class PlayerListFragment(
             )
         }
         playersRecyclerView.adapter = playersAdapter
-        viewLifecycleOwner.lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
             viewModel.contentToShow.collect { contentToShow ->
                 bindContentToShow(contentToShow, playersAdapter)
             }

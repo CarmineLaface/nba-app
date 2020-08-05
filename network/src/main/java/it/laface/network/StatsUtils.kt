@@ -24,8 +24,8 @@ fun String.parseCustomValue(): String {
     if (contains('.').not()) return this
     val pointIndex = indexOf('.')
     return if (startsWith("0.")) {
-        substring(1, pointIndex + 3)
+        substring(1, pointIndex + 4)
     } else {
-        substring(0, pointIndex + 2)
+        substring(0, pointIndex + 3)
     }
 }

@@ -44,7 +44,7 @@ class NewsFragment(dataSource: NewsDataSource, browserProvider: BrowserProvider)
         val newsAdapter = getNewsAdapter()
         newsRecyclerView.adapter = newsAdapter
 
-        viewLifecycleOwner.lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
             viewModel.contentToShow.collect { contentToShow ->
                 bindContentToShow(contentToShow, newsAdapter)
             }

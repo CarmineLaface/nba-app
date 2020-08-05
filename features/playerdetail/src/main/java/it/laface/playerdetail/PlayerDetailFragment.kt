@@ -16,6 +16,7 @@ import it.laface.domain.model.fullName
 import it.laface.domain.model.imageUrl
 import it.laface.domain.navigation.Navigator
 import it.laface.playerdetail.databinding.FragmentPlayerBinding
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -53,7 +54,7 @@ class PlayerDetailFragment(teamRepository: TeamRepository, navigator: Navigator)
             viewModel.goBack()
         }
 
-        viewLifecycleOwner.lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
             viewModel.team.collect { team ->
                 teamNameTextView.text = team.fullName
                 team.rgbColor?.let { setTeamColor(it) }

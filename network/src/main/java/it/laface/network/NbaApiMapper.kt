@@ -59,7 +59,7 @@ class NbaApiMapper(private val api: NbaServices, private val teamRepository: Tea
 
     // TODO move this and fix including all games
     private fun mapSchedule(schedule: ScheduleLeague, teamList: List<NbaTeam>): List<Game> =
-        schedule.standardGameList.asSequence()
+        schedule.standardGameList
             .filter { gameResponse ->
                 val homeTeamId = gameResponse.homeTeam.teamId
                 val visitorTeamId = gameResponse.visitorTeam.teamId
@@ -77,5 +77,5 @@ class NbaApiMapper(private val api: NbaServices, private val teamRepository: Tea
                     homeScore = homeScore,
                     visitorScore = visitorScore
                 )
-            }.toList()
+            }
 }

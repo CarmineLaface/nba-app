@@ -85,7 +85,7 @@ class TeamFragment(
         viewPager.pageMargin = resources.dpToPx(PAGE_MARGIN_DP).toInt()
         viewPager.adapter = scheduleAdapter
 
-        viewLifecycleOwner.lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
             viewModel.scheduleCallState.collect { callState ->
                 if (callState is CallState.Success) {
                     scheduleAdapter.list = callState.result
@@ -106,7 +106,7 @@ class TeamFragment(
         recyclerView.layoutManager = GridLayoutManager(requireContext(), spans)
         recyclerView.adapter = rosterAdapter
 
-        viewLifecycleOwner.lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
             viewModel.rosterCallState.collect { callState ->
                 if (callState is CallState.Success) {
                     rosterAdapter.list = callState.result

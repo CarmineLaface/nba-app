@@ -9,13 +9,14 @@ import it.laface.common.util.requireParcelable
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.inflater
 import it.laface.common.viewModels
+import it.laface.domain.navigation.Navigator
 import it.laface.statistics.databinding.FragmentLeadersBinding
 import it.laface.statistics.databinding.ItemLeaderBinding
 
-class LeadersFragment : Fragment() {
+class LeadersFragment(navigator: Navigator) : Fragment() {
 
     private val viewModel: LeadersViewModel by viewModels {
-        LeadersViewModel(requireParcelable(STATS_ARG_KEY))
+        LeadersViewModel(requireParcelable(STATS_ARG_KEY), navigator)
     }
 
     override fun onCreateView(
@@ -32,6 +33,10 @@ class LeadersFragment : Fragment() {
 
     private fun FragmentLeadersBinding.setView() {
         titleTextView.text = viewModel.section.title
+
+        backImageView.setOnClickListener {
+            viewModel.onBackClicked()
+        }
 
         val leaderAdapter = BaseAdapter { parent ->
             LeadersViewHolder(
