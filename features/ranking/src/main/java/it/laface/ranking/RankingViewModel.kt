@@ -2,8 +2,8 @@ package it.laface.ranking
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import it.laface.domain.CallState
-import it.laface.domain.NetworkResult
+import it.laface.domain.network.CallState
+import it.laface.domain.network.NetworkResult
 import it.laface.domain.datasource.RankingDataSource
 import it.laface.domain.model.RankedTeam
 import it.laface.domain.model.RankingLists

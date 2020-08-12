@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import it.laface.common.util.BrowserProvider
+import it.laface.domain.browser.BrowserProvider
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.goneUnless
 import it.laface.common.view.inflater

@@ -2,7 +2,7 @@ package it.laface.fantanba
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
-import it.laface.common.util.BrowserProviderImpl
+import it.laface.news.BrowserProviderImpl
 import it.laface.domain.datasource.TeamRepository
 import it.laface.domain.navigation.Navigator
 import it.laface.navigation.NavigationHandler

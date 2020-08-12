@@ -2,8 +2,8 @@ package it.laface.schedule
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import it.laface.domain.CallState
-import it.laface.domain.NetworkResult
+import it.laface.domain.network.CallState
+import it.laface.domain.network.NetworkResult
 import it.laface.domain.datasource.ScheduleDataSource
 import it.laface.domain.model.Game
 import kotlinx.coroutines.CoroutineDispatcher

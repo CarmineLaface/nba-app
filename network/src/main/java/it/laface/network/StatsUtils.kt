@@ -24,8 +24,15 @@ fun String.parseCustomValue(): String {
     if (contains('.').not()) return this
     val pointIndex = indexOf('.')
     return if (startsWith("0.")) {
-        substring(1, pointIndex + 4)
+        val endIndex = pointIndex + 4
+        safeSubstring(1, endIndex)
     } else {
-        substring(0, pointIndex + 3)
+        safeSubstring(0, pointIndex + 3)
     }
 }
+
+fun String.safeSubstring(startIndex: Int, endIndex: Int): String =
+    if (endIndex > length)
+        substring(startIndex)
+    else
+        substring(startIndex, endIndex)

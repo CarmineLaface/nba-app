@@ -2,7 +2,7 @@ package it.laface.network
 
 import it.laface.api.NbaServices
 import it.laface.api.models.ScheduleLeague
-import it.laface.domain.NetworkResult
+import it.laface.domain.network.NetworkResult
 import it.laface.domain.datasource.PlayersDataSource
 import it.laface.domain.datasource.RankingDataSource
 import it.laface.domain.datasource.ScheduleDataSource

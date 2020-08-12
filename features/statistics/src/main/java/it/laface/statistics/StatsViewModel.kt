@@ -2,7 +2,7 @@ package it.laface.statistics
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import it.laface.domain.NetworkResult
+import it.laface.domain.network.NetworkResult
 import it.laface.domain.datasource.StatsDataSource
 import it.laface.domain.model.StatsSection
 import it.laface.domain.navigation.Navigator

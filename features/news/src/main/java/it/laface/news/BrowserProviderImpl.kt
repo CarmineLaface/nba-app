@@ -1,18 +1,15 @@
-package it.laface.common.util
+package it.laface.news
 
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.browser.customtabs.CustomTabsIntent.Builder
 import androidx.core.net.toUri
 import it.laface.common.ActivityProvider
-
-interface BrowserProvider {
-
-    fun openWebPage(url: String)
-}
+import it.laface.domain.browser.BrowserProvider
 
 class BrowserProviderImpl(private val activityProvider: ActivityProvider) : BrowserProvider {
 
     private val customTabsIntent: CustomTabsIntent by lazy(
-        CustomTabsIntent.Builder()
+        Builder()
             .addDefaultShareMenuItem()
             .setShowTitle(true)
         ::build

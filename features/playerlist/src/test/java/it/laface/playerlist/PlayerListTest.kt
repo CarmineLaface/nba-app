@@ -1,8 +1,8 @@
 package it.laface.playerlist
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import it.laface.domain.NetworkError
-import it.laface.domain.NetworkResult
+import it.laface.domain.network.NetworkError
+import it.laface.domain.network.NetworkResult
 import it.laface.domain.datasource.PlayersDataSource
 import it.laface.domain.model.PlayerModel
 import it.laface.test.mock
@@ -30,7 +30,8 @@ class PlayerListTest {
         NetworkResult.Success(playerList)
     private val viewModel = PlayerListViewModel(nbaDataSource, Dispatchers.Unconfined)
 
-    private fun errorResponse() = NetworkResult.Error(NetworkError.Timeout)
+    private fun errorResponse() = NetworkResult.Error(
+        NetworkError.Timeout)
 
     // region -------------------- base tests --------------------
 

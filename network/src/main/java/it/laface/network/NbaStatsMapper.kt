@@ -1,8 +1,8 @@
 package it.laface.network
 
 import it.laface.api.NbaStats
-import it.laface.domain.NetworkResult
-import it.laface.domain.NetworkResult.Success
+import it.laface.domain.network.NetworkResult
+import it.laface.domain.network.NetworkResult.Success
 import it.laface.domain.datasource.StatsDataSource
 import it.laface.domain.model.StatsSection
 

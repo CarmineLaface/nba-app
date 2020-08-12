@@ -1,4 +1,4 @@
-package it.laface.domain
+package it.laface.domain.network
 
 sealed class CallState<out T> {
 

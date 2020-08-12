@@ -1,7 +1,7 @@
 package it.laface.network
 
-import it.laface.domain.NetworkError
-import it.laface.domain.NetworkResult
+import it.laface.domain.network.NetworkError
+import it.laface.domain.network.NetworkResult
 import it.laface.network.IOExceptionInterceptor.Companion.GENERIC_EXCEPTION_STATUS_CODE
 import it.laface.network.IOExceptionInterceptor.Companion.MISSING_CONNECTION_STATUS_CODE
 import it.laface.network.IOExceptionInterceptor.Companion.TIMEOUT_STATUS_CODE

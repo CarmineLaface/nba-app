@@ -1,6 +1,6 @@
 package it.laface.playerlist
 
-import it.laface.domain.CallState
+import it.laface.domain.network.CallState
 import it.laface.domain.model.PlayerModel
 import it.laface.domain.model.fullName
 
