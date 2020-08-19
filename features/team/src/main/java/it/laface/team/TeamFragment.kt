@@ -15,12 +15,12 @@ import it.laface.common.view.bindImage
 import it.laface.common.view.dpToPx
 import it.laface.common.view.inflater
 import it.laface.common.viewModels
-import it.laface.domain.network.CallState
 import it.laface.domain.datasource.ScheduleDataSource
 import it.laface.domain.datasource.TeamRosterDataSource
 import it.laface.domain.model.imageUrl
 import it.laface.domain.navigation.Navigator
 import it.laface.domain.navigation.PlayerDetailPageProvider
+import it.laface.domain.network.CallState
 import it.laface.team.databinding.FragmentTeamBinding
 import it.laface.team.databinding.ItemTeamgameBinding
 import it.laface.team.databinding.ItemTeamplayerBinding

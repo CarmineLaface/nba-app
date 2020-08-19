@@ -2,13 +2,13 @@ package it.laface.playerlist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import it.laface.domain.network.CallState
-import it.laface.domain.network.NetworkResult
 import it.laface.domain.datasource.PlayersDataSource
 import it.laface.domain.model.PlayerModel
 import it.laface.domain.navigation.Navigator
 import it.laface.domain.navigation.PlayerDetailPageProvider
 import it.laface.domain.navigation.StatsPageProvider
+import it.laface.domain.network.CallState
+import it.laface.domain.network.NetworkResult
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow

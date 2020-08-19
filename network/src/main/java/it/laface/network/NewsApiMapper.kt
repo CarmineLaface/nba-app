@@ -1,9 +1,9 @@
 package it.laface.network
 
 import it.laface.api.NbaNews
-import it.laface.domain.network.NetworkResult
 import it.laface.domain.datasource.NewsDataSource
 import it.laface.domain.model.Article
+import it.laface.domain.network.NetworkResult
 
 class NewsApiMapper(private val newsApi: NbaNews) :
     NewsDataSource {

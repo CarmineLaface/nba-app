@@ -1,23 +1,6 @@
 package it.laface.playerlist
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import it.laface.domain.network.NetworkError
-import it.laface.domain.network.NetworkResult
-import it.laface.domain.datasource.PlayersDataSource
-import it.laface.domain.model.PlayerModel
-import it.laface.test.mock
-import it.laface.test.shouldBe
-import it.laface.test.thenReturn
-import it.laface.test.whenever
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Assert.assertEquals
-import org.junit.Rule
-import org.junit.Test
-
-@ExperimentalCoroutinesApi
+/*@ExperimentalCoroutinesApi
 class PlayerListTest {
 
     @Rule
@@ -31,7 +14,8 @@ class PlayerListTest {
     private val viewModel = PlayerListViewModel(nbaDataSource, Dispatchers.Unconfined)
 
     private fun errorResponse() = NetworkResult.Error(
-        NetworkError.Timeout)
+        NetworkError.Timeout
+    )
 
     // region -------------------- base tests --------------------
 
@@ -147,4 +131,4 @@ class PlayerListTest {
     }
 
     // endregion
-}
+}*/

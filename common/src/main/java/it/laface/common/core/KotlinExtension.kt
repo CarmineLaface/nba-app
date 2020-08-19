@@ -6,3 +6,8 @@ package it.laface.common.core
  */
 val <T> T.exhaustive: T
     get() = this
+
+inline fun <T> T.applyIf(predicate: Boolean, block: T.() -> Unit): T {
+    if (predicate) apply(block)
+    return this
+}

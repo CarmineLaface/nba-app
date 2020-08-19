@@ -2,7 +2,6 @@ package it.laface.fantanba
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
-import it.laface.news.BrowserProviderImpl
 import it.laface.domain.datasource.TeamRepository
 import it.laface.domain.navigation.Navigator
 import it.laface.navigation.NavigationHandler
@@ -11,6 +10,7 @@ import it.laface.network.NbaStatsMapper
 import it.laface.network.NetworkManager
 import it.laface.network.NewsApiMapper
 import it.laface.network.TeamRepositoryImpl
+import it.laface.news.BrowserProviderImpl
 import it.laface.news.NewsFragment
 import it.laface.playerdetail.PlayerDetailFragment
 import it.laface.playerdetail.PlayerPageProvider

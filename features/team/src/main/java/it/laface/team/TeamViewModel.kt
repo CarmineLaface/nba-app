@@ -2,8 +2,6 @@ package it.laface.team
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import it.laface.domain.network.CallState
-import it.laface.domain.network.NetworkResult
 import it.laface.domain.datasource.ScheduleDataSource
 import it.laface.domain.datasource.TeamRosterDataSource
 import it.laface.domain.model.Game
@@ -11,6 +9,8 @@ import it.laface.domain.model.NbaTeam
 import it.laface.domain.model.PlayerModel
 import it.laface.domain.navigation.Navigator
 import it.laface.domain.navigation.PlayerDetailPageProvider
+import it.laface.domain.network.CallState
+import it.laface.domain.network.NetworkResult
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch

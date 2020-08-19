@@ -34,7 +34,7 @@ dependencies {
     api project(":common")
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation "androidx.appcompat:appcompat:${versions.appcompat}"
     implementation "androidx.core:core-ktx:${versions.core}"
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
     implementation "com.google.android.material:material:${versions.material}"

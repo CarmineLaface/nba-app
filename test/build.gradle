@@ -33,12 +33,12 @@ dependencies {
 
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.okhttp3:okhttp:4.8.0'
+    implementation "com.squareup.okhttp3:okhttp:${versions.okhttp}"
 
     //Json Converter
     implementation 'com.google.code.gson:gson:2.8.6'
 
     //Test
     implementation 'junit:junit:4.13'
-    implementation 'org.mockito:mockito-core:3.4.6'
+    implementation 'org.mockito:mockito-core:3.5.2'
 }

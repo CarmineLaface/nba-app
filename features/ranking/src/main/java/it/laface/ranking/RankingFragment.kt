@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayoutMediator
 import it.laface.common.view.BaseAdapter
 import it.laface.common.viewModels
-import it.laface.domain.network.CallState
 import it.laface.domain.datasource.RankingDataSource
 import it.laface.domain.navigation.Navigator
 import it.laface.domain.navigation.TeamPageProvider
+import it.laface.domain.network.CallState
 import it.laface.ranking.databinding.FragmentRankingBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect

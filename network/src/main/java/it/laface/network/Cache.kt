@@ -10,6 +10,6 @@ object Cache {
 
     val teamList2: List<NbaTeam> by lazy {
         val listType: Type = object : TypeToken<List<NbaTeam>>() {}.type
-        Gson().fromJson<List<NbaTeam>>(jsonTeamList, listType)
+        Gson().fromJson(jsonTeamList, listType)
     }
 }

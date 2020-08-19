@@ -2,7 +2,6 @@ package it.laface.network
 
 import it.laface.api.NbaServices
 import it.laface.api.models.ScheduleLeague
-import it.laface.domain.network.NetworkResult
 import it.laface.domain.datasource.PlayersDataSource
 import it.laface.domain.datasource.RankingDataSource
 import it.laface.domain.datasource.ScheduleDataSource
@@ -12,6 +11,7 @@ import it.laface.domain.model.Game
 import it.laface.domain.model.NbaTeam
 import it.laface.domain.model.PlayerModel
 import it.laface.domain.model.RankingLists
+import it.laface.domain.network.NetworkResult
 
 class NbaApiMapper(private val api: NbaServices, private val teamRepository: TeamRepository) :
     PlayersDataSource,

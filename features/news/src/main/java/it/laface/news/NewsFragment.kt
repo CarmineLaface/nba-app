@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import it.laface.domain.browser.BrowserProvider
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.goneUnless
 import it.laface.common.view.inflater
 import it.laface.common.viewModels
+import it.laface.domain.browser.BrowserProvider
 import it.laface.domain.datasource.NewsDataSource
 import it.laface.domain.model.Article
 import it.laface.news.databinding.FragmentNewsBinding
