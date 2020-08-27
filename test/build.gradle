@@ -40,5 +40,5 @@ dependencies {
 
     //Test
     implementation 'junit:junit:4.13'
-    implementation 'org.mockito:mockito-core:3.5.2'
+    implementation 'org.mockito:mockito-core:3.5.5'
 }

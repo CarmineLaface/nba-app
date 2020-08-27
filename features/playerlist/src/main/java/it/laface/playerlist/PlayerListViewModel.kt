@@ -27,6 +27,7 @@ class PlayerListViewModel(
     private val playerListCallState: MutableStateFlow<CallState<List<PlayerModel>>> =
         MutableStateFlow(CallState.NotStarted)
     val nameToFilter: MutableStateFlow<String> = MutableStateFlow("")
+
     val contentToShow: Flow<ContentToShow> =
         playerListCallState.combine(nameToFilter) { callState, nameToFilter ->
             mapContentToShow(callState, nameToFilter)
@@ -58,9 +59,7 @@ class PlayerListViewModel(
     }
 
     fun setNameToFilter(text: String) {
-        if (text != nameToFilter.value) {
-            nameToFilter.value = text
-        }
+        nameToFilter.value = text
     }
 
     fun goToStatsPage() {
