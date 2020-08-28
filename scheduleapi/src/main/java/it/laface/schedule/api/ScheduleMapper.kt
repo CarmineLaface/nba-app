@@ -7,7 +7,10 @@ import it.laface.schedule.domain.Game
 import it.laface.schedule.domain.ScheduleDataSource
 import it.laface.team.domain.TeamRepository
 
-class ScheduleMapper(private val service: ScheduleService, private val teamRepository: TeamRepository): ScheduleDataSource {
+class ScheduleMapper(
+    private val service: ScheduleService,
+    private val teamRepository: TeamRepository
+) : ScheduleDataSource {
 
     override suspend fun getTeamSchedule(team: NbaTeam): NetworkResult<List<Game>> {
         return service.teamSchedule(team.id).toNetworkResult { response ->

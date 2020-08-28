@@ -4,10 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import it.laface.base.NetworkResult
 import it.laface.navigation.Navigator
-import it.laface.stats.domain.LeadersPageProvider
 import it.laface.statistics.group.ContentToShow.Error
 import it.laface.statistics.group.ContentToShow.Loading
 import it.laface.statistics.group.ContentToShow.Success
+import it.laface.stats.domain.LeadersPageProvider
 import it.laface.stats.domain.StatsDataSource
 import it.laface.stats.domain.StatsSection
 import kotlinx.coroutines.CoroutineDispatcher

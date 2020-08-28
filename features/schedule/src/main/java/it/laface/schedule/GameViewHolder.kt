@@ -4,8 +4,8 @@ import it.laface.common.view.BaseViewHolder
 import it.laface.common.view.bindImage
 import it.laface.domain.model.fullName
 import it.laface.domain.model.imageUrl
-import it.laface.schedule.domain.Game
 import it.laface.schedule.databinding.ItemGameBinding
+import it.laface.schedule.domain.Game
 
 class GameViewHolder(
     private val binding: ItemGameBinding

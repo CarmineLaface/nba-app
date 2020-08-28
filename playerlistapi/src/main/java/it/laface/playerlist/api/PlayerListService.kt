@@ -9,5 +9,5 @@ interface PlayerListService {
 
     @GET("/prod/v1/{year}/players.json")
     suspend fun playerList(@Path(value = "year") year: String = nbaSeason):
-            Response<PlayerListResponse>
+        Response<PlayerListResponse>
 }

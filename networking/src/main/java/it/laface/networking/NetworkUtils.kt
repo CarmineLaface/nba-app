@@ -2,12 +2,12 @@ package it.laface.networking
 
 import it.laface.base.NetworkError
 import it.laface.base.NetworkResult
-import retrofit2.Response
-import java.net.HttpURLConnection.HTTP_BAD_REQUEST
-import java.net.HttpURLConnection.HTTP_INTERNAL_ERROR
 import it.laface.networking.IOExceptionInterceptor.Companion.GENERIC_EXCEPTION_STATUS_CODE
 import it.laface.networking.IOExceptionInterceptor.Companion.MISSING_CONNECTION_STATUS_CODE
 import it.laface.networking.IOExceptionInterceptor.Companion.TIMEOUT_STATUS_CODE
+import retrofit2.Response
+import java.net.HttpURLConnection.HTTP_BAD_REQUEST
+import java.net.HttpURLConnection.HTTP_INTERNAL_ERROR
 
 inline fun <T, R> Response<T>.toNetworkResult(block: (T) -> R): NetworkResult<R> {
     val body = body()

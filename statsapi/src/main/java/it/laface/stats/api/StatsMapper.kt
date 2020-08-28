@@ -7,7 +7,7 @@ import it.laface.stats.domain.Leader
 import it.laface.stats.domain.StatsDataSource
 import it.laface.stats.domain.StatsSection
 
-class StatsMapper(private val service: StatsService): StatsDataSource {
+class StatsMapper(private val service: StatsService) : StatsDataSource {
 
     override suspend fun getLeaders(): NetworkResult<List<StatsSection>> {
         val playerStats = service.getPlayersStats().toNetworkResult { response ->

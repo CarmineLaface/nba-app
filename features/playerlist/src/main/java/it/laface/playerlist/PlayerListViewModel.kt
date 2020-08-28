@@ -4,10 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import it.laface.base.CallState
 import it.laface.base.NetworkResult
-import it.laface.playerlist.domain.PlayersDataSource
 import it.laface.domain.model.PlayerModel
-import it.laface.player.domain.PlayerDetailPageProvider
 import it.laface.navigation.Navigator
+import it.laface.player.domain.PlayerDetailPageProvider
+import it.laface.playerlist.domain.PlayersDataSource
 import it.laface.stats.domain.StatsPageProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow

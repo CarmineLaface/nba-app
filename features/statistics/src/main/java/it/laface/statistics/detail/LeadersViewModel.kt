@@ -1,8 +1,8 @@
 package it.laface.statistics.detail
 
 import androidx.lifecycle.ViewModel
-import it.laface.stats.domain.StatsSection
 import it.laface.navigation.Navigator
+import it.laface.stats.domain.StatsSection
 
 class LeadersViewModel(
     val section: StatsSection,

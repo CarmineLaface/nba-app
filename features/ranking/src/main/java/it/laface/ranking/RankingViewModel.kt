@@ -2,13 +2,13 @@ package it.laface.ranking
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import it.laface.domain.datasource.RankingDataSource
-import it.laface.domain.model.RankedTeam
-import it.laface.domain.model.RankingLists
-import it.laface.domain.navigation.Navigator
-import it.laface.domain.navigation.TeamPageProvider
-import it.laface.domain.network.CallState
-import it.laface.domain.network.NetworkResult
+import it.laface.base.CallState
+import it.laface.base.NetworkResult
+import it.laface.navigation.Navigator
+import it.laface.ranking.domain.RankedTeam
+import it.laface.ranking.domain.RankingDataSource
+import it.laface.ranking.domain.RankingLists
+import it.laface.team.domain.TeamPageProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch

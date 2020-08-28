@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import it.laface.navigation.SnackbarDuration.Indefinite
-import it.laface.navigation.SnackbarDuration.Short
 import it.laface.navigation.SnackbarDuration.Long
+import it.laface.navigation.SnackbarDuration.Short
 
-fun Page.getBundle() : Bundle? =
+fun Page.getBundle(): Bundle? =
     arguments?.let { bundleOf(it) }
 
 typealias SimpleCallback = () -> Unit

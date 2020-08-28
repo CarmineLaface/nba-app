@@ -9,7 +9,7 @@ interface ScheduleService {
 
     @GET("/prod/v2/{year}/schedule.json")
     suspend fun leagueSchedule(@Path(value = "year") year: String = nbaSeason):
-            Response<ScheduleResponse>
+        Response<ScheduleResponse>
 
     @GET("/prod/v1/{year}/teams/{teamId}/schedule.json")
     suspend fun teamSchedule(

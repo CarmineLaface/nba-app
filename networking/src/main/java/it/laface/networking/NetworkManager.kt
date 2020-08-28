@@ -23,7 +23,7 @@ inline fun <reified T> getApiService(
         .create(T::class.java)
 }
 
-fun getClient(vararg interceptors: Interceptor) : OkHttpClient =
+fun getClient(vararg interceptors: Interceptor): OkHttpClient =
     OkHttpClient.Builder()
         .addInterceptor(IOExceptionInterceptor())
         .apply {

@@ -8,13 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayoutMediator
+import it.laface.base.CallState
 import it.laface.common.view.BaseAdapter
 import it.laface.common.viewModels
-import it.laface.domain.datasource.RankingDataSource
-import it.laface.domain.navigation.Navigator
-import it.laface.domain.navigation.TeamPageProvider
-import it.laface.domain.network.CallState
+import it.laface.navigation.Navigator
 import it.laface.ranking.databinding.FragmentRankingBinding
+import it.laface.ranking.domain.RankingDataSource
+import it.laface.team.domain.TeamPageProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch

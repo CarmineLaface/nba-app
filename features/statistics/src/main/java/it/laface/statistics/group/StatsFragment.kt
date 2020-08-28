@@ -10,14 +10,14 @@ import it.laface.common.view.BaseAdapter
 import it.laface.common.view.goneUnless
 import it.laface.common.view.inflater
 import it.laface.common.viewModels
-import it.laface.stats.domain.StatsSection
 import it.laface.navigation.Navigator
 import it.laface.statistics.databinding.FragmentStatsBinding
 import it.laface.statistics.databinding.ItemStatisticBinding
-import it.laface.stats.domain.LeadersPageProvider
 import it.laface.statistics.group.ContentToShow.Loading
 import it.laface.statistics.group.ContentToShow.Success
+import it.laface.stats.domain.LeadersPageProvider
 import it.laface.stats.domain.StatsDataSource
+import it.laface.stats.domain.StatsSection
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch

@@ -4,9 +4,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
+import it.laface.common.ActivityProvider
 import it.laface.navigation.ForwardNavigationType.Add
 import it.laface.navigation.ForwardNavigationType.Replace
-import it.laface.common.ActivityProvider
 
 @Suppress("UNCHECKED_CAST")
 class NavigationHandler(

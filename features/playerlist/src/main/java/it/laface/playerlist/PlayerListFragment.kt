@@ -12,12 +12,12 @@ import it.laface.common.view.BaseAdapter
 import it.laface.common.view.goneUnless
 import it.laface.common.view.inflater
 import it.laface.common.viewModels
-import it.laface.playerlist.domain.PlayersDataSource
 import it.laface.domain.model.PlayerModel
-import it.laface.player.domain.PlayerDetailPageProvider
 import it.laface.navigation.Navigator
+import it.laface.player.domain.PlayerDetailPageProvider
 import it.laface.playerlist.databinding.FragmentPlayerListBinding
 import it.laface.playerlist.databinding.ItemPlayerBinding
+import it.laface.playerlist.domain.PlayersDataSource
 import it.laface.stats.domain.StatsPageProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect

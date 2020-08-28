@@ -4,11 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import it.laface.base.CallState
 import it.laface.base.NetworkResult
-import it.laface.schedule.domain.Game
 import it.laface.domain.model.NbaTeam
 import it.laface.domain.model.PlayerModel
-import it.laface.player.domain.PlayerDetailPageProvider
 import it.laface.navigation.Navigator
+import it.laface.player.domain.PlayerDetailPageProvider
+import it.laface.schedule.domain.Game
 import it.laface.schedule.domain.ScheduleDataSource
 import it.laface.team.domain.TeamRosterDataSource
 import kotlinx.coroutines.CoroutineDispatcher

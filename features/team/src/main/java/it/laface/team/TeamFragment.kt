@@ -17,8 +17,8 @@ import it.laface.common.view.dpToPx
 import it.laface.common.view.inflater
 import it.laface.common.viewModels
 import it.laface.domain.model.imageUrl
-import it.laface.player.domain.PlayerDetailPageProvider
 import it.laface.navigation.Navigator
+import it.laface.player.domain.PlayerDetailPageProvider
 import it.laface.schedule.domain.ScheduleDataSource
 import it.laface.team.databinding.FragmentTeamBinding
 import it.laface.team.databinding.ItemTeamgameBinding
@@ -33,7 +33,7 @@ class TeamFragment(
     rosterDataSource: TeamRosterDataSource,
     scheduleDataSource: ScheduleDataSource,
     navigator: Navigator,
-    playerPageProvider: it.laface.player.domain.PlayerDetailPageProvider
+    playerPageProvider: PlayerDetailPageProvider
 ) : Fragment() {
 
     private val viewModel: TeamViewModel by viewModels {

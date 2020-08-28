@@ -20,10 +20,10 @@ import it.laface.ranking.api.RankingMapper
 import it.laface.schedule.ScheduleFragment
 import it.laface.schedule.api.ScheduleApi
 import it.laface.schedule.api.ScheduleMapper
-import it.laface.statistics.group.StatsFragment
-import it.laface.statistics.group.StatsPageProviderImpl
 import it.laface.statistics.detail.LeadersFragment
 import it.laface.statistics.detail.LeadersPageProviderImpl
+import it.laface.statistics.group.StatsFragment
+import it.laface.statistics.group.StatsPageProviderImpl
 import it.laface.stats.api.StatsApi
 import it.laface.stats.api.StatsMapper
 import it.laface.team.TeamFragment

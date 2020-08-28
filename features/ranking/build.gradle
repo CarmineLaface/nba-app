@@ -34,7 +34,8 @@ android {
 
 dependencies {
     api project(":common")
-    api project(":domain")
+    api project(":rankingdomain")
+    api project(":teamdomain")
 
     //Android core
     implementation "androidx.appcompat:appcompat:${versions.appcompat}"

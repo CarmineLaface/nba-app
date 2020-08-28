@@ -7,7 +7,7 @@ import it.laface.ranking.domain.RankedTeam
 import it.laface.ranking.domain.RankingDataSource
 import it.laface.ranking.domain.RankingLists
 
-class RankingMapper(private val service: RankingService): RankingDataSource {
+class RankingMapper(private val service: RankingService) : RankingDataSource {
 
     override suspend fun getRanking(): NetworkResult<RankingLists> =
         service.ranking().toNetworkResult { response ->

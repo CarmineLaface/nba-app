@@ -2,9 +2,9 @@ package it.laface.statistics.detail
 
 import it.laface.common.view.BaseViewHolder
 import it.laface.common.view.bindImage
-import it.laface.stats.domain.Leader
 import it.laface.domain.model.getPlayerImageUrl
 import it.laface.statistics.databinding.ItemLeaderBinding
+import it.laface.stats.domain.Leader
 
 class LeadersViewHolder(
     private val binding: ItemLeaderBinding,

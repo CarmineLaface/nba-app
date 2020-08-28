@@ -36,6 +36,7 @@ dependencies {
     api project(":common")
     api project(":domain")
     api project(":teamdomain")
+    api project(":playerdomain")
     api project(":scheduledomain")
     api project(":navpublic")
 

@@ -2,11 +2,11 @@ package it.laface.ranking
 
 import it.laface.common.view.BaseViewHolder
 import it.laface.common.view.bindImage
-import it.laface.domain.model.RankedTeam
 import it.laface.domain.model.fullName
 import it.laface.domain.model.imageUrl
 import it.laface.ranking.R.drawable
 import it.laface.ranking.databinding.ItemTeamBinding
+import it.laface.ranking.domain.RankedTeam
 
 class TeamViewHolder(private val binding: ItemTeamBinding, onItemClicked: (RankedTeam) -> Unit) :
     BaseViewHolder<RankedTeam>(binding.root, onItemClicked) {

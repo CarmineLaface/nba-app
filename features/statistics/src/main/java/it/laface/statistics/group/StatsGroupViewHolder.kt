@@ -2,9 +2,9 @@ package it.laface.statistics.group
 
 import it.laface.common.view.BaseViewHolder
 import it.laface.common.view.bindImage
-import it.laface.stats.domain.StatsSection
 import it.laface.domain.model.getPlayerImageUrl
 import it.laface.statistics.databinding.ItemStatisticBinding
+import it.laface.stats.domain.StatsSection
 
 class StatsGroupViewHolder(
     private val binding: ItemStatisticBinding,

@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.BaseViewHolder
 import it.laface.common.view.inflater
-import it.laface.domain.model.RankedTeam
 import it.laface.ranking.databinding.ItemTeamBinding
+import it.laface.ranking.domain.RankedTeam
 
 class RankingViewHolder(contentView: RecyclerView, onTeamClicked: (RankedTeam) -> Unit) :
     BaseViewHolder<List<RankedTeam>>(contentView) {

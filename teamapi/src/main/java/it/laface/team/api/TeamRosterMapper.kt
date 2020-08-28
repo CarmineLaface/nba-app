@@ -6,7 +6,7 @@ import it.laface.domain.model.PlayerModel
 import it.laface.networking.toNetworkResult
 import it.laface.team.domain.TeamRosterDataSource
 
-class TeamRosterMapper(private val service: TeamRosterService): TeamRosterDataSource {
+class TeamRosterMapper(private val service: TeamRosterService) : TeamRosterDataSource {
 
     override suspend fun getRoster(team: NbaTeam): NetworkResult<List<PlayerModel>> =
         service.teamRoster(team.code).toNetworkResult { response ->
