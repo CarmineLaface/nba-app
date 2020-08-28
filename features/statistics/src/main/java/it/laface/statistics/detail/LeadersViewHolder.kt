@@ -2,16 +2,16 @@ package it.laface.statistics.detail
 
 import it.laface.common.view.BaseViewHolder
 import it.laface.common.view.bindImage
-import it.laface.domain.model.Leader
+import it.laface.stats.domain.Leader
 import it.laface.domain.model.getPlayerImageUrl
 import it.laface.statistics.databinding.ItemLeaderBinding
 
 class LeadersViewHolder(
     private val binding: ItemLeaderBinding,
-    onItemClicked: (Leader) -> Unit
-) : BaseViewHolder<Leader>(binding.root, onItemClicked) {
+    onItemClicked: (it.laface.stats.domain.Leader) -> Unit
+) : BaseViewHolder<it.laface.stats.domain.Leader>(binding.root, onItemClicked) {
 
-    override fun bind(item: Leader) {
+    override fun bind(item: it.laface.stats.domain.Leader) {
         super.bind(item)
 
         binding.nameTextView.text = item.playerName

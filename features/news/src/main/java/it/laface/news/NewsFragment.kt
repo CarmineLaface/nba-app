@@ -10,11 +10,11 @@ import it.laface.common.view.BaseAdapter
 import it.laface.common.view.goneUnless
 import it.laface.common.view.inflater
 import it.laface.common.viewModels
-import it.laface.domain.browser.BrowserProvider
-import it.laface.domain.datasource.NewsDataSource
-import it.laface.domain.model.Article
 import it.laface.news.databinding.FragmentNewsBinding
 import it.laface.news.databinding.ItemNewsBinding
+import it.laface.news.domain.Article
+import it.laface.news.domain.BrowserProvider
+import it.laface.news.domain.NewsDataSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch

@@ -34,7 +34,8 @@ android {
 
 dependencies {
     api project(":common")
-    api project(":domain")
+    api project(":statsdomain")
+    api project(":navpublic")
 
     //Android core
     implementation "androidx.appcompat:appcompat:${versions.appcompat}"

@@ -2,15 +2,15 @@ package it.laface.team
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import it.laface.domain.datasource.ScheduleDataSource
-import it.laface.domain.datasource.TeamRosterDataSource
-import it.laface.domain.model.Game
+import it.laface.base.CallState
+import it.laface.base.NetworkResult
+import it.laface.schedule.domain.Game
 import it.laface.domain.model.NbaTeam
 import it.laface.domain.model.PlayerModel
-import it.laface.domain.navigation.Navigator
-import it.laface.domain.navigation.PlayerDetailPageProvider
-import it.laface.domain.network.CallState
-import it.laface.domain.network.NetworkResult
+import it.laface.player.domain.PlayerDetailPageProvider
+import it.laface.navigation.Navigator
+import it.laface.schedule.domain.ScheduleDataSource
+import it.laface.team.domain.TeamRosterDataSource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
@@ -23,7 +23,7 @@ class TeamViewModel(
     private val scheduleDataSource: ScheduleDataSource,
     private val jobDispatcher: CoroutineDispatcher,
     private val navigator: Navigator,
-    private val playerPageProvider: PlayerDetailPageProvider
+    private val playerPageProvider: it.laface.player.domain.PlayerDetailPageProvider
 ) : ViewModel() {
 
     val rosterCallState: MutableStateFlow<CallState<List<PlayerModel>>> =

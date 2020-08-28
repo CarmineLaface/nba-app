@@ -3,10 +3,10 @@ package it.laface.playerdetail
 import android.os.Bundle
 import it.laface.domain.model.PlayerModel
 import it.laface.domain.navigation.Page
-import it.laface.domain.navigation.PlayerDetailPageProvider
+import it.laface.player.domain.PlayerDetailPageProvider
 
 @Suppress("UNCHECKED_CAST")
-object PlayerPageProvider : PlayerDetailPageProvider {
+object PlayerPageProvider : it.laface.player.domain.PlayerDetailPageProvider {
 
     override fun getPlayerDetailPage(player: PlayerModel): Page {
         val fragmentClass = PlayerDetailFragment::class.java

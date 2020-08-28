@@ -4,7 +4,7 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.browser.customtabs.CustomTabsIntent.Builder
 import androidx.core.net.toUri
 import it.laface.common.ActivityProvider
-import it.laface.domain.browser.BrowserProvider
+import it.laface.news.domain.BrowserProvider
 
 class BrowserProviderImpl(private val activityProvider: ActivityProvider) : BrowserProvider {
 

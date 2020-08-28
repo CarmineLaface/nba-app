@@ -39,7 +39,10 @@ android {
 
 dependencies {
     api project(":common")
-    api project(":domain")
+    api project(":playerdomain")
+    api project(":playerlistdomain")
+    api project(":statsdomain")
+    api project(":navpublic")
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
@@ -55,7 +58,7 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     implementation "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
 
-    testImplementation project(":test")
+    /*testImplementation project(":test")
     testImplementation 'junit:junit:4.13'
     testImplementation "org.robolectric:robolectric:4.4.0"
     debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
@@ -67,5 +70,5 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test:rules:1.2.0'
+    androidTestImplementation 'androidx.test:rules:1.2.0'*/
 }

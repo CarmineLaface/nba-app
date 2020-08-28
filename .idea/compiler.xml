@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.8" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="nba-app.api" target="11" />
+      <module name="nba-app.app" target="11" />
+      <module name="nba-app.common" target="11" />
+      <module name="nba-app.domain" target="11" />
+      <module name="nba-app.features.news" target="11" />
+      <module name="nba-app.features.playerdetail" target="11" />
+      <module name="nba-app.features.playerlist" target="11" />
+      <module name="nba-app.features.ranking" target="11" />
+      <module name="nba-app.features.schedule" target="11" />
+      <module name="nba-app.features.statistics" target="11" />
+      <module name="nba-app.features.team" target="11" />
+      <module name="nba-app.navigation" target="11" />
+      <module name="nba-app.navimpl" target="11" />
+      <module name="nba-app.network" target="11" />
+      <module name="nba-app.newsapi" target="11" />
+      <module name="nba-app.newsdomain" target="11" />
+      <module name="nba-app.playerdomain" target="11" />
+      <module name="nba-app.playerlistapi" target="11" />
+      <module name="nba-app.playerlistdomain" target="11" />
+      <module name="nba-app.rankingapi" target="11" />
+      <module name="nba-app.rankingdomain" target="11" />
+      <module name="nba-app.scheduleapi" target="11" />
+      <module name="nba-app.scheduledomain" target="11" />
+      <module name="nba-app.statsapi" target="11" />
+      <module name="nba-app.statsdomain" target="11" />
+      <module name="nba-app.teamapi" target="11" />
+      <module name="nba-app.teamdomain" target="11" />
+      <module name="nba-app.test" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

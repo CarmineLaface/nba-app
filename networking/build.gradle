@@ -1,0 +1,21 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+    id 'io.gitlab.arturbosch.detekt'
+}
+apply from: '../ktlint.gradle'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    api project(":base")
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    api 'com.squareup.retrofit2:retrofit:2.9.0'
+    api "com.squareup.okhttp3:okhttp:${versions.okhttp}"
+    api 'com.squareup.retrofit2:converter-gson:2.9.0'
+}

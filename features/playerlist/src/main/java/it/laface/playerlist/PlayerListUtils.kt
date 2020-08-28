@@ -1,8 +1,8 @@
 package it.laface.playerlist
 
+import it.laface.base.CallState
 import it.laface.domain.model.PlayerModel
 import it.laface.domain.model.fullName
-import it.laface.domain.network.CallState
 
 fun mapContentToShow(
     playerListCallState: CallState<List<PlayerModel>>,

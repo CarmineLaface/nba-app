@@ -9,21 +9,21 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
+import it.laface.base.CallState
 import it.laface.common.util.requireParcelable
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.bindImage
 import it.laface.common.view.dpToPx
 import it.laface.common.view.inflater
 import it.laface.common.viewModels
-import it.laface.domain.datasource.ScheduleDataSource
-import it.laface.domain.datasource.TeamRosterDataSource
 import it.laface.domain.model.imageUrl
-import it.laface.domain.navigation.Navigator
-import it.laface.domain.navigation.PlayerDetailPageProvider
-import it.laface.domain.network.CallState
+import it.laface.player.domain.PlayerDetailPageProvider
+import it.laface.navigation.Navigator
+import it.laface.schedule.domain.ScheduleDataSource
 import it.laface.team.databinding.FragmentTeamBinding
 import it.laface.team.databinding.ItemTeamgameBinding
 import it.laface.team.databinding.ItemTeamplayerBinding
+import it.laface.team.domain.TeamRosterDataSource
 import it.laface.team.viewpager.BasePagerAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -33,7 +33,7 @@ class TeamFragment(
     rosterDataSource: TeamRosterDataSource,
     scheduleDataSource: ScheduleDataSource,
     navigator: Navigator,
-    playerPageProvider: PlayerDetailPageProvider
+    playerPageProvider: it.laface.player.domain.PlayerDetailPageProvider
 ) : Fragment() {
 
     private val viewModel: TeamViewModel by viewModels {

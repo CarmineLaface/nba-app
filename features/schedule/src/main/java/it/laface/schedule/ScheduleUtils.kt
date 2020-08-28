@@ -1,8 +1,8 @@
 package it.laface.schedule
 
+import it.laface.base.CallState
 import it.laface.common.util.isSameDay
-import it.laface.domain.model.Game
-import it.laface.domain.network.CallState
+import it.laface.schedule.domain.Game
 import kotlinx.coroutines.flow.FlowCollector
 import java.util.Date
 

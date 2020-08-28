@@ -11,11 +11,11 @@ import androidx.lifecycle.lifecycleScope
 import it.laface.common.util.requireParcelable
 import it.laface.common.view.bindImage
 import it.laface.common.viewModels
-import it.laface.domain.datasource.TeamRepository
 import it.laface.domain.model.fullName
 import it.laface.domain.model.imageUrl
-import it.laface.domain.navigation.Navigator
+import it.laface.navigation.Navigator
 import it.laface.playerdetail.databinding.FragmentPlayerBinding
+import it.laface.team.domain.TeamRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch

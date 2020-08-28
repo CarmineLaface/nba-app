@@ -1,6 +1,6 @@
 package it.laface.schedule
 
-import it.laface.domain.model.Game
+import it.laface.schedule.domain.Game
 
 sealed class ContentToShow {
 

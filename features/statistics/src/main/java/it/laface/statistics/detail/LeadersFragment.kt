@@ -9,7 +9,7 @@ import it.laface.common.util.requireParcelable
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.inflater
 import it.laface.common.viewModels
-import it.laface.domain.navigation.Navigator
+import it.laface.navigation.Navigator
 import it.laface.statistics.databinding.FragmentLeadersBinding
 import it.laface.statistics.databinding.ItemLeaderBinding
 

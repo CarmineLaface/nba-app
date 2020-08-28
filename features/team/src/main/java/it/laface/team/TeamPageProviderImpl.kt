@@ -1,16 +1,14 @@
 package it.laface.team
 
-import android.os.Bundle
 import it.laface.domain.model.NbaTeam
-import it.laface.domain.navigation.Page
-import it.laface.domain.navigation.TeamPageProvider
+import it.laface.navigation.Page
+import it.laface.team.domain.TeamPageProvider
 
 object TeamPageProviderImpl : TeamPageProvider {
 
     override fun getTeamPage(team: NbaTeam): Page {
         val fragmentClass = TeamFragment::class.java
-        val arguments = Bundle(1)
-        arguments.putParcelable(TeamFragment.ARGUMENT_KEY, team)
+        val arguments = TeamFragment.ARGUMENT_KEY to team
         return Page(
             fragmentClass = fragmentClass,
             arguments = arguments,

@@ -2,9 +2,9 @@ package it.laface.schedule
 
 import it.laface.common.view.BaseViewHolder
 import it.laface.common.view.bindImage
-import it.laface.domain.model.Game
 import it.laface.domain.model.fullName
 import it.laface.domain.model.imageUrl
+import it.laface.schedule.domain.Game
 import it.laface.schedule.databinding.ItemGameBinding
 
 class GameViewHolder(

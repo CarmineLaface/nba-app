@@ -1,6 +1,6 @@
 package it.laface.news
 
-import it.laface.domain.model.Article
+import it.laface.news.domain.Article
 
 sealed class ContentToShow {
 

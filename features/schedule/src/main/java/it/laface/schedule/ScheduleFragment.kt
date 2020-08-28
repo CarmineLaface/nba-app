@@ -10,10 +10,9 @@ import it.laface.common.view.BaseAdapter
 import it.laface.common.view.goneUnless
 import it.laface.common.view.inflater
 import it.laface.common.viewModels
-import it.laface.domain.datasource.ScheduleDataSource
-import it.laface.domain.model.Game
 import it.laface.schedule.databinding.FragmentScheduleBinding
 import it.laface.schedule.databinding.ItemGameBinding
+import it.laface.schedule.domain.ScheduleDataSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -59,7 +58,7 @@ class ScheduleFragment(dataSource: ScheduleDataSource) : Fragment() {
 
     private fun FragmentScheduleBinding.bindContentToShow(
         contentToShow: ContentToShow,
-        gameAdapter: BaseAdapter<Game>
+        gameAdapter: BaseAdapter<it.laface.schedule.domain.Game>
     ) {
         if (contentToShow is ContentToShow.Success) {
             gameRecyclerView.visibility = View.VISIBLE
@@ -71,7 +70,7 @@ class ScheduleFragment(dataSource: ScheduleDataSource) : Fragment() {
         emptyListPlaceholder.goneUnless(contentToShow is ContentToShow.Placeholder)
     }
 
-    private fun getGameAdapter(): BaseAdapter<Game> =
+    private fun getGameAdapter(): BaseAdapter<it.laface.schedule.domain.Game> =
         BaseAdapter { parent ->
             GameViewHolder(
                 ItemGameBinding.inflate(parent.inflater, parent, false)

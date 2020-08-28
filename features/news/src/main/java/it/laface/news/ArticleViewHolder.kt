@@ -5,8 +5,8 @@ import android.text.Html
 import it.laface.common.util.getFullDayName
 import it.laface.common.view.BaseViewHolder
 import it.laface.common.view.bindImage
-import it.laface.domain.model.Article
 import it.laface.news.databinding.ItemNewsBinding
+import it.laface.news.domain.Article
 
 class ArticleViewHolder(
     private val binding: ItemNewsBinding,

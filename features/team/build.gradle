@@ -35,6 +35,10 @@ android {
 dependencies {
     api project(":common")
     api project(":domain")
+    api project(":teamdomain")
+    api project(":scheduledomain")
+    api project(":navpublic")
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     //Android core
