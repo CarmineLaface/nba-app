@@ -31,13 +31,14 @@ class StatsViewModel(
 
     private fun getStats() {
         viewModelScope.launch(jobDispatcher) {
-            statsCallState.value = when (val response = statsDataSource.getLeaders()) {
-                is NetworkResult.Success -> {
-                    Success(response.value)
+            statsCallState.value =
+                when (val response = statsDataSource.getLeaders()) {
+                    is NetworkResult.Success -> {
+                        Success(response.value)
+                    }
+                    is NetworkResult.Error ->
+                        Error
                 }
-                is NetworkResult.Error ->
-                    Error
-            }
         }
     }
 

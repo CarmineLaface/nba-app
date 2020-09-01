@@ -22,6 +22,7 @@
       <module name="nba-app.newsapi" target="11" />
       <module name="nba-app.newsdomain" target="11" />
       <module name="nba-app.newspresentation" target="11" />
+      <module name="nba-app.playerapi" target="11" />
       <module name="nba-app.playerdomain" target="11" />
       <module name="nba-app.playerlistapi" target="11" />
       <module name="nba-app.playerlistdomain" target="11" />

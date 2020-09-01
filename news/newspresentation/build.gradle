@@ -35,7 +35,7 @@ android {
 }
 
 dependencies {
-    api project(":common")
+    implementation project(":common")
     api project(":news:newsdomain")
     api project(":navigation:navpublic")
 

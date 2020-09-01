@@ -44,12 +44,13 @@ class PlayerListViewModel(
 
     private fun getPlayers() {
         viewModelScope.launch(jobDispatcher) {
-            playerListCallState.value = when (val response = dataSource.getPlayers()) {
-                is NetworkResult.Success -> {
-                    CallState.Success(response.value)
+            playerListCallState.value =
+                when (val response = dataSource.getPlayers()) {
+                    is NetworkResult.Success -> {
+                        CallState.Success(response.value)
+                    }
+                    is NetworkResult.Error -> CallState.Error(response.error)
                 }
-                is NetworkResult.Error -> CallState.Error(response.error)
-            }
         }
     }
 

@@ -31,6 +31,7 @@ android {
 }
 
 dependencies {
+    implementation project(":common")
     implementation project(":navigation:navimpl")
     implementation project(":news:newspresentation")
     implementation project(":features:playerlist")
@@ -45,6 +46,7 @@ dependencies {
     implementation project(":statsapi")
     implementation project(":teamapi")
     implementation project(":rankingapi")
+    implementation project(":playerapi")
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 

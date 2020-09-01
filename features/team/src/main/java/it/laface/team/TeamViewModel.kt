@@ -58,13 +58,14 @@ class TeamViewModel(
 
     private fun getRoster() {
         viewModelScope.launch(jobDispatcher) {
-            rosterCallState.value = when (val response = rosterDataSource.getRoster(team)) {
-                is NetworkResult.Success -> {
-                    CallState.Success(response.value)
+            rosterCallState.value =
+                when (val response = rosterDataSource.getRoster(team)) {
+                    is NetworkResult.Success -> {
+                        CallState.Success(response.value)
+                    }
+                    is NetworkResult.Error ->
+                        CallState.Error(response.error)
                 }
-                is NetworkResult.Error ->
-                    CallState.Error(response.error)
-            }
         }
     }
 

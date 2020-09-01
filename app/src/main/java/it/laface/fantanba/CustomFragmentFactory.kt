@@ -9,6 +9,8 @@ import it.laface.news.api.NewsApi
 import it.laface.news.api.NewsMapper
 import it.laface.news.presentation.BrowserProviderImpl
 import it.laface.news.presentation.NewsFragment
+import it.laface.player.api.PlayerApi
+import it.laface.player.api.PlayerStatsMapper
 import it.laface.playerdetail.PlayerDetailFragment
 import it.laface.playerdetail.PlayerPageProvider
 import it.laface.playerlist.PlayerListFragment
@@ -56,7 +58,12 @@ object CustomFragmentFactory : FragmentFactory() {
             ScheduleFragment::class.java.name ->
                 ScheduleFragment(ScheduleMapper(ScheduleApi.service, teamRepository))
             PlayerDetailFragment::class.java.name ->
-                PlayerDetailFragment(teamRepository, navigator, TeamPageProviderImpl)
+                PlayerDetailFragment(
+                    teamRepository = teamRepository,
+                    playerStatsDataSource = PlayerStatsMapper(PlayerApi.service),
+                    navigator = navigator,
+                    teamPageProvider = TeamPageProviderImpl
+                )
             TeamFragment::class.java.name ->
                 TeamFragment(
                     rosterDataSource = TeamRosterMapper(TeamRosterApi.service),

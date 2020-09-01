@@ -38,7 +38,7 @@ android {
 }
 
 dependencies {
-    api project(":common")
+    implementation project(":common")
     api project(":playerdomain")
     api project(":playerlistdomain")
     api project(":statsdomain")

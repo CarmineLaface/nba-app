@@ -30,12 +30,13 @@ class RankingViewModel(
 
     private fun getNews() {
         viewModelScope.launch(jobDispatcher) {
-            rankingListsCallState.value = when (val response = dataSource.getRanking()) {
-                is NetworkResult.Success -> {
-                    CallState.Success(response.value)
+            rankingListsCallState.value =
+                when (val response = dataSource.getRanking()) {
+                    is NetworkResult.Success -> {
+                        CallState.Success(response.value)
+                    }
+                    is NetworkResult.Error -> CallState.Error(response.error)
                 }
-                is NetworkResult.Error -> CallState.Error(response.error)
-            }
         }
     }
 

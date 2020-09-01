@@ -7,32 +7,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import it.laface.common.util.requireParcelable
 import it.laface.common.view.bindImage
 import it.laface.common.viewModels
 import it.laface.domain.model.fullName
 import it.laface.domain.model.imageUrl
 import it.laface.navigation.Navigator
+import it.laface.player.domain.PlayerStatsDataSource
 import it.laface.playerdetail.databinding.FragmentPlayerBinding
 import it.laface.team.domain.TeamPageProvider
 import it.laface.team.domain.TeamRepository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 class PlayerDetailFragment(
     teamRepository: TeamRepository,
+    playerStatsDataSource: PlayerStatsDataSource,
     navigator: Navigator,
     teamPageProvider: TeamPageProvider
 ) : Fragment() {
 
     private val viewModel: PlayerDetailViewModel by viewModels {
         PlayerDetailViewModel(
-            requireParcelable(ARGUMENT_KEY),
-            teamRepository,
-            navigator,
-            teamPageProvider
+            player = requireParcelable(ARGUMENT_KEY),
+            teamRepository = teamRepository,
+            playerStatsDataSource = playerStatsDataSource,
+            jobDispatcher = Dispatchers.IO,
+            navigator = navigator,
+            teamPageProvider = teamPageProvider
         )
     }
 

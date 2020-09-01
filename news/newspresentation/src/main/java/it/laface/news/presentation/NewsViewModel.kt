@@ -26,12 +26,13 @@ class NewsViewModel(
 
     private fun getNews() {
         viewModelScope.launch(jobDispatcher) {
-            contentToShow.value = when (val response = dataSource.getNews()) {
-                is NetworkResult.Success -> {
-                    ContentToShow.Success(response.value)
+            contentToShow.value =
+                when (val response = dataSource.getNews()) {
+                    is NetworkResult.Success -> {
+                        ContentToShow.Success(response.value)
+                    }
+                    is NetworkResult.Error -> ContentToShow.Error
                 }
-                is NetworkResult.Error -> ContentToShow.Error
-            }
         }
     }
 

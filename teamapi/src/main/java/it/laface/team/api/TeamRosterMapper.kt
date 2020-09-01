@@ -9,7 +9,7 @@ import it.laface.team.domain.TeamRosterDataSource
 class TeamRosterMapper(private val service: TeamRosterService) : TeamRosterDataSource {
 
     override suspend fun getRoster(team: Team): NetworkResult<List<Player>> {
-        val teamSlug = when(team.code) {
+        val teamSlug = when (team.code) {
             "blazers" -> "trail_blazers"
             "sixers" -> "76ers"
             else -> team.code
