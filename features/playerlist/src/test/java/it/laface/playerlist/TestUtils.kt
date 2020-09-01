@@ -1,10 +1,10 @@
 package it.laface.playerlist
 
-import it.laface.domain.model.PlayerModel
+import it.laface.domain.model.Player
 
-fun getPlayerListResponse(): List<PlayerModel> =
+fun getPlayerListResponse(): List<Player> =
     listOf(
-        PlayerModel(
+        Player(
             name = "firstName",
             surname = "lastName",
             id = "personId",
@@ -12,7 +12,7 @@ fun getPlayerListResponse(): List<PlayerModel> =
             jerseyNumber = "jerseyNumber",
             position = "position"
         ),
-        PlayerModel(
+        Player(
             name = "Steven",
             surname = "Adams",
             id = "203500",

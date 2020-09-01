@@ -12,7 +12,7 @@ import it.laface.common.view.BaseAdapter
 import it.laface.common.view.goneUnless
 import it.laface.common.view.inflater
 import it.laface.common.viewModels
-import it.laface.domain.model.PlayerModel
+import it.laface.domain.model.Player
 import it.laface.navigation.Navigator
 import it.laface.player.domain.PlayerDetailPageProvider
 import it.laface.playerlist.databinding.FragmentPlayerListBinding
@@ -74,7 +74,7 @@ class PlayerListFragment(
 
     private fun FragmentPlayerListBinding.bindContentToShow(
         contentToShow: ContentToShow,
-        playersAdapter: BaseAdapter<PlayerModel>
+        playersAdapter: BaseAdapter<Player>
     ) {
         if (contentToShow is ContentToShow.Success) {
             playersRecyclerView.visibility = View.VISIBLE

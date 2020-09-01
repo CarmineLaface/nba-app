@@ -13,11 +13,15 @@
       <module name="nba-app.features.schedule" target="11" />
       <module name="nba-app.features.statistics" target="11" />
       <module name="nba-app.features.team" target="11" />
-      <module name="nba-app.navigation" target="11" />
+      <module name="nba-app.navigation.navimpl" target="11" />
       <module name="nba-app.navimpl" target="11" />
       <module name="nba-app.network" target="11" />
+      <module name="nba-app.news.newsapi" target="11" />
+      <module name="nba-app.news.newsdomain" target="11" />
+      <module name="nba-app.news.newspresentation" target="11" />
       <module name="nba-app.newsapi" target="11" />
       <module name="nba-app.newsdomain" target="11" />
+      <module name="nba-app.newspresentation" target="11" />
       <module name="nba-app.playerdomain" target="11" />
       <module name="nba-app.playerlistapi" target="11" />
       <module name="nba-app.playerlistdomain" target="11" />

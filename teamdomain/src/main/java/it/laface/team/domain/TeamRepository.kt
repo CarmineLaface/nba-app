@@ -1,9 +1,9 @@
 package it.laface.team.domain
 
-import it.laface.domain.model.NbaTeam
+import it.laface.domain.model.Team
 
 interface TeamRepository {
 
-    suspend fun getTeamList(): List<NbaTeam>
-    suspend fun getTeam(teamId: String): NbaTeam
+    fun getTeamList(): List<Team>
+    fun getTeam(teamId: String): Team
 }

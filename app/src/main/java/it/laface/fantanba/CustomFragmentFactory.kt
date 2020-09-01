@@ -5,10 +5,10 @@ import androidx.fragment.app.FragmentFactory
 import it.laface.fantanba.R.id
 import it.laface.navigation.NavigationHandler
 import it.laface.navigation.Navigator
-import it.laface.news.BrowserProviderImpl
-import it.laface.news.NewsFragment
 import it.laface.news.api.NewsApi
 import it.laface.news.api.NewsMapper
+import it.laface.news.presentation.BrowserProviderImpl
+import it.laface.news.presentation.NewsFragment
 import it.laface.playerdetail.PlayerDetailFragment
 import it.laface.playerdetail.PlayerPageProvider
 import it.laface.playerlist.PlayerListFragment
@@ -56,7 +56,7 @@ object CustomFragmentFactory : FragmentFactory() {
             ScheduleFragment::class.java.name ->
                 ScheduleFragment(ScheduleMapper(ScheduleApi.service, teamRepository))
             PlayerDetailFragment::class.java.name ->
-                PlayerDetailFragment(teamRepository, navigator)
+                PlayerDetailFragment(teamRepository, navigator, TeamPageProviderImpl)
             TeamFragment::class.java.name ->
                 TeamFragment(
                     rosterDataSource = TeamRosterMapper(TeamRosterApi.service),

@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import it.laface.base.CallState
 import it.laface.base.NetworkResult
-import it.laface.domain.model.PlayerModel
+import it.laface.domain.model.Player
 import it.laface.navigation.Navigator
 import it.laface.player.domain.PlayerDetailPageProvider
 import it.laface.playerlist.domain.PlayersDataSource
@@ -24,7 +24,7 @@ class PlayerListViewModel(
     private val statsPageProvider: StatsPageProvider
 ) : ViewModel() {
 
-    private val playerListCallState: MutableStateFlow<CallState<List<PlayerModel>>> =
+    private val playerListCallState: MutableStateFlow<CallState<List<Player>>> =
         MutableStateFlow(CallState.NotStarted)
     val nameToFilter: MutableStateFlow<String> = MutableStateFlow("")
 
@@ -53,8 +53,8 @@ class PlayerListViewModel(
         }
     }
 
-    fun onPlayerSelected(playerModel: PlayerModel) {
-        val playerPage = playerDetailPageProvider.getPlayerDetailPage(playerModel)
+    fun onPlayerSelected(player: Player) {
+        val playerPage = playerDetailPageProvider.getPlayerDetailPage(player)
         navigator.navigateForward(playerPage)
     }
 

@@ -38,7 +38,7 @@ dependencies {
     api project(":teamdomain")
     api project(":playerdomain")
     api project(":scheduledomain")
-    api project(":navpublic")
+    api project(":navigation:navpublic")
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 

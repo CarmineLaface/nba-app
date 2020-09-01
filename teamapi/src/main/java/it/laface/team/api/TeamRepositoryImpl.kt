@@ -1,14 +1,14 @@
 package it.laface.team.api
 
-import it.laface.domain.model.NbaTeam
+import it.laface.domain.model.Team
 import it.laface.team.domain.TeamRepository
 
 class TeamRepositoryImpl : TeamRepository {
 
-    override suspend fun getTeamList(): List<NbaTeam> =
-        Cache.teamList2
+    override fun getTeamList(): List<Team> =
+        Const.teams
 
-    override suspend fun getTeam(teamId: String): NbaTeam =
+    override fun getTeam(teamId: String): Team =
         getTeamList().first { team ->
             team.id == teamId
         }

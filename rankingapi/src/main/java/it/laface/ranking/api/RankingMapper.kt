@@ -1,7 +1,7 @@
 package it.laface.ranking.api
 
 import it.laface.base.NetworkResult
-import it.laface.domain.model.NbaTeam
+import it.laface.domain.model.Team
 import it.laface.networking.toNetworkResult
 import it.laface.ranking.domain.RankedTeam
 import it.laface.ranking.domain.RankingDataSource
@@ -24,7 +24,7 @@ class RankingMapper(private val service: RankingService) : RankingDataSource {
         rankingPosition = team.rankingPosition.toIntString,
         wins = team.win.toIntString,
         losses = team.loss.toIntString,
-        teamInfo = NbaTeam(
+        teamInfo = Team(
             id = team.id,
             key = team.info.key,
             code = team.info.code,

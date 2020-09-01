@@ -35,7 +35,7 @@ android {
 dependencies {
     api project(":common")
     api project(":scheduledomain")
-    api project(":navpublic")
+    api project(":navigation:navpublic")
 
     //Android core
     implementation "androidx.appcompat:appcompat:${versions.appcompat}"

@@ -4,4 +4,5 @@
     <string name="schedule">Schedule</string>
     <string name="versus">VS</string>
     <string name="roster">Roster</string>
+    <string name="error">Error</string>
 </resources>

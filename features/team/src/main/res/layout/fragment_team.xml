@@ -2,14 +2,14 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <FrameLayout
             android:id="@+id/toolbar"
@@ -94,18 +94,52 @@
             app:layout_constraintStart_toStartOf="@id/teamImageView"
             app:layout_constraintTop_toBottomOf="@id/teamImageView" />
 
-        <it.laface.team.viewpager.CustomViewPager
-            android:id="@+id/gamesViewPager"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/scheduleRecyclerView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:clipToPadding="false"
             android:overScrollMode="never"
-            android:layout_marginTop="16dp"
             android:paddingStart="48dp"
             android:paddingEnd="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/scheduleTextView" />
+            app:layout_constraintTop_toBottomOf="@id/scheduleTextView"
+            tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_teamgame"
+            tools:orientation="horizontal" />
+
+        <ProgressBar
+            android:id="@+id/scheduleProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/scheduleTextView"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/scheduleErrorTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/error"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/scheduleTextView"
+            tools:visibility="visible" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/gamesBarrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="scheduleRecyclerView,scheduleProgressBar,scheduleErrorTextView" />
 
         <TextView
             android:id="@+id/rosterTextView"
@@ -118,13 +152,14 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/teamImageView"
-            app:layout_constraintTop_toBottomOf="@id/gamesViewPager" />
+            app:layout_constraintTop_toBottomOf="@id/gamesBarrier" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rosterRecyclerView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
+            android:nestedScrollingEnabled="false"
             android:paddingStart="4dp"
             android:paddingTop="16dp"
             android:paddingEnd="4dp"
@@ -134,9 +169,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rosterTextView"
             tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            android:nestedScrollingEnabled="false"
             tools:listitem="@layout/item_teamplayer"
             tools:spanCount="3" />
 
+        <ProgressBar
+            android:id="@+id/rosterProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rosterTextView"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/rosterErrorTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/error"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rosterTextView"
+            tools:visibility="visible" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

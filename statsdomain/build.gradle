@@ -35,7 +35,7 @@ android {
 dependencies {
     api project(":base")
     api project(":domain")
-    api project(":navpublic")
+    api project(":navigation:navpublic")
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     //Coroutines

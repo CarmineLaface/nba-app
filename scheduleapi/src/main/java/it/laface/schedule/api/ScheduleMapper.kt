@@ -1,7 +1,7 @@
 package it.laface.schedule.api
 
 import it.laface.base.NetworkResult
-import it.laface.domain.model.NbaTeam
+import it.laface.domain.model.Team
 import it.laface.networking.toNetworkResult
 import it.laface.schedule.domain.Game
 import it.laface.schedule.domain.ScheduleDataSource
@@ -12,8 +12,8 @@ class ScheduleMapper(
     private val teamRepository: TeamRepository
 ) : ScheduleDataSource {
 
-    override suspend fun getTeamSchedule(team: NbaTeam): NetworkResult<List<Game>> {
-        return service.teamSchedule(team.id).toNetworkResult { response ->
+    override suspend fun getTeamSchedule(teamId: String): NetworkResult<List<Game>> {
+        return service.teamSchedule(teamId).toNetworkResult { response ->
             mapSchedule(response.league, teamRepository.getTeamList())
         }
     }
@@ -25,7 +25,7 @@ class ScheduleMapper(
     }
 
     // TODO include all games
-    private fun mapSchedule(schedule: ScheduleLeague, teamList: List<NbaTeam>): List<Game> =
+    private fun mapSchedule(schedule: ScheduleLeague, teamList: List<Team>): List<Game> =
         schedule.standardGameList
             .filter { gameResponse ->
                 val homeTeamId = gameResponse.homeTeam.teamId

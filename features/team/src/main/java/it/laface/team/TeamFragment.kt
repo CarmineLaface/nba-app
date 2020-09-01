@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager.widget.ViewPager
-import it.laface.base.CallState
+import it.laface.common.ContentToShow
 import it.laface.common.util.requireParcelable
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.bindImage
-import it.laface.common.view.dpToPx
+import it.laface.common.view.goneUnless
 import it.laface.common.view.inflater
 import it.laface.common.viewModels
 import it.laface.domain.model.imageUrl
@@ -24,7 +25,6 @@ import it.laface.team.databinding.FragmentTeamBinding
 import it.laface.team.databinding.ItemTeamgameBinding
 import it.laface.team.databinding.ItemTeamplayerBinding
 import it.laface.team.domain.TeamRosterDataSource
-import it.laface.team.viewpager.BasePagerAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -67,35 +67,41 @@ class TeamFragment(
 
         teamInfoButton.setOnClickListener { /* TODO */ }
 
-        setSchedule(gamesViewPager)
-        setRoaster(rosterRecyclerView)
+        setSchedule()
+        setRoaster()
 
         backImageView.setOnClickListener {
             viewModel.navigateBack()
         }
     }
 
-    private fun setSchedule(viewPager: ViewPager) {
+    private fun FragmentTeamBinding.setSchedule() {
         val scheduleAdapter =
-            BasePagerAdapter(PAGE_WIDTH_PERCENTAGE) { parent ->
+            BaseAdapter { parent ->
                 GameViewHolder(
                     ItemTeamgameBinding.inflate(parent.inflater, parent, false)
                 )
             }
-        viewPager.pageMargin = resources.dpToPx(PAGE_MARGIN_DP).toInt()
-        viewPager.adapter = scheduleAdapter
+        scheduleRecyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+        scheduleRecyclerView.adapter = scheduleAdapter
+        PagerSnapHelper().attachToRecyclerView(scheduleRecyclerView)
 
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
-            viewModel.scheduleCallState.collect { callState ->
-                if (callState is CallState.Success) {
-                    scheduleAdapter.list = callState.result
-                    viewPager.currentItem = viewModel.scrollScheduleToIndex()
+            viewModel.scheduleContent.collect { contentToShow ->
+                if (contentToShow is ContentToShow.Success) {
+                    scheduleAdapter.list = contentToShow.contentList
+                    scheduleRecyclerView.scrollToPosition(
+                        viewModel.scrollScheduleToIndex(contentToShow.contentList)
+                    )
                 }
+                scheduleProgressBar.goneUnless(contentToShow is ContentToShow.Loading)
+                scheduleErrorTextView.goneUnless(contentToShow is ContentToShow.Error)
             }
         }
     }
 
-    private fun setRoaster(recyclerView: RecyclerView) {
+    private fun FragmentTeamBinding.setRoaster() {
         val rosterAdapter = BaseAdapter { parent ->
             PlayerViewHolder(
                 ItemTeamplayerBinding.inflate(parent.inflater, parent, false),
@@ -103,22 +109,22 @@ class TeamFragment(
             )
         }
         val spans = resources.getInteger(R.integer.roster_columns)
-        recyclerView.layoutManager = GridLayoutManager(requireContext(), spans)
-        recyclerView.adapter = rosterAdapter
+        rosterRecyclerView.layoutManager = GridLayoutManager(requireContext(), spans)
+        rosterRecyclerView.adapter = rosterAdapter
 
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
-            viewModel.rosterCallState.collect { callState ->
-                if (callState is CallState.Success) {
-                    rosterAdapter.list = callState.result
+            viewModel.rosterContent.collect { contentToShow ->
+                if (contentToShow is ContentToShow.Success) {
+                    rosterAdapter.list = contentToShow.contentList
                 }
+                rosterProgressBar.goneUnless(contentToShow is ContentToShow.Loading)
+                rosterErrorTextView.goneUnless(contentToShow is ContentToShow.Error)
             }
         }
     }
 
     companion object {
 
-        private const val PAGE_MARGIN_DP = 8f
-        private const val PAGE_WIDTH_PERCENTAGE = .8f
         internal const val ARGUMENT_KEY = "ARGUMENT_KEY"
     }
 }

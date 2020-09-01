@@ -1,19 +1,15 @@
 package it.laface.team
 
-import android.view.View
 import it.laface.common.util.getCompleteDayName
 import it.laface.common.util.toCalendar
+import it.laface.common.view.BaseViewHolder
 import it.laface.common.view.bindImage
 import it.laface.domain.model.imageUrl
 import it.laface.schedule.domain.Game
 import it.laface.team.databinding.ItemTeamgameBinding
-import it.laface.team.viewpager.PageViewHolder
 
 class GameViewHolder(private val binding: ItemTeamgameBinding) :
-    PageViewHolder<Game> {
-
-    override val view: View
-        get() = binding.root
+    BaseViewHolder<Game>(binding.root) {
 
     override fun bind(item: Game) {
         binding.dateTextView.text = item.date.toCalendar.getCompleteDayName

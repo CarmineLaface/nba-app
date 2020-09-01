@@ -15,18 +15,24 @@ import it.laface.domain.model.fullName
 import it.laface.domain.model.imageUrl
 import it.laface.navigation.Navigator
 import it.laface.playerdetail.databinding.FragmentPlayerBinding
+import it.laface.team.domain.TeamPageProvider
 import it.laface.team.domain.TeamRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class PlayerDetailFragment(teamRepository: TeamRepository, navigator: Navigator) : Fragment() {
+class PlayerDetailFragment(
+    teamRepository: TeamRepository,
+    navigator: Navigator,
+    teamPageProvider: TeamPageProvider
+) : Fragment() {
 
     private val viewModel: PlayerDetailViewModel by viewModels {
         PlayerDetailViewModel(
             requireParcelable(ARGUMENT_KEY),
             teamRepository,
-            navigator
+            navigator,
+            teamPageProvider
         )
     }
 
@@ -54,11 +60,11 @@ class PlayerDetailFragment(teamRepository: TeamRepository, navigator: Navigator)
             viewModel.goBack()
         }
 
-        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
-            viewModel.team.collect { team ->
-                teamNameTextView.text = team.fullName
-                team.rgbColor?.let { setTeamColor(it) }
-            }
+        teamNameTextView.text = viewModel.team.fullName
+        viewModel.team.rgbColor?.let { setTeamColor(it) }
+
+        teamNameTextView.setOnClickListener {
+            viewModel.navigateToTeamPage()
         }
     }
 

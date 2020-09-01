@@ -31,8 +31,8 @@ android {
 }
 
 dependencies {
-    implementation project(":navimpl")
-    implementation project(":features:news")
+    implementation project(":navigation:navimpl")
+    implementation project(":news:newspresentation")
     implementation project(":features:playerlist")
     implementation project(":features:schedule")
     implementation project(":features:ranking")
@@ -40,7 +40,7 @@ dependencies {
     implementation project(":features:team")
     implementation project(":features:statistics")
     implementation project(":playerlistapi")
-    implementation project(":newsapi")
+    implementation project(":news:newsapi")
     implementation project(":scheduleapi")
     implementation project(":statsapi")
     implementation project(":teamapi")

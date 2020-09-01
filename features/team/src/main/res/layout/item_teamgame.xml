@@ -2,8 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    tools:layout_width="300dp"
+    android:layout_width="240dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
     android:layout_marginStart="8dp"
@@ -72,7 +71,7 @@
             app:layout_constraintEnd_toStartOf="@+id/vsTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/homeScoreTextView"
-            tools:text="Home team city" />
+            tools:text="Minnesota" />
 
         <TextView
             android:id="@+id/homeTeamNameTextView"
@@ -89,14 +88,13 @@
             app:layout_constraintEnd_toStartOf="@+id/vsTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/homeTeamCityTextView"
-            tools:text="Home team name" />
+            tools:text="Timberwolves" />
 
         <TextView
             android:id="@+id/vsTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/versus"
-            tools:text="188 - 123"
             android:textColor="@color/darkGrey"
             app:layout_constraintBottom_toBottomOf="@id/visitorTeamLogoImageView"
             app:layout_constraintEnd_toStartOf="@id/visitorTeamLogoImageView"
@@ -141,7 +139,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/vsTextView"
             app:layout_constraintTop_toBottomOf="@+id/visitorScoreTextView"
-            tools:text="Visitor Team" />
+            tools:text="Oklahoma City" />
 
         <TextView
             android:id="@+id/visitorTeamNameTextView"
@@ -158,6 +156,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/vsTextView"
             app:layout_constraintTop_toBottomOf="@+id/visitorTeamCityTextView"
-            tools:text="Visitor Team" />
+            tools:text="Thunder" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
