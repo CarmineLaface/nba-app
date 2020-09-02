@@ -8,7 +8,11 @@ object ScheduleApi {
 
     val service: ScheduleService by lazy {
         val client = getClient()
-        val converter = getConverter()
-        getApiService(converterFactory = converter, client = client)
+        val converter = getConverter(BuildConfig.NBA_API_DATE_FORMAT)
+        getApiService(
+            baseUrl = BuildConfig.NBA_API_BASE_URL,
+            converterFactory = converter,
+            client = client
+        )
     }
 }
