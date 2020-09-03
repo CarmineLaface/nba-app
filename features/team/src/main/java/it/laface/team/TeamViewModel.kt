@@ -5,13 +5,13 @@ import androidx.lifecycle.viewModelScope
 import it.laface.base.CallState
 import it.laface.base.NetworkResult
 import it.laface.common.ContentToShow
-import it.laface.domain.model.Player
 import it.laface.domain.model.Team
 import it.laface.navigation.Navigator
+import it.laface.player.domain.Player
 import it.laface.player.domain.PlayerDetailPageProvider
+import it.laface.player.domain.TeamRosterDataSource
 import it.laface.schedule.domain.Game
 import it.laface.schedule.domain.ScheduleDataSource
-import it.laface.team.domain.TeamRosterDataSource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -59,10 +59,9 @@ class TeamViewModel(
     private fun getRoster() {
         viewModelScope.launch(jobDispatcher) {
             rosterCallState.value =
-                when (val response = rosterDataSource.getRoster(team)) {
-                    is NetworkResult.Success -> {
+                when (val response = rosterDataSource.getRoster(teamCode = team.code, teamId = team.id)) {
+                    is NetworkResult.Success ->
                         CallState.Success(response.value)
-                    }
                     is NetworkResult.Error ->
                         CallState.Error(response.error)
                 }
@@ -73,9 +72,8 @@ class TeamViewModel(
         viewModelScope.launch(jobDispatcher) {
             scheduleCallState.value =
                 when (val response = scheduleDataSource.getTeamSchedule(team.id)) {
-                    is NetworkResult.Success -> {
+                    is NetworkResult.Success ->
                         CallState.Success(response.value)
-                    }
                     is NetworkResult.Error ->
                         CallState.Error(response.error)
                 }

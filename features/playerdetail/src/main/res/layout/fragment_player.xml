@@ -88,18 +88,6 @@
         app:layout_constraintTop_toBottomOf="@+id/playerImageView" />
 
     <TextView
-        android:id="@+id/teamNameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:fontFamily="@font/open_sans_bold"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@id/teamTextView"
-        app:layout_constraintStart_toEndOf="@id/teamTextView"
-        app:layout_constraintTop_toTopOf="@+id/teamTextView"
-        tools:text="Milwaukee Bucks" />
-
-    <TextView
         android:id="@+id/jerseyTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -107,18 +95,6 @@
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@id/teamTextView"
         app:layout_constraintTop_toBottomOf="@id/teamTextView" />
-
-    <TextView
-        android:id="@+id/jerseyNameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:fontFamily="@font/open_sans_bold"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@id/jerseyTextView"
-        app:layout_constraintStart_toEndOf="@id/jerseyTextView"
-        app:layout_constraintTop_toTopOf="@+id/jerseyTextView"
-        tools:text="34" />
 
     <TextView
         android:id="@+id/positionTextView"
@@ -129,6 +105,35 @@
         app:layout_constraintStart_toStartOf="@id/jerseyTextView"
         app:layout_constraintTop_toBottomOf="@id/jerseyTextView" />
 
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="teamTextView,jerseyTextView,positionTextView" />
+
+    <TextView
+        android:id="@+id/teamNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/open_sans_bold"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/teamTextView"
+        app:layout_constraintStart_toEndOf="@id/barrier"
+        tools:text="Milwaukee Bucks" />
+
+    <TextView
+        android:id="@+id/jerseyNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/open_sans_bold"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/jerseyTextView"
+        app:layout_constraintStart_toEndOf="@id/barrier"
+        tools:text="34" />
+
     <TextView
         android:id="@+id/positionValueTextView"
         android:layout_width="wrap_content"
@@ -136,8 +141,23 @@
         android:layout_marginStart="16dp"
         android:fontFamily="@font/open_sans_bold"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@id/positionTextView"
-        app:layout_constraintStart_toEndOf="@id/positionTextView"
-        app:layout_constraintTop_toTopOf="@+id/positionTextView"
+        app:layout_constraintBaseline_toBaselineOf="@id/positionTextView"
+        app:layout_constraintStart_toEndOf="@id/barrier"
         tools:text="G" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/statsRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/positionTextView"
+        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:listitem="@layout/item_statistic"
+        tools:itemCount="6"
+        tools:spanCount="3" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,10 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import it.laface.base.CallState
 import it.laface.base.NetworkResult
-import it.laface.domain.model.Player
 import it.laface.domain.model.Team
 import it.laface.navigation.Navigator
-import it.laface.player.domain.PlayerStats
+import it.laface.player.domain.Player
 import it.laface.player.domain.PlayerStatsDataSource
 import it.laface.team.domain.TeamPageProvider
 import it.laface.team.domain.TeamRepository
@@ -26,8 +25,9 @@ class PlayerDetailViewModel(
 ) : ViewModel() {
 
     val team: Team = teamRepository.getTeam(player.teamId)
-    val playerStatsCallState: MutableStateFlow<CallState<PlayerStats>> =
+    val playerStatsCallState: MutableStateFlow<CallState<List<UIPlayerStats>>> =
         MutableStateFlow(CallState.InProgress)
+    val isFavourite: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
     init {
         getPlayerStats()
@@ -37,9 +37,8 @@ class PlayerDetailViewModel(
         viewModelScope.launch(jobDispatcher) {
             playerStatsCallState.value =
                 when (val response = playerStatsDataSource.getPlayerStats(player.id)) {
-                    is NetworkResult.Success -> {
-                        CallState.Success(response.value)
-                    }
+                    is NetworkResult.Success ->
+                        CallState.Success(response.value.toUi())
                     is NetworkResult.Error -> CallState.Error(response.error)
                 }
         }

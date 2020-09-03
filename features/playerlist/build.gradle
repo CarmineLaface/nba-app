@@ -40,9 +40,8 @@ android {
 dependencies {
     implementation project(":common")
     api project(":playerdomain")
-    api project(":playerlistdomain")
-    api project(":statsdomain")
-    api project(":navigation:navpublic")
+    api project(":statistic:statsdomain")
+    implementation project(":navigation:navpublic")
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 

@@ -1,7 +1,7 @@
 package it.laface.playerdetail
 
-import it.laface.domain.model.Player
 import it.laface.navigation.Page
+import it.laface.player.domain.Player
 import it.laface.player.domain.PlayerDetailPageProvider
 
 @Suppress("UNCHECKED_CAST")

@@ -1,6 +1,6 @@
 package it.laface.playerlist
 
-import it.laface.domain.model.Player
+import it.laface.player.domain.Player
 
 sealed class ContentToShow {
 

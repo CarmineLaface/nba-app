@@ -35,6 +35,7 @@ android {
 }
 
 dependencies {
+    api project(":playerdomain")
     api project(":teamdomain")
     implementation project(":networking")
 

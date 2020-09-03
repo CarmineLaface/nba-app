@@ -28,9 +28,8 @@ class NewsViewModel(
         viewModelScope.launch(jobDispatcher) {
             contentToShow.value =
                 when (val response = dataSource.getNews()) {
-                    is NetworkResult.Success -> {
+                    is NetworkResult.Success ->
                         ContentToShow.Success(response.value)
-                    }
                     is NetworkResult.Error -> ContentToShow.Error
                 }
         }

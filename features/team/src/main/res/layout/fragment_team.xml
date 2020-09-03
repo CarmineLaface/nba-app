@@ -8,8 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content" >
 
         <FrameLayout
             android:id="@+id/toolbar"
@@ -168,9 +167,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rosterTextView"
-            tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             tools:listitem="@layout/item_teamplayer"
-            tools:spanCount="3" />
+            app:spanCount="@integer/roster_columns" />
 
         <ProgressBar
             android:id="@+id/rosterProgressBar"

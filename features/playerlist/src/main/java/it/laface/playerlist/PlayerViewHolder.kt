@@ -2,9 +2,9 @@ package it.laface.playerlist
 
 import it.laface.common.view.BaseViewHolder
 import it.laface.common.view.bindImage
-import it.laface.domain.model.Player
-import it.laface.domain.model.fullName
-import it.laface.domain.model.imageUrl
+import it.laface.player.domain.Player
+import it.laface.player.domain.fullName
+import it.laface.player.domain.imageUrl
 import it.laface.playerlist.databinding.ItemPlayerBinding
 
 class PlayerViewHolder(

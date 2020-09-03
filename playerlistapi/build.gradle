@@ -35,7 +35,7 @@ android {
 }
 
 dependencies {
-    api project(":playerlistdomain")
+    implementation project(":playerdomain")
     implementation project(":networking")
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

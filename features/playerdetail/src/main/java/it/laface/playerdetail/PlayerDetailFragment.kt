@@ -6,14 +6,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import it.laface.common.util.requireParcelable
 import it.laface.common.view.bindImage
 import it.laface.common.viewModels
 import it.laface.domain.model.fullName
-import it.laface.domain.model.imageUrl
 import it.laface.navigation.Navigator
 import it.laface.player.domain.PlayerStatsDataSource
+import it.laface.player.domain.imageUrl
 import it.laface.playerdetail.databinding.FragmentPlayerBinding
 import it.laface.team.domain.TeamPageProvider
 import it.laface.team.domain.TeamRepository
@@ -67,6 +68,13 @@ class PlayerDetailFragment(
         teamNameTextView.setOnClickListener {
             viewModel.navigateToTeamPage()
         }
+
+        favouriteImageView.bindFavourite(viewModel.isFavourite.value)
+        favouriteImageView.setOnClickListener {
+            val isFavourite = viewModel.isFavourite.value.not()
+            viewModel.isFavourite.value = isFavourite
+            favouriteImageView.bindFavourite(isFavourite)
+        }
     }
 
     private fun FragmentPlayerBinding.setTeamColor(rgbColor: String) {
@@ -76,6 +84,12 @@ class PlayerDetailFragment(
         positionValueTextView.setTextColor(color)
         toolbar.setBackgroundColor(color)
         backImageView.backgroundTintList = ColorStateList.valueOf(color)
+    }
+
+    private fun ImageView.bindFavourite(isFavourite: Boolean) {
+        setImageResource(
+            if (isFavourite) R.drawable.ic_filled_star else R.drawable.ic_empty_star
+        )
     }
 
     companion object {

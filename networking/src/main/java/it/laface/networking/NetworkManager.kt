@@ -11,17 +11,17 @@ import java.lang.reflect.Type
 inline fun <reified T> getApiService(
     baseUrl: String,
     converterFactory: Converter.Factory,
-    client: OkHttpClient
+    client: OkHttpClient.Builder
 ): T {
     return Retrofit.Builder()
         .baseUrl(baseUrl)
         .addConverterFactory(converterFactory)
-        .client(client)
+        .client(client.build())
         .build()
         .create(T::class.java)
 }
 
-fun getClient(vararg interceptors: Interceptor): OkHttpClient =
+fun getClient(vararg interceptors: Interceptor): OkHttpClient.Builder =
     OkHttpClient.Builder()
         .addInterceptor(IOExceptionInterceptor())
         .apply {
@@ -29,18 +29,21 @@ fun getClient(vararg interceptors: Interceptor): OkHttpClient =
                 addInterceptor(interceptor)
             }
         }
-        .build()
 
 fun getConverter(
-    dateFormat: String?,
+    dateFormat: String? = null,
     adapterInfo: AdapterInfo? = null
 ): GsonConverterFactory =
     GsonConverterFactory.create(
         GsonBuilder()
-            .setDateFormat(dateFormat)
             .apply {
-                if (adapterInfo != null) {
-                    registerTypeAdapter(adapterInfo.first, adapterInfo.second)
+                if (dateFormat != null) {
+                    setDateFormat(dateFormat)
+                }
+            }
+            .apply {
+                adapterInfo?.let { (type, typeAdapter) ->
+                    registerTypeAdapter(type, typeAdapter)
                 }
             }
             .create()

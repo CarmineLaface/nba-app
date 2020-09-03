@@ -1,18 +1,23 @@
 package it.laface.playerlist
 
 import it.laface.base.CallState
-import it.laface.domain.model.Player
-import it.laface.domain.model.fullName
+import it.laface.player.domain.Player
+import it.laface.player.domain.Position
+import it.laface.player.domain.fullName
 
 fun mapContentToShow(
     playerListCallState: CallState<List<Player>>,
-    nameToFilter: String
+    nameToFilter: String,
+    positions: Set<Position>
 ): ContentToShow =
     when (playerListCallState) {
         is CallState.Success -> {
-            val filteredList = playerListCallState.result.filter { player ->
-                player.fullName.contains(nameToFilter, true)
-            }
+            val positionsValue: List<String> = positions.map(Position::value)
+            val filteredList = playerListCallState.result
+                .filter { player ->
+                    player.fullName.contains(nameToFilter, true) &&
+                        player.contains(positionsValue)
+                }
             if (filteredList.isEmpty()) {
                 ContentToShow.Placeholder
             } else {
@@ -22,3 +27,6 @@ fun mapContentToShow(
         is CallState.Error -> ContentToShow.Error
         CallState.InProgress, CallState.NotStarted -> ContentToShow.Loading
     }
+
+private fun Player.contains(positions: List<String>): Boolean =
+    positions.all { position.contains(it) }

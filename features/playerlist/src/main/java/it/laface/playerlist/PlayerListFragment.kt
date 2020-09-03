@@ -1,4 +1,3 @@
-
 package it.laface.playerlist
 
 import android.os.Bundle
@@ -8,16 +7,18 @@ import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.chip.Chip
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.goneUnless
 import it.laface.common.view.inflater
 import it.laface.common.viewModels
-import it.laface.domain.model.Player
 import it.laface.navigation.Navigator
+import it.laface.player.domain.Player
 import it.laface.player.domain.PlayerDetailPageProvider
+import it.laface.player.domain.PlayersDataSource
+import it.laface.player.domain.Position
 import it.laface.playerlist.databinding.FragmentPlayerListBinding
 import it.laface.playerlist.databinding.ItemPlayerBinding
-import it.laface.playerlist.domain.PlayersDataSource
 import it.laface.stats.domain.StatsPageProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -70,6 +71,7 @@ class PlayerListFragment(
         cardLeaders.root.setOnClickListener {
             viewModel.goToStatsPage()
         }
+        bindPositionFilters()
     }
 
     private fun FragmentPlayerListBinding.bindContentToShow(
@@ -85,5 +87,21 @@ class PlayerListFragment(
         progressBar.goneUnless(contentToShow is ContentToShow.Loading)
         retryButton.goneUnless(contentToShow is ContentToShow.Error)
         emptyListPlaceholder.goneUnless(contentToShow is ContentToShow.Placeholder)
+    }
+
+    private fun FragmentPlayerListBinding.bindPositionFilters() {
+        bindChip(centerChip, Position.Center)
+        bindChip(guardChip, Position.Guard)
+        bindChip(forwardChip, Position.Forward)
+    }
+
+    private fun bindChip(chip: Chip, position: Position) {
+        chip.isChecked = viewModel.filters.value.contains(position)
+        chip.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked)
+                viewModel.addFilter(position)
+            else
+                viewModel.removeFilter(position)
+        }
     }
 }

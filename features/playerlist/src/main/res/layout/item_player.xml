@@ -16,8 +16,8 @@
 
         <ImageView
             android:id="@+id/playerImageView"
-            android:layout_width="60dp"
-            android:layout_height="66dp"
+            android:layout_width="78dp"
+            android:layout_height="57dp"
             android:layout_marginStart="4dp"
             android:importantForAccessibility="no"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -32,7 +32,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:ellipsize="end"
+            android:fontFamily="@font/open_sans_semibold"
             android:maxLines="1"
+            android:textColor="@color/darkGrey"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

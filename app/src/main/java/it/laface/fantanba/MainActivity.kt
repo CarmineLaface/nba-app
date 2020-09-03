@@ -7,8 +7,8 @@ import androidx.fragment.app.commit
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import it.laface.news.presentation.NewsFragment
 import it.laface.playerlist.PlayerListFragment
-import it.laface.ranking.RankingFragment
-import it.laface.schedule.ScheduleFragment
+import it.laface.ranking.presentation.RankingFragment
+import it.laface.schedule.presentation.ScheduleFragment
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 

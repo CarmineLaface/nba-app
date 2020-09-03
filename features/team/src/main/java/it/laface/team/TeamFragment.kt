@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -20,11 +19,11 @@ import it.laface.common.viewModels
 import it.laface.domain.model.imageUrl
 import it.laface.navigation.Navigator
 import it.laface.player.domain.PlayerDetailPageProvider
+import it.laface.player.domain.TeamRosterDataSource
 import it.laface.schedule.domain.ScheduleDataSource
 import it.laface.team.databinding.FragmentTeamBinding
 import it.laface.team.databinding.ItemTeamgameBinding
 import it.laface.team.databinding.ItemTeamplayerBinding
-import it.laface.team.domain.TeamRosterDataSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -108,8 +107,6 @@ class TeamFragment(
                 viewModel::playerSelected
             )
         }
-        val spans = resources.getInteger(R.integer.roster_columns)
-        rosterRecyclerView.layoutManager = GridLayoutManager(requireContext(), spans)
         rosterRecyclerView.adapter = rosterAdapter
 
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {

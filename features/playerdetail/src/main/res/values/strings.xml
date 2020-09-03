@@ -3,4 +3,7 @@
     <string name="team">Team</string>
     <string name="jersey_number">Jersey number</string>
     <string name="position">Position</string>
+    <string name="points_per_game">Points per game</string>
+    <string name="rebounds_per_game">Rebounds per game</string>
+    <string name="assists_per_game">Assists per game</string>
 </resources>

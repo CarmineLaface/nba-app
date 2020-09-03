@@ -22,4 +22,9 @@ data class Latest(
     @SerializedName("ppg") val pointsPerGame: String,
     @SerializedName("rpg") val reboundsPerGame: String,
     @SerializedName("apg") val assistsPerGame: String,
+    @SerializedName("mpg") val minutesPerGame: String,
+    @SerializedName("bpg") val blocksPerGame: String,
+    @SerializedName("fgp") val fieldGoalPercentage: String,
+    @SerializedName("tpp") val threePointFieldGoalPercentage: String,
+    @SerializedName("ftp") val freeThrowPercentage: String,
 )

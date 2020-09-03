@@ -4,4 +4,7 @@
     <string name="no_results">No results</string>
     <string name="players">Players</string>
     <string name="leaders">Leaders</string>
+    <string name="center">Center</string>
+    <string name="guard">Guard</string>
+    <string name="forward">Forward</string>
 </resources>
