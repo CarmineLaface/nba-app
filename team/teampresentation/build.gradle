@@ -34,8 +34,13 @@ android {
 
 dependencies {
     implementation project(":common")
-    api project(":ranking:rankingdomain")
+    api project(":domain")
     api project(":team:teamdomain")
+    api project(":playerdetail:playerdomain")
+    api project(":schedule:scheduledomain")
+    implementation project(":navigation:navpublic")
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     //Android core
     implementation "androidx.appcompat:appcompat:${versions.appcompat}"
@@ -47,10 +52,4 @@ dependencies {
     implementation "com.google.android.material:material:${versions.material}"
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
-    implementation "androidx.viewpager2:viewpager2:1.0.0"
-
-    testImplementation project(":test")
-    testImplementation 'junit:junit:4.13'
-    testImplementation "androidx.arch.core:core-testing:2.1.0"
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
 }

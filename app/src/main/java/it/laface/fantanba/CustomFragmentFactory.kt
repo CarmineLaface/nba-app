@@ -11,11 +11,11 @@ import it.laface.news.presentation.BrowserProviderImpl
 import it.laface.news.presentation.NewsFragment
 import it.laface.player.api.PlayerApi
 import it.laface.player.api.PlayerStatsMapper
-import it.laface.playerdetail.PlayerDetailFragment
-import it.laface.playerdetail.PlayerPageProvider
-import it.laface.playerlist.PlayerListFragment
+import it.laface.player.presentation.PlayerDetailFragment
+import it.laface.player.presentation.PlayerPageProvider
 import it.laface.playerlist.api.PlayerListApi
 import it.laface.playerlist.api.PlayerListMapper
+import it.laface.playerlist.presentation.PlayerListFragment
 import it.laface.ranking.api.RankingApi
 import it.laface.ranking.api.RankingMapper
 import it.laface.ranking.presentation.RankingFragment
@@ -28,14 +28,14 @@ import it.laface.stats.presentation.detail.LeadersFragment
 import it.laface.stats.presentation.detail.LeadersPageProviderImpl
 import it.laface.stats.presentation.group.StatsFragment
 import it.laface.stats.presentation.group.StatsPageProviderImpl
-import it.laface.team.TeamFragment
-import it.laface.team.TeamPageProviderImpl
 import it.laface.team.api.TeamRepositoryImpl
 import it.laface.team.api.TeamRosterApi
 import it.laface.team.api.TeamRosterMapper
 import it.laface.team.domain.TeamRepository
+import it.laface.team.presentation.TeamFragment
+import it.laface.team.presentation.TeamPageProviderImpl
 
-object CustomFragmentFactory : FragmentFactory() {
+class CustomFragmentFactory(private val cacheDirPath: String) : FragmentFactory() {
 
     private val navigator: Navigator by lazy {
         NavigationHandler(ActivityRegister, id.container)
@@ -44,15 +44,13 @@ object CustomFragmentFactory : FragmentFactory() {
 
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {
         return when (className) {
-            PlayerListFragment::class.java.name -> {
-                val activity = ActivityRegister.currentActivity!!
+            PlayerListFragment::class.java.name ->
                 PlayerListFragment(
-                    dataSource = PlayerListMapper(PlayerListApi.getService(activity.cacheDir)),
+                    dataSource = PlayerListMapper(PlayerListApi.getService(cacheDirPath)),
                     playerDetailPageProvider = PlayerPageProvider,
                     navigator = navigator,
                     statsPageProvider = StatsPageProviderImpl
                 )
-            }
             NewsFragment::class.java.name ->
                 NewsFragment(NewsMapper(NewsApi.service), BrowserProviderImpl(ActivityRegister))
             RankingFragment::class.java.name ->

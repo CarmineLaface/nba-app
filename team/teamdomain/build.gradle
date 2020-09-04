@@ -14,9 +14,6 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
-
-        buildConfigField 'String', 'NBA_API_BASE_URL', "\"${nba_data_api_base_url}\""
-        buildConfigField 'String', 'NBA_API_DATE_FORMAT', "\"${nba_data_api_date_format}\""
     }
 
     buildTypes {
@@ -35,9 +32,9 @@ android {
 }
 
 dependencies {
-    api project(":schedule:scheduledomain")
-    api project(":team:teamdomain")
-    implementation project(":networking")
+    api project(":base")
+    api project(":domain")
+    api project(":navigation:navpublic")
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     //Coroutines

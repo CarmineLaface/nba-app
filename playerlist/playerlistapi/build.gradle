@@ -35,8 +35,7 @@ android {
 }
 
 dependencies {
-    api project(":schedule:scheduledomain")
-    api project(":team:teamdomain")
+    implementation project(":playerdetail:playerdomain")
     implementation project(":networking")
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

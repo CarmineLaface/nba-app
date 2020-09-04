@@ -2,10 +2,10 @@ package it.laface.common
 
 import androidx.annotation.MainThread
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.createViewModelLazy
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelLazy
 import androidx.savedstate.SavedStateRegistryOwner
 
 inline fun <reified VM : ViewModel> SavedStateRegistryOwner.simpleViewModelFactory(
@@ -26,7 +26,7 @@ inline fun <reified VM : ViewModel> SavedStateRegistryOwner.simpleViewModelFacto
 inline fun <reified VM : ViewModel> Fragment.viewModels(
     noinline viewModelProvider: (SavedStateHandle) -> VM
 ): Lazy<VM> =
-    createViewModelLazy(
+    ViewModelLazy(
         viewModelClass = VM::class,
         storeProducer = { viewModelStore },
         factoryProducer = simpleViewModelFactory(viewModelProvider)
