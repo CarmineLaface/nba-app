@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvalueTextView"
+        android:id="@+id/valueTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         tools:text="27,8"

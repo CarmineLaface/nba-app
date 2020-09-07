@@ -8,17 +8,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import it.laface.base.CallState
 import it.laface.common.util.requireParcelable
+import it.laface.common.view.BaseAdapter
 import it.laface.common.view.bindImage
+import it.laface.common.view.inflater
 import it.laface.common.viewModels
 import it.laface.domain.model.fullName
 import it.laface.navigation.Navigator
 import it.laface.player.domain.PlayerStatsDataSource
 import it.laface.player.domain.imageUrl
 import it.laface.player.presentation.databinding.FragmentPlayerBinding
+import it.laface.player.presentation.databinding.ItemStatisticBinding
 import it.laface.team.domain.TeamPageProvider
 import it.laface.team.domain.TeamRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class PlayerDetailFragment(
     teamRepository: TeamRepository,
@@ -74,6 +81,20 @@ class PlayerDetailFragment(
             val isFavourite = viewModel.isFavourite.value.not()
             viewModel.isFavourite.value = isFavourite
             favouriteImageView.bindFavourite(isFavourite)
+        }
+
+        val statsAdapter = BaseAdapter { parent ->
+            StatsViewHolder(
+                ItemStatisticBinding.inflate(parent.inflater, parent, false)
+            )
+        }
+        statsRecyclerView.adapter = statsAdapter
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
+            viewModel.playerStatsCallState.collect { callState ->
+                if (callState is CallState.Success) {
+                    statsAdapter.list = callState.result
+                }
+            }
         }
     }
 

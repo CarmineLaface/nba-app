@@ -14,8 +14,10 @@ class GameViewHolder(
     override fun bind(item: Game) {
         binding.homeTeamNameTextView.text = item.homeTeam.fullName
         binding.homeTeamLogoImageView.bindImage(item.homeTeam.imageUrl, R.drawable.circle_grey)
+        binding.homeScoreTextView.text = item.homeScore ?: "-"
 
         binding.visitorTeamNameTextView.text = item.visitorTeam.fullName
         binding.visitorTeamLogoImageView.bindImage(item.visitorTeam.imageUrl, R.drawable.circle_grey)
+        binding.visitorScoreTextView.text = item.visitorScore ?: "-"
     }
 }

@@ -9,18 +9,18 @@
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:background="@android:color/holo_blue_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@android:color/holo_blue_dark">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/backImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/back"
             android:padding="16dp"
-            app:srcCompat="@drawable/ic_arrow_back_24dp"
-            android:contentDescription="@string/back" />
+            app:srcCompat="@drawable/ic_arrow_back_24dp" />
     </FrameLayout>
 
     <ImageView
@@ -73,8 +73,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:importantForAccessibility="no"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:srcCompat="@drawable/ic_empty_star" />
 
     <TextView
@@ -156,8 +156,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/positionTextView"
-        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        tools:listitem="@layout/item_statistic"
         tools:itemCount="6"
-        tools:spanCount="3" />
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:listitem="@layout/item_statistic"
+        app:spanCount="3" />
 </androidx.constraintlayout.widget.ConstraintLayout>

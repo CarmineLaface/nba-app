@@ -5,8 +5,7 @@ import it.laface.networking.toNetworkResult
 import it.laface.player.domain.Player
 import it.laface.player.domain.PlayersDataSource
 
-class PlayerListMapper(private val service: PlayerListService) :
-    PlayersDataSource {
+class PlayerListMapper(private val service: PlayerListService) : PlayersDataSource {
 
     override suspend fun getPlayers(): NetworkResult<List<Player>> {
         return service.playerList().toNetworkResult { players ->
