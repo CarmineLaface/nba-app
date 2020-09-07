@@ -19,7 +19,7 @@
             android:id="@+id/playerImageView"
             android:layout_width="130dp"
             android:layout_height="95dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:importantForAccessibility="no"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

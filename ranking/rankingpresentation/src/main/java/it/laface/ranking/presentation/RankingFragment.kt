@@ -58,7 +58,6 @@ class RankingFragment(
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = if (position == 0) "WEST" else "EAST"
-            viewPager.currentItem = tab.position
         }.attach()
 
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
@@ -66,6 +65,7 @@ class RankingFragment(
                 if (callState is CallState.Success) {
                     viewPagerAdapter.list =
                         listOf(callState.result.westCoastRanking, callState.result.eastCoastRanking)
+                    progressBar.visibility = View.GONE
                 }
             }
         }
