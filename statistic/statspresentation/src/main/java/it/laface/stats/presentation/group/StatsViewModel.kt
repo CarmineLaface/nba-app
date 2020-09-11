@@ -3,6 +3,7 @@ package it.laface.stats.presentation.group
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import it.laface.base.NetworkResult
+import it.laface.common.ContentListToShow
 import it.laface.common.ContentToShow
 import it.laface.navigation.Navigator
 import it.laface.stats.domain.LeadersPageProvider
@@ -20,7 +21,7 @@ class StatsViewModel(
     private val jobDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
-    val statsCallState: MutableStateFlow<ContentToShow<StatsSection>> =
+    val statsCallState: MutableStateFlow<ContentListToShow<StatsSection>> =
         MutableStateFlow(ContentToShow.Loading)
 
     init {

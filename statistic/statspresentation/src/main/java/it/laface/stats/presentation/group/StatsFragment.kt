@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import it.laface.common.ContentListToShow
 import it.laface.common.ContentToShow
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.goneUnless
@@ -67,12 +68,12 @@ class StatsFragment(
     }
 
     private fun FragmentStatsBinding.bindContentToShow(
-        contentToShow: ContentToShow<StatsSection>,
+        contentToShow: ContentListToShow<StatsSection>,
         newsAdapter: BaseAdapter<StatsSection>
     ) {
         if (contentToShow is ContentToShow.Success) {
             groupRecyclerView.visibility = View.VISIBLE
-            newsAdapter.list = contentToShow.contentList
+            newsAdapter.list = contentToShow.content
         } else {
             groupRecyclerView.visibility = View.GONE
         }

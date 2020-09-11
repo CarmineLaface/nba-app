@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="team_info">Team info</string>
     <string name="schedule">Schedule</string>
     <string name="versus">VS</string>
     <string name="roster">Roster</string>
     <string name="error">Error</string>
+    <string name="about">About</string>
 </resources>

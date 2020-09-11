@@ -1,6 +1,7 @@
 package it.laface.playerlist.presentation
 
 import it.laface.base.CallState
+import it.laface.common.ContentListToShow
 import it.laface.common.ContentToShow
 import it.laface.player.domain.Player
 import it.laface.player.domain.Position
@@ -10,7 +11,7 @@ fun mapContentToShow(
     playerListCallState: CallState<List<Player>>,
     nameToFilter: String,
     positions: Set<Position>
-): ContentToShow<Player> =
+): ContentListToShow<Player> =
     when (playerListCallState) {
         is CallState.Success -> {
             val positionsValue: List<String> = positions.map(Position::value)

@@ -8,6 +8,7 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.chip.Chip
+import it.laface.common.ContentListToShow
 import it.laface.common.ContentToShow
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.goneUnless
@@ -79,12 +80,12 @@ class PlayerListFragment(
     }
 
     private fun FragmentPlayerListBinding.bindContentToShow(
-        contentToShow: ContentToShow<Player>,
+        contentToShow: ContentListToShow<Player>,
         playersAdapter: BaseAdapter<Player>
     ) {
         if (contentToShow is ContentToShow.Success) {
             playersRecyclerView.visibility = View.VISIBLE
-            playersAdapter.list = contentToShow.contentList
+            playersAdapter.list = contentToShow.content
         } else {
             playersRecyclerView.visibility = View.GONE
         }

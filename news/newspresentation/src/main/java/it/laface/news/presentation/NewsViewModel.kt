@@ -3,6 +3,7 @@ package it.laface.news.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import it.laface.base.NetworkResult
+import it.laface.common.ContentListToShow
 import it.laface.common.ContentToShow
 import it.laface.news.domain.Article
 import it.laface.news.domain.BrowserProvider
@@ -18,7 +19,7 @@ class NewsViewModel(
     private val jobDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
-    val contentToShow: MutableStateFlow<ContentToShow<Article>> = MutableStateFlow(ContentToShow.Loading)
+    val contentToShow: MutableStateFlow<ContentListToShow<Article>> = MutableStateFlow(ContentToShow.Loading)
 
     init {
         getNews()

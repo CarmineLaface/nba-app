@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import it.laface.base.CallState
 import it.laface.base.NetworkResult
-import it.laface.common.ContentToShow
+import it.laface.common.ContentListToShow
 import it.laface.navigation.Navigator
 import it.laface.player.domain.Player
 import it.laface.player.domain.PlayerDetailPageProvider
@@ -31,7 +31,7 @@ class PlayerListViewModel(
     val nameToFilter: MutableStateFlow<String> = MutableStateFlow("")
     val filters: MutableStateFlow<Set<Position>> = MutableStateFlow(setOf())
 
-    val contentToShow: Flow<ContentToShow<Player>> =
+    val contentToShow: Flow<ContentListToShow<Player>> =
         combine(playerListCallState, nameToFilter, filters) { callState, nameToFilter, filters ->
             mapContentToShow(callState, nameToFilter, filters)
         }

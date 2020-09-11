@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="lightGrey">#EBEBEB</color>
+    <color name="grey">#A0A0A0</color>
     <color name="darkGrey">#3C3C3C</color>
-
+    <color name="matteBlack">#1b1b1b</color>
     <color name="error_red">#fa3535</color>
-
     <color name="success_green">#00A878</color>
 </resources>

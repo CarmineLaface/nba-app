@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import it.laface.common.ContentListToShow
 import it.laface.common.ContentToShow
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.goneUnless
@@ -57,12 +58,12 @@ class NewsFragment(dataSource: NewsDataSource, browserProvider: BrowserProvider)
     }
 
     private fun FragmentNewsBinding.bindContentToShow(
-        contentToShow: ContentToShow<Article>,
+        contentToShow: ContentListToShow<Article>,
         newsAdapter: BaseAdapter<Article>
     ) {
         if (contentToShow is ContentToShow.Success) {
             newsRecyclerView.visibility = View.VISIBLE
-            newsAdapter.list = contentToShow.contentList
+            newsAdapter.list = contentToShow.content
         } else {
             newsRecyclerView.visibility = View.GONE
         }

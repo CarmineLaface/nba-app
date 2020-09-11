@@ -8,8 +8,8 @@ import it.laface.player.domain.PlayerDetailPageProvider
 object PlayerPageProvider : PlayerDetailPageProvider {
 
     override fun getPlayerDetailPage(player: Player): Page {
-        val fragmentClass = it.laface.player.presentation.PlayerDetailFragment::class.java
-        val arguments = it.laface.player.presentation.PlayerDetailFragment.ARGUMENT_KEY to player
+        val fragmentClass = PlayerDetailFragment::class.java
+        val arguments = PlayerDetailFragment.ARGUMENT_KEY to player
         return Page(
             fragmentClass = fragmentClass,
             arguments = arguments,

@@ -7,36 +7,6 @@
     <color name="orange_brown">#D87C44</color>
     <color name="orange_brown2">#E86100</color>
 
-    <!-- OPACITY
-        100% — FF
-        95% — F2
-        90% — E6
-        85% — D9
-        80% — CC
-        75% — BF
-        70% — B3
-        65% — A6
-        60% — 99
-        55% — 8C
-        50% — 80
-        45% — 73
-        40% — 66
-        35% — 59
-        30% — 4D
-        25% — 40
-        20% — 33
-        15% — 26
-        10% — 1A
-        5% — 0D
-        0% — 00
-     -->
-
     <color name="colorPrimaryAlpha">#BF008577</color>
-    <color name="errorRed">#fa3535</color>
-    <color name="matteBlack">#1b1b1b</color>
-    <color name="black_opacity_70">#B3000000</color>
-    <color name="white_opacity_20">#33FFFFFF</color>
-    <color name="snow">#fafafa</color>
-    <color name="lightGrey">#D5D5D5</color>
 
 </resources>

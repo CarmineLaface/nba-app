@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import it.laface.base.CallState
 import it.laface.base.NetworkResult
-import it.laface.common.ContentToShow
+import it.laface.common.ContentListToShow
 import it.laface.schedule.domain.Game
 import it.laface.schedule.domain.ScheduleDataSource
 import kotlinx.coroutines.CoroutineDispatcher
@@ -24,7 +24,7 @@ class ScheduleViewModel(
     private val scheduleCallState: MutableStateFlow<CallState<List<Game>>> =
         MutableStateFlow(CallState.InProgress)
 
-    val gamesToShow: Flow<ContentToShow<Game>> =
+    val gamesToShow: Flow<ContentListToShow<Game>> =
         selectedDate.combineTransform(scheduleCallState) { date, callState ->
             getListToShow(date, callState)
         }

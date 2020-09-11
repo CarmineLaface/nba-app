@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import it.laface.common.ContentListToShow
 import it.laface.common.ContentToShow
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.goneUnless
@@ -59,12 +60,12 @@ class ScheduleFragment(dataSource: ScheduleDataSource) : Fragment() {
     }
 
     private fun FragmentScheduleBinding.bindContentToShow(
-        contentToShow: ContentToShow<Game>,
+        contentToShow: ContentListToShow<Game>,
         gameAdapter: BaseAdapter<Game>
     ) {
         if (contentToShow is ContentToShow.Success) {
             gameRecyclerView.visibility = View.VISIBLE
-            gameAdapter.list = contentToShow.contentList
+            gameAdapter.list = contentToShow.content
         } else {
             gameRecyclerView.visibility = View.GONE
         }

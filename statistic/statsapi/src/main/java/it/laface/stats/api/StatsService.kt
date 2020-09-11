@@ -13,7 +13,7 @@ interface StatsService {
 
     companion object {
 
-        const val BASE_URL: String = "https://stats.nba.com"
-        const val DATE_FORMAT: String = "yyyy-MM-dd'T'HH:mm:ssXXX"
+        internal const val BASE_URL: String = "https://stats.nba.com"
+        internal const val DATE_FORMAT: String = "yyyy-MM-dd'T'HH:mm:ssXXX"
     }
 }

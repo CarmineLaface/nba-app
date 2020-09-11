@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:background="@color/darkGrey" >
+        tools:background="@color/matteBlack" >
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/backImageView"

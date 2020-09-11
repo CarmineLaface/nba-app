@@ -24,9 +24,8 @@ class ScheduleMapper(
         }
     }
 
-    // TODO include all games
     private fun mapSchedule(schedule: ScheduleLeague, teamList: List<Team>): List<Game> =
-        schedule.standardGameList
+        schedule.getAllGames()
             .filter { gameResponse ->
                 val homeTeamId = gameResponse.homeTeam.teamId
                 val visitorTeamId = gameResponse.visitorTeam.teamId
@@ -38,6 +37,7 @@ class ScheduleMapper(
                 val homeScore = gameResponse.homeTeam.score?.takeIf(String::isNotEmpty)
                 val visitorScore = gameResponse.visitorTeam.score?.takeIf(String::isNotEmpty)
                 Game(
+                    id = gameResponse.gameId,
                     date = gameResponse.date,
                     homeTeam = teamList.first { it.id == homeTeamId },
                     visitorTeam = teamList.first { it.id == visitorTeamId },
@@ -45,4 +45,7 @@ class ScheduleMapper(
                     visitorScore = visitorScore
                 )
             }
+
+    private fun ScheduleLeague.getAllGames(): List<GameResponse> =
+        standardGameList + sacramentoGameList + vegasGameList + utahGameList
 }

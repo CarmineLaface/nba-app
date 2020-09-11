@@ -1,4 +1,4 @@
-package it.laface.team.api
+package it.laface.team.api.roster
 
 import it.laface.networking.ApiHelper.nbaSeason
 import retrofit2.Response

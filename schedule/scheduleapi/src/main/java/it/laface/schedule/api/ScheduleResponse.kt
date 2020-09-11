@@ -19,6 +19,7 @@ data class GameResponse(
     @SerializedName("seasonStageId") val seasonStageId: Int,
     @SerializedName("gameUrlCode") val gameUrlCode: String,
     @SerializedName("startTimeUTC") val date: Date,
+    @SerializedName("startDateEastern") val startDateEastern: String,
     @SerializedName("hTeam") val homeTeam: IdTeam,
     @SerializedName("vTeam") val visitorTeam: IdTeam
 )

@@ -21,6 +21,7 @@ import it.laface.navigation.Navigator
 import it.laface.player.domain.PlayerDetailPageProvider
 import it.laface.player.domain.TeamRosterDataSource
 import it.laface.schedule.domain.ScheduleDataSource
+import it.laface.team.domain.TeamInfoDataSource
 import it.laface.team.presentation.databinding.FragmentTeamBinding
 import it.laface.team.presentation.databinding.ItemTeamgameBinding
 import it.laface.team.presentation.databinding.ItemTeamplayerBinding
@@ -31,6 +32,7 @@ import kotlinx.coroutines.launch
 class TeamFragment(
     rosterDataSource: TeamRosterDataSource,
     scheduleDataSource: ScheduleDataSource,
+    teamInfoDataSource: TeamInfoDataSource,
     navigator: Navigator,
     playerPageProvider: PlayerDetailPageProvider
 ) : Fragment() {
@@ -40,6 +42,7 @@ class TeamFragment(
             team = requireParcelable(ARGUMENT_KEY),
             rosterDataSource = rosterDataSource,
             scheduleDataSource = scheduleDataSource,
+            teamInfoDataSource = teamInfoDataSource,
             jobDispatcher = Dispatchers.IO,
             navigator = navigator,
             playerPageProvider = playerPageProvider
@@ -59,12 +62,9 @@ class TeamFragment(
             .root
 
     private fun FragmentTeamBinding.setView() {
-        cityNameTextView.text = viewModel.team.cityName
-        nicknameTextView.text = viewModel.team.nickname
+        nameTextView.text = viewModel.team.nickname
 
         teamImageView.bindImage(viewModel.team.imageUrl)
-
-        teamInfoButton.setOnClickListener { /* TODO */ }
 
         setSchedule()
         setRoaster()
@@ -89,9 +89,9 @@ class TeamFragment(
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
             viewModel.scheduleContent.collect { contentToShow ->
                 if (contentToShow is ContentToShow.Success) {
-                    scheduleAdapter.list = contentToShow.contentList
+                    scheduleAdapter.list = contentToShow.content
                     scheduleRecyclerView.scrollToPosition(
-                        viewModel.scrollScheduleToIndex(contentToShow.contentList)
+                        viewModel.scrollScheduleToIndex(contentToShow.content)
                     )
                 }
                 scheduleProgressBar.goneUnless(contentToShow is ContentToShow.Loading)
@@ -112,7 +112,7 @@ class TeamFragment(
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
             viewModel.rosterContent.collect { contentToShow ->
                 if (contentToShow is ContentToShow.Success) {
-                    rosterAdapter.list = contentToShow.contentList
+                    rosterAdapter.list = contentToShow.content
                 }
                 rosterProgressBar.goneUnless(contentToShow is ContentToShow.Loading)
                 rosterErrorTextView.goneUnless(contentToShow is ContentToShow.Error)

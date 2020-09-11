@@ -28,9 +28,10 @@ import it.laface.stats.presentation.detail.LeadersFragment
 import it.laface.stats.presentation.detail.LeadersPageProviderImpl
 import it.laface.stats.presentation.group.StatsFragment
 import it.laface.stats.presentation.group.StatsPageProviderImpl
+import it.laface.team.api.TeamApi
 import it.laface.team.api.TeamRepositoryImpl
-import it.laface.team.api.TeamRosterApi
-import it.laface.team.api.TeamRosterMapper
+import it.laface.team.api.roster.TeamRosterMapper
+import it.laface.team.api.teaminfo.TeamInfoMapper
 import it.laface.team.domain.TeamRepository
 import it.laface.team.presentation.TeamFragment
 import it.laface.team.presentation.TeamPageProviderImpl
@@ -72,8 +73,9 @@ class CustomFragmentFactory(private val cacheDirPath: String) : FragmentFactory(
                 )
             TeamFragment::class.java.name ->
                 TeamFragment(
-                    rosterDataSource = TeamRosterMapper(TeamRosterApi.service),
+                    rosterDataSource = TeamRosterMapper(TeamApi.teamRosterService),
                     scheduleDataSource = ScheduleMapper(ScheduleApi.service, teamRepository),
+                    teamInfoDataSource = TeamInfoMapper(TeamApi.teamDetailsService),
                     navigator = navigator,
                     playerPageProvider = PlayerPageProvider
                 )

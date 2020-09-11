@@ -1,4 +1,4 @@
-package it.laface.team.api
+package it.laface.team.api.roster
 
 import com.google.gson.annotations.SerializedName
 

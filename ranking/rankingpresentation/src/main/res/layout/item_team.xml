@@ -8,7 +8,7 @@
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
     android:background="?android:attr/selectableItemBackground"
-    app:cardCornerRadius="4dp"
+    app:cardCornerRadius="8dp"
     app:cardElevation="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,7 +51,7 @@
             android:textSize="18sp"
             android:maxLines="1"
             android:ellipsize="end"
-            android:textColor="@color/darkGrey"
+            android:textColor="@color/matteBlack"
             app:layout_constraintBottom_toBottomOf="@+id/teamLogoImageView"
             app:layout_constraintEnd_toStartOf="@id/winsTextView"
             app:layout_constraintStart_toEndOf="@+id/teamLogoImageView"
