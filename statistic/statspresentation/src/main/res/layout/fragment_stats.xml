@@ -22,18 +22,20 @@
             android:layout_height="wrap_content"
             android:backgroundTint="?attr/colorPrimaryDark"
             android:contentDescription="@string/back"
-            android:padding="16dp"
+            android:padding="10dp"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="center_vertical"
             app:srcCompat="@drawable/ic_arrow_back_24dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:fontFamily="@font/open_sans_semibold"
-            android:letterSpacing=".1"
+            android:fontFamily="@font/open_sans_bold"
             android:text="@string/leaders"
+            android:padding="16dp"
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:textSize="22sp" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

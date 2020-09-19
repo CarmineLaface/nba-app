@@ -9,7 +9,6 @@ import it.laface.navigation.Navigator
 import it.laface.player.domain.Player
 import it.laface.player.domain.PlayerDetailPageProvider
 import it.laface.player.domain.PlayersDataSource
-import it.laface.player.domain.Position
 import it.laface.stats.domain.StatsPageProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
@@ -29,11 +28,10 @@ class PlayerListViewModel(
     private val playerListCallState: MutableStateFlow<CallState<List<Player>>> =
         MutableStateFlow(CallState.NotStarted)
     val nameToFilter: MutableStateFlow<String> = MutableStateFlow("")
-    val filters: MutableStateFlow<Set<Position>> = MutableStateFlow(setOf())
 
     val contentToShow: Flow<ContentListToShow<Player>> =
-        combine(playerListCallState, nameToFilter, filters) { callState, nameToFilter, filters ->
-            mapContentToShow(callState, nameToFilter, filters)
+        combine(playerListCallState, nameToFilter) { callState, nameToFilter ->
+            mapContentToShow(callState, nameToFilter)
         }
 
     init {
@@ -67,13 +65,5 @@ class PlayerListViewModel(
 
     fun goToStatsPage() {
         navigator.navigateForward(statsPageProvider.getStatsPage())
-    }
-
-    fun addFilter(position: Position) {
-        filters.value = filters.value + position
-    }
-
-    fun removeFilter(position: Position) {
-        filters.value = filters.value - position
     }
 }

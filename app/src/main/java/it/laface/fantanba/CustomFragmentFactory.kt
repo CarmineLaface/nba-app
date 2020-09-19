@@ -33,10 +33,11 @@ import it.laface.team.api.TeamRepositoryImpl
 import it.laface.team.api.roster.TeamRosterMapper
 import it.laface.team.api.teaminfo.TeamInfoMapper
 import it.laface.team.domain.TeamRepository
+import it.laface.team.presentation.TeamDataSourcesManager
 import it.laface.team.presentation.TeamFragment
 import it.laface.team.presentation.TeamPageProviderImpl
 
-class CustomFragmentFactory(private val cacheDirPath: String) : FragmentFactory() {
+object CustomFragmentFactory : FragmentFactory() {
 
     private val navigator: Navigator by lazy {
         NavigationHandler(ActivityRegister, id.container)
@@ -47,7 +48,7 @@ class CustomFragmentFactory(private val cacheDirPath: String) : FragmentFactory(
         return when (className) {
             PlayerListFragment::class.java.name ->
                 PlayerListFragment(
-                    dataSource = PlayerListMapper(PlayerListApi.getService(cacheDirPath)),
+                    dataSource = PlayerListMapper(PlayerListApi.service),
                     playerDetailPageProvider = PlayerPageProvider,
                     navigator = navigator,
                     statsPageProvider = StatsPageProviderImpl
@@ -71,14 +72,18 @@ class CustomFragmentFactory(private val cacheDirPath: String) : FragmentFactory(
                     navigator = navigator,
                     teamPageProvider = TeamPageProviderImpl
                 )
-            TeamFragment::class.java.name ->
+            TeamFragment::class.java.name -> {
+                val teamDataSourcesManager = TeamDataSourcesManager(
+                    TeamRosterMapper(TeamApi.teamRosterService),
+                    ScheduleMapper(ScheduleApi.service, teamRepository),
+                    TeamInfoMapper(TeamApi.teamDetailsService)
+                )
                 TeamFragment(
-                    rosterDataSource = TeamRosterMapper(TeamApi.teamRosterService),
-                    scheduleDataSource = ScheduleMapper(ScheduleApi.service, teamRepository),
-                    teamInfoDataSource = TeamInfoMapper(TeamApi.teamDetailsService),
+                    teamDataSourcesManager = teamDataSourcesManager,
                     navigator = navigator,
                     playerPageProvider = PlayerPageProvider
                 )
+            }
             StatsFragment::class.java.name ->
                 StatsFragment(
                     navigator,

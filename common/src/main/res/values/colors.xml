@@ -7,4 +7,8 @@
     <color name="matteBlack">#1b1b1b</color>
     <color name="error_red">#fa3535</color>
     <color name="success_green">#00A878</color>
+
+    <color name="red">#df5c54</color>
+    <color name="yellow">#ffb64b</color>
+    <color name="green">#7bc647</color>
 </resources>

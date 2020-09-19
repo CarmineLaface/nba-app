@@ -4,26 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:background="@android:color/holo_purple"
+    android:clipToPadding="false"
+    android:paddingBottom="16dp"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/teamImageView"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="180dp"
             android:importantForAccessibility="no"
-            android:background="?attr/colorPrimary"
-            tools:background="@color/darkGrey"
-            android:paddingBottom="24dp"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/backImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,172 +31,175 @@
             android:padding="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_arrow_back_24dp" />
-
-        <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:id="@+id/nameTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/open_sans_bold"
-            android:textColor="@color/matteBlack"
-            android:textSize="24sp"
-            android:padding="16dp"
-            android:gravity="center_horizontal"
-            android:clickable="false"
-            app:backgroundTint="@color/lightGrey"
-            android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/teamImageView"
-            app:layout_constraintTop_toBottomOf="@id/teamImageView"
-            app:cornerRadius="16dp"
-            tools:text="Oklahoma City Thunder" />
+            app:srcCompat="@drawable/ic_arrow_back_24dp"
+            app:tint="@color/matteBlack"
+            tools:tint="@color/matteBlack" />
 
         <TextView
-            android:id="@+id/aboutTextView"
+            android:id="@+id/cityTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:fontFamily="@font/open_sans_semibold"
-            android:text="@string/about"
+            android:fontFamily="@font/open_sans_bold"
             android:textColor="@color/matteBlack"
-            android:textSize="18sp"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@id/teamImageView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/nameTextView" />
+            app:layout_constraintTop_toTopOf="@id/teamImageView"
+            tools:text="Oklahoma City" />
 
-        <ImageView
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:textColor="@color/matteBlack"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cityTextView"
+            tools:text="Thunder" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/aboutTextView"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:gravity="start|center_vertical"
+            android:padding="8dp"
+            android:text="@string/about"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:icon="@drawable/ic_info"
+            app:iconPadding="8dp"
+            app:strokeWidth="2dp"
+            app:iconTint="@android:color/white"
+            app:backgroundTint="?attr/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/teamImageView"
+            app:strokeColor="?attr/colorPrimaryDark" />
+
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/aboutAccordion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/back"
             android:padding="8dp"
-            app:layout_constraintTop_toTopOf="@id/aboutTextView"
+            app:tint="@android:color/white"
             app:layout_constraintBottom_toBottomOf="@id/aboutTextView"
-            app:layout_constraintStart_toEndOf="@id/aboutTextView"
+            app:layout_constraintEnd_toEndOf="@id/aboutTextView"
+            app:layout_constraintTop_toTopOf="@id/aboutTextView"
             app:srcCompat="@drawable/ic_accordion" />
 
-        <TextView
-            android:id="@+id/scheduleTextView"
-            android:layout_width="wrap_content"
+        <include
+            android:id="@+id/contentAbout"
+            layout="@layout/content_about"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/open_sans_semibold"
-            android:text="@string/schedule"
-            android:textColor="@color/matteBlack"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@id/aboutTextView"
-            app:layout_constraintTop_toBottomOf="@id/aboutTextView" />
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/aboutTextView"
+            tools:visibility="visible" />
 
-        <ImageView
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/scheduleTextView"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:gravity="start|center_vertical"
+            android:padding="8dp"
+            app:backgroundTint="?attr/colorPrimary"
+            android:text="@string/schedule"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:icon="@drawable/ic_calendar"
+            app:iconPadding="8dp"
+            app:iconTint="@android:color/white"
+            app:strokeWidth="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/contentAbout"
+            app:strokeColor="?attr/colorPrimaryDark" />
+
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/scheduleAccordion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/back"
             android:padding="8dp"
-            app:layout_constraintTop_toTopOf="@id/scheduleTextView"
+            app:tint="@android:color/white"
             app:layout_constraintBottom_toBottomOf="@id/scheduleTextView"
-            app:layout_constraintStart_toEndOf="@id/scheduleTextView"
+            app:layout_constraintEnd_toEndOf="@id/scheduleTextView"
+            app:layout_constraintTop_toTopOf="@id/scheduleTextView"
             app:srcCompat="@drawable/ic_accordion" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/scheduleRecyclerView"
+        <include
+            android:id="@+id/contentSchedule"
+            layout="@layout/content_schedule"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:clipToPadding="false"
-            android:overScrollMode="never"
-            android:paddingStart="48dp"
-            android:paddingEnd="48dp"
-            android:paddingTop="16dp"
-            android:paddingBottom="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/scheduleTextView"
-            tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_teamgame"
-            tools:orientation="horizontal" />
-
-        <ProgressBar
-            android:id="@+id/scheduleProgressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/scheduleTextView"
             tools:visibility="visible" />
 
-        <TextView
-            android:id="@+id/scheduleErrorTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@string/error"
-            android:textSize="16sp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/scheduleTextView"
-            tools:visibility="visible" />
-
-        <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/gamesBarrier"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:barrierDirection="bottom"
-            app:constraint_referenced_ids="scheduleRecyclerView,scheduleProgressBar,scheduleErrorTextView" />
-
-        <TextView
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/rosterTextView"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/open_sans_semibold"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:gravity="start|center_vertical"
+            app:backgroundTint="?attr/colorPrimary"
+            android:padding="8dp"
             android:text="@string/roster"
-            android:textColor="@color/matteBlack"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
             android:textSize="18sp"
+            app:icon="@drawable/ic_team"
+            app:iconPadding="8dp"
+            app:iconTint="@android:color/white"
+            app:strokeWidth="2dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/scheduleTextView"
-            app:layout_constraintTop_toBottomOf="@id/gamesBarrier" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/contentSchedule"
+            app:strokeColor="?attr/colorPrimaryDark" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rosterRecyclerView"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/rosterAccordion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/back"
+            android:padding="8dp"
+            app:tint="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@id/rosterTextView"
+            app:layout_constraintEnd_toEndOf="@id/rosterTextView"
+            app:layout_constraintTop_toTopOf="@id/rosterTextView"
+            app:srcCompat="@drawable/ic_accordion" />
+
+        <include
+            android:id="@+id/contentRoster"
+            layout="@layout/content_roster"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:clipToPadding="false"
-            android:nestedScrollingEnabled="false"
-            android:paddingStart="4dp"
-            android:paddingTop="16dp"
-            android:paddingEnd="4dp"
-            android:paddingBottom="24dp"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rosterTextView"
-            app:spanCount="@integer/roster_columns"
-            tools:listitem="@layout/item_teamplayer" />
-
-        <ProgressBar
-            android:id="@+id/rosterProgressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rosterTextView"
-            tools:visibility="visible" />
-
-        <TextView
-            android:id="@+id/rosterErrorTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@string/error"
-            android:textSize="16sp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

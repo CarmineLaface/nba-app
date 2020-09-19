@@ -10,18 +10,20 @@ import it.laface.playerlist.presentation.PlayerListFragment
 import it.laface.ranking.presentation.RankingFragment
 import it.laface.schedule.presentation.ScheduleFragment
 
+@Suppress("UNCHECKED_CAST")
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
+    private val firstFragmentClass: Class<Fragment>
+        get() = NewsFragment::class.java as Class<Fragment>
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        val customFragmentFactory = (application as CustomApplication).customFragmentFactory!!
-        supportFragmentManager.fragmentFactory = customFragmentFactory
+        supportFragmentManager.fragmentFactory = CustomFragmentFactory
         super.onCreate(savedInstanceState)
 
         setBottomNavigation()
 
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
-                val firstFragmentClass = NewsFragment::class.java
                 add(R.id.container, firstFragmentClass, null, firstFragmentClass.name)
             }
         }
@@ -42,14 +44,12 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         }
     }
 
-    @Suppress("UNCHECKED_CAST")
     private fun getBottomNavigationSection(itemId: Int): Class<Fragment> {
         return when (itemId) {
-            R.id.news -> NewsFragment::class.java
             R.id.players -> PlayerListFragment::class.java
             R.id.ranking -> RankingFragment::class.java
             R.id.schedule -> ScheduleFragment::class.java
-            else -> NewsFragment::class.java
+            else -> firstFragmentClass
         } as Class<Fragment>
     }
 }

@@ -152,7 +152,7 @@ object Const {
             Team(
                 id = "1610612746",
                 key = "LA",
-                cityName = "LA",
+                cityName = "Los Angeles",
                 code = "clippers",
                 nickname = "Clippers",
                 rgbColor = "#ed174c",

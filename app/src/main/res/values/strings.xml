@@ -1,6 +1,3 @@
 <resources>
     <string name="app_name">Nba Info</string>
-
-    <string name="players">Players</string>
-    <string name="schedule">Schedule</string>
 </resources>

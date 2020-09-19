@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
@@ -56,8 +59,10 @@ class RankingFragment(
         }
         viewPager.adapter = viewPagerAdapter
 
+        val tabFont = ResourcesCompat.getFont(requireContext(), R.font.open_sans_bold)
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = if (position == 0) "WEST" else "EAST"
+            (tab.view.get(1) as? TextView)?.typeface = tabFont
         }.attach()
 
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {

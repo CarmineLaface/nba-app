@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp">
+
+        <TextView
+            android:id="@+id/yearFoundedTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/year_founded"
+            android:textColor="@color/darkGrey"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/arenaTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/arena"
+            android:textColor="@color/darkGrey"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/yearFoundedTextView"
+            app:layout_constraintTop_toBottomOf="@id/yearFoundedNameTextView" />
+
+        <TextView
+            android:id="@+id/ownerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/owner"
+            android:textColor="@color/darkGrey"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/yearFoundedTextView"
+            app:layout_constraintTop_toBottomOf="@id/arenaNameTextView" />
+
+        <TextView
+            android:id="@+id/generalManagerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/general_manager"
+            android:textColor="@color/darkGrey"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/yearFoundedTextView"
+            app:layout_constraintTop_toBottomOf="@id/ownerNameTextView" />
+
+        <TextView
+            android:id="@+id/headCoachTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/head_coach"
+            android:textColor="@color/darkGrey"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/yearFoundedTextView"
+            app:layout_constraintTop_toBottomOf="@id/generalManagerNameTextView" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="end"
+            app:constraint_referenced_ids="yearFoundedTextView,yearFoundedTextView,arenaTextView,ownerTextView,generalManagerTextView,headCoachTextView" />
+
+        <TextView
+            android:id="@+id/yearFoundedNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/matteBlack"
+            android:textSize="16sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/yearFoundedTextView"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="1948" />
+
+        <TextView
+            android:id="@+id/arenaNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/matteBlack"
+            android:textSize="16sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/arenaTextView"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="STAPLES Center" />
+
+        <TextView
+            android:id="@+id/ownerNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/matteBlack"
+            android:textSize="16sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/ownerTextView"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Jerry Buss Family Trust" />
+
+        <TextView
+            android:id="@+id/generalManagerNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/matteBlack"
+            android:textSize="16sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/generalManagerTextView"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Mitch Kupchak" />
+
+        <TextView
+            android:id="@+id/headCoachNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/matteBlack"
+            android:textSize="16sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/headCoachTextView"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Byron Scott" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

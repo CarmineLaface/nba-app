@@ -9,39 +9,43 @@
         android:id="@+id/titleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:padding="16dp"
         android:fontFamily="@font/open_sans_bold"
         android:text="@string/players"
-        android:textColor="?attr/colorPrimaryDark"
-        tools:textColor="@android:color/black"
+        android:textColor="@android:color/white"
+        android:background="?attr/colorPrimary"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:textColor="@color/matteBlack" />
 
-    <include
-        android:id="@+id/card_leaders"
-        layout="@layout/card_leaders"
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/leadersButton"
+        app:backgroundTint="?attr/colorPrimary"
+        app:srcCompat="@drawable/ic_ranking"
+        app:tint="@android:color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="@id/playerNameTextInputLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/playerNameTextInputLayout" />
+        android:layout_marginEnd="16dp"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="@id/titleTextView"
+        app:layout_constraintEnd_toEndOf="@id/titleTextView"
+        app:layout_constraintTop_toTopOf="@id/titleTextView" />
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
         android:id="@+id/playerNameTextInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:padding="8dp"
         app:endIconMode="clear_text"
-        app:layout_constraintEnd_toStartOf="@id/card_leaders"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleTextView">
 
@@ -52,52 +56,20 @@
             android:hint="@string/name" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipGroup"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/playerNameTextInputLayout" >
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/centerChip"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/center"/>
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/guardChip"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/guard"/>
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/forwardChip"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/forward"/>
-    </com.google.android.material.chip.ChipGroup>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/playersRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:clipToPadding="false"
         android:paddingStart="8dp"
-        android:paddingTop="16dp"
+        android:paddingTop="8dp"
         android:paddingEnd="8dp"
         android:paddingBottom="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/playerNameTextInputLayout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chipGroup"
         tools:listitem="@layout/item_player" />
 
     <TextView

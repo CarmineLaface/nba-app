@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="schedule">Schedule</string>
     <string name="versus">VS</string>
     <string name="roster">Roster</string>
     <string name="error">Error</string>
     <string name="about">About</string>
+    <string name="city">City</string>
+    <string name="year_founded">Year founded</string>
+    <string name="arena">Arena</string>
+    <string name="owner">Owner</string>
+    <string name="general_manager">General manager</string>
+    <string name="head_coach">Head coach</string>
 </resources>

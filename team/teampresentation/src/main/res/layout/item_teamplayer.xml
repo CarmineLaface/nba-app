@@ -8,7 +8,7 @@
     android:background="?android:attr/selectableItemBackground"
     app:cardCornerRadius="8dp"
     app:cardElevation="4dp"
-    tools:layout_width="200dp">
+    tools:layout_width="130dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -17,9 +17,10 @@
 
         <ImageView
             android:id="@+id/playerImageView"
-            android:layout_width="130dp"
-            android:layout_height="95dp"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="4dp"
+            app:layout_constraintDimensionRatio="26:19"
             android:importantForAccessibility="no"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,16 +28,44 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
+            android:id="@+id/jerseyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/matteBlack"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/open_sans"
+            android:textSize="11sp"
+            tools:text="23"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SmallSp" />
+
+        <TextView
+            android:id="@+id/positionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/matteBlack"
+            android:fontFamily="@font/open_sans"
+            android:textSize="11sp"
+            tools:text="F"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/jerseyTextView"
+            tools:ignore="SmallSp" />
+
+        <TextView
             android:id="@+id/nameTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="4dp"
             android:ellipsize="end"
             android:gravity="center_horizontal"
             android:maxLines="1"
             android:textColor="@color/matteBlack"
+            android:fontFamily="@font/open_sans_semibold"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,6 +83,7 @@
             android:gravity="center_horizontal"
             android:maxLines="1"
             android:textColor="@color/matteBlack"
+            android:fontFamily="@font/open_sans_semibold"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

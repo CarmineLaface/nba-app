@@ -20,11 +20,12 @@ object TeamDetailsDeserializer : JsonDeserializer<TeamDetailsResponse> {
             teamDetailsJson.get(0).asJsonObject["Details"].asJsonArray.get(0)
         val teamDetails: TeamDetails = gson.fromJson(detailsJson, TeamDetails::class.java)
         val socialSitesJson: JsonArray =
-            teamDetailsJson.get(2).asJsonObject["SocialSites"].asJsonArray
+            teamDetailsJson.get(SOCIAL_SITES_INDEX).asJsonObject["SocialSites"].asJsonArray
         val socialSites: List<SocialSite> = socialSitesJson.map { socialSiteJson ->
             gson.fromJson(socialSiteJson, SocialSite::class.java)
         }
-        val awardsJson: JsonArray = teamDetailsJson.get(3).asJsonObject["Awards"].asJsonArray
+        val awardsJson: JsonArray =
+            teamDetailsJson.get(AWARDS_INDEX).asJsonObject["Awards"].asJsonArray
         val championshipsJson: JsonArray =
             awardsJson.get(0).asJsonObject["Championships"].asJsonArray
         val championships: List<ChampionshipTitle> = championshipsJson.map { championshipJson ->
@@ -36,4 +37,7 @@ object TeamDetailsDeserializer : JsonDeserializer<TeamDetailsResponse> {
             championships = championships,
         )
     }
+
+    const val SOCIAL_SITES_INDEX = 2
+    const val AWARDS_INDEX = 3
 }

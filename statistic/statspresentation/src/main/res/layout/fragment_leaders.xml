@@ -9,7 +9,7 @@
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimaryDark"
+        android:background="?attr/colorPrimary"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,9 +20,11 @@
             android:id="@+id/backImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="?attr/colorPrimaryDark"
+            android:backgroundTint="?attr/colorPrimary"
             android:contentDescription="@string/back"
-            android:padding="16dp"
+            android:padding="10dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
             app:srcCompat="@drawable/ic_arrow_back_24dp" />
 
         <TextView
@@ -31,11 +33,12 @@
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:layout_gravity="center_vertical"
-            android:textSize="18sp"
-            android:fontFamily="@font/open_sans_semibold"
+            android:textSize="20sp"
+            android:fontFamily="@font/open_sans_bold"
+            tools:text="Points per game"
+            android:padding="16dp"
             android:ellipsize="end"
-            android:maxLines="1"
-            android:letterSpacing=".1"/>
+            android:maxLines="1" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

@@ -9,20 +9,21 @@
         android:id="@+id/titleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:padding="16dp"
         android:fontFamily="@font/open_sans_bold"
         android:text="@string/schedule"
-        android:textColor="@color/matteBlack"
+        android:textColor="@android:color/white"
+        android:background="?attr/colorPrimary"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:textColor="@color/matteBlack" />
 
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:background="@android:color/white"
         android:elevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -2,19 +2,14 @@ package it.laface.team.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import it.laface.base.CallState
-import it.laface.base.NetworkResult
 import it.laface.common.ContentListToShow
 import it.laface.common.ContentToShow
 import it.laface.domain.model.Team
 import it.laface.navigation.Navigator
 import it.laface.player.domain.Player
 import it.laface.player.domain.PlayerDetailPageProvider
-import it.laface.player.domain.TeamRosterDataSource
 import it.laface.schedule.domain.Game
-import it.laface.schedule.domain.ScheduleDataSource
 import it.laface.team.domain.TeamInfo
-import it.laface.team.domain.TeamInfoDataSource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -25,46 +20,24 @@ import java.util.Date
 @Suppress("EXPERIMENTAL_API_USAGE")
 class TeamViewModel(
     val team: Team,
-    private val rosterDataSource: TeamRosterDataSource,
-    private val scheduleDataSource: ScheduleDataSource,
-    private val teamInfoDataSource: TeamInfoDataSource,
+    private val teamDataSourcesManager: TeamDataSourcesManager,
     private val jobDispatcher: CoroutineDispatcher,
     private val navigator: Navigator,
     private val playerPageProvider: PlayerDetailPageProvider
 ) : ViewModel() {
 
-    private val rosterCallState: MutableStateFlow<CallState<List<Player>>> =
-        MutableStateFlow(CallState.InProgress)
+    val isRosterOpen: MutableStateFlow<Boolean> = MutableStateFlow(value = true)
+    val rosterContent: Flow<ContentListToShow<Player>> =
+        teamDataSourcesManager.rosterCallState.map(::toContent)
 
-    val rosterContent: Flow<ContentListToShow<Player>> = rosterCallState.map { callState ->
-        when (callState) {
-            is CallState.Success -> ContentToShow.Success(callState.result)
-            is CallState.Error -> ContentToShow.Error
-            CallState.NotStarted, CallState.InProgress -> ContentToShow.Loading
-        }
-    }
+    val isScheduleOpen: MutableStateFlow<Boolean> = MutableStateFlow(value = true)
+    val scheduleContent: Flow<ContentListToShow<Game>> =
+        teamDataSourcesManager.scheduleCallState.map(::toContent)
 
-    private val scheduleCallState: MutableStateFlow<CallState<List<Game>>> =
-        MutableStateFlow(CallState.InProgress)
+    val isAboutOpen: MutableStateFlow<Boolean> = MutableStateFlow(value = true)
+    val teamInfoContent: Flow<ContentToShow<TeamInfo>> =
+        teamDataSourcesManager.teamInfoCallState.map(::toContent)
 
-    val scheduleContent: Flow<ContentListToShow<Game>> = scheduleCallState.map { callState ->
-        when (callState) {
-            is CallState.Success -> ContentToShow.Success(callState.result)
-            is CallState.Error -> ContentToShow.Error
-            CallState.NotStarted, CallState.InProgress -> ContentToShow.Loading
-        }
-    }
-
-    private val teamInfoCallState: MutableStateFlow<CallState<TeamInfo>> =
-        MutableStateFlow(CallState.InProgress)
-
-    val teamInfoContent: Flow<ContentToShow<TeamInfo>> = teamInfoCallState.map { callState ->
-        when (callState) {
-            is CallState.Success -> ContentToShow.Success(callState.result)
-            is CallState.Error -> ContentToShow.Error
-            CallState.NotStarted, CallState.InProgress -> ContentToShow.Loading
-        }
-    }
     init {
         getRoster()
         getSchedule()
@@ -73,38 +46,32 @@ class TeamViewModel(
 
     private fun getRoster() {
         viewModelScope.launch(jobDispatcher) {
-            rosterCallState.value =
-                when (val response = rosterDataSource.getRoster(teamCode = team.code, teamId = team.id)) {
-                    is NetworkResult.Success ->
-                        CallState.Success(response.value)
-                    is NetworkResult.Error ->
-                        CallState.Error(response.error)
-                }
+            teamDataSourcesManager.loadRoster(team)
         }
+    }
+
+    fun onRosterClick() {
+        isRosterOpen.value = isRosterOpen.value.not()
     }
 
     private fun getSchedule() {
         viewModelScope.launch(jobDispatcher) {
-            scheduleCallState.value =
-                when (val response = scheduleDataSource.getTeamSchedule(team.id)) {
-                    is NetworkResult.Success ->
-                        CallState.Success(response.value)
-                    is NetworkResult.Error ->
-                        CallState.Error(response.error)
-                }
+            teamDataSourcesManager.loadSchedule(team)
         }
+    }
+
+    fun onScheduleClick() {
+        isScheduleOpen.value = isScheduleOpen.value.not()
     }
 
     private fun getTeamInfo() {
         viewModelScope.launch(jobDispatcher) {
-            teamInfoCallState.value =
-                when (val response = teamInfoDataSource.getTeamInfo(team.id)) {
-                    is NetworkResult.Success ->
-                        CallState.Success(response.value)
-                    is NetworkResult.Error ->
-                        CallState.Error(response.error)
-                }
+            teamDataSourcesManager.loadInfo(team)
         }
+    }
+
+    fun onAboutClick() {
+        isAboutOpen.value = isAboutOpen.value.not()
     }
 
     fun playerSelected(player: Player) {
