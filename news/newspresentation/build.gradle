@@ -36,13 +36,13 @@ android {
 
 dependencies {
     implementation project(":common")
-    api project(":news:newsdomain")
+    api project(':news:newsdomain')
     implementation project(":navigation:navpublic")
 
     //Android core
     implementation "androidx.appcompat:appcompat:${versions.appcompat}"
     implementation "androidx.core:core-ktx:${versions.core}"
-    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}"
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
 
     //UI

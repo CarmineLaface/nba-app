@@ -37,7 +37,7 @@ dependencies {
     api project(":domain")
     api project(":team:teamdomain")
     api project(":playerdetail:playerdomain")
-    api project(":schedule:scheduledomain")
+    api project(':game:gamedomain')
     implementation project(":navigation:navpublic")
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -45,7 +45,7 @@ dependencies {
     //Android core
     implementation "androidx.appcompat:appcompat:${versions.appcompat}"
     implementation "androidx.core:core-ktx:${versions.core}"
-    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}"
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
 
     //UI

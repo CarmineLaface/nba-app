@@ -8,10 +8,10 @@ import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayoutMediator
 import it.laface.base.CallState
+import it.laface.common.util.observe
 import it.laface.common.view.BaseAdapter
 import it.laface.common.viewModels
 import it.laface.navigation.Navigator
@@ -19,8 +19,6 @@ import it.laface.ranking.domain.RankingDataSource
 import it.laface.ranking.presentation.databinding.FragmentRankingBinding
 import it.laface.team.domain.TeamPageProvider
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 class RankingFragment(
     dataSource: RankingDataSource,
@@ -65,13 +63,11 @@ class RankingFragment(
             (tab.view.get(1) as? TextView)?.typeface = tabFont
         }.attach()
 
-        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
-            viewModel.rankingListsCallState.collect { callState ->
-                if (callState is CallState.Success) {
-                    viewPagerAdapter.list =
-                        listOf(callState.result.westCoastRanking, callState.result.eastCoastRanking)
-                    progressBar.visibility = View.GONE
-                }
+        observe(viewModel.rankingListsCallState) { callState ->
+            if (callState is CallState.Success) {
+                viewPagerAdapter.list =
+                    listOf(callState.result.westCoastRanking, callState.result.eastCoastRanking)
+                progressBar.visibility = View.GONE
             }
         }
     }

@@ -24,7 +24,7 @@ val Calendar.getCompleteDayName: String
     get() {
         val locale = Locale.getDefault()
         val dayName = getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, locale)?.capitalize()
-        val monthName = getDisplayName(Calendar.MONTH, Calendar.LONG, locale)
+        val monthName = getDisplayName(Calendar.MONTH, Calendar.LONG, locale)?.capitalize()
         return "$dayName, $day $monthName $year"
     }
 
@@ -41,7 +41,7 @@ val Date.getFullDayName: String
     get() = toCalendar.getFullDayName
 
 val Date.toCalendar: Calendar
-    get() = Calendar.getInstance().apply {
+    get() = Calendar.getInstance(Locale.US).apply {
         time = this@toCalendar
     }
 

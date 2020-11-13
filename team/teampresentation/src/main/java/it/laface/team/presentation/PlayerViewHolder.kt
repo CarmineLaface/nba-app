@@ -16,6 +16,8 @@ class PlayerViewHolder(
 
         binding.nameTextView.text = item.name
         binding.surnameTextView.text = item.surname
+        binding.positionTextView.text = item.position
+        binding.jerseyTextView.text = item.jerseyNumber
 
         binding.playerImageView.bindImage(item.imageUrl, R.drawable.player_placeholder)
     }

@@ -35,7 +35,7 @@ android {
 }
 
 dependencies {
-    api project(":schedule:scheduledomain")
+    api project(':game:gamedomain')
     api project(":team:teamdomain")
     implementation project(":networking")
 

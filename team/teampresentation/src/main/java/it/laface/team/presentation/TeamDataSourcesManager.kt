@@ -3,10 +3,10 @@ package it.laface.team.presentation
 import it.laface.base.CallState
 import it.laface.base.NetworkResult
 import it.laface.domain.model.Team
+import it.laface.game.domain.Game
+import it.laface.game.domain.ScheduleDataSource
 import it.laface.player.domain.Player
 import it.laface.player.domain.TeamRosterDataSource
-import it.laface.schedule.domain.Game
-import it.laface.schedule.domain.ScheduleDataSource
 import it.laface.team.domain.TeamInfo
 import it.laface.team.domain.TeamInfoDataSource
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -30,7 +30,7 @@ class TeamDataSourcesManager(
         rosterCallState.value = when (response) {
             is NetworkResult.Success ->
                 CallState.Success(response.value)
-            is NetworkResult.Error ->
+            is NetworkResult.Failure ->
                 CallState.Error(response.error)
         }
     }
@@ -41,7 +41,7 @@ class TeamDataSourcesManager(
         scheduleCallState.value = when (response) {
             is NetworkResult.Success ->
                 CallState.Success(response.value)
-            is NetworkResult.Error ->
+            is NetworkResult.Failure ->
                 CallState.Error(response.error)
         }
     }
@@ -52,7 +52,7 @@ class TeamDataSourcesManager(
         teamInfoCallState.value = when (response) {
             is NetworkResult.Success ->
                 CallState.Success(response.value)
-            is NetworkResult.Error ->
+            is NetworkResult.Failure ->
                 CallState.Error(response.error)
         }
     }

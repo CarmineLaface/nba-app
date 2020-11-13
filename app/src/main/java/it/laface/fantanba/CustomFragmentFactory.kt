@@ -3,6 +3,10 @@ package it.laface.fantanba
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import it.laface.fantanba.R.id
+import it.laface.game.networking.GameApi
+import it.laface.game.networking.GameMapper
+import it.laface.game.presentation.GameFragment
+import it.laface.game.presentation.GamePageProviderImpl
 import it.laface.navigation.NavigationHandler
 import it.laface.navigation.Navigator
 import it.laface.news.api.NewsApi
@@ -16,8 +20,8 @@ import it.laface.player.presentation.PlayerPageProvider
 import it.laface.playerlist.api.PlayerListApi
 import it.laface.playerlist.api.PlayerListMapper
 import it.laface.playerlist.presentation.PlayerListFragment
-import it.laface.ranking.api.RankingApi
-import it.laface.ranking.api.RankingMapper
+import it.laface.ranking.networking.RankingApi
+import it.laface.ranking.networking.RankingMapper
 import it.laface.ranking.presentation.RankingFragment
 import it.laface.schedule.api.ScheduleApi
 import it.laface.schedule.api.ScheduleMapper
@@ -63,7 +67,9 @@ object CustomFragmentFactory : FragmentFactory() {
                 )
             ScheduleFragment::class.java.name ->
                 ScheduleFragment(
-                    ScheduleMapper(ScheduleApi.service, teamRepository)
+                    ScheduleMapper(ScheduleApi.service, teamRepository),
+                    navigator,
+                    GamePageProviderImpl
                 )
             PlayerDetailFragment::class.java.name ->
                 PlayerDetailFragment(
@@ -81,7 +87,8 @@ object CustomFragmentFactory : FragmentFactory() {
                 TeamFragment(
                     teamDataSourcesManager = teamDataSourcesManager,
                     navigator = navigator,
-                    playerPageProvider = PlayerPageProvider
+                    playerPageProvider = PlayerPageProvider,
+                    gamePageProvider = GamePageProviderImpl
                 )
             }
             StatsFragment::class.java.name ->
@@ -89,6 +96,10 @@ object CustomFragmentFactory : FragmentFactory() {
                     navigator,
                     LeadersPageProviderImpl,
                     StatsMapper(StatsApi.service)
+                )
+            GameFragment::class.java.name ->
+                GameFragment(
+                    GameMapper(GameApi.service)
                 )
             LeadersFragment::class.java.name ->
                 LeadersFragment(navigator)

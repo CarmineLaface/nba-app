@@ -34,7 +34,7 @@ class RankingViewModel(
                 when (val response = dataSource.getRanking()) {
                     is NetworkResult.Success ->
                         CallState.Success(response.value)
-                    is NetworkResult.Error -> CallState.Error(response.error)
+                    is NetworkResult.Failure -> CallState.Error(response.error)
                 }
         }
     }

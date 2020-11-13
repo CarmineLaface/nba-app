@@ -17,9 +17,13 @@ import it.laface.common.view.goneUnless
 import it.laface.common.view.inflater
 import it.laface.common.viewModels
 import it.laface.domain.model.imageUrl
+import it.laface.game.domain.GamePageProvider
 import it.laface.navigation.Navigator
 import it.laface.player.domain.PlayerDetailPageProvider
 import it.laface.team.domain.TeamInfo
+import it.laface.team.presentation.TeamSection.About
+import it.laface.team.presentation.TeamSection.Roster
+import it.laface.team.presentation.TeamSection.Schedule
 import it.laface.team.presentation.databinding.ContentAboutBinding
 import it.laface.team.presentation.databinding.ContentRosterBinding
 import it.laface.team.presentation.databinding.ContentScheduleBinding
@@ -31,7 +35,8 @@ import kotlinx.coroutines.Dispatchers
 class TeamFragment(
     teamDataSourcesManager: TeamDataSourcesManager,
     navigator: Navigator,
-    playerPageProvider: PlayerDetailPageProvider
+    playerPageProvider: PlayerDetailPageProvider,
+    gamePageProvider: GamePageProvider
 ) : Fragment() {
 
     private val viewModel: TeamViewModel by viewModels {
@@ -40,7 +45,8 @@ class TeamFragment(
             teamDataSourcesManager = teamDataSourcesManager,
             jobDispatcher = Dispatchers.IO,
             navigator = navigator,
-            playerPageProvider = playerPageProvider
+            playerPageProvider = playerPageProvider,
+            gamePageProvider = gamePageProvider
         )
     }
 
@@ -63,10 +69,8 @@ class TeamFragment(
         teamImageView.bindImage(viewModel.team.imageUrl)
 
         contentSchedule.bindSchedule()
-        bindScheduleAccordion()
         contentRoster.bindRoaster()
-        bindRosterAccordion()
-        bindAboutAccordion()
+        bindSections()
 
         observe(viewModel.teamInfoContent) { contentToShow ->
             if (contentToShow is ContentToShow.Success) {
@@ -85,42 +89,64 @@ class TeamFragment(
         ownerNameTextView.text = teamInfo.owner
         generalManagerNameTextView.text = teamInfo.generalManager
         headCoachNameTextView.text = teamInfo.headCoach
+        championshipsTotalTextView.text = teamInfo.championships.size.toString()
+        /*teamInfo.socialPages.forEach { socialPage ->
+
+            socialPagesContainer.addView()
+        }*/
     }
 
-    private fun FragmentTeamBinding.bindAboutAccordion() {
+    private fun FragmentTeamBinding.bindSections() {
         aboutTextView.setOnClickListener {
             viewModel.onAboutClick()
         }
-        observe(viewModel.isAboutOpen) { isOpen ->
-            contentAbout.root.goneUnless(isOpen)
-            aboutAccordion.rotateAccordion(isOpen)
-        }
-    }
-
-    private fun FragmentTeamBinding.bindRosterAccordion() {
         rosterTextView.setOnClickListener {
             viewModel.onRosterClick()
         }
-        observe(viewModel.isRosterOpen) { isOpen ->
-            contentRoster.root.goneUnless(isOpen)
-            rosterAccordion.rotateAccordion(isOpen)
-        }
-    }
-
-    private fun FragmentTeamBinding.bindScheduleAccordion() {
         scheduleTextView.setOnClickListener {
             viewModel.onScheduleClick()
         }
-        observe(viewModel.isScheduleOpen) { isOpen ->
-            contentSchedule.root.goneUnless(isOpen)
-            scheduleAccordion.rotateAccordion(isOpen)
+        val checkedSectionResId = when (viewModel.openSection.value) {
+            About -> R.id.aboutTextView
+            Schedule -> R.id.scheduleTextView
+            Roster -> R.id.rosterTextView
+        }
+        buttonGroup.check(checkedSectionResId)
+        buttonGroup.addOnButtonCheckedListener { _, checkedResId, isChecked ->
+            if (isChecked.not()) return@addOnButtonCheckedListener
+            viewModel.openSection.value = when (checkedResId) {
+                R.id.aboutTextView -> About
+                R.id.scheduleTextView -> Schedule
+                R.id.rosterTextView -> Roster
+                else -> error("invalid checked resource id")
+            }
+        }
+        observe(viewModel.openSection) { teamSection ->
+            when (teamSection) {
+                About -> {
+                    contentAbout.root.visibility = View.VISIBLE
+                    contentRoster.root.visibility = View.GONE
+                    contentSchedule.root.visibility = View.GONE
+                }
+                Schedule -> {
+                    contentAbout.root.visibility = View.GONE
+                    contentRoster.root.visibility = View.GONE
+                    contentSchedule.root.visibility = View.VISIBLE
+                }
+                Roster -> {
+                    contentAbout.root.visibility = View.GONE
+                    contentRoster.root.visibility = View.VISIBLE
+                    contentSchedule.root.visibility = View.GONE
+                }
+            }
         }
     }
 
     private fun ContentScheduleBinding.bindSchedule() {
         val scheduleAdapter = BaseAdapter { parent ->
             GameViewHolder(
-                ItemTeamgameBinding.inflate(parent.inflater, parent, false)
+                ItemTeamgameBinding.inflate(parent.inflater, parent, false),
+                viewModel::onGameSelected
             )
         }
         scheduleRecyclerView.layoutManager =
@@ -158,9 +184,6 @@ class TeamFragment(
         }
     }
 
-    private fun View.rotateAccordion(isOpen: Boolean) {
-        rotation = if (isOpen) 180f else 0f
-    }
     companion object {
 
         internal const val ARGUMENT_KEY = "ARGUMENT_KEY"

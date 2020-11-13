@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:text="@string/year_founded"
             android:textColor="@color/darkGrey"
             android:textSize="16sp"
@@ -70,12 +70,23 @@
             app:layout_constraintStart_toStartOf="@id/yearFoundedTextView"
             app:layout_constraintTop_toBottomOf="@id/generalManagerNameTextView" />
 
+        <TextView
+            android:id="@+id/championshipsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/championships"
+            android:textColor="@color/darkGrey"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/yearFoundedTextView"
+            app:layout_constraintTop_toBottomOf="@id/headCoachTextView" />
+
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/barrier"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="end"
-            app:constraint_referenced_ids="yearFoundedTextView,yearFoundedTextView,arenaTextView,ownerTextView,generalManagerTextView,headCoachTextView" />
+            app:constraint_referenced_ids="yearFoundedTextView,yearFoundedTextView,arenaTextView,ownerTextView,generalManagerTextView,headCoachTextView,championshipsTextView" />
 
         <TextView
             android:id="@+id/yearFoundedNameTextView"
@@ -142,5 +153,43 @@
             app:layout_constraintEnd_toEndOf="parent"
             tools:text="Byron Scott" />
 
+        <TextView
+            android:id="@+id/championshipsTotalTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/matteBlack"
+            android:textSize="16sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/championshipsTextView"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="16" />
+
+        <LinearLayout
+            android:id="@+id/socialPagesContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/championshipsTotalTextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="gone"
+            android:orientation="horizontal">
+            <!--<com.google.android.material.button.MaterialButton
+                android:id="@+id/scheduleTextView"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/open_sans"
+                android:gravity="center_vertical"
+                android:padding="8dp"
+                app:backgroundTint="?attr/colorPrimary"
+                android:text="@string/schedule"
+                android:textAllCaps="false"
+                android:textColor="@color/matteBlack"
+                android:textSize="16sp" />-->
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

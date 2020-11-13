@@ -14,7 +14,7 @@ inline fun <T, R> Response<T>.toNetworkResult(block: (T) -> R): NetworkResult<R>
     return if (isSuccessful && body != null) {
         NetworkResult.Success(block(body))
     } else {
-        NetworkResult.Error(mapError())
+        NetworkResult.Failure(mapError())
     }
 }
 

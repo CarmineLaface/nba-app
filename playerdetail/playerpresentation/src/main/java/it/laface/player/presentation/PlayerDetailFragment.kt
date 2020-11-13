@@ -6,10 +6,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import it.laface.base.CallState
+import it.laface.common.util.observe
 import it.laface.common.util.requireParcelable
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.bindImage
@@ -24,8 +23,6 @@ import it.laface.player.presentation.databinding.ItemStatisticBinding
 import it.laface.team.domain.TeamPageProvider
 import it.laface.team.domain.TeamRepository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 class PlayerDetailFragment(
     teamRepository: TeamRepository,
@@ -76,24 +73,15 @@ class PlayerDetailFragment(
             viewModel.navigateToTeamPage()
         }
 
-        favouriteImageView.bindFavourite(viewModel.isFavourite.value)
-        favouriteImageView.setOnClickListener {
-            val isFavourite = viewModel.isFavourite.value.not()
-            viewModel.isFavourite.value = isFavourite
-            favouriteImageView.bindFavourite(isFavourite)
-        }
-
         val statsAdapter = BaseAdapter { parent ->
             StatsViewHolder(
                 ItemStatisticBinding.inflate(parent.inflater, parent, false)
             )
         }
         statsRecyclerView.adapter = statsAdapter
-        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
-            viewModel.playerStatsCallState.collect { callState ->
-                if (callState is CallState.Success) {
-                    statsAdapter.list = callState.result
-                }
+        observe(viewModel.playerStatsCallState) { callState ->
+            if (callState is CallState.Success) {
+                statsAdapter.list = callState.result
             }
         }
     }
@@ -105,12 +93,6 @@ class PlayerDetailFragment(
         positionValueTextView.setTextColor(color)
         toolbar.setBackgroundColor(color)
         backImageView.backgroundTintList = ColorStateList.valueOf(color)
-    }
-
-    private fun ImageView.bindFavourite(isFavourite: Boolean) {
-        setImageResource(
-            if (isFavourite) R.drawable.ic_filled_star else R.drawable.ic_empty_star
-        )
     }
 
     companion object {

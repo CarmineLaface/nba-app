@@ -5,10 +5,11 @@ import androidx.lifecycle.viewModelScope
 import it.laface.common.ContentListToShow
 import it.laface.common.ContentToShow
 import it.laface.domain.model.Team
+import it.laface.game.domain.Game
+import it.laface.game.domain.GamePageProvider
 import it.laface.navigation.Navigator
 import it.laface.player.domain.Player
 import it.laface.player.domain.PlayerDetailPageProvider
-import it.laface.schedule.domain.Game
 import it.laface.team.domain.TeamInfo
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
@@ -23,20 +24,20 @@ class TeamViewModel(
     private val teamDataSourcesManager: TeamDataSourcesManager,
     private val jobDispatcher: CoroutineDispatcher,
     private val navigator: Navigator,
-    private val playerPageProvider: PlayerDetailPageProvider
+    private val playerPageProvider: PlayerDetailPageProvider,
+    private val gamePageProvider: GamePageProvider
 ) : ViewModel() {
 
-    val isRosterOpen: MutableStateFlow<Boolean> = MutableStateFlow(value = true)
     val rosterContent: Flow<ContentListToShow<Player>> =
         teamDataSourcesManager.rosterCallState.map(::toContent)
 
-    val isScheduleOpen: MutableStateFlow<Boolean> = MutableStateFlow(value = true)
     val scheduleContent: Flow<ContentListToShow<Game>> =
         teamDataSourcesManager.scheduleCallState.map(::toContent)
 
-    val isAboutOpen: MutableStateFlow<Boolean> = MutableStateFlow(value = true)
     val teamInfoContent: Flow<ContentToShow<TeamInfo>> =
         teamDataSourcesManager.teamInfoCallState.map(::toContent)
+
+    val openSection: MutableStateFlow<TeamSection> = MutableStateFlow(TeamSection.About)
 
     init {
         getRoster()
@@ -51,7 +52,7 @@ class TeamViewModel(
     }
 
     fun onRosterClick() {
-        isRosterOpen.value = isRosterOpen.value.not()
+        openSection.value = TeamSection.Roster
     }
 
     private fun getSchedule() {
@@ -61,7 +62,7 @@ class TeamViewModel(
     }
 
     fun onScheduleClick() {
-        isScheduleOpen.value = isScheduleOpen.value.not()
+        openSection.value = TeamSection.Schedule
     }
 
     private fun getTeamInfo() {
@@ -71,7 +72,7 @@ class TeamViewModel(
     }
 
     fun onAboutClick() {
-        isAboutOpen.value = isAboutOpen.value.not()
+        openSection.value = TeamSection.About
     }
 
     fun playerSelected(player: Player) {
@@ -85,5 +86,10 @@ class TeamViewModel(
 
     fun navigateBack() {
         navigator.navigateBack()
+    }
+
+    fun onGameSelected(item: Game) {
+        val gamePage = gamePageProvider.getGamePage(item)
+        navigator.navigateForward(gamePage)
     }
 }

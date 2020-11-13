@@ -49,7 +49,7 @@ class PlayerListViewModel(
                 when (val response = dataSource.getPlayers()) {
                     is NetworkResult.Success ->
                         CallState.Success(response.value)
-                    is NetworkResult.Error -> CallState.Error(response.error)
+                    is NetworkResult.Failure -> CallState.Error(response.error)
                 }
         }
     }

@@ -2,9 +2,9 @@ package it.laface.schedule.api
 
 import it.laface.base.NetworkResult
 import it.laface.domain.model.Team
+import it.laface.game.domain.Game
+import it.laface.game.domain.ScheduleDataSource
 import it.laface.networking.toNetworkResult
-import it.laface.schedule.domain.Game
-import it.laface.schedule.domain.ScheduleDataSource
 import it.laface.team.domain.TeamRepository
 
 class ScheduleMapper(
@@ -42,7 +42,8 @@ class ScheduleMapper(
                     homeTeam = teamList.first { it.id == homeTeamId },
                     visitorTeam = teamList.first { it.id == visitorTeamId },
                     homeScore = homeScore,
-                    visitorScore = visitorScore
+                    visitorScore = visitorScore,
+                    gameDateFormatted = gameResponse.startDateEastern
                 )
             }
 

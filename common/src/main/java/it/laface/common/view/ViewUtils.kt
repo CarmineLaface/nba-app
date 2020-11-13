@@ -6,9 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import it.laface.common.core.applyIf
+import coil.load
 
 val ViewGroup.inflater: LayoutInflater
     get() = LayoutInflater.from(context)
@@ -20,11 +18,18 @@ fun View.goneUnless(condition: Boolean) {
 val Context.isLandScape: Boolean
     get() = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
-fun ImageView.bindImage(uri: String, placeholderResId: Int = 0) {
+/*fun ImageView.bindImage(uri: String, placeholderResId: Int = 0) {
     Glide.with(context)
         .load(uri)
         .applyIf(placeholderResId != 0) {
             apply(RequestOptions.placeholderOf(placeholderResId))
         }
         .into(this)
+}*/
+
+fun ImageView.bindImage(uri: String, placeholderResId: Int = 0) {
+    load(uri) {
+        if (placeholderResId != 0)
+            placeholder(placeholderResId)
+    }
 }

@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:layout_gravity="center_vertical"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:fontFamily="@font/open_sans_bold"
             tools:text="Points per game"
             android:padding="16dp"

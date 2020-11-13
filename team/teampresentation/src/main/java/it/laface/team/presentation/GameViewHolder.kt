@@ -4,27 +4,30 @@ import it.laface.common.util.getCompleteDayName
 import it.laface.common.util.toCalendar
 import it.laface.common.view.BaseViewHolder
 import it.laface.common.view.bindImage
+import it.laface.domain.model.Team
 import it.laface.domain.model.imageUrl
-import it.laface.schedule.domain.Game
+import it.laface.game.domain.Game
 import it.laface.team.presentation.databinding.ItemTeamgameBinding
+import it.laface.team.presentation.databinding.MiniitemTeamgameBinding
 
-class GameViewHolder(private val binding: ItemTeamgameBinding) :
-    BaseViewHolder<Game>(binding.root) {
+class GameViewHolder(
+    private val binding: ItemTeamgameBinding,
+    onGameSelected: (Game) -> Unit
+) : BaseViewHolder<Game>(binding.root, onGameSelected) {
 
     override fun bind(item: Game) {
+        super.bind(item)
+
         binding.dateTextView.text = item.date.toCalendar.getCompleteDayName
 
-        binding.homeTeamCityTextView.text = item.homeTeam.cityName
-        binding.homeTeamNameTextView.text = item.homeTeam.nickname
-        binding.homeTeamLogoImageView.bindImage(item.homeTeam.imageUrl, R.drawable.circle_grey)
-        binding.homeScoreTextView.text = item.homeScore ?: "-"
+        binding.homeTeam.bind(item.homeTeam, item.homeScore)
+        binding.visitorTeam.bind(item.visitorTeam, item.visitorScore)
+    }
 
-        binding.visitorTeamCityTextView.text = item.visitorTeam.cityName
-        binding.visitorTeamNameTextView.text = item.visitorTeam.nickname
-        binding.visitorTeamLogoImageView.bindImage(
-            item.visitorTeam.imageUrl,
-            R.drawable.circle_grey
-        )
-        binding.visitorScoreTextView.text = item.visitorScore ?: "-"
+    private fun MiniitemTeamgameBinding.bind(item: Team, score: String?) {
+        teamCityTextView.text = item.cityName
+        teamNameTextView.text = item.nickname
+        teamLogoImageView.bindImage(item.imageUrl, R.drawable.circle_grey)
+        scoreTextView.text = score ?: "-"
     }
 }

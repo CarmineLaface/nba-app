@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import it.laface.common.ContentListToShow
 import it.laface.common.ContentToShow
+import it.laface.common.util.observe
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.goneUnless
 import it.laface.common.view.inflater
@@ -21,8 +21,6 @@ import it.laface.playerlist.presentation.databinding.FragmentPlayerListBinding
 import it.laface.playerlist.presentation.databinding.ItemPlayerBinding
 import it.laface.stats.domain.StatsPageProvider
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 class PlayerListFragment(
     dataSource: PlayersDataSource,
@@ -58,12 +56,10 @@ class PlayerListFragment(
             )
         }
         playersRecyclerView.adapter = playersAdapter
-        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
-            viewModel.contentToShow.collect { contentToShow ->
-                bindContentToShow(contentToShow, playersAdapter)
-            }
-            playerNameEditText.setText(viewModel.nameToFilter.value)
+        observe(viewModel.contentToShow) { contentToShow ->
+            bindContentToShow(contentToShow, playersAdapter)
         }
+        playerNameEditText.setText(viewModel.nameToFilter.value)
         playerNameEditText.doAfterTextChanged { text ->
             viewModel.setNameToFilter(text.toString())
         }

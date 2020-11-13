@@ -34,7 +34,7 @@ class StatsViewModel(
                 when (val response = statsDataSource.getLeaders()) {
                     is NetworkResult.Success ->
                         ContentToShow.Success(response.value)
-                    is NetworkResult.Error ->
+                    is NetworkResult.Failure ->
                         ContentToShow.Error
                 }
         }

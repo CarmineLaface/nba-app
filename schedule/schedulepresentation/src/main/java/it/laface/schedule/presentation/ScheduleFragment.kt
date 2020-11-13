@@ -5,29 +5,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import it.laface.common.ContentListToShow
 import it.laface.common.ContentToShow
+import it.laface.common.util.observe
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.goneUnless
 import it.laface.common.view.inflater
 import it.laface.common.viewModels
-import it.laface.schedule.domain.Game
-import it.laface.schedule.domain.ScheduleDataSource
+import it.laface.game.domain.Game
+import it.laface.game.domain.GamePageProvider
+import it.laface.game.domain.ScheduleDataSource
+import it.laface.navigation.Navigator
 import it.laface.schedule.presentation.databinding.FragmentScheduleBinding
 import it.laface.schedule.presentation.databinding.ItemGameBinding
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import java.util.Date
 
 @Suppress("DEPRECATION")
-class ScheduleFragment(dataSource: ScheduleDataSource) : Fragment() {
+class ScheduleFragment(
+    dataSource: ScheduleDataSource,
+    navigator: Navigator,
+    gamePageProvider: GamePageProvider
+) : Fragment() {
 
     private val viewModel: ScheduleViewModel by viewModels {
         ScheduleViewModel(
-            dataSource,
-            Dispatchers.IO
+            dataSource = dataSource,
+            jobDispatcher = Dispatchers.IO,
+            gamePageProvider = gamePageProvider,
+            navigator = navigator
         )
     }
 
@@ -47,10 +53,8 @@ class ScheduleFragment(dataSource: ScheduleDataSource) : Fragment() {
         val gameAdapter = getGameAdapter()
         gameRecyclerView.adapter = gameAdapter
 
-        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
-            viewModel.gamesToShow.collect { contentToShow ->
-                bindContentToShow(contentToShow, gameAdapter)
-            }
+        observe(viewModel.gamesToShow) { contentToShow ->
+            bindContentToShow(contentToShow, gameAdapter)
         }
 
         calendarView.date = viewModel.selectedDate.value.time
@@ -76,7 +80,8 @@ class ScheduleFragment(dataSource: ScheduleDataSource) : Fragment() {
     private fun getGameAdapter(): BaseAdapter<Game> =
         BaseAdapter { parent ->
             GameViewHolder(
-                ItemGameBinding.inflate(parent.inflater, parent, false)
+                ItemGameBinding.inflate(parent.inflater, parent, false),
+                viewModel::onGameSelected
             )
         }
 

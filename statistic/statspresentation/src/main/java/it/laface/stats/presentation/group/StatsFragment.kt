@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import it.laface.common.ContentListToShow
 import it.laface.common.ContentToShow
+import it.laface.common.util.observe
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.goneUnless
 import it.laface.common.view.inflater
@@ -19,8 +19,6 @@ import it.laface.stats.domain.StatsSection
 import it.laface.stats.presentation.databinding.FragmentStatsBinding
 import it.laface.stats.presentation.databinding.ItemStatsGroupBinding
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 class StatsFragment(
     navigator: Navigator,
@@ -60,10 +58,8 @@ class StatsFragment(
             viewModel.navigateBack()
         }
         groupRecyclerView.adapter = groupAdapter
-        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
-            viewModel.statsCallState.collect { contentToShow ->
-                bindContentToShow(contentToShow, groupAdapter)
-            }
+        observe(viewModel.statsCallState) { contentToShow ->
+            bindContentToShow(contentToShow, groupAdapter)
         }
     }
 

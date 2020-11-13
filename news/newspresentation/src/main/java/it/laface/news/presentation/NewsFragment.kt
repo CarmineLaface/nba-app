@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import it.laface.common.ContentListToShow
 import it.laface.common.ContentToShow
+import it.laface.common.util.observe
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.goneUnless
 import it.laface.common.view.inflater
@@ -18,8 +18,6 @@ import it.laface.news.domain.NewsDataSource
 import it.laface.news.presentation.databinding.FragmentNewsBinding
 import it.laface.news.presentation.databinding.ItemNewsBinding
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 class NewsFragment(dataSource: NewsDataSource, browserProvider: BrowserProvider) : Fragment() {
 
@@ -46,10 +44,8 @@ class NewsFragment(dataSource: NewsDataSource, browserProvider: BrowserProvider)
         val newsAdapter = getNewsAdapter()
         newsRecyclerView.adapter = newsAdapter
 
-        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
-            viewModel.contentToShow.collect { contentToShow ->
-                bindContentToShow(contentToShow, newsAdapter)
-            }
+        observe(viewModel.contentToShow) { contentToShow ->
+            bindContentToShow(contentToShow, newsAdapter)
         }
         retryButton.setOnClickListener {
             viewModel.onRetry()

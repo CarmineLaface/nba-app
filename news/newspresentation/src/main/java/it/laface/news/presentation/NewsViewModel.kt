@@ -31,7 +31,7 @@ class NewsViewModel(
                 when (val response = dataSource.getNews()) {
                     is NetworkResult.Success ->
                         ContentToShow.Success(response.value)
-                    is NetworkResult.Error -> ContentToShow.Error
+                    is NetworkResult.Failure -> ContentToShow.Error
                 }
         }
     }

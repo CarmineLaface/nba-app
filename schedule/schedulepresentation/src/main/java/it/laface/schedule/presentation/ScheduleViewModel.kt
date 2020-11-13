@@ -5,8 +5,10 @@ import androidx.lifecycle.viewModelScope
 import it.laface.base.CallState
 import it.laface.base.NetworkResult
 import it.laface.common.ContentListToShow
-import it.laface.schedule.domain.Game
-import it.laface.schedule.domain.ScheduleDataSource
+import it.laface.game.domain.Game
+import it.laface.game.domain.GamePageProvider
+import it.laface.game.domain.ScheduleDataSource
+import it.laface.navigation.Navigator
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,6 +19,8 @@ import java.util.Date
 @Suppress("EXPERIMENTAL_API_USAGE")
 class ScheduleViewModel(
     private val dataSource: ScheduleDataSource,
+    private val gamePageProvider: GamePageProvider,
+    private val navigator: Navigator,
     jobDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
@@ -31,13 +35,18 @@ class ScheduleViewModel(
 
     init {
         viewModelScope.launch(jobDispatcher) {
-            scheduleCallState.value =
-                when (val response = dataSource.getLeagueSchedule()) {
-                    is NetworkResult.Success ->
-                        CallState.Success(response.value)
-                    is NetworkResult.Error ->
-                        CallState.Error(response.error)
-                }
+            val response = dataSource.getLeagueSchedule()
+            scheduleCallState.value = when (response) {
+                is NetworkResult.Success ->
+                    CallState.Success(response.value)
+                is NetworkResult.Failure ->
+                    CallState.Error(response.error)
+            }
         }
+    }
+
+    fun onGameSelected(item: Game) {
+        val gamePage = gamePageProvider.getGamePage(item)
+        navigator.navigateForward(gamePage)
     }
 }

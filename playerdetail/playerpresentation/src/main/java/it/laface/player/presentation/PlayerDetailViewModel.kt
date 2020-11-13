@@ -27,7 +27,6 @@ class PlayerDetailViewModel(
     val team: Team = teamRepository.getTeam(player.teamId)
     val playerStatsCallState: MutableStateFlow<CallState<List<UIPlayerStats>>> =
         MutableStateFlow(CallState.InProgress)
-    val isFavourite: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
     init {
         getPlayerStats()
@@ -35,12 +34,12 @@ class PlayerDetailViewModel(
 
     private fun getPlayerStats() {
         viewModelScope.launch(jobDispatcher) {
-            playerStatsCallState.value =
-                when (val response = playerStatsDataSource.getPlayerStats(player.id)) {
-                    is NetworkResult.Success ->
-                        CallState.Success(response.value.toUi())
-                    is NetworkResult.Error -> CallState.Error(response.error)
-                }
+            val response = playerStatsDataSource.getPlayerStats(player.id)
+            playerStatsCallState.value = when (response) {
+                is NetworkResult.Success ->
+                    CallState.Success(response.value.toUi())
+                is NetworkResult.Failure -> CallState.Error(response.error)
+            }
         }
     }
 

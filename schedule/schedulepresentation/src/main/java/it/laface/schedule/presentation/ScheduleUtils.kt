@@ -4,7 +4,7 @@ import it.laface.base.CallState
 import it.laface.common.ContentListToShow
 import it.laface.common.ContentToShow
 import it.laface.common.util.isSameDay
-import it.laface.schedule.domain.Game
+import it.laface.game.domain.Game
 import kotlinx.coroutines.flow.FlowCollector
 import java.util.Date
 

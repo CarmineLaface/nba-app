@@ -2,7 +2,8 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="240dp"
+    android:layout_width="wrap_content"
+    tools:layout_width="230dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
@@ -13,146 +14,56 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
         tools:background="@android:color/white">
 
         <TextView
             android:id="@+id/dateTextView"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="8dp"
             android:fontFamily="@font/open_sans_semibold"
+            android:gravity="center_horizontal"
+            android:maxLines="1"
+            android:paddingBottom="8dp"
             android:textColor="@color/matteBlack"
             android:textSize="14sp"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:gravity="center_horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Mon, 01 September 2022"/>
+            tools:text="Mon, 01 September 2022" />
 
-        <ImageView
-            android:id="@+id/homeTeamLogoImageView"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:importantForAccessibility="no"
-            app:layout_constraintEnd_toStartOf="@+id/vsTextView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/dateTextView"
-            tools:srcCompat="@tools:sample/avatars" />
-
-        <TextView
-            android:id="@+id/homeScoreTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/open_sans_semibold"
-            android:textColor="@color/matteBlack"
-            android:textSize="16sp"
-            android:gravity="center_horizontal"
-            app:layout_constraintEnd_toStartOf="@+id/vsTextView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/homeTeamLogoImageView"
-            tools:text="TBD" />
-
-        <TextView
-            android:id="@+id/homeTeamCityTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/open_sans"
-            android:textColor="@color/matteBlack"
-            android:textSize="12sp"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:gravity="center_horizontal"
-            app:layout_constraintEnd_toStartOf="@+id/vsTextView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/homeScoreTextView"
-            tools:text="Minnesota" />
-
-        <TextView
-            android:id="@+id/homeTeamNameTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:fontFamily="@font/open_sans"
-            android:textColor="@color/matteBlack"
-            android:textSize="12sp"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:gravity="center_horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/vsTextView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/homeTeamCityTextView"
-            tools:text="Timberwolves" />
-
-        <TextView
-            android:id="@+id/vsTextView"
+        <include
+            android:id="@+id/homeTeam"
+            layout="@layout/miniitem_teamgame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/versus"
-            android:textColor="@color/matteBlack"
-            app:layout_constraintBottom_toBottomOf="@id/visitorTeamLogoImageView"
-            app:layout_constraintEnd_toStartOf="@id/visitorTeamLogoImageView"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@id/homeTeamLogoImageView" />
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dateTextView" />
 
-        <ImageView
-            android:id="@+id/visitorTeamLogoImageView"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:importantForAccessibility="no"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/vsTextView"
-            app:layout_constraintTop_toBottomOf="@id/dateTextView"
-            tools:srcCompat="@tools:sample/avatars" />
-
-        <TextView
-            android:id="@+id/visitorScoreTextView"
-            android:layout_width="0dp"
+        <include
+            android:id="@+id/visitorTeam"
+            layout="@layout/miniitem_teamgame"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/open_sans_semibold"
-            android:textColor="@color/matteBlack"
-            android:textSize="16sp"
-            android:gravity="center_horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/vsTextView"
-            app:layout_constraintTop_toBottomOf="@+id/visitorTeamLogoImageView"
-            tools:text="TBD" />
-
-        <TextView
-            android:id="@+id/visitorTeamCityTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/open_sans"
-            android:textColor="@color/matteBlack"
-            android:textSize="12sp"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:gravity="center_horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/vsTextView"
-            app:layout_constraintTop_toBottomOf="@+id/visitorScoreTextView"
-            tools:text="Oklahoma City" />
-
-        <TextView
-            android:id="@+id/visitorTeamNameTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:fontFamily="@font/open_sans"
-            android:textColor="@color/matteBlack"
-            android:textSize="12sp"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:gravity="center_horizontal"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/vsTextView"
-            app:layout_constraintTop_toBottomOf="@+id/visitorTeamCityTextView"
-            tools:text="Thunder" />
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/dateTextView" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".5" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
