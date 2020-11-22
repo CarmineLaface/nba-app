@@ -11,7 +11,6 @@ import it.laface.team.domain.TeamInfo
 import it.laface.team.domain.TeamInfoDataSource
 import kotlinx.coroutines.flow.MutableStateFlow
 
-@Suppress("EXPERIMENTAL_API_USAGE")
 class TeamDataSourcesManager(
     private val rosterDataSource: TeamRosterDataSource,
     private val scheduleDataSource: ScheduleDataSource,

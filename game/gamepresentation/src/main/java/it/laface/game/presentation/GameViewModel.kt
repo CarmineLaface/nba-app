@@ -2,8 +2,6 @@ package it.laface.game.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import it.laface.base.CallState
-import it.laface.base.CallState.InProgress
 import it.laface.base.NetworkResult
 import it.laface.common.ContentToShow
 import it.laface.game.domain.Game
@@ -14,7 +12,6 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
-@Suppress("EXPERIMENTAL_API_USAGE")
 class GameViewModel(
     val game: Game,
     private val navigator: Navigator,

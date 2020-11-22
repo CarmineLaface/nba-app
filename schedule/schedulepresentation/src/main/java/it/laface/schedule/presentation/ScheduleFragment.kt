@@ -21,7 +21,6 @@ import it.laface.schedule.presentation.databinding.ItemGameBinding
 import kotlinx.coroutines.Dispatchers
 import java.util.Date
 
-@Suppress("DEPRECATION")
 class ScheduleFragment(
     dataSource: ScheduleDataSource,
     navigator: Navigator,
@@ -49,6 +48,7 @@ class ScheduleFragment(
             }
             .root
 
+    @Suppress("DEPRECATION")
     private fun FragmentScheduleBinding.setView() {
         val gameAdapter = getGameAdapter()
         gameRecyclerView.adapter = gameAdapter

@@ -13,7 +13,6 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
-@Suppress("EXPERIMENTAL_API_USAGE")
 class RankingViewModel(
     private val dataSource: RankingDataSource,
     private val jobDispatcher: CoroutineDispatcher,

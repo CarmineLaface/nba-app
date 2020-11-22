@@ -16,7 +16,6 @@ import kotlinx.coroutines.flow.combineTransform
 import kotlinx.coroutines.launch
 import java.util.Date
 
-@Suppress("EXPERIMENTAL_API_USAGE")
 class ScheduleViewModel(
     private val dataSource: ScheduleDataSource,
     private val gamePageProvider: GamePageProvider,

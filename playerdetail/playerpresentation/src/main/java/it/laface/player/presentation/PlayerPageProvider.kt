@@ -4,7 +4,6 @@ import it.laface.navigation.Page
 import it.laface.player.domain.Player
 import it.laface.player.domain.PlayerDetailPageProvider
 
-@Suppress("UNCHECKED_CAST")
 object PlayerPageProvider : PlayerDetailPageProvider {
 
     override fun getPlayerDetailPage(player: Player): Page {

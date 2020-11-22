@@ -16,7 +16,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 
-@Suppress("EXPERIMENTAL_API_USAGE")
 class PlayerListViewModel(
     private val dataSource: PlayersDataSource,
     private val playerDetailPageProvider: PlayerDetailPageProvider,

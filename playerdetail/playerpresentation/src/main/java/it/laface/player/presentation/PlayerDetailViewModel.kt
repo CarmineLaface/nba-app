@@ -14,7 +14,6 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
-@Suppress("EXPERIMENTAL_API_USAGE")
 class PlayerDetailViewModel(
     val player: Player,
     teamRepository: TeamRepository,

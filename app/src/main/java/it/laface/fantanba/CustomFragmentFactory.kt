@@ -48,6 +48,7 @@ object CustomFragmentFactory : FragmentFactory() {
     }
     private val teamRepository: TeamRepository by lazy(::TeamRepositoryImpl)
 
+    @Suppress("LongMethod")
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {
         return when (className) {
             PlayerListFragment::class.java.name ->

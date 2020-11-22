@@ -18,7 +18,6 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import java.util.Date
 
-@Suppress("EXPERIMENTAL_API_USAGE")
 class TeamViewModel(
     val team: Team,
     private val teamDataSourcesManager: TeamDataSourcesManager,

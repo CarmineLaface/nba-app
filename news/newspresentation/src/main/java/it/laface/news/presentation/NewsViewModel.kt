@@ -12,7 +12,6 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
-@Suppress("EXPERIMENTAL_API_USAGE")
 class NewsViewModel(
     private val dataSource: NewsDataSource,
     private val browserProvider: BrowserProvider,
