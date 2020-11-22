@@ -58,18 +58,21 @@ object CustomFragmentFactory : FragmentFactory() {
                     statsPageProvider = StatsPageProviderImpl
                 )
             NewsFragment::class.java.name ->
-                NewsFragment(NewsMapper(NewsApi.service), BrowserProviderImpl(ActivityRegister))
+                NewsFragment(
+                    NewsMapper(NewsApi.service),
+                    BrowserProviderImpl(ActivityRegister)
+                )
             RankingFragment::class.java.name ->
                 RankingFragment(
-                    RankingMapper(RankingApi.service),
-                    TeamPageProviderImpl,
-                    navigator
+                    dataSource = RankingMapper(RankingApi.service),
+                    teamPageProvider = TeamPageProviderImpl,
+                    navigator = navigator
                 )
             ScheduleFragment::class.java.name ->
                 ScheduleFragment(
-                    ScheduleMapper(ScheduleApi.service, teamRepository),
-                    navigator,
-                    GamePageProviderImpl
+                    dataSource = ScheduleMapper(ScheduleApi.service, teamRepository),
+                    navigator = navigator,
+                    gamePageProvider = GamePageProviderImpl
                 )
             PlayerDetailFragment::class.java.name ->
                 PlayerDetailFragment(
@@ -93,13 +96,14 @@ object CustomFragmentFactory : FragmentFactory() {
             }
             StatsFragment::class.java.name ->
                 StatsFragment(
-                    navigator,
-                    LeadersPageProviderImpl,
-                    StatsMapper(StatsApi.service)
+                    navigator = navigator,
+                    leadersPageProvider = LeadersPageProviderImpl,
+                    statsDataSource = StatsMapper(StatsApi.service)
                 )
             GameFragment::class.java.name ->
                 GameFragment(
-                    GameMapper(GameApi.service)
+                    GameMapper(GameApi.service),
+                    navigator
                 )
             LeadersFragment::class.java.name ->
                 LeadersFragment(navigator)

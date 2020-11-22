@@ -29,7 +29,7 @@
 
         <TextView
             android:id="@+id/homeScoreTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/open_sans_semibold"
@@ -65,6 +65,8 @@
             android:layout_height="wrap_content"
             android:text="@string/versus"
             android:textColor="@color/matteBlack"
+            android:fontFamily="@font/open_sans"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/visitorTeamLogoImageView"
             app:layout_constraintStart_toEndOf="@+id/homeTeamLogoImageView"

@@ -15,17 +15,12 @@ fun View.goneUnless(condition: Boolean) {
     visibility = if (condition) View.VISIBLE else View.GONE
 }
 
+fun View.setGone() {
+    visibility = View.GONE
+}
+
 val Context.isLandScape: Boolean
     get() = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
-
-/*fun ImageView.bindImage(uri: String, placeholderResId: Int = 0) {
-    Glide.with(context)
-        .load(uri)
-        .applyIf(placeholderResId != 0) {
-            apply(RequestOptions.placeholderOf(placeholderResId))
-        }
-        .into(this)
-}*/
 
 fun ImageView.bindImage(uri: String, placeholderResId: Int = 0) {
     load(uri) {

@@ -25,7 +25,7 @@ class ScheduleMapper(
     }
 
     private fun mapSchedule(schedule: ScheduleLeague, teamList: List<Team>): List<Game> =
-        schedule.getAllGames()
+        schedule.standardGameList
             .filter { gameResponse ->
                 val homeTeamId = gameResponse.homeTeam.teamId
                 val visitorTeamId = gameResponse.visitorTeam.teamId
@@ -46,7 +46,4 @@ class ScheduleMapper(
                     gameDateFormatted = gameResponse.startDateEastern
                 )
             }
-
-    private fun ScheduleLeague.getAllGames(): List<GameResponse> =
-        standardGameList + sacramentoGameList + vegasGameList + utahGameList
 }

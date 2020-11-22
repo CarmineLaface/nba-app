@@ -20,7 +20,7 @@
             android:id="@+id/backImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="?attr/colorPrimaryDark"
+            android:backgroundTint="?attr/colorPrimary"
             android:contentDescription="@string/back"
             android:padding="10dp"
             android:layout_marginStart="8dp"
