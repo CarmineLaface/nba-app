@@ -33,5 +33,5 @@ dependencies {
 
     //Test
     implementation 'junit:junit:4.13.1'
-    implementation "io.mockk:mockk:1.10.2"
+    implementation 'io.mockk:mockk:1.10.3'
 }

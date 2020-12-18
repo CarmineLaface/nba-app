@@ -2,7 +2,7 @@ package it.laface.game.domain
 
 import android.os.Parcelable
 import it.laface.domain.model.Team
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 import java.util.Date
 
 @Parcelize

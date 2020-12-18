@@ -1,10 +1,12 @@
 package it.laface.fantanba
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
 import it.laface.common.ActivityProvider
 
+@SuppressLint("StaticFieldLeaks")
 object ActivityRegister : Application.ActivityLifecycleCallbacks, ActivityProvider {
 
     override var currentActivity: Activity? = null

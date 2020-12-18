@@ -11,9 +11,12 @@ class PlayerStatsMapper(private val service: PlayerStatsService) : PlayerStatsDa
         service.playerStats(playerId = playerId).toNetworkResult { players ->
             val stats = players.league.standard.stats.latest
             PlayerStats(
-                pointsPerGame = stats.pointsPerGame,
-                reboundsPerGame = stats.reboundsPerGame,
-                assistsPerGame = stats.assistsPerGame,
+                pointsPerGame = getValue(stats.pointsPerGame),
+                reboundsPerGame = getValue(stats.reboundsPerGame),
+                assistsPerGame = getValue(stats.assistsPerGame),
             )
         }
+
+    private fun getValue(stats: String): String =
+        if (stats.toFloat() >= 0) stats else "0"
 }

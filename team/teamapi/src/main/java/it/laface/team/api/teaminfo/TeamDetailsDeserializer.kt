@@ -38,6 +38,6 @@ object TeamDetailsDeserializer : JsonDeserializer<TeamDetailsResponse> {
         )
     }
 
-    const val SOCIAL_SITES_INDEX = 2
-    const val AWARDS_INDEX = 3
+    private const val SOCIAL_SITES_INDEX = 2
+    private const val AWARDS_INDEX = 3
 }

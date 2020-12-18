@@ -60,7 +60,7 @@ class RankingFragment(
         val tabFont = ResourcesCompat.getFont(requireContext(), R.font.open_sans_bold)
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = if (position == 0) "WEST" else "EAST"
-            (tab.view.get(1) as? TextView)?.typeface = tabFont
+            (tab.view[1] as? TextView)?.typeface = tabFont
         }.attach()
 
         observe(viewModel.rankingListsCallState) { callState ->

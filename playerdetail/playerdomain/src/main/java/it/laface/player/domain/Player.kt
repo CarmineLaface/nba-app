@@ -2,7 +2,7 @@ package it.laface.player.domain
 
 import android.os.Parcelable
 import it.laface.domain.model.getPlayerImageUrl
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Player(

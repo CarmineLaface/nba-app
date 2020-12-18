@@ -24,7 +24,9 @@ val Context.isLandScape: Boolean
 
 fun ImageView.bindImage(uri: String, placeholderResId: Int = 0) {
     load(uri) {
-        if (placeholderResId != 0)
+        if (placeholderResId != 0) {
             placeholder(placeholderResId)
+            error(placeholderResId)
+        }
     }
 }
