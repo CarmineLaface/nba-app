@@ -4,7 +4,10 @@ import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import it.laface.common.ActivityProvider
 
-class SnackbarHandler(private val activityProvider: ActivityProvider) : MessageEmitter {
+class SnackbarHandler(
+    private val activityProvider: ActivityProvider,
+    private val bottomBarResId: Int,
+) : MessageEmitter {
 
     override fun show(snackbarInfo: SnackbarInfo) {
         val view: View = activityProvider.currentActivity?.getBaseView() ?: return
@@ -12,6 +15,7 @@ class SnackbarHandler(private val activityProvider: ActivityProvider) : MessageE
         snackbarInfo.action?.let {
             snackbar.setAction(it)
         }
+        snackbar.setAnchorView(bottomBarResId)
         snackbar.show()
     }
 

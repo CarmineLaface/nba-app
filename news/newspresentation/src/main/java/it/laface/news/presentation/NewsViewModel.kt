@@ -5,6 +5,8 @@ import androidx.lifecycle.viewModelScope
 import it.laface.base.NetworkResult
 import it.laface.common.ContentListToShow
 import it.laface.common.ContentToShow
+import it.laface.navigation.MessageEmitter
+import it.laface.navigation.SnackbarInfo
 import it.laface.news.domain.Article
 import it.laface.news.domain.BrowserProvider
 import it.laface.news.domain.NewsDataSource
@@ -15,10 +17,13 @@ import kotlinx.coroutines.launch
 class NewsViewModel(
     private val dataSource: NewsDataSource,
     private val browserProvider: BrowserProvider,
-    private val jobDispatcher: CoroutineDispatcher
+    private val jobDispatcher: CoroutineDispatcher,
+    private val messageEmitter: MessageEmitter,
 ) : ViewModel() {
 
-    val contentToShow: MutableStateFlow<ContentListToShow<Article>> = MutableStateFlow(ContentToShow.Loading)
+    val contentToShow: MutableStateFlow<ContentListToShow<Article>> =
+        MutableStateFlow(ContentToShow.Loading)
+    val isRefreshing: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
     init {
         getNews()
@@ -26,21 +31,25 @@ class NewsViewModel(
 
     private fun getNews() {
         viewModelScope.launch(jobDispatcher) {
-            contentToShow.value =
-                when (val response = dataSource.getNews()) {
-                    is NetworkResult.Success ->
-                        ContentToShow.Success(response.value)
-                    is NetworkResult.Failure -> ContentToShow.Error
-                }
+            val response = dataSource.getNews()
+            contentToShow.value = when (response) {
+                is NetworkResult.Success ->
+                    ContentToShow.Success(response.value)
+                is NetworkResult.Failure -> ContentToShow.Error
+            }
         }
     }
 
     fun onRefresh() {
         viewModelScope.launch(jobDispatcher) {
-            val result = dataSource.getNews()
-            if (result is NetworkResult.Success) {
-                contentToShow.value = ContentToShow.Success(result.value)
+            isRefreshing.value = true
+            when (val response = dataSource.getNews()) {
+                is NetworkResult.Success ->
+                    contentToShow.value = ContentToShow.Success(response.value)
+                is NetworkResult.Failure ->
+                    messageEmitter.show(SnackbarInfo(R.string.error))
             }
+            isRefreshing.value = false
         }
     }
 

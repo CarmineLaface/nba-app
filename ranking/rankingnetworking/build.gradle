@@ -38,7 +38,6 @@ dependencies {
     api project(':ranking:rankingdomain')
     implementation project(":networking")
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     //Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"

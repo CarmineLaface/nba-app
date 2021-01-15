@@ -1,49 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.8">
+    <bytecodeTargetLevel target="11">
       <module name="gamedomain" target="11" />
       <module name="nba-app.api" target="11" />
-      <module name="nba-app.app" target="11" />
-      <module name="nba-app.common" target="11" />
-      <module name="nba-app.domain" target="11" />
       <module name="nba-app.features.playerdetail" target="11" />
       <module name="nba-app.features.team" target="11" />
-      <module name="nba-app.game.gamedomain" target="11" />
-      <module name="nba-app.game.gamenetworking" target="11" />
-      <module name="nba-app.game.gamepresentation" target="11" />
       <module name="nba-app.gamenetworking" target="11" />
       <module name="nba-app.gamepresentation" target="11" />
-      <module name="nba-app.navigation.navimpl" target="11" />
-      <module name="nba-app.news.newsdomain" target="11" />
-      <module name="nba-app.news.newsnetworking" target="11" />
-      <module name="nba-app.news.newspresentation" target="11" />
       <module name="nba-app.playerapi" target="11" />
-      <module name="nba-app.playerdetail.playerapi" target="11" />
-      <module name="nba-app.playerdetail.playerdomain" target="11" />
-      <module name="nba-app.playerdetail.playerpresentation" target="11" />
       <module name="nba-app.playerdomain" target="11" />
-      <module name="nba-app.playerlist.playerlistapi" target="11" />
-      <module name="nba-app.playerlist.playerlistpresentation" target="11" />
       <module name="nba-app.playerlistapi" target="11" />
       <module name="nba-app.playerlistdomain" target="11" />
       <module name="nba-app.playerlistpresentation" target="11" />
       <module name="nba-app.playerpresentation" target="11" />
-      <module name="nba-app.ranking.rankingdomain" target="11" />
-      <module name="nba-app.ranking.rankingnetworking" target="11" />
-      <module name="nba-app.ranking.rankingpresentation" target="11" />
-      <module name="nba-app.schedule.scheduleapi" target="11" />
-      <module name="nba-app.schedule.schedulepresentation" target="11" />
-      <module name="nba-app.statistic.statsapi" target="11" />
-      <module name="nba-app.statistic.statsdomain" target="11" />
-      <module name="nba-app.statistic.statspresentation" target="11" />
-      <module name="nba-app.team.teamapi" target="11" />
-      <module name="nba-app.team.teamdomain" target="11" />
-      <module name="nba-app.team.teampresentation" target="11" />
       <module name="nba-app.teamapi" target="11" />
       <module name="nba-app.teamdomain" target="11" />
       <module name="nba-app.teampresentation" target="11" />
-      <module name="nba-app.test" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

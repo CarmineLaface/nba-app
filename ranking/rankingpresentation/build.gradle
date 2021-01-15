@@ -38,7 +38,6 @@ dependencies {
     api project(":team:teamdomain")
 
     //Android core
-    implementation "androidx.appcompat:appcompat:${versions.appcompat}"
     implementation "androidx.core:core-ktx:${versions.core}"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}"
     implementation "androidx.fragment:fragment-ktx:$fragment_version"

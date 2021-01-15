@@ -2,13 +2,13 @@ package it.laface.fantanba
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
-import it.laface.fantanba.R.id
 import it.laface.game.networking.GameApi
 import it.laface.game.networking.GameMapper
 import it.laface.game.presentation.GameFragment
 import it.laface.game.presentation.GamePageProviderImpl
 import it.laface.navigation.NavigationHandler
 import it.laface.navigation.Navigator
+import it.laface.navigation.SnackbarHandler
 import it.laface.news.api.NewsApi
 import it.laface.news.api.NewsMapper
 import it.laface.news.presentation.BrowserProviderImpl
@@ -44,9 +44,12 @@ import it.laface.team.presentation.TeamPageProviderImpl
 object CustomFragmentFactory : FragmentFactory() {
 
     private val navigator: Navigator by lazy {
-        NavigationHandler(ActivityRegister, id.container)
+        NavigationHandler(ActivityRegister, R.id.container)
     }
     private val teamRepository: TeamRepository by lazy(::TeamRepositoryImpl)
+    private val snackbarHandler: SnackbarHandler by lazy {
+        SnackbarHandler(ActivityRegister, R.id.bottomNavigationView)
+    }
 
     @Suppress("LongMethod")
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {
@@ -60,8 +63,9 @@ object CustomFragmentFactory : FragmentFactory() {
                 )
             NewsFragment::class.java.name ->
                 NewsFragment(
-                    NewsMapper(NewsApi.service),
-                    BrowserProviderImpl(ActivityRegister)
+                    dataSource = NewsMapper(NewsApi.service),
+                    browserProvider = BrowserProviderImpl(ActivityRegister),
+                    messageEmitter = snackbarHandler,
                 )
             RankingFragment::class.java.name ->
                 RankingFragment(
@@ -84,9 +88,9 @@ object CustomFragmentFactory : FragmentFactory() {
                 )
             TeamFragment::class.java.name -> {
                 val teamDataSourcesManager = TeamDataSourcesManager(
-                    TeamRosterMapper(TeamApi.teamRosterService),
-                    ScheduleMapper(ScheduleApi.service, teamRepository),
-                    TeamInfoMapper(TeamApi.teamDetailsService)
+                    rosterDataSource = TeamRosterMapper(TeamApi.teamRosterService),
+                    scheduleDataSource = ScheduleMapper(ScheduleApi.service, teamRepository),
+                    teamInfoDataSource = TeamInfoMapper(TeamApi.teamDetailsService)
                 )
                 TeamFragment(
                     teamDataSourcesManager = teamDataSourcesManager,
