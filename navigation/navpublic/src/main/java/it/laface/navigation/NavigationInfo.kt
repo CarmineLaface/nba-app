@@ -3,15 +3,9 @@ package it.laface.navigation
 sealed class NavigationInfo {
 
     data class Forward(
-        val destination: Page,
-        val type: ForwardNavigationType = ForwardNavigationType.Replace,
-        val addToStack: Boolean = true
+        val destination: Page
     ) : NavigationInfo()
 
     object Back : NavigationInfo()
 }
 
-enum class ForwardNavigationType {
-    Add,
-    Replace
-}

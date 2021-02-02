@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/news">
+
+    <fragment android:id="@+id/news"
+        android:name="it.laface.news.presentation.NewsFragment"
+        android:label="NewsFragment"
+        tools:layout="@layout/fragment_news" />
+
+    <fragment android:id="@+id/players"
+        android:name="it.laface.playerlist.presentation.PlayerListFragment"
+        android:label="PlayerListFragment"
+        tools:layout="@layout/fragment_player_list">
+        <action android:id="@+id/action_players_to_player"
+            app:destination="@id/player"/>
+    </fragment>
+
+    <fragment android:id="@+id/player"
+        android:name="it.laface.player.presentation.PlayerDetailFragment"
+        android:label="PlayerDetailFragment"
+        tools:layout="@layout/fragment_player">
+        <!--
+        <argument
+            android:name="player"
+            app:argType="it.laface.player.domain.Player" />
+            -->
+        <action android:id="@+id/action_player_to_team"
+            app:destination="@id/team"/>
+    </fragment>
+
+    <fragment android:id="@+id/ranking"
+        android:name="it.laface.playerlist.presentation.PlayerListFragment"
+        android:label="PlayerListFragment"
+        tools:layout="@layout/fragment_player_list">
+        <action android:id="@+id/action_ranking_to_team"
+            app:destination="@id/team"/>
+    </fragment>
+
+    <fragment android:id="@+id/team"
+        android:name="it.laface.team.presentation.TeamFragment"
+        android:label="TeamFragment"
+        tools:layout="@layout/fragment_team">
+        <!--
+        <argument
+            android:name="team"
+            app:argType="import it.laface.domain.model.Team" />
+            -->
+        <action android:id="@+id/action_team_to_game"
+            app:destination="@id/game"/>
+        <action android:id="@+id/action_team_to_player"
+            app:destination="@id/player"/>
+    </fragment>
+
+    <fragment android:id="@+id/schedule"
+        android:name="it.laface.schedule.presentation.ScheduleFragment"
+        android:label="ScheduleFragment"
+        tools:layout="@layout/fragment_schedule">
+        <action android:id="@+id/action_schedule_to_game"
+            app:destination="@id/game"/>
+    </fragment>
+
+    <fragment android:id="@+id/game"
+        android:name="it.laface.game.presentation.GameFragment"
+        android:label="GameFragment"
+        tools:layout="@layout/fragment_game">
+    </fragment>
+</navigation>

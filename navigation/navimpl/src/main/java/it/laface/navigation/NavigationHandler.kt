@@ -1,53 +1,20 @@
 package it.laface.navigation
 
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.commit
-import it.laface.common.ActivityProvider
-import it.laface.navigation.ForwardNavigationType.Add
-import it.laface.navigation.ForwardNavigationType.Replace
+import androidx.navigation.NavController
 
-@Suppress("UNCHECKED_CAST")
 class NavigationHandler(
-    private val activityProvider: ActivityProvider,
-    private val containerViewResId: Int
+    private val navController: NavController
 ) : Navigator {
-
-    private val manager: FragmentManager?
-        get() = (activityProvider.currentActivity as? FragmentActivity)?.supportFragmentManager
 
     override fun navigate(navigation: NavigationInfo) {
         when (navigation) {
             is NavigationInfo.Forward -> navigateForward(navigation)
-            NavigationInfo.Back -> manager?.popBackStack()
+            NavigationInfo.Back -> navController.popBackStack()
         }
     }
 
     private fun navigateForward(navigation: NavigationInfo.Forward) {
-        when (navigation.type) {
-            Add -> add(navigation.destination, navigation.addToStack)
-            Replace -> replace(navigation.destination, navigation.addToStack)
-        }
-    }
-
-    private fun replace(page: Page, addToBackStack: Boolean) {
-        val fragmentClass = page.fragmentClass as? Class<out Fragment> ?: return
-        manager?.commit {
-            replace(containerViewResId, fragmentClass, page.getBundle(), page.tag)
-            if (addToBackStack) {
-                addToBackStack(page.tag)
-            }
-        }
-    }
-
-    private fun add(page: Page, addToBackStack: Boolean) {
-        val fragmentClass = page.fragmentClass as? Class<out Fragment> ?: return
-        manager?.commit {
-            add(containerViewResId, fragmentClass, page.getBundle(), page.tag)
-            if (addToBackStack) {
-                addToBackStack(page.tag)
-            }
-        }
+        val destination = navigation.destination
+        navController.navigate(destination.actionResId, destination.getBundle())
     }
 }

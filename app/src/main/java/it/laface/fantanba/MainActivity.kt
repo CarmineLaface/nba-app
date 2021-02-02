@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import it.laface.news.presentation.NewsFragment
 import it.laface.playerlist.presentation.PlayerListFragment
@@ -31,25 +33,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private fun setBottomNavigation() {
         findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-            .setOnNavigationItemSelectedListener { item ->
-                moveTo(getBottomNavigationSection(item.itemId))
-                return@setOnNavigationItemSelectedListener true
-            }
-    }
-
-    private fun moveTo(newFragment: Class<Fragment>) {
-        supportFragmentManager.commit {
-            replace(R.id.container, newFragment, null, newFragment.name)
-            addToBackStack(newFragment.name)
-        }
-    }
-
-    private fun getBottomNavigationSection(itemId: Int): Class<Fragment> {
-        return when (itemId) {
-            R.id.players -> PlayerListFragment::class.java
-            R.id.ranking -> RankingFragment::class.java
-            R.id.schedule -> ScheduleFragment::class.java
-            else -> firstFragmentClass
-        } as Class<Fragment>
+        .setupWithNavController(
+            findNavController(R.id.nav_host_fragment)
+        )
     }
 }

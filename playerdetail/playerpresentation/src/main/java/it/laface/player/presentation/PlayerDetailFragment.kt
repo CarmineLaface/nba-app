@@ -97,6 +97,6 @@ class PlayerDetailFragment(
 
     companion object {
 
-        internal const val ARGUMENT_KEY = "ARGUMENT_KEY"
+        const val ARGUMENT_KEY = "ARGUMENT_KEY"
     }
 }
