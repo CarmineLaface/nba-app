@@ -1,5 +1,6 @@
 package it.laface.networking
 
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -30,23 +31,24 @@ fun getClient(vararg interceptors: Interceptor): OkHttpClient.Builder =
             }
         }
 
-fun getConverter(
+fun getGson(
     dateFormat: String? = null,
     adapterInfo: AdapterInfo? = null
-): GsonConverterFactory =
-    GsonConverterFactory.create(
-        GsonBuilder()
-            .apply {
-                if (dateFormat != null) {
-                    setDateFormat(dateFormat)
-                }
+): Gson =
+    GsonBuilder()
+        .apply {
+            if (dateFormat != null) {
+                setDateFormat(dateFormat)
             }
-            .apply {
-                adapterInfo?.let { (type, typeAdapter) ->
-                    registerTypeAdapter(type, typeAdapter)
-                }
+        }
+        .apply {
+            adapterInfo?.let { (type, typeAdapter) ->
+                registerTypeAdapter(type, typeAdapter)
             }
-            .create()
-    )
+        }
+        .create()
+
+fun getConverter(gson: Gson): GsonConverterFactory =
+    GsonConverterFactory.create(gson)
 
 typealias AdapterInfo = Pair<Type, Any>
