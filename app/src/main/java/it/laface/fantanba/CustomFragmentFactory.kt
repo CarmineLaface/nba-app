@@ -2,7 +2,6 @@ package it.laface.fantanba
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
-import androidx.navigation.findNavController
 import it.laface.game.networking.GameApi
 import it.laface.game.networking.GameMapper
 import it.laface.game.presentation.GameFragment
@@ -28,7 +27,6 @@ import it.laface.schedule.presentation.ScheduleFragment
 import it.laface.stats.api.StatsApi
 import it.laface.stats.api.StatsMapper
 import it.laface.stats.presentation.detail.LeadersFragment
-import it.laface.stats.presentation.detail.LeadersPageProviderImpl
 import it.laface.stats.presentation.group.StatsFragment
 import it.laface.team.api.TeamApi
 import it.laface.team.api.TeamRepositoryImpl
@@ -41,7 +39,8 @@ import it.laface.team.presentation.TeamFragment
 object CustomFragmentFactory : FragmentFactory() {
 
     private val navigator: Navigator by lazy {
-        NavigationHandler(ActivityRegister.currentActivity!!.findNavController(R.id.nav_host_fragment))
+        val activity = ActivityRegister.currentActivity!!
+        NavigationHandler(activity, R.id.navHostFragment)
     }
     private val teamRepository: TeamRepository by lazy(::TeamRepositoryImpl)
     private val snackbarHandler: SnackbarHandler by lazy {
@@ -56,9 +55,7 @@ object CustomFragmentFactory : FragmentFactory() {
                     dataSource = PlayerListMapper(PlayerListApi.service),
                     playerDetailPageProvider = actionPlayersToPlayer,
                     navigator = navigator,
-                    statsPageProvider = {
-                        TODO()
-                    }
+                    statsPageProvider = actionPlayersToStats
                 )
             NewsFragment::class.java.name ->
                 NewsFragment(
@@ -83,9 +80,7 @@ object CustomFragmentFactory : FragmentFactory() {
                     teamRepository = teamRepository,
                     playerStatsDataSource = PlayerStatsMapper(PlayerApi.service),
                     navigator = navigator,
-                    teamPageProvider = {
-                        TODO()
-                    }
+                    teamPageProvider = actionPlayerToTeam
                 )
             TeamFragment::class.java.name -> {
                 val teamDataSourcesManager = TeamDataSourcesManager(
@@ -103,7 +98,7 @@ object CustomFragmentFactory : FragmentFactory() {
             StatsFragment::class.java.name ->
                 StatsFragment(
                     navigator = navigator,
-                    leadersPageProvider = LeadersPageProviderImpl,
+                    leadersPageProvider = actionStatsToLeaders,
                     statsDataSource = StatsMapper(StatsApi.service)
                 )
             GameFragment::class.java.name ->

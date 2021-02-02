@@ -7,16 +7,14 @@ import com.schibsted.spain.barista.assertion.BaristaListAssertions.assertListNot
 import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
 import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed
 import com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn
-import io.mockk.mockk
 import io.mockk.coEvery
+import io.mockk.mockk
 import it.laface.base.NetworkError
 import it.laface.base.NetworkResult
 import it.laface.navigation.Navigator
-import it.laface.player.domain.Player
 import it.laface.player.domain.PlayerDetailPageProvider
 import it.laface.player.domain.PlayersDataSource
 import it.laface.stats.domain.StatsPageProvider
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.junit.Rule
 import org.junit.Test

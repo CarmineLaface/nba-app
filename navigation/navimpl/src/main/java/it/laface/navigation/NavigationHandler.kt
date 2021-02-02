@@ -1,20 +1,22 @@
 package it.laface.navigation
 
+import android.app.Activity
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 
 class NavigationHandler(
-    private val navController: NavController
+    activity: Activity,
+    navHostFragmentResId: Int
 ) : Navigator {
 
-    override fun navigate(navigation: NavigationInfo) {
-        when (navigation) {
-            is NavigationInfo.Forward -> navigateForward(navigation)
-            NavigationInfo.Back -> navController.popBackStack()
-        }
+    private val navController: NavController =
+        activity.findNavController(navHostFragmentResId)
+
+    override fun navigateBack() {
+        navController.popBackStack()
     }
 
-    private fun navigateForward(navigation: NavigationInfo.Forward) {
-        val destination = navigation.destination
+    override fun navigateForward(destination: Page) {
         navController.navigate(destination.actionResId, destination.getBundle())
     }
 }
