@@ -39,13 +39,18 @@ import it.laface.team.presentation.TeamFragment
 object CustomFragmentFactory : FragmentFactory() {
 
     private val navigator: Navigator by lazy {
-        val activity = ActivityRegister.currentActivity!!
-        NavigationHandler(activity, R.id.navHostFragment)
+        NavigationHandler(ActivityRegister, R.id.navHostFragment)
     }
     private val teamRepository: TeamRepository by lazy(::TeamRepositoryImpl)
     private val snackbarHandler: SnackbarHandler by lazy {
         SnackbarHandler(ActivityRegister, R.id.bottomNavigationView)
     }
+    private val teamDataSourcesManager: TeamDataSourcesManager
+        get() = TeamDataSourcesManager(
+            rosterDataSource = TeamRosterMapper(TeamApi.teamRosterService),
+            scheduleDataSource = ScheduleMapper(ScheduleApi.service, teamRepository),
+            teamInfoDataSource = TeamInfoMapper(TeamApi.teamDetailsService)
+        )
 
     @Suppress("LongMethod")
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {
@@ -82,19 +87,13 @@ object CustomFragmentFactory : FragmentFactory() {
                     navigator = navigator,
                     teamPageProvider = actionPlayerToTeam
                 )
-            TeamFragment::class.java.name -> {
-                val teamDataSourcesManager = TeamDataSourcesManager(
-                    rosterDataSource = TeamRosterMapper(TeamApi.teamRosterService),
-                    scheduleDataSource = ScheduleMapper(ScheduleApi.service, teamRepository),
-                    teamInfoDataSource = TeamInfoMapper(TeamApi.teamDetailsService)
-                )
+            TeamFragment::class.java.name ->
                 TeamFragment(
                     teamDataSourcesManager = teamDataSourcesManager,
                     navigator = navigator,
                     playerPageProvider = actionTeamToPlayer,
                     gamePageProvider = actionTeamToGame
                 )
-            }
             StatsFragment::class.java.name ->
                 StatsFragment(
                     navigator = navigator,

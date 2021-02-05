@@ -1,22 +1,32 @@
 package it.laface.navigation
 
-import android.app.Activity
+import android.os.Bundle
+import android.view.View
+import androidx.core.os.bundleOf
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
+import androidx.navigation.Navigation
+import it.laface.common.ActivityProvider
 
 class NavigationHandler(
-    activity: Activity,
-    navHostFragmentResId: Int
+    private val activityProvider: ActivityProvider,
+    private val navHostFragmentResId: Int
 ) : Navigator {
 
-    private val navController: NavController =
-        activity.findNavController(navHostFragmentResId)
+    private val navController: NavController?
+        get() {
+            val view = activityProvider.currentActivity
+                ?.findViewById<View>(navHostFragmentResId) ?: return null
+            return Navigation.findNavController(view)
+        }
 
     override fun navigateBack() {
-        navController.popBackStack()
+        navController?.popBackStack()
     }
 
     override fun navigateForward(destination: Page) {
-        navController.navigate(destination.actionResId, destination.getBundle())
+        navController?.navigate(destination.actionResId, destination.getBundle())
     }
+
+    private fun Page.getBundle(): Bundle? =
+        arguments?.let { bundleOf(it) }
 }
