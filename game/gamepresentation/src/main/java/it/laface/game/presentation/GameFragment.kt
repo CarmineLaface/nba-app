@@ -83,6 +83,6 @@ class GameFragment(
     }
 
     companion object {
-        internal const val GAME_KEY = "GAME_KEY"
+        const val GAME_KEY = "GAME_KEY"
     }
 }

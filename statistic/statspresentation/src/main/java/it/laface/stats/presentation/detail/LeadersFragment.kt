@@ -49,6 +49,6 @@ class LeadersFragment(navigator: Navigator) : Fragment() {
 
     companion object {
 
-        internal const val STATS_ARG_KEY = "STATS_ARG_KEY"
+        const val STATS_ARG_KEY = "STATS_ARG_KEY"
     }
 }
