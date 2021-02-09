@@ -3,12 +3,14 @@ package it.laface.playerlist.presentation
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.schibsted.spain.barista.assertion.BaristaListAssertions.assertListItemCount
 import com.schibsted.spain.barista.assertion.BaristaListAssertions.assertListNotEmpty
 import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
 import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed
 import com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn
-import io.mockk.mockk
+import com.schibsted.spain.barista.interaction.BaristaEditTextInteractions.writeTo
 import io.mockk.coEvery
+import io.mockk.mockk
 import it.laface.base.NetworkError
 import it.laface.base.NetworkResult
 import it.laface.navigation.Navigator
@@ -16,7 +18,7 @@ import it.laface.player.domain.Player
 import it.laface.player.domain.PlayerDetailPageProvider
 import it.laface.player.domain.PlayersDataSource
 import it.laface.stats.domain.StatsPageProvider
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import org.junit.Rule
 import org.junit.Test
@@ -37,11 +39,24 @@ class PlayerListTest {
         NetworkResult.Failure(NetworkError.UnknownError("error"))
 
     // region -------------------- base tests --------------------
-/*
+
     @Test
     fun `on page first opening WHEN the network call is in progress THEN there should be a loading state`() {
+        runBlocking {
+            val sleepyDataSource: PlayersDataSource = object : PlayersDataSource {
+                override suspend fun getPlayers(): NetworkResult<List<Player>> {
+                    delay(5000)
+                    return successFulResponse
+                }
+            }
+            launchFragment(sleepyDataSource)
 
-    }*/
+            assertNotDisplayed(R.id.playersRecyclerView)
+            assertNotDisplayed(R.id.emptyListPlaceholder)
+            assertNotDisplayed(R.id.retryButton)
+            assertDisplayed(R.id.progressBar)
+        }
+    }
 
     @Test
     fun `on page first opening WHEN the network call fails then THEN there should be an error state`() {
@@ -86,69 +101,57 @@ class PlayerListTest {
             assertNotDisplayed(R.id.retryButton)
         }
     }
-    /*
-        @Test
-        fun `given an error state WHEN a retry action triggers a network call that fails THEN the current state should be error`() {
-            runBlockingTest {
-                viewModel.contentToShow.observeForever { }
-                whenever(nbaDataSource.getPlayers()) thenReturn errorResponse()
-                viewModel.getPlayers()
-                whenever(nbaDataSource.getPlayers()) thenReturn errorResponse()
 
-                viewModel.onRetry()
+    @Test
+    fun `given an error state WHEN a retry action triggers a network call that fails THEN the current state should be error`() {
+        runBlocking {
+            coEvery { nbaDataSource.getPlayers() } returns errorResponse
+            launchFragment()
 
-                assertEquals(ContentToShow.Error, viewModel.contentToShow.value)
-            }
+            clickOn(R.id.retryButton)
+
+            assertNotDisplayed(R.id.playersRecyclerView)
+            assertDisplayed(R.id.retryButton)
         }
+    }
 
-        // endregion
+    // endregion
 
-        // region -------------------- filter for name --------------------
+    // region -------------------- filter for name --------------------
 
-        @Test
-        fun `given a successful state with a not empty player list WHEN a name is entered THEN there should be a state with a list filtered by that name`() {
-            runBlockingTest {
-                viewModel.contentToShow.observeForever { }
-                whenever(nbaDataSource.getPlayers()) thenReturn successFulResponse
-                viewModel.getPlayers()
+    @Test
+    fun `given a successful state with a not empty player list WHEN a name is entered THEN there should be a state with a list filtered by that name`() {
+        runBlocking {
+            coEvery { nbaDataSource.getPlayers() } returns successFulResponse
+            launchFragment()
 
-                viewModel.nameToFilter.value = "Steven"
+            writeTo(R.id.playerNameEditText, "Steven")
 
-                val filteredList = listOf(
-                    PlayerModel(
-                        name = "Steven",
-                        surname = "Adams",
-                        id = "203500",
-                        teamId = "1610612760",
-                        jerseyNumber = "12",
-                        position = "C"
-                    )
-                )
-                assertEquals(ContentToShow.Success(filteredList), viewModel.contentToShow.value)
-            }
+            assertListItemCount(R.id.playersRecyclerView, expectedItemCount = 1)
         }
+    }
 
-        @Test
-        fun `given a successful state with a not empty player list WHEN a name that matches no player is entered THEN there should a placeholder state`() {
-            runBlockingTest {
-                viewModel.contentToShow.observeForever { }
-                whenever(nbaDataSource.getPlayers()) thenReturn successFulResponse
-                viewModel.getPlayers()
 
-                viewModel.nameToFilter.value = "Carmine"
+    @Test
+    fun `given a successful state with a not empty player list WHEN a name that matches no player is entered THEN there should a placeholder state`() {
+        runBlocking {
+            coEvery { nbaDataSource.getPlayers() } returns successFulResponse
+            launchFragment()
 
-                assertEquals(ContentToShow.Placeholder, viewModel.contentToShow.value)
-            }
+            writeTo(R.id.playerNameEditText, "Carmine")
+
+            assertDisplayed(R.id.emptyListPlaceholder)
         }
+    }
 
-        // endregion
-        */
-    private fun launchFragment() {
+    // endregion
+
+    private fun launchFragment(dataSource: PlayersDataSource = nbaDataSource) {
         launchFragmentInContainer(
             themeResId = R.style.Base_Theme_MaterialComponents_Light
         ) {
             PlayerListFragment(
-                dataSource = nbaDataSource,
+                dataSource = dataSource,
                 playerDetailPageProvider = playerDetailPageProvider,
                 navigator = navigator,
                 statsPageProvider = statsPageProvider,

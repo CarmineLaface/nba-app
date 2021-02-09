@@ -1,12 +1,12 @@
 package it.laface.navigation
 
+import android.os.Bundle
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import it.laface.common.ActivityProvider
-import it.laface.navigation.ForwardNavigationType.Add
-import it.laface.navigation.ForwardNavigationType.Replace
 
 @Suppress("UNCHECKED_CAST")
 class NavigationHandler(
@@ -17,37 +17,18 @@ class NavigationHandler(
     private val manager: FragmentManager?
         get() = (activityProvider.currentActivity as? FragmentActivity)?.supportFragmentManager
 
-    override fun navigate(navigation: NavigationInfo) {
-        when (navigation) {
-            is NavigationInfo.Forward -> navigateForward(navigation)
-            NavigationInfo.Back -> manager?.popBackStack()
-        }
+    override fun navigateBack() {
+        manager?.popBackStack()
     }
 
-    private fun navigateForward(navigation: NavigationInfo.Forward) {
-        when (navigation.type) {
-            Add -> add(navigation.destination, navigation.addToStack)
-            Replace -> replace(navigation.destination, navigation.addToStack)
-        }
-    }
-
-    private fun replace(page: Page, addToBackStack: Boolean) {
-        val fragmentClass = page.fragmentClass as? Class<out Fragment> ?: return
+    override fun navigateForward(destination: Page) {
+        val fragmentClass = destination.fragmentClass as? Class<out Fragment> ?: return
         manager?.commit {
-            replace(containerViewResId, fragmentClass, page.getBundle(), page.tag)
-            if (addToBackStack) {
-                addToBackStack(page.tag)
-            }
+            replace(containerViewResId, fragmentClass, destination.getBundle(), fragmentClass.name)
+            addToBackStack(fragmentClass.name)
         }
     }
 
-    private fun add(page: Page, addToBackStack: Boolean) {
-        val fragmentClass = page.fragmentClass as? Class<out Fragment> ?: return
-        manager?.commit {
-            add(containerViewResId, fragmentClass, page.getBundle(), page.tag)
-            if (addToBackStack) {
-                addToBackStack(page.tag)
-            }
-        }
-    }
+    private fun Page.getBundle(): Bundle? =
+        arguments?.let { bundleOf(it) }
 }

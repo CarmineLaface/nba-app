@@ -1,6 +1,9 @@
 package it.laface.navigation
 
+import android.app.Activity
 import android.view.View
+import android.view.ViewGroup
+import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import it.laface.common.ActivityProvider
 
@@ -10,12 +13,14 @@ class SnackbarHandler(
 ) : MessageEmitter {
 
     override fun show(snackbarInfo: SnackbarInfo) {
-        val view: View = activityProvider.currentActivity?.getBaseView() ?: return
-        val snackbar = make(snackbarInfo, view)
+        val activity = activityProvider.currentActivity ?: return
+        val anchorView = activity.findViewById<View>(bottomBarResId) ?: return
+        val parentView = activity.getBaseView() ?: return
+        val snackbar = make(snackbarInfo, parentView)
         snackbarInfo.action?.let {
             snackbar.setAction(it)
         }
-        snackbar.setAnchorView(bottomBarResId)
+        snackbar.anchorView = anchorView
         snackbar.show()
     }
 
@@ -30,8 +35,19 @@ class SnackbarHandler(
     private fun Snackbar.setAction(action: SnackbarAction): Snackbar =
         when (val textInfo = action.text) {
             is Text.StringText ->
-                setAction(textInfo.value, action.callback.toClickListener())
+                setAction(textInfo.value) { action.callback }
             is Text.ResourceIdText ->
-                setAction(textInfo.value, action.callback.toClickListener())
+                setAction(textInfo.value) { action.callback }
         }
+
+    private val SnackbarDuration.durationRef: Int
+        get() = when (this) {
+            SnackbarDuration.Indefinite -> BaseTransientBottomBar.LENGTH_INDEFINITE
+            SnackbarDuration.Short -> BaseTransientBottomBar.LENGTH_SHORT
+            SnackbarDuration.Long -> BaseTransientBottomBar.LENGTH_LONG
+        }
+
+    private fun Activity.getBaseView(): View? =
+        findViewById<ViewGroup>(android.R.id.content)
+            ?.getChildAt(0)
 }
