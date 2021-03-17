@@ -131,7 +131,6 @@ class PlayerListTest {
         }
     }
 
-
     @Test
     fun `given a successful state with a not empty player list WHEN a name that matches no player is entered THEN there should a placeholder state`() {
         runBlocking {

@@ -21,11 +21,20 @@ class NavigationHandler(
         manager?.popBackStack()
     }
 
-    override fun navigateForward(destination: Page) {
+    override fun navigateForward(destination: Page, addToStack: Boolean) {
         val fragmentClass = destination.fragmentClass as? Class<out Fragment> ?: return
         manager?.commit {
             replace(containerViewResId, fragmentClass, destination.getBundle(), fragmentClass.name)
-            addToBackStack(fragmentClass.name)
+            if (addToStack) {
+                addToBackStack(fragmentClass.name)
+            }
+        }
+    }
+
+    override fun clearStack() {
+        val manager = manager ?: return
+        repeat(manager.backStackEntryCount) {
+            manager.popBackStack()
         }
     }
 

@@ -1,8 +1,10 @@
 package it.laface.common.view
 
+import android.annotation.SuppressLint
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
+@SuppressLint("NotifyDataSetChanged")
 class BaseAdapter<T>(
     private val viewHolderProvider: (ViewGroup) -> BaseViewHolder<T>
 ) : RecyclerView.Adapter<BaseViewHolder<T>>() {

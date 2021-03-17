@@ -6,7 +6,7 @@ import android.app.Application
 import android.os.Bundle
 import it.laface.common.ActivityProvider
 
-@SuppressLint("StaticFieldLeaks")
+@SuppressLint("StaticFieldLeak")
 object ActivityRegister : Application.ActivityLifecycleCallbacks, ActivityProvider {
 
     override var currentActivity: Activity? = null
