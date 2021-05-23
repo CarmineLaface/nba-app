@@ -8,11 +8,11 @@ import it.laface.stats.presentation.databinding.ItemLeaderBinding
 
 class LeadersViewHolder(
     private val binding: ItemLeaderBinding,
-    onItemClicked: (Leader) -> Unit
-) : BaseViewHolder<Leader>(binding.root, onItemClicked) {
+    private val onItemClicked: (Leader) -> Unit
+) : BaseViewHolder<Leader>(binding.root) {
 
     override fun bind(item: Leader) {
-        super.bind(item)
+        itemView.setOnClickListener { onItemClicked.invoke(item) }
 
         binding.nameTextView.text = item.playerName
         binding.positionTextView.text = ("#${item.rank}")

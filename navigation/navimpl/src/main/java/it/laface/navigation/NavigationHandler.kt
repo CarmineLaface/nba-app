@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import it.laface.common.ActivityProvider
 
-@Suppress("UNCHECKED_CAST")
 class NavigationHandler(
     private val activityProvider: ActivityProvider,
     private val containerViewResId: Int
@@ -21,7 +20,8 @@ class NavigationHandler(
         manager?.popBackStack()
     }
 
-    override fun navigateForward(destination: Page, addToStack: Boolean) {
+    @Suppress("UNCHECKED_CAST")
+    override fun navigateTo(destination: Page, addToStack: Boolean) {
         val fragmentClass = destination.fragmentClass as? Class<out Fragment> ?: return
         manager?.commit {
             replace(containerViewResId, fragmentClass, destination.getBundle(), fragmentClass.name)

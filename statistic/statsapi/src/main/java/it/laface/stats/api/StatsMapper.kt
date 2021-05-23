@@ -41,8 +41,7 @@ class StatsMapper(private val service: StatsService) : StatsDataSource {
         if (contains('.').not()) return this
         val pointIndex = indexOf('.')
         return if (startsWith("0.")) {
-            val endIndex = pointIndex + 4
-            safeSubstring(1, endIndex)
+            safeSubstring(1, pointIndex + 4)
         } else {
             safeSubstring(0, pointIndex + 3)
         }

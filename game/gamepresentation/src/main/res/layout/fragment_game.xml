@@ -55,48 +55,31 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/open_sans_semibold"
+        android:fontFamily="@font/open_sans_bold"
         android:gravity="center_horizontal"
         android:textColor="@color/matteBlack"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeTeamLogoImageView"
+        app:layout_constraintTop_toBottomOf="@+id/homeTeamNameTextView"
         tools:text="TBD" />
-
-    <TextView
-        android:id="@+id/homeCityNameTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:ellipsize="end"
-        android:fontFamily="@font/open_sans_semibold"
-        android:gravity="center_horizontal"
-        android:maxLines="1"
-        android:textColor="@color/matteBlack"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeScoreTextView"
-        tools:text="Home Team" />
 
     <TextView
         android:id="@+id/homeTeamNameTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:ellipsize="end"
         android:fontFamily="@font/open_sans_semibold"
         android:gravity="center_horizontal"
         android:maxLines="1"
-        android:textColor="@color/matteBlack"
-        android:textSize="18sp"
+        android:textColor="@color/darkGrey"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeCityNameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/homeTeamLogoImageView"
         tools:text="Home Team" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -128,57 +111,26 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/visitorTeamLogoImageView"
+        app:layout_constraintTop_toBottomOf="@+id/visitorTeamNameTextView"
         tools:text="TBD" />
-
-    <TextView
-        android:id="@+id/visitorCityNameTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:ellipsize="end"
-        android:fontFamily="@font/open_sans_semibold"
-        android:gravity="center_horizontal"
-        android:maxLines="1"
-        android:textColor="@color/matteBlack"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/guideline"
-        app:layout_constraintTop_toBottomOf="@id/visitorScoreTextView"
-        tools:text="Visitor Team" />
 
     <TextView
         android:id="@+id/visitorTeamNameTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:ellipsize="end"
         android:fontFamily="@font/open_sans_semibold"
         android:gravity="center_horizontal"
         android:maxLines="1"
-        android:textColor="@color/matteBlack"
-        android:textSize="18sp"
+        android:textColor="@color/darkGrey"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline"
-        app:layout_constraintTop_toBottomOf="@id/visitorCityNameTextView"
+        app:layout_constraintTop_toBottomOf="@id/visitorTeamLogoImageView"
         tools:text="Visitor Team" />
-
-    <TextView
-        android:id="@+id/nuggetTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="24dp"
-        android:fontFamily="@font/open_sans"
-        android:gravity="center_horizontal"
-        android:textColor="@color/matteBlack"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/homeTeamNameTextView"
-        tools:text="Nugget info" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -196,62 +148,50 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/open_sans_semibold"
         android:gravity="center_horizontal"
+        android:text="@string/placeholder_no_game"
         android:textColor="@color/matteBlack"
         android:textSize="16sp"
         android:visibility="gone"
-        android:text="@string/placeholder_no_game"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/homeTeamNameTextView"
         app:layout_constraintVertical_bias="0.4" />
-    <!--
-        <com.google.android.material.button.MaterialButtonToggleGroup
-            android:id="@+id/toggleButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/homeTeamNameTextView">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/teamStats"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/open_sans_bold"
-                android:gravity="start|center_vertical"
-                android:padding="8dp"
-                android:text="Team Stats"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                app:backgroundTint="?attr/colorPrimary"
-                app:icon="@drawable/ic_info"
-                app:iconPadding="8dp"
-                app:iconTint="@android:color/white"
-                app:strokeWidth="0dp" />
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/tab_layout_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeScoreTextView"
+        app:tabIndicator="@drawable/tab_indicator_background"
+        app:tabIndicatorGravity="stretch"
+        app:tabSelectedTextColor="@android:color/white"/>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/playersStats"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/open_sans_bold"
-                android:gravity="start|center_vertical"
-                android:padding="8dp"
-                android:text="Players Stats"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                app:backgroundTint="?attr/colorPrimary"
-                app:icon="@drawable/ic_calendar"
-                app:iconPadding="8dp"
-                app:iconTint="@android:color/white"
-                app:strokeWidth="0dp" />
-        </com.google.android.material.button.MaterialButtonToggleGroup>
-        -->
+    <include
+        android:id="@+id/teamsInfo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        layout="@layout/teams_info"/>
+
+    <include
+        android:id="@+id/playersInfo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        layout="@layout/players_info"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

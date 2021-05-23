@@ -40,6 +40,6 @@ class RankingViewModel(
 
     fun onTeamClicked(team: RankedTeam) {
         val teamPage = teamPageProvider.getTeamPage(team.teamInfo)
-        navigator.navigateForward(teamPage)
+        navigator.navigateTo(teamPage)
     }
 }

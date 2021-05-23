@@ -46,6 +46,6 @@ class ScheduleViewModel(
 
     fun onGameSelected(item: Game) {
         val gamePage = gamePageProvider.getGamePage(item)
-        navigator.navigateForward(gamePage)
+        navigator.navigateTo(gamePage)
     }
 }

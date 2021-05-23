@@ -14,7 +14,6 @@ val successfulResponseJson: String = """
     {
       "_internal": {
         "pubDateTime": "2021-01-30 06:10:33.419 EST",
-        "igorPath": "S3,1612005012537,1612005018599|router,1612005018599,1612005018609|domUpdater,1612005019629,1612005031442|feedProducer,1612005031522,1612005041597",
         "xslt": "NBA/xsl/league/roster/marty_active_players.xsl",
         "xsltForceRecompile": "true",
         "xsltInCache": "false",

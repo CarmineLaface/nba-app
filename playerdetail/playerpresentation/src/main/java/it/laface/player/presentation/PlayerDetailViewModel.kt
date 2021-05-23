@@ -47,6 +47,6 @@ class PlayerDetailViewModel(
     }
 
     fun navigateToTeamPage() {
-        navigator.navigateForward(teamPageProvider.getTeamPage(team))
+        navigator.navigateTo(teamPageProvider.getTeamPage(team))
     }
 }

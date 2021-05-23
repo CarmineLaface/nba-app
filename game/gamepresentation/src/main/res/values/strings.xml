@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="versus">VS</string>
+    <string name="versus">:</string>
     <string name="placeholder_no_game">This game has yet to be played</string>
+    <string name="team_stats">Team</string>
+    <string name="players_stats">Players</string>
 </resources>

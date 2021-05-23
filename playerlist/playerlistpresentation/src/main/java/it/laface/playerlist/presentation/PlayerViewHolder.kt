@@ -8,11 +8,11 @@ import it.laface.playerlist.presentation.databinding.ItemPlayerBinding
 
 class PlayerViewHolder(
     private val binding: ItemPlayerBinding,
-    onItemClicked: (Player) -> Unit
-) : BaseViewHolder<Player>(binding.root, onItemClicked) {
+    private val onItemClicked: (Player) -> Unit
+) : BaseViewHolder<Player>(binding.root) {
 
     override fun bind(item: Player) {
-        super.bind(item)
+        itemView.setOnClickListener { onItemClicked.invoke(item) }
 
         binding.nameTextView.text = item.fullName
 

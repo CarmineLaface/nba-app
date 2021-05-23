@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 
 @SuppressLint("NotifyDataSetChanged")
 class BaseAdapter<T>(
+    initList: List<T> = emptyList(),
     private val viewHolderProvider: (ViewGroup) -> BaseViewHolder<T>
 ) : RecyclerView.Adapter<BaseViewHolder<T>>() {
 
-    var list: List<T> = emptyList()
+    var list: List<T> = initList
         set(value) {
             field = value
             notifyDataSetChanged()

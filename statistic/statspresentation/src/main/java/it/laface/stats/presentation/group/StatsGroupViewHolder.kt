@@ -8,11 +8,11 @@ import it.laface.stats.presentation.databinding.ItemStatsGroupBinding
 
 class StatsGroupViewHolder(
     private val binding: ItemStatsGroupBinding,
-    onItemClicked: (StatsSection) -> Unit
-) : BaseViewHolder<StatsSection>(binding.root, onItemClicked) {
+    private val onItemClicked: (StatsSection) -> Unit
+) : BaseViewHolder<StatsSection>(binding.root) {
 
     override fun bind(item: StatsSection) {
-        super.bind(item)
+        itemView.setOnClickListener { onItemClicked.invoke(item) }
 
         binding.nameTextView.text = item.title
 

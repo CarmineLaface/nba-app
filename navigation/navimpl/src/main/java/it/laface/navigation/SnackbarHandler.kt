@@ -13,8 +13,8 @@ class SnackbarHandler(
 ) : MessageEmitter {
 
     override fun show(snackbarInfo: SnackbarInfo) {
-        val activity = activityProvider.currentActivity ?: return
-        val anchorView = activity.findViewById<View>(bottomBarResId) ?: return
+        val activity = activityProvider.currentActivity
+        val anchorView = activity?.findViewById<View>(bottomBarResId) ?: return
         val parentView = activity.getBaseView() ?: return
         val snackbar = make(snackbarInfo, parentView)
         snackbarInfo.action?.let {

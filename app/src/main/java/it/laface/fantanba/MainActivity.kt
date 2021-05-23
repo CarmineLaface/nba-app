@@ -12,7 +12,6 @@ import it.laface.playerlist.presentation.PlayerListFragment
 import it.laface.ranking.presentation.RankingFragment
 import it.laface.schedule.presentation.ScheduleFragment
 
-@Suppress("UNCHECKED_CAST")
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private val firstFragmentClass
@@ -39,16 +38,17 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         }
     }
 
+    @Suppress("UNCHECKED_CAST")
     private fun setBottomNavigation() {
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-        bottomNav.setOnNavigationItemSelectedListener { item ->
+        bottomNav.setOnItemSelectedListener { item ->
             val newFragment = bottomNavigationSections[item.itemId] as Class<Fragment>
             navigator.clearStack()
-            navigator.navigateForward(
+            navigator.navigateTo(
                 destination = Page(newFragment),
                 addToStack = false
             )
-            return@setOnNavigationItemSelectedListener true
+            return@setOnItemSelectedListener true
         }
     }
 }

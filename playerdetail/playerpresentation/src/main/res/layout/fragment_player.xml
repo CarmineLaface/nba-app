@@ -5,33 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/toolbar"
-        android:layout_width="0dp"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/backImageView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:contentDescription="@string/back"
+        android:padding="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:background="@android:color/holo_blue_dark">
-
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/backImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/back"
-            android:padding="16dp"
-            app:srcCompat="@drawable/ic_arrow_back_24dp" />
-    </FrameLayout>
+        app:srcCompat="@drawable/ic_arrow_back_24dp"
+        app:tint="@color/matteBlack"
+        tools:tint="@color/matteBlack" />
 
     <ImageView
         android:id="@+id/playerImageView"
         android:layout_width="130dp"
         android:layout_height="95dp"
-        android:layout_margin="16dp"
+        android:layout_marginEnd="16dp"
         android:importantForAccessibility="no"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backImageView"
         app:layout_constraintVertical_bias="0.0"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -39,16 +34,14 @@
         android:id="@+id/nameTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
         android:ellipsize="end"
         android:fontFamily="@font/open_sans_bold"
         android:maxLines="1"
         android:textColor="@color/matteBlack"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@id/surnameTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/playerImageView"
-        app:layout_constraintTop_toTopOf="@id/playerImageView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
         tools:text="Giannis" />
 
@@ -62,19 +55,17 @@
         android:textColor="@color/matteBlack"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@id/playerImageView"
-        app:layout_constraintEnd_toEndOf="@id/nameTextView"
         app:layout_constraintStart_toStartOf="@id/nameTextView"
-        app:layout_constraintTop_toBottomOf="@id/nameTextView"
         tools:text="Antetokounmpo" />
 
     <TextView
         android:id="@+id/teamTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginTop="32dp"
         android:text="@string/team"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/nameTextView"
         app:layout_constraintTop_toBottomOf="@+id/playerImageView" />
 
     <TextView

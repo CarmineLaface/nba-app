@@ -54,7 +54,7 @@ object CustomFragmentFactory : FragmentFactory() {
         get() = TeamDataSourcesManager(
             rosterDataSource = TeamRosterMapper(TeamApi.teamRosterService),
             scheduleDataSource = ScheduleMapper(ScheduleApi.service, teamRepository),
-            teamInfoDataSource = TeamInfoMapper(TeamApi.teamDetailsService)
+            teamInfoDataSource = TeamInfoMapper(TeamApi.teamDetailsService),
         )
 
     @Suppress("LongMethod")
@@ -65,7 +65,7 @@ object CustomFragmentFactory : FragmentFactory() {
                     dataSource = PlayerListMapper(PlayerListApi.service),
                     playerDetailPageProvider = playerPageProvider,
                     navigator = navigator,
-                    statsPageProvider = statsPageProvider
+                    statsPageProvider = statsPageProvider,
                 )
             NewsFragment::class.java.name ->
                 NewsFragment(
@@ -77,38 +77,39 @@ object CustomFragmentFactory : FragmentFactory() {
                 RankingFragment(
                     dataSource = RankingMapper(RankingApi.service),
                     teamPageProvider = teamPageProvider,
-                    navigator = navigator
+                    navigator = navigator,
                 )
             ScheduleFragment::class.java.name ->
                 ScheduleFragment(
                     dataSource = ScheduleMapper(ScheduleApi.service, teamRepository),
                     navigator = navigator,
-                    gamePageProvider = gamePageProvider
+                    gamePageProvider = gamePageProvider,
                 )
             PlayerDetailFragment::class.java.name ->
                 PlayerDetailFragment(
                     teamRepository = teamRepository,
                     playerStatsDataSource = PlayerStatsMapper(PlayerApi.service),
                     navigator = navigator,
-                    teamPageProvider = teamPageProvider
+                    teamPageProvider = teamPageProvider,
                 )
             TeamFragment::class.java.name ->
                 TeamFragment(
                     teamDataSourcesManager = teamDataSourcesManager,
                     navigator = navigator,
                     playerPageProvider = playerPageProvider,
-                    gamePageProvider = gamePageProvider
+                    gamePageProvider = gamePageProvider,
                 )
             StatsFragment::class.java.name ->
                 StatsFragment(
                     navigator = navigator,
                     leadersPageProvider = leadersPageProvider,
-                    statsDataSource = StatsMapper(StatsApi.service)
+                    statsDataSource = StatsMapper(StatsApi.service),
                 )
             GameFragment::class.java.name ->
                 GameFragment(
                     GameMapper(GameApi.service),
-                    navigator
+                    navigator,
+                    teamPageProvider,
                 )
             LeadersFragment::class.java.name ->
                 LeadersFragment(navigator)

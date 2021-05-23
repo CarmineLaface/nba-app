@@ -40,7 +40,7 @@ class StatsViewModel(
     }
 
     fun onStatsClicked(section: StatsSection) {
-        navigator.navigateForward(leadersPageProvider.getLeadersPage(section))
+        navigator.navigateTo(leadersPageProvider.getLeadersPage(section))
     }
 
     fun navigateBack() {

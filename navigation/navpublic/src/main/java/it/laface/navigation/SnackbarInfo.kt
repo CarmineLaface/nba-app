@@ -24,9 +24,9 @@ data class SnackbarInfo(
     }
 }
 
-sealed class Text {
-    class StringText(val value: String) : Text()
-    class ResourceIdText(val value: Int) : Text()
+sealed interface Text {
+    class StringText(val value: String) : Text
+    class ResourceIdText(val value: Int) : Text
 }
 
 enum class SnackbarDuration {

@@ -1,6 +1,5 @@
 package it.laface.news.presentation
 
-import android.os.Build
 import android.text.Html
 import it.laface.common.util.getFullDayName
 import it.laface.common.view.BaseViewHolder
@@ -10,19 +9,15 @@ import it.laface.news.presentation.databinding.ItemNewsBinding
 
 class ArticleViewHolder(
     private val binding: ItemNewsBinding,
-    onItemClicked: (Article) -> Unit
-) : BaseViewHolder<Article>(binding.root, onItemClicked) {
+    private val onItemClicked: (Article) -> Unit
+) : BaseViewHolder<Article>(binding.root) {
 
     override fun bind(item: Article) {
-        super.bind(item)
+        itemView.setOnClickListener { onItemClicked.invoke(item) }
         binding.titleTextView.text = item.title
         binding.imageView.bindImage(item.imageUrl, R.drawable.placeholder_image)
         val htmlSource = item.htmlContent
-        binding.bodyTextView.text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            Html.fromHtml(htmlSource, Html.FROM_HTML_MODE_LEGACY)
-        } else {
-            Html.fromHtml(htmlSource)
-        }
+        binding.bodyTextView.text = Html.fromHtml(htmlSource, Html.FROM_HTML_MODE_LEGACY)
         binding.dateTextView.text = item.date.getFullDayName
     }
 }

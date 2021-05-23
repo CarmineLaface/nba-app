@@ -1,7 +1,5 @@
 package it.laface.player.presentation
 
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -67,7 +65,6 @@ class PlayerDetailFragment(
         }
 
         teamNameTextView.text = viewModel.team.fullName
-        viewModel.team.rgbColor?.let { setTeamColor(it) }
 
         teamNameTextView.setOnClickListener {
             viewModel.navigateToTeamPage()
@@ -84,15 +81,6 @@ class PlayerDetailFragment(
                 statsAdapter.list = callState.result
             }
         }
-    }
-
-    private fun FragmentPlayerBinding.setTeamColor(rgbColor: String) {
-        val color = Color.parseColor(rgbColor)
-        teamNameTextView.setTextColor(color)
-        jerseyNameTextView.setTextColor(color)
-        positionValueTextView.setTextColor(color)
-        toolbar.setBackgroundColor(color)
-        backImageView.backgroundTintList = ColorStateList.valueOf(color)
     }
 
     companion object {

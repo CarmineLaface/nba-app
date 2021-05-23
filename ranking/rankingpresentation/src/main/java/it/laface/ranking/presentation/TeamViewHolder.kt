@@ -8,11 +8,13 @@ import it.laface.ranking.domain.RankedTeam
 import it.laface.ranking.presentation.R.drawable
 import it.laface.ranking.presentation.databinding.ItemTeamBinding
 
-class TeamViewHolder(private val binding: ItemTeamBinding, onItemClicked: (RankedTeam) -> Unit) :
-    BaseViewHolder<RankedTeam>(binding.root, onItemClicked) {
+class TeamViewHolder(
+    private val binding: ItemTeamBinding,
+    private val onItemClicked: (RankedTeam) -> Unit
+) : BaseViewHolder<RankedTeam>(binding.root) {
 
     override fun bind(item: RankedTeam) {
-        super.bind(item)
+        itemView.setOnClickListener { onItemClicked.invoke(item) }
         binding.positionTextView.text = item.rankingPosition
         binding.teamNameTextView.text = item.teamInfo.fullName
         binding.winsTextView.text = item.wins

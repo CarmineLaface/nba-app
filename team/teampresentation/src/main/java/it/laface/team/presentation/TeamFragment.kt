@@ -5,9 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSnapHelper
-import androidx.recyclerview.widget.RecyclerView
 import it.laface.common.ContentToShow
 import it.laface.common.util.observe
 import it.laface.common.util.requireParcelable
@@ -149,10 +146,7 @@ class TeamFragment(
                 viewModel::onGameSelected
             )
         }
-        scheduleRecyclerView.layoutManager =
-            LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
         scheduleRecyclerView.adapter = scheduleAdapter
-        LinearSnapHelper().attachToRecyclerView(scheduleRecyclerView)
 
         observe(viewModel.scheduleContent) { contentToShow ->
             if (contentToShow is ContentToShow.Success) {

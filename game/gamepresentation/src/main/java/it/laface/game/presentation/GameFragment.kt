@@ -5,25 +5,39 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.android.material.tabs.TabLayout
 import it.laface.common.ContentToShow
 import it.laface.common.util.getCompleteDayName
 import it.laface.common.util.observe
 import it.laface.common.util.requireParcelable
 import it.laface.common.util.toCalendar
+import it.laface.common.view.BaseAdapter
 import it.laface.common.view.bindImage
 import it.laface.common.view.goneUnless
+import it.laface.common.view.inflater
 import it.laface.common.view.setGone
+import it.laface.common.view.setVisible
 import it.laface.common.viewModels
+import it.laface.domain.model.fullName
 import it.laface.domain.model.imageUrl
 import it.laface.game.domain.GameDataSource
 import it.laface.game.domain.GameInfo
 import it.laface.game.presentation.databinding.FragmentGameBinding
+import it.laface.game.presentation.databinding.ItemLeadersBinding
+import it.laface.game.presentation.databinding.ItemLineScoreBinding
+import it.laface.game.presentation.databinding.PlayersInfoBinding
+import it.laface.game.presentation.databinding.TeamsInfoBinding
+import it.laface.game.presentation.leaders.Leader
+import it.laface.game.presentation.leaders.LeaderField
+import it.laface.game.presentation.leaders.LeadersViewHolder
 import it.laface.navigation.Navigator
+import it.laface.team.domain.TeamPageProvider
 import kotlinx.coroutines.Dispatchers
 
 class GameFragment(
     gameDataSource: GameDataSource,
-    navigator: Navigator
+    navigator: Navigator,
+    teamPageProvider: TeamPageProvider,
 ) : Fragment() {
 
     private val viewModel: GameViewModel by viewModels {
@@ -31,7 +45,8 @@ class GameFragment(
             game = requireParcelable(GAME_KEY),
             navigator = navigator,
             gameDataSource = gameDataSource,
-            jobDispatcher = Dispatchers.IO
+            teamPageProvider = teamPageProvider,
+            jobDispatcher = Dispatchers.IO,
         )
     }
 
@@ -58,28 +73,111 @@ class GameFragment(
         }
 
         val homeTeam = viewModel.game.homeTeam
-        homeTeamNameTextView.text = homeTeam.nickname
-        homeCityNameTextView.text = homeTeam.cityName
+        homeTeamNameTextView.text = homeTeam.fullName
+        homeTeamNameTextView.setOnClickListener {
+            viewModel.navigateToTeamPage(homeTeam)
+        }
         homeTeamLogoImageView.bindImage(homeTeam.imageUrl, R.drawable.circle_grey)
-        viewModel.game.homeScore?.let { score ->
-            homeScoreTextView.text = score
-        } ?: homeScoreTextView.setGone()
+        homeTeamLogoImageView.setOnClickListener {
+            viewModel.navigateToTeamPage(homeTeam)
+        }
+        homeScoreTextView.text = viewModel.game.homeScore
 
         val visitorTeam = viewModel.game.visitorTeam
-        visitorTeamNameTextView.text = visitorTeam.nickname
-        visitorCityNameTextView.text = visitorTeam.cityName
+        visitorTeamNameTextView.text = visitorTeam.fullName
+        visitorTeamNameTextView.setOnClickListener {
+            viewModel.navigateToTeamPage(visitorTeam)
+        }
         visitorTeamLogoImageView.bindImage(visitorTeam.imageUrl, R.drawable.circle_grey)
-        viewModel.game.visitorScore?.let { score ->
-            visitorScoreTextView.text = score
-        } ?: visitorScoreTextView.setGone()
+        visitorTeamLogoImageView.setOnClickListener {
+            viewModel.navigateToTeamPage(visitorTeam)
+        }
+        visitorScoreTextView.text = viewModel.game.visitorScore
     }
 
     private fun FragmentGameBinding.bindContentToShow(contentToShow: ContentToShow<GameInfo>) {
         if (contentToShow is ContentToShow.Success) {
-            nuggetTextView.text = contentToShow.content.nugget
+            tabLayout.setTabs(teamsInfo.root, playersInfo.root)
+            teamsInfo.setLineScoreAdapter(contentToShow.content)
+            playersInfo.setLeadersAdapter(contentToShow.content)
         }
         progressBar.goneUnless(contentToShow is ContentToShow.Loading)
         placeholderTextView.goneUnless(contentToShow is ContentToShow.Placeholder)
+    }
+
+    private fun TabLayout.setTabs(teamsInfo: View, playersInfo: View) {
+        addTab(newTab().setText(getString(R.string.team_stats)))
+        addTab(newTab().setText(getString(R.string.players_stats)))
+        addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabUnselected(tab: TabLayout.Tab) = Unit
+            override fun onTabReselected(tab: TabLayout.Tab) = Unit
+
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                if (tab.position == 0) {
+                    teamsInfo.setVisible()
+                    playersInfo.setGone()
+                } else {
+                    teamsInfo.setGone()
+                    playersInfo.setVisible()
+                }
+            }
+        })
+    }
+
+    private fun TeamsInfoBinding.setLineScoreAdapter(gameInfo: GameInfo) {
+        val homeTeamLineScore = gameInfo.homeTeamGame.lineScore
+        val visitorTeamLineScore = gameInfo.visitorTeamGame.lineScore
+        val lineScore = homeTeamLineScore.zip(visitorTeamLineScore)
+        linescoreRecyclerView.adapter = BaseAdapter(lineScore) { parent ->
+            LineScoreViewHolder(
+                ItemLineScoreBinding.inflate(parent.inflater, parent, false),
+            )
+        }
+    }
+
+    private fun PlayersInfoBinding.setLeadersAdapter(gameInfo: GameInfo) {
+        val homePlayersStats = gameInfo.homeTeamGame.playersStats
+        val visitorPlayersStats = gameInfo.visitorTeamGame.playersStats
+        val leadersFields = listOf(
+            LeaderField(
+                name = "Points",
+                homeLeader = Leader(
+                    homePlayersStats.points.players[0],
+                    homePlayersStats.points.value
+                ),
+                visitorLeader = Leader(
+                    visitorPlayersStats.points.players[0],
+                    visitorPlayersStats.points.value
+                ),
+            ),
+            LeaderField(
+                name = "Rebounds",
+                homeLeader = Leader(
+                    homePlayersStats.rebounds.players[0],
+                    homePlayersStats.rebounds.value
+                ),
+                visitorLeader = Leader(
+                    visitorPlayersStats.rebounds.players[0],
+                    visitorPlayersStats.rebounds.value
+                ),
+            ),
+            LeaderField(
+                name = "Assists",
+                homeLeader = Leader(
+                    homePlayersStats.assists.players[0],
+                    homePlayersStats.assists.value
+                ),
+                visitorLeader = Leader(
+                    visitorPlayersStats.assists.players[0],
+                    visitorPlayersStats.assists.value
+                ),
+            ),
+        )
+        leadersRecyclerView.adapter = BaseAdapter(leadersFields) { parent ->
+            LeadersViewHolder(
+                ItemLeadersBinding.inflate(parent.inflater, parent, false),
+            )
+        }
     }
 
     companion object {

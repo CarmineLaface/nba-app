@@ -75,7 +75,7 @@ class TeamViewModel(
     }
 
     fun playerSelected(player: Player) {
-        navigator.navigateForward(playerPageProvider.getPlayerDetailPage(player))
+        navigator.navigateTo(playerPageProvider.getPlayerDetailPage(player))
     }
 
     fun scrollScheduleToIndex(schedule: List<Game>): Int {
@@ -89,6 +89,6 @@ class TeamViewModel(
 
     fun onGameSelected(item: Game) {
         val gamePage = gamePageProvider.getGamePage(item)
-        navigator.navigateForward(gamePage)
+        navigator.navigateTo(gamePage)
     }
 }

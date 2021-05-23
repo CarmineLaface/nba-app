@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="versus">VS</string>
+    <string name="versus">:</string>
     <string name="placeholder_no_games">No games scheduled for this day</string>
 </resources>

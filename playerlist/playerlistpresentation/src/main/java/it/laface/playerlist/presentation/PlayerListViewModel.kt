@@ -55,7 +55,7 @@ class PlayerListViewModel(
 
     fun onPlayerSelected(player: Player) {
         val playerPage = playerDetailPageProvider.getPlayerDetailPage(player)
-        navigator.navigateForward(playerPage)
+        navigator.navigateTo(playerPage)
     }
 
     fun setNameToFilter(text: String) {
@@ -63,6 +63,6 @@ class PlayerListViewModel(
     }
 
     fun goToStatsPage() {
-        navigator.navigateForward(statsPageProvider.getStatsPage())
+        navigator.navigateTo(statsPageProvider.getStatsPage())
     }
 }

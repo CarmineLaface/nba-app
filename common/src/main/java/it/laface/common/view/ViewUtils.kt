@@ -19,6 +19,10 @@ fun View.setGone() {
     visibility = View.GONE
 }
 
+fun View.setVisible() {
+    visibility = View.VISIBLE
+}
+
 val Context.isLandScape: Boolean
     get() = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 

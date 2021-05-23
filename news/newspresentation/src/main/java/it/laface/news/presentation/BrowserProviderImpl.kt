@@ -10,7 +10,7 @@ class BrowserProviderImpl(private val activityProvider: ActivityProvider) : Brow
 
     private val customTabsIntent: CustomTabsIntent by lazy(
         Builder()
-            .addDefaultShareMenuItem()
+            .setShareState(CustomTabsIntent.SHARE_STATE_ON)
             .setShowTitle(true)
         ::build
     )

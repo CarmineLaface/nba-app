@@ -36,6 +36,7 @@ dependencies {
     implementation project(":common")
     api project(":domain")
     api project(':game:gamedomain')
+    api project(':team:teamdomain')
 
     //Android core
     implementation "androidx.appcompat:appcompat:${versions.appcompat}"
@@ -44,6 +45,6 @@ dependencies {
 
     //UI
     implementation "com.google.android.material:material:${versions.material}"
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation "androidx.recyclerview:recyclerview:${versions.recyclerview}"
     implementation "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
 }
