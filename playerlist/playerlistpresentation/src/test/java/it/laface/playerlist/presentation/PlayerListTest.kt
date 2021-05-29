@@ -1,6 +1,5 @@
 package it.laface.playerlist.presentation
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.schibsted.spain.barista.assertion.BaristaListAssertions.assertListItemCount
@@ -20,17 +19,12 @@ import it.laface.player.domain.PlayersDataSource
 import it.laface.stats.domain.StatsPageProvider
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 @Suppress("MaxLineLength")
 class PlayerListTest {
-
-    @Rule
-    @JvmField
-    val instantExecutorRule: InstantTaskExecutorRule = InstantTaskExecutorRule()
 
     private val nbaDataSource: PlayersDataSource = mockk()
     private val playerDetailPageProvider: PlayerDetailPageProvider = mockk()
