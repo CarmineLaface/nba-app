@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import it.laface.common.ContentToShow
 import it.laface.common.util.observe
 import it.laface.common.util.requireParcelable
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.bindImage
-import it.laface.common.view.goneUnless
 import it.laface.common.view.inflater
 import it.laface.common.viewModels
 import it.laface.domain.model.imageUrl
@@ -155,8 +155,8 @@ class TeamFragment(
                     viewModel.scrollScheduleToIndex(contentToShow.content)
                 )
             }
-            scheduleProgressBar.goneUnless(contentToShow is ContentToShow.Loading)
-            scheduleErrorTextView.goneUnless(contentToShow is ContentToShow.Error)
+            scheduleProgressBar.isVisible = contentToShow is ContentToShow.Loading
+            scheduleErrorTextView.isVisible = contentToShow is ContentToShow.Error
         }
     }
 
@@ -173,8 +173,8 @@ class TeamFragment(
             if (contentToShow is ContentToShow.Success) {
                 rosterAdapter.list = contentToShow.content
             }
-            rosterProgressBar.goneUnless(contentToShow is ContentToShow.Loading)
-            rosterErrorTextView.goneUnless(contentToShow is ContentToShow.Error)
+            rosterProgressBar.isVisible = contentToShow is ContentToShow.Loading
+            rosterErrorTextView.isVisible = contentToShow is ContentToShow.Error
         }
     }
 

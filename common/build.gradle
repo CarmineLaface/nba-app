@@ -39,5 +39,5 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
 
     //Image loader
-    implementation 'io.coil-kt:coil:1.2.1'
+    implementation 'io.coil-kt:coil:1.2.2'
 }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayout
 import it.laface.common.ContentToShow
@@ -13,10 +14,7 @@ import it.laface.common.util.requireParcelable
 import it.laface.common.util.toCalendar
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.bindImage
-import it.laface.common.view.goneUnless
 import it.laface.common.view.inflater
-import it.laface.common.view.setGone
-import it.laface.common.view.setVisible
 import it.laface.common.viewModels
 import it.laface.domain.model.fullName
 import it.laface.domain.model.imageUrl
@@ -101,8 +99,8 @@ class GameFragment(
             teamsInfo.setLineScoreAdapter(contentToShow.content)
             playersInfo.setLeadersAdapter(contentToShow.content)
         }
-        progressBar.goneUnless(contentToShow is ContentToShow.Loading)
-        placeholderTextView.goneUnless(contentToShow is ContentToShow.Placeholder)
+        progressBar.isVisible = contentToShow is ContentToShow.Loading
+        placeholderTextView.isVisible = contentToShow is ContentToShow.Placeholder
     }
 
     private fun TabLayout.setTabs(teamsInfo: View, playersInfo: View) {
@@ -113,13 +111,9 @@ class GameFragment(
             override fun onTabReselected(tab: TabLayout.Tab) = Unit
 
             override fun onTabSelected(tab: TabLayout.Tab) {
-                if (tab.position == 0) {
-                    teamsInfo.setVisible()
-                    playersInfo.setGone()
-                } else {
-                    teamsInfo.setGone()
-                    playersInfo.setVisible()
-                }
+                val firstPosition = tab.position == 0
+                teamsInfo.isVisible = firstPosition
+                playersInfo.isVisible = firstPosition.not()
             }
         })
     }

@@ -13,6 +13,7 @@
         <entry key="game/gamepresentation/src/main/res/layout/players_info.xml" value="0.23854166666666668" />
         <entry key="game/gamepresentation/src/main/res/layout/team_info.xml" value="0.23854166666666668" />
         <entry key="game/gamepresentation/src/main/res/layout/teams_info.xml" value="0.18796296296296297" />
+        <entry key="news/newspresentation/src/main/res/layout/fragment_news.xml" value="0.11296296296296296" />
         <entry key="playerdetail/playerpresentation/src/main/res/layout/fragment_player.xml" value="0.23854166666666668" />
         <entry key="playerlist/playerlistpresentation/src/main/res/layout/item_player.xml" value="0.23854166666666668" />
         <entry key="ranking/rankingpresentation/src/main/res/drawable/tab_indicator_background.xml" value="0.23333333333333334" />

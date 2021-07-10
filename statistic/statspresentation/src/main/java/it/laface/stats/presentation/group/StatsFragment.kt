@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import it.laface.common.ContentListToShow
 import it.laface.common.ContentToShow
 import it.laface.common.util.observe
 import it.laface.common.view.BaseAdapter
-import it.laface.common.view.goneUnless
 import it.laface.common.view.inflater
 import it.laface.common.viewModels
 import it.laface.navigation.Navigator
@@ -73,6 +73,6 @@ class StatsFragment(
         } else {
             groupRecyclerView.visibility = View.GONE
         }
-        progressBar.goneUnless(contentToShow is ContentToShow.Loading)
+        progressBar.isVisible = contentToShow is ContentToShow.Loading
     }
 }
