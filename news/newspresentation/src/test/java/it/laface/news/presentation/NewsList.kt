@@ -4,6 +4,7 @@ import it.laface.base.NetworkResult
 import it.laface.news.domain.Article
 import java.util.Date
 
+@Suppress("MaxLineLength")
 val articleList = listOf(
     Article(
         title = "Tune-In Tidbits: TNT/NBA TV Thursday",

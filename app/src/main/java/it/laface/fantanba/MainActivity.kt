@@ -12,6 +12,7 @@ import it.laface.playerlist.presentation.PlayerListFragment
 import it.laface.ranking.presentation.RankingFragment
 import it.laface.schedule.presentation.ScheduleFragment
 
+@Suppress("UNCHECKED_CAST")
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private val firstFragmentClass
@@ -33,12 +34,11 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
-                add(R.id.container, firstFragmentClass, null, firstFragmentClass.name)
+                add(R.id.container, firstFragmentClass as Class<Fragment>, null, firstFragmentClass.name)
             }
         }
     }
 
-    @Suppress("UNCHECKED_CAST")
     private fun setBottomNavigation() {
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNav.setOnItemSelectedListener { item ->
