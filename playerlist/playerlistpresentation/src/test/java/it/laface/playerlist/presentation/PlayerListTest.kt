@@ -2,12 +2,12 @@ package it.laface.playerlist.presentation
 
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.schibsted.spain.barista.assertion.BaristaListAssertions.assertListItemCount
-import com.schibsted.spain.barista.assertion.BaristaListAssertions.assertListNotEmpty
-import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
-import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed
-import com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn
-import com.schibsted.spain.barista.interaction.BaristaEditTextInteractions.writeTo
+import com.adevinta.android.barista.assertion.BaristaListAssertions.assertListItemCount
+import com.adevinta.android.barista.assertion.BaristaListAssertions.assertListNotEmpty
+import com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
+import com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed
+import com.adevinta.android.barista.interaction.BaristaClickInteractions.clickOn
+import com.adevinta.android.barista.interaction.BaristaEditTextInteractions.writeTo
 import io.mockk.coEvery
 import io.mockk.mockk
 import it.laface.base.NetworkError
