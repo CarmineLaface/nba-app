@@ -36,6 +36,7 @@
             android:id="@+id/homeTeamLogoImageView"
             android:layout_width="56dp"
             android:layout_height="56dp"
+            android:layout_marginStart="32dp"
             android:importantForAccessibility="no"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/homeScoreTextView"
@@ -50,11 +51,12 @@
             android:textColor="@color/matteBlack"
             android:textSize="20sp"
             android:gravity="center_horizontal"
+            android:layout_marginStart="32dp"
             app:layout_constraintEnd_toStartOf="@+id/vsTextView"
-            app:layout_constraintStart_toEndOf="@id/homeTeamNameTextView"
+            app:layout_constraintStart_toEndOf="@id/homeTeamLogoImageView"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="111" />
+            tools:text="888" />
 
         <TextView
             android:id="@+id/homeTeamNameTextView"
@@ -69,10 +71,10 @@
             android:ellipsize="end"
             android:gravity="center_horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/homeScoreTextView"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/homeTeamLogoImageView"
+            app:layout_constraintStart_toStartOf="@id/homeTeamLogoImageView"
             app:layout_constraintTop_toBottomOf="@+id/homeTeamLogoImageView"
-            tools:text="Home Team" />
+            tools:text="Home Team Name" />
 
         <TextView
             android:id="@+id/vsTextView"
@@ -91,6 +93,7 @@
             android:id="@+id/visitorTeamLogoImageView"
             android:layout_width="56dp"
             android:layout_height="56dp"
+            android:layout_marginEnd="32dp"
             android:importantForAccessibility="no"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/visitorScoreTextView"
@@ -105,11 +108,12 @@
             android:textColor="@color/matteBlack"
             android:textSize="20sp"
             android:gravity="center_horizontal"
-            app:layout_constraintEnd_toStartOf="@id/visitorTeamNameTextView"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toStartOf="@id/visitorTeamLogoImageView"
             app:layout_constraintStart_toEndOf="@+id/vsTextView"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="88" />
+            tools:text="888" />
 
         <TextView
             android:id="@+id/visitorTeamNameTextView"
@@ -124,9 +128,9 @@
             android:ellipsize="end"
             android:gravity="center_horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/visitorScoreTextView"
+            app:layout_constraintEnd_toEndOf="@id/visitorTeamLogoImageView"
+            app:layout_constraintStart_toStartOf="@id/visitorTeamLogoImageView"
             app:layout_constraintTop_toBottomOf="@id/visitorTeamLogoImageView"
-            tools:text="Visitor Team" />
+            tools:text="Visitor Team Name" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

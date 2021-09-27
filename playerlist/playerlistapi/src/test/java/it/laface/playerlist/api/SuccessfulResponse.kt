@@ -10,7 +10,7 @@ fun getSuccessfulResponse(): Response<PlayerListResponse> {
     return Response.success(response)
 }
 
-val successfulResponseJson: String = """
+private const val successfulResponseJson: String = """
     {
       "_internal": {
         "pubDateTime": "2021-01-30 06:10:33.419 EST",
@@ -376,4 +376,4 @@ val successfulResponseJson: String = """
         "utah": []
       }
     }
-""".trimIndent()
+"""

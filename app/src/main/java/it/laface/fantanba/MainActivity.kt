@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
-                add(R.id.container, firstFragmentClass as Class<Fragment>, null, firstFragmentClass.name)
+                add(R.id.containerView, firstFragmentClass as Class<Fragment>, null, firstFragmentClass.name)
             }
         }
     }

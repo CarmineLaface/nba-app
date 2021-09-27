@@ -13,8 +13,8 @@ object Dependencies {
         const val material = "1.4.0"
         const val recyclerview = "1.2.1"
         const val okhttp = "4.9.1"
-        const val kotlin = "1.5.21"
-        const val coroutines = "1.5.1"
+        const val kotlin = "1.5.31"
+        const val coroutines = "1.5.2"
         const val fragment = "1.3.6"
         const val activity = "1.3.1"
     }

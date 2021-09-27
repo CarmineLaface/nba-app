@@ -44,7 +44,7 @@ import it.laface.team.presentation.teamPageProvider
 object CustomFragmentFactory : FragmentFactory() {
 
     internal val navigator: Navigator by lazy {
-        NavigationHandler(ActivityRegister, R.id.container)
+        NavigationHandler(ActivityRegister, R.id.containerView)
     }
     private val teamRepository: TeamRepository by lazy(::TeamRepositoryImpl)
     private val snackbarHandler: SnackbarHandler by lazy {

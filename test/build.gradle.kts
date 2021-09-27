@@ -38,7 +38,7 @@ dependencies {
     api("androidx.test.ext:junit:1.1.3")
     api("io.mockk:mockk:1.12.0")
 
-    api("com.adevinta.android:barista:4.0.0") {
+    api("com.adevinta.android:barista:4.1.0") {
         exclude(group = "org.jetbrains.kotlin")
     }
 
