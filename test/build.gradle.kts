@@ -16,11 +16,11 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
 }
 
@@ -35,10 +35,10 @@ dependencies {
 
     //Test
     api("junit:junit:4.13.2")
-    api("androidx.test.ext:junit:1.1.3")
+    api("androidx.test.ext:junit-ktx:1.1.4-alpha03")
     api("io.mockk:mockk:1.12.0")
 
-    api("com.adevinta.android:barista:4.1.0") {
+    api("com.adevinta.android:barista:4.2.0") {
         exclude(group = "org.jetbrains.kotlin")
     }
 
