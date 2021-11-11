@@ -31,7 +31,7 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:${Dependencies.Version.okhttp}")
 
     //Json Converter
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.google.code.gson:gson:2.8.9")
 
     //Test
     api("junit:junit:4.13.2")

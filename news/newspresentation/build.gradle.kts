@@ -55,7 +55,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:${Dependencies.Version.constraintlayout}")
 
     //Browser
-    implementation("androidx.browser:browser:1.3.0")
+    implementation("androidx.browser:browser:1.4.0")
 
     testImplementation(project(":test"))
     debugImplementation("androidx.fragment:fragment-testing:${Dependencies.Version.fragment}")

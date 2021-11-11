@@ -15,7 +15,7 @@ object Dependencies {
         const val okhttp = "4.9.2"
         const val kotlin = "1.5.31"
         const val coroutines = "1.5.2"
-        const val fragment = "1.4.0-beta01"
+        const val fragment = "1.4.0-rc01"
         const val activity = "1.4.0"
     }
 }

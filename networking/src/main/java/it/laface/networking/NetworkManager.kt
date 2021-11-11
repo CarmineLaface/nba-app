@@ -6,7 +6,6 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Converter
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.reflect.Type
 
 inline fun <reified T> getApiService(
@@ -49,6 +48,6 @@ fun getGson(
         .create()
 
 fun getConverter(gson: Gson): GsonConverterFactory =
-    GsonConverterFactory.create(gson)
+    GsonConverterFactory(gson)
 
 typealias AdapterInfo = Pair<Type, Any>
