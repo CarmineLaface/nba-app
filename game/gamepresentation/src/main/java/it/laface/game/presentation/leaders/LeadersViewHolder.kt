@@ -1,10 +1,10 @@
 package it.laface.game.presentation.leaders
 
+import it.laface.common.R
 import it.laface.common.view.BaseViewHolder
 import it.laface.common.view.bindImage
 import it.laface.domain.model.getPlayerImageUrl
 import it.laface.game.domain.Player
-import it.laface.game.presentation.R
 import it.laface.game.presentation.databinding.ItemLeadersBinding
 
 class LeadersViewHolder(

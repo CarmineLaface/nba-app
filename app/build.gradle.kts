@@ -3,7 +3,7 @@ plugins {
     kotlin("android")
     id("io.gitlab.arturbosch.detekt")
 }
-apply(from = "../ktlint.gradle")
+apply(from = "../ktlint.gradle.kts")
 
 android {
     compileSdk = Dependencies.Version.compileSdk

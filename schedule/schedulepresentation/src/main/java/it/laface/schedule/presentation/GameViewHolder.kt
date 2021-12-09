@@ -1,5 +1,6 @@
 package it.laface.schedule.presentation
 
+import it.laface.common.R
 import it.laface.common.view.BaseViewHolder
 import it.laface.common.view.bindImage
 import it.laface.domain.model.imageUrl

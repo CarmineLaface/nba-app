@@ -1,7 +1,8 @@
 package it.laface.common.util
 
-import android.os.Parcelable
 import androidx.fragment.app.Fragment
+import java.io.Serializable
 
-fun <T : Parcelable> Fragment.requireParcelable(key: String): T =
-    requireArguments().getParcelable(key) ?: throw IllegalStateException("argument is null")
+@Suppress("UNCHECKED_CAST")
+fun <T : Serializable> Fragment.requireSerializable(key: String): T =
+    requireArguments().getSerializable(key) as? T ?: throw IllegalStateException("Argument is not valid")

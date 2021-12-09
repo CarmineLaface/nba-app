@@ -8,7 +8,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import it.laface.common.ContentToShow
 import it.laface.common.util.observe
-import it.laface.common.util.requireParcelable
+import it.laface.common.util.requireSerializable
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.bindImage
 import it.laface.common.view.inflater
@@ -38,7 +38,7 @@ class TeamFragment(
 
     private val viewModel: TeamViewModel by viewModels {
         TeamViewModel(
-            team = requireParcelable(ARGUMENT_KEY),
+            team = requireSerializable(ARGUMENT_KEY),
             teamDataSourcesManager = teamDataSourcesManager,
             jobDispatcher = Dispatchers.IO,
             navigator = navigator,

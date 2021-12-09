@@ -1,11 +1,11 @@
 package it.laface.ranking.presentation
 
+import it.laface.common.R
 import it.laface.common.view.BaseViewHolder
 import it.laface.common.view.bindImage
 import it.laface.domain.model.fullName
 import it.laface.domain.model.imageUrl
 import it.laface.ranking.domain.RankedTeam
-import it.laface.ranking.presentation.R.drawable
 import it.laface.ranking.presentation.databinding.ItemTeamBinding
 
 class TeamViewHolder(
@@ -21,7 +21,7 @@ class TeamViewHolder(
         binding.lossesTextView.text = item.losses
         binding.teamLogoImageView.bindImage(
             item.teamInfo.imageUrl,
-            drawable.circle_grey
+            R.drawable.circle_grey
         )
     }
 }

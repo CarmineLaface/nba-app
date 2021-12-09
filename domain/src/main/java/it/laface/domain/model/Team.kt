@@ -1,9 +1,7 @@
 package it.laface.domain.model
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
+import java.io.Serializable
 
-@Parcelize
 data class Team(
     val id: String,
     val key: String,
@@ -12,7 +10,7 @@ data class Team(
     val nickname: String,
     val tricode: String,
     val rgbColor: String? = null
-) : Parcelable
+) : Serializable
 
 val Team.imageUrl: String
     get() = "https://it.global.nba.com/media/img/teams/00/logos/${tricode}_logo.png"

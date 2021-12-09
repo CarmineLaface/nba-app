@@ -10,7 +10,7 @@ import com.google.android.material.tabs.TabLayout
 import it.laface.common.ContentToShow
 import it.laface.common.util.getCompleteDayName
 import it.laface.common.util.observe
-import it.laface.common.util.requireParcelable
+import it.laface.common.util.requireSerializable
 import it.laface.common.util.toCalendar
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.bindImage
@@ -31,6 +31,7 @@ import it.laface.game.presentation.leaders.LeadersViewHolder
 import it.laface.navigation.Navigator
 import it.laface.team.domain.TeamPageProvider
 import kotlinx.coroutines.Dispatchers
+import it.laface.common.R as CR
 
 class GameFragment(
     gameDataSource: GameDataSource,
@@ -40,7 +41,7 @@ class GameFragment(
 
     private val viewModel: GameViewModel by viewModels {
         GameViewModel(
-            game = requireParcelable(GAME_KEY),
+            game = requireSerializable(GAME_KEY),
             navigator = navigator,
             gameDataSource = gameDataSource,
             teamPageProvider = teamPageProvider,
@@ -75,7 +76,7 @@ class GameFragment(
         homeTeamNameTextView.setOnClickListener {
             viewModel.navigateToTeamPage(homeTeam)
         }
-        homeTeamLogoImageView.bindImage(homeTeam.imageUrl, R.drawable.circle_grey)
+        homeTeamLogoImageView.bindImage(homeTeam.imageUrl, CR.drawable.circle_grey)
         homeTeamLogoImageView.setOnClickListener {
             viewModel.navigateToTeamPage(homeTeam)
         }
@@ -86,7 +87,7 @@ class GameFragment(
         visitorTeamNameTextView.setOnClickListener {
             viewModel.navigateToTeamPage(visitorTeam)
         }
-        visitorTeamLogoImageView.bindImage(visitorTeam.imageUrl, R.drawable.circle_grey)
+        visitorTeamLogoImageView.bindImage(visitorTeam.imageUrl, CR.drawable.circle_grey)
         visitorTeamLogoImageView.setOnClickListener {
             viewModel.navigateToTeamPage(visitorTeam)
         }

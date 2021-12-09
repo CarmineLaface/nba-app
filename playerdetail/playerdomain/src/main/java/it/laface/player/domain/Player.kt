@@ -1,10 +1,8 @@
 package it.laface.player.domain
 
-import android.os.Parcelable
 import it.laface.domain.model.getPlayerImageUrl
-import kotlinx.parcelize.Parcelize
+import java.io.Serializable
 
-@Parcelize
 data class Player(
     val name: String,
     val surname: String,
@@ -12,7 +10,7 @@ data class Player(
     val teamId: String,
     val jerseyNumber: String,
     val position: String
-) : Parcelable
+) : Serializable
 
 val Player.imageUrl: String
     get() = getPlayerImageUrl(id)

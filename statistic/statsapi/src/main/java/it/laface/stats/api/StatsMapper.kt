@@ -48,10 +48,11 @@ class StatsMapper(private val service: StatsService) : StatsDataSource {
     }
 
     private fun String.safeSubstring(startIndex: Int, endIndex: Int): String =
-        if (endIndex > length)
+        if (endIndex > length) {
             substring(startIndex)
-        else
+        } else {
             substring(startIndex, endIndex)
+        }
 
     companion object {
 

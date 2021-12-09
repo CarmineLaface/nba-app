@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayoutMediator
 import it.laface.base.CallState
+import it.laface.common.R
 import it.laface.common.util.observe
 import it.laface.common.view.BaseAdapter
 import it.laface.common.viewModels

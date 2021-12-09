@@ -47,7 +47,7 @@ class NewsViewModel(
                 is NetworkResult.Success ->
                     contentToShow.value = ContentToShow.Success(response.value)
                 is NetworkResult.Failure ->
-                    messageEmitter.show(SnackbarInfo(R.string.error))
+                    messageEmitter.show(SnackbarInfo(it.laface.common.R.string.error))
             }
             isRefreshing.value = false
         }

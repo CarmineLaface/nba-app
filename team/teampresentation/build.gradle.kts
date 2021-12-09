@@ -3,7 +3,7 @@ plugins {
     kotlin("android")
     id("io.gitlab.arturbosch.detekt")
 }
-apply(from = "../../ktlint.gradle")
+apply(from = "../../ktlint.gradle.kts")
 
 android {
     compileSdk = Dependencies.Version.compileSdk
@@ -42,7 +42,6 @@ dependencies {
     implementation(project(":navigation:navpublic"))
 
     //Android core
-    implementation("androidx.appcompat:appcompat:${Dependencies.Version.appcompat}")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${Dependencies.Version.lifecycle}")
     implementation("androidx.fragment:fragment-ktx:${Dependencies.Version.fragment}")
 

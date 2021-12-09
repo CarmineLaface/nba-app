@@ -3,7 +3,7 @@ plugins {
     id("kotlin")
     id("io.gitlab.arturbosch.detekt")
 }
-apply(from = "../../ktlint.gradle")
+apply(from = "../../ktlint.gradle.kts")
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11

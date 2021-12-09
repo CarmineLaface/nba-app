@@ -3,7 +3,7 @@ plugins {
     kotlin("android")
     id("io.gitlab.arturbosch.detekt")
 }
-apply(from = "../ktlint.gradle")
+apply(from = "../ktlint.gradle.kts")
 
 android {
     compileSdk = Dependencies.Version.compileSdk
@@ -36,11 +36,11 @@ dependencies {
     //Test
     api("junit:junit:4.13.2")
     api("androidx.test.ext:junit-ktx:1.1.4-alpha03")
-    api("io.mockk:mockk:1.12.0")
+    api("io.mockk:mockk:1.12.1")
 
     api("com.adevinta.android:barista:4.2.0") {
         exclude(group = "org.jetbrains.kotlin")
     }
 
-    api("org.robolectric:robolectric:4.6.1")
+    api("org.robolectric:robolectric:4.7.3")
 }

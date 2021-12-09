@@ -3,7 +3,7 @@ plugins {
     kotlin("android")
     id("io.gitlab.arturbosch.detekt")
 }
-apply(from = "../ktlint.gradle")
+apply(from = "../ktlint.gradle.kts")
 
 android {
     compileSdk = Dependencies.Version.compileSdk
@@ -36,6 +36,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${Dependencies.Version.lifecycle}")
     implementation("androidx.recyclerview:recyclerview:${Dependencies.Version.recyclerview}")
     implementation("androidx.fragment:fragment-ktx:${Dependencies.Version.fragment}")
+    api("androidx.appcompat:appcompat:${Dependencies.Version.appcompat}")
 
     //Image loader
     implementation("io.coil-kt:coil:1.4.0")

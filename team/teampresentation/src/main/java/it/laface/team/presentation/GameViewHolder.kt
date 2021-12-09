@@ -1,5 +1,6 @@
 package it.laface.team.presentation
 
+import it.laface.common.R
 import it.laface.common.util.getCompleteDayName
 import it.laface.common.util.toCalendar
 import it.laface.common.view.BaseViewHolder

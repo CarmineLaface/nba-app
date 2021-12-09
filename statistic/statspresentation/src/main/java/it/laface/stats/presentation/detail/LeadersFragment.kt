@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import it.laface.common.util.requireParcelable
+import it.laface.common.util.requireSerializable
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.inflater
 import it.laface.common.viewModels
@@ -16,7 +16,7 @@ import it.laface.stats.presentation.databinding.ItemLeaderBinding
 class LeadersFragment(navigator: Navigator) : Fragment() {
 
     private val viewModel: LeadersViewModel by viewModels {
-        LeadersViewModel(requireParcelable(STATS_ARG_KEY), navigator)
+        LeadersViewModel(requireSerializable(STATS_ARG_KEY), navigator)
     }
 
     override fun onCreateView(

@@ -20,6 +20,8 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import org.junit.runner.RunWith
+import com.google.android.material.R as MR
+import it.laface.common.R as CR
 
 @RunWith(AndroidJUnit4::class)
 @Suppress("MaxLineLength")
@@ -28,7 +30,7 @@ class NewsFragmentTest {
     private val newsDataSource: NewsDataSource = mockk()
     private val browserProvider: BrowserProvider = mockk()
     private val messageEmitter: MessageEmitter = mockk {
-        every { show(SnackbarInfo(R.string.error)) } returns Unit
+        every { show(SnackbarInfo(CR.string.error)) } returns Unit
     }
     private val errorResponse =
         NetworkResult.Failure(NetworkError.UnknownError("error"))
@@ -128,7 +130,7 @@ class NewsFragmentTest {
 
     private fun launchFragment(dataSource: NewsDataSource = newsDataSource) {
         launchFragmentInContainer(
-            themeResId = R.style.Base_Theme_MaterialComponents_Light
+            themeResId = MR.style.Base_Theme_MaterialComponents_Light
         ) {
             NewsFragment(
                 dataSource = dataSource,

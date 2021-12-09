@@ -21,6 +21,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import org.junit.runner.RunWith
+import com.google.android.material.R as MR
 
 @RunWith(AndroidJUnit4::class)
 @Suppress("MaxLineLength")
@@ -142,7 +143,7 @@ class PlayerListTest {
 
     private fun launchFragment(dataSource: PlayersDataSource = nbaDataSource) {
         launchFragmentInContainer(
-            themeResId = R.style.Base_Theme_MaterialComponents_Light
+            themeResId = MR.style.Base_Theme_MaterialComponents_Light
         ) {
             PlayerListFragment(
                 dataSource = dataSource,

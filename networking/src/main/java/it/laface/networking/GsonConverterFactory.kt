@@ -18,7 +18,7 @@ import java.nio.charset.Charset
 
 class GsonConverterFactory(
     private val gson: Gson = Gson()
-): Converter.Factory() {
+) : Converter.Factory() {
 
     companion object {
 
@@ -36,7 +36,7 @@ class GsonConverterFactory(
         )
     }
 
-    private fun <T: Any> internalResponseBodyConverter(
+    private fun <T : Any> internalResponseBodyConverter(
         adapter: TypeAdapter<T>
     ): Converter<ResponseBody, T> =
         Converter { value ->
@@ -61,7 +61,7 @@ class GsonConverterFactory(
         )
     }
 
-    private fun <T: Any> internalRequestBodyConverter(
+    private fun <T : Any> internalRequestBodyConverter(
         adapter: TypeAdapter<T>
     ): Converter<T, RequestBody> =
         Converter { value ->

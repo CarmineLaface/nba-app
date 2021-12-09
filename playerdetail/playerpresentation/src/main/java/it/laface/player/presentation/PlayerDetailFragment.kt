@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import it.laface.base.CallState
 import it.laface.common.util.observe
-import it.laface.common.util.requireParcelable
+import it.laface.common.util.requireSerializable
 import it.laface.common.view.BaseAdapter
 import it.laface.common.view.bindImage
 import it.laface.common.view.inflater
@@ -31,7 +31,7 @@ class PlayerDetailFragment(
 
     private val viewModel: PlayerDetailViewModel by viewModels {
         PlayerDetailViewModel(
-            player = requireParcelable(ARGUMENT_KEY),
+            player = requireSerializable(ARGUMENT_KEY),
             teamRepository = teamRepository,
             playerStatsDataSource = playerStatsDataSource,
             jobDispatcher = Dispatchers.IO,
@@ -55,7 +55,7 @@ class PlayerDetailFragment(
     private fun FragmentPlayerBinding.setView() {
         nameTextView.text = viewModel.player.name
         surnameTextView.text = viewModel.player.surname
-        playerImageView.bindImage(viewModel.player.imageUrl, R.drawable.player_placeholder)
+        playerImageView.bindImage(viewModel.player.imageUrl, it.laface.common.R.drawable.player_placeholder)
 
         jerseyNameTextView.text = viewModel.player.jerseyNumber
         positionValueTextView.text = viewModel.player.position
