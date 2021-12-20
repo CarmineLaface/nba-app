@@ -15,6 +15,5 @@ interface NewsService {
     companion object {
 
         internal const val BASE_URL: String = "https://stats-prod.nba.com"
-        internal const val DATE_FORMAT: String = "yyyy-MM-dd HH:mm:ss"
     }
 }

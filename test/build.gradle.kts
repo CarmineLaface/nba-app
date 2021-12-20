@@ -33,10 +33,11 @@ dependencies {
     //Json Converter
     implementation("com.google.code.gson:gson:2.8.9")
 
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-test:${Dependencies.Version.coroutines}")
     //Test
     api("junit:junit:4.13.2")
     api("androidx.test.ext:junit-ktx:1.1.4-alpha03")
-    api("io.mockk:mockk:1.12.1")
+    api("org.mockito:mockito-core:4.1.0")
 
     api("com.adevinta.android:barista:4.2.0") {
         exclude(group = "org.jetbrains.kotlin")

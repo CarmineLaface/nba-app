@@ -12,6 +12,7 @@
     <color name="success_green">#00A878</color>
 
     <color name="red">#df5c54</color>
+    <color name="pale_red">#DC615D</color>
     <color name="yellow">#ffb64b</color>
     <color name="green">#7bc647</color>
 </resources>

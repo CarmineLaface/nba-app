@@ -12,4 +12,9 @@ data class Game(
     val visitorTeam: Team,
     val homeScore: String?,
     val visitorScore: String?
-) : Serializable
+) : Serializable {
+
+    companion object {
+        const val serialVersionUID = 126L
+    }
+}

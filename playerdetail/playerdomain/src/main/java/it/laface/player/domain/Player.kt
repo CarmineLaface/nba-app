@@ -10,7 +10,12 @@ data class Player(
     val teamId: String,
     val jerseyNumber: String,
     val position: String
-) : Serializable
+) : Serializable {
+
+    companion object {
+        const val serialVersionUID = 125L
+    }
+}
 
 val Player.imageUrl: String
     get() = getPlayerImageUrl(id)

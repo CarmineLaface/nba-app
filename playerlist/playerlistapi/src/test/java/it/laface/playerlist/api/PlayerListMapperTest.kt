@@ -1,18 +1,21 @@
 package it.laface.playerlist.api
 
-import io.mockk.coEvery
-import io.mockk.mockk
 import it.laface.base.NetworkResult
 import it.laface.player.domain.Player
 import it.laface.test.errorResponse
-import kotlinx.coroutines.runBlocking
+import it.laface.test.mock
+import it.laface.test.thenAnswer
+import it.laface.test.whenever
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
+@ExperimentalCoroutinesApi
 class PlayerListMapperTest {
 
-    private val service: PlayerListService = mockk()
+    private val service: PlayerListService = mock()
     private val successfulResult = NetworkResult.Success(
         listOf(
             Player(
@@ -84,8 +87,8 @@ class PlayerListMapperTest {
 
     @Test
     fun `calling data source WHEN no errors occur THEN return successful response`() {
-        runBlocking {
-            coEvery { service.playerList() } returns getSuccessfulResponse()
+        runTest {
+            whenever(service.playerList()) thenAnswer { getSuccessfulResponse() }
             val mapper = PlayerListMapper(service)
 
             val response = mapper.getPlayers()
@@ -96,8 +99,8 @@ class PlayerListMapperTest {
 
     @Test
     fun `calling data source WHEN errors occur THEN return error response`() {
-        runBlocking {
-            coEvery { service.playerList() } returns errorResponse()
+        runTest {
+            whenever(service.playerList()) thenAnswer { errorResponse() }
             val mapper = PlayerListMapper(service)
 
             val response = mapper.getPlayers()

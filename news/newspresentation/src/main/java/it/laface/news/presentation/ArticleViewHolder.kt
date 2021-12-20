@@ -1,7 +1,6 @@
 package it.laface.news.presentation
 
 import android.text.Html
-import it.laface.common.util.getFullDayName
 import it.laface.common.view.BaseViewHolder
 import it.laface.common.view.bindImage
 import it.laface.news.domain.Article
@@ -18,6 +17,5 @@ class ArticleViewHolder(
         binding.imageView.bindImage(item.imageUrl, R.drawable.placeholder_image)
         val htmlSource = item.htmlContent
         binding.bodyTextView.text = Html.fromHtml(htmlSource, Html.FROM_HTML_MODE_LEGACY)
-        binding.dateTextView.text = item.date.getFullDayName
     }
 }

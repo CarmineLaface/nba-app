@@ -12,7 +12,6 @@ class NewsMapper(private val service: NewsService) : NewsDataSource {
             response.posts.map { post ->
                 Article(
                     title = post.title,
-                    date = post.date,
                     htmlContent = post.content,
                     imageUrl = post.imageUrl,
                     link = post.meta.link

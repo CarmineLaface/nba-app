@@ -9,7 +9,7 @@ import it.laface.networking.getGson
 object NewsApi {
 
     val gson: Gson
-        get() = getGson(NewsService.DATE_FORMAT)
+        get() = getGson()
 
     val service: NewsService by lazy {
         val client = getClient()

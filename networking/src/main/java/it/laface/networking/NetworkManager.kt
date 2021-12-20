@@ -39,8 +39,6 @@ fun getGson(
             if (dateFormat != null) {
                 setDateFormat(dateFormat)
             }
-        }
-        .apply {
             adapterInfo?.let { (type, typeAdapter) ->
                 registerTypeAdapter(type, typeAdapter)
             }

@@ -6,9 +6,6 @@ import com.adevinta.android.barista.assertion.BaristaListAssertions.assertListNo
 import com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
 import com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed
 import com.adevinta.android.barista.interaction.BaristaClickInteractions.clickOn
-import io.mockk.coEvery
-import io.mockk.every
-import io.mockk.mockk
 import it.laface.base.NetworkError
 import it.laface.base.NetworkResult
 import it.laface.navigation.MessageEmitter
@@ -16,6 +13,9 @@ import it.laface.navigation.SnackbarInfo
 import it.laface.news.domain.Article
 import it.laface.news.domain.BrowserProvider
 import it.laface.news.domain.NewsDataSource
+import it.laface.test.mock
+import it.laface.test.thenAnswer
+import it.laface.test.whenever
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
@@ -27,10 +27,10 @@ import it.laface.common.R as CR
 @Suppress("MaxLineLength")
 class NewsFragmentTest {
 
-    private val newsDataSource: NewsDataSource = mockk()
-    private val browserProvider: BrowserProvider = mockk()
-    private val messageEmitter: MessageEmitter = mockk {
-        every { show(SnackbarInfo(CR.string.error)) } returns Unit
+    private val newsDataSource: NewsDataSource = mock()
+    private val browserProvider: BrowserProvider = mock()
+    private val messageEmitter: MessageEmitter = mock {
+        whenever(show(SnackbarInfo(CR.string.error))) thenAnswer {}
     }
     private val errorResponse =
         NetworkResult.Failure(NetworkError.UnknownError("error"))
@@ -57,7 +57,7 @@ class NewsFragmentTest {
     @Test
     fun `on page first opening WHEN the network call fails then THEN there should be an error state`() {
         runBlocking {
-            coEvery { newsDataSource.getNews() } returns errorResponse
+            whenever(newsDataSource.getNews()) thenAnswer { errorResponse }
             launchFragment()
 
             assertNotDisplayed(R.id.newsRecyclerView)
@@ -69,7 +69,7 @@ class NewsFragmentTest {
     @Test
     fun `on page first opening WHEN the network call succeeds then THEN there should be a state with the given list`() {
         runBlocking {
-            coEvery { newsDataSource.getNews() } returns successFulResponse
+            whenever(newsDataSource.getNews()) thenAnswer { successFulResponse }
             launchFragment()
 
             assertListNotEmpty(R.id.newsRecyclerView)
@@ -85,9 +85,9 @@ class NewsFragmentTest {
     @Test
     fun `given an error state WHEN a retry action triggers a network call that end successfully THEN the current state should be updated with the given list`() {
         runBlocking {
-            coEvery { newsDataSource.getNews() } returns errorResponse
+            whenever(newsDataSource.getNews()) thenAnswer { errorResponse }
             launchFragment()
-            coEvery { newsDataSource.getNews() } returns successFulResponse
+            whenever(newsDataSource.getNews()) thenAnswer { successFulResponse }
 
             clickOn(R.id.retryButton)
 
@@ -99,7 +99,7 @@ class NewsFragmentTest {
     @Test
     fun `given an error state WHEN a retry action triggers a network call that fails THEN the current state should be error`() {
         runBlocking {
-            coEvery { newsDataSource.getNews() } returns errorResponse
+            whenever(newsDataSource.getNews()) thenAnswer { errorResponse }
             launchFragment()
 
             clickOn(R.id.retryButton)
@@ -113,7 +113,7 @@ class NewsFragmentTest {
     @Test
     fun `given an error state WHEN a refresh action triggers a network call that fails THEN the current state should be error and a message emitted`() {
         runBlocking {
-            coEvery { newsDataSource.getNews() } returns errorResponse
+            whenever(newsDataSource.getNews() ) doAnswer {errorResponse}
             launchFragment()
             delay(5000)
 

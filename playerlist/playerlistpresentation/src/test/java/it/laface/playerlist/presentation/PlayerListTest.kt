@@ -8,15 +8,17 @@ import com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assert
 import com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed
 import com.adevinta.android.barista.interaction.BaristaClickInteractions.clickOn
 import com.adevinta.android.barista.interaction.BaristaEditTextInteractions.writeTo
-import io.mockk.coEvery
-import io.mockk.mockk
-import it.laface.base.NetworkError
+import it.laface.base.NetworkError.UnknownError
 import it.laface.base.NetworkResult
+import it.laface.base.NetworkResult.Failure
 import it.laface.navigation.Navigator
 import it.laface.player.domain.Player
 import it.laface.player.domain.PlayerDetailPageProvider
 import it.laface.player.domain.PlayersDataSource
 import it.laface.stats.domain.StatsPageProvider
+import it.laface.test.mock
+import it.laface.test.thenAnswer
+import it.laface.test.whenever
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
@@ -27,12 +29,11 @@ import com.google.android.material.R as MR
 @Suppress("MaxLineLength")
 class PlayerListTest {
 
-    private val nbaDataSource: PlayersDataSource = mockk()
-    private val playerDetailPageProvider: PlayerDetailPageProvider = mockk()
-    private val navigator: Navigator = mockk()
-    private val statsPageProvider: StatsPageProvider = mockk()
-    private val errorResponse =
-        NetworkResult.Failure(NetworkError.UnknownError("error"))
+    private val nbaDataSource: PlayersDataSource = mock()
+    private val playerDetailPageProvider: PlayerDetailPageProvider = mock()
+    private val navigator: Navigator = mock()
+    private val statsPageProvider: StatsPageProvider = mock()
+    private val errorResponse = Failure(UnknownError("error"))
 
     // region -------------------- base tests --------------------
 
@@ -57,7 +58,7 @@ class PlayerListTest {
     @Test
     fun `on page first opening WHEN the network call fails then THEN there should be an error state`() {
         runBlocking {
-            coEvery { nbaDataSource.getPlayers() } returns errorResponse
+            whenever(nbaDataSource.getPlayers()) thenAnswer { errorResponse }
             launchFragment()
 
             assertNotDisplayed(R.id.playersRecyclerView)
@@ -70,7 +71,7 @@ class PlayerListTest {
     @Test
     fun `on page first opening WHEN the network call succeeds then THEN there should be a state with the given list`() {
         runBlocking {
-            coEvery { nbaDataSource.getPlayers() } returns successFulResponse
+            whenever(nbaDataSource.getPlayers()) thenAnswer { successFulResponse }
             launchFragment()
 
             assertListNotEmpty(R.id.playersRecyclerView)
@@ -87,9 +88,9 @@ class PlayerListTest {
     @Test
     fun `given an error state WHEN a retry action triggers a network call that end successfully THEN the current state should be updated with the given list`() {
         runBlocking {
-            coEvery { nbaDataSource.getPlayers() } returns errorResponse
+            whenever(nbaDataSource.getPlayers()) thenAnswer { errorResponse }
             launchFragment()
-            coEvery { nbaDataSource.getPlayers() } returns successFulResponse
+            whenever(nbaDataSource.getPlayers()) thenAnswer { successFulResponse }
 
             clickOn(R.id.retryButton)
 
@@ -101,7 +102,7 @@ class PlayerListTest {
     @Test
     fun `given an error state WHEN a retry action triggers a network call that fails THEN the current state should be error`() {
         runBlocking {
-            coEvery { nbaDataSource.getPlayers() } returns errorResponse
+            whenever(nbaDataSource.getPlayers()) thenAnswer { errorResponse }
             launchFragment()
 
             clickOn(R.id.retryButton)
@@ -118,7 +119,7 @@ class PlayerListTest {
     @Test
     fun `given a successful state with a not empty player list WHEN a name is entered THEN there should be a state with a list filtered by that name`() {
         runBlocking {
-            coEvery { nbaDataSource.getPlayers() } returns successFulResponse
+            whenever(nbaDataSource.getPlayers()) thenAnswer { successFulResponse }
             launchFragment()
 
             writeTo(R.id.playerNameEditText, "Steven")
@@ -130,7 +131,7 @@ class PlayerListTest {
     @Test
     fun `given a successful state with a not empty player list WHEN a name that matches no player is entered THEN there should a placeholder state`() {
         runBlocking {
-            coEvery { nbaDataSource.getPlayers() } returns successFulResponse
+            whenever(nbaDataSource.getPlayers()) thenAnswer { successFulResponse }
             launchFragment()
 
             writeTo(R.id.playerNameEditText, "Carmine")

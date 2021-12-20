@@ -10,7 +10,6 @@ object StatsApi {
 
     val gson: Gson
         get() = getGson(
-            dateFormat = StatsService.DATE_FORMAT,
             adapterInfo = PlayerStatsResponse::class.java to StatsDeserializer
         )
 
