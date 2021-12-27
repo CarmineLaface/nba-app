@@ -3,7 +3,7 @@ package it.laface.player.api
 import com.google.gson.Gson
 import it.laface.networking.getApiService
 import it.laface.networking.getClient
-import it.laface.networking.getConverter
+import it.laface.networking.getConverterFactory
 import it.laface.networking.getGson
 
 object PlayerApi {
@@ -13,7 +13,7 @@ object PlayerApi {
 
     val service: PlayerStatsService by lazy {
         val client = getClient()
-        val converter = getConverter(gson)
+        val converter = getConverterFactory(gson)
         getApiService(
             baseUrl = BuildConfig.NBA_API_BASE_URL,
             converterFactory = converter,

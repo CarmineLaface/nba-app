@@ -2,7 +2,6 @@ package it.laface.networking
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Converter
 import retrofit2.Retrofit
@@ -21,14 +20,9 @@ inline fun <reified T> getApiService(
         .create(T::class.java)
 }
 
-fun getClient(vararg interceptors: Interceptor): OkHttpClient.Builder =
+fun getClient(): OkHttpClient.Builder =
     OkHttpClient.Builder()
         .addInterceptor(IOExceptionInterceptor())
-        .apply {
-            for (interceptor in interceptors) {
-                addInterceptor(interceptor)
-            }
-        }
 
 fun getGson(
     dateFormat: String? = null,
@@ -45,7 +39,7 @@ fun getGson(
         }
         .create()
 
-fun getConverter(gson: Gson): GsonConverterFactory =
+fun getConverterFactory(gson: Gson): Converter.Factory =
     GsonConverterFactory(gson)
 
 typealias AdapterInfo = Pair<Type, Any>

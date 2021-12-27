@@ -1,14 +1,10 @@
 package it.laface.playerlist.api
 
+import it.laface.test.successfulResponse
 import retrofit2.Response
 
-fun getSuccessfulResponse(): Response<PlayerListResponse> {
-    val response = PlayerListApi.gson.fromJson(
-        successfulResponseJson,
-        PlayerListResponse::class.java
-    )
-    return Response.success(response)
-}
+fun getSuccessfulResponse(): Response<PlayerListResponse> =
+    successfulResponse(PlayerListApi.gson, successfulResponseJson)
 
 private const val successfulResponseJson: String = """
     {

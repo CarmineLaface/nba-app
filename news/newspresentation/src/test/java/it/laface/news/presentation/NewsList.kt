@@ -2,7 +2,6 @@ package it.laface.news.presentation
 
 import it.laface.base.NetworkResult
 import it.laface.news.domain.Article
-import java.util.Date
 
 @Suppress("MaxLineLength")
 val articleList = listOf(

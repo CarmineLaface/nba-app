@@ -23,9 +23,10 @@ fun <T> Response<T>.mapError(): NetworkError =
         MISSING_CONNECTION_STATUS_CODE -> NetworkError.MissingConnection
         TIMEOUT_STATUS_CODE -> NetworkError.Timeout
         GENERIC_EXCEPTION_STATUS_CODE -> NetworkError.UnknownError(errorMessage)
-        in HTTP_BAD_REQUEST until HTTP_INTERNAL_ERROR -> NetworkError.ClientError(errorMessage, code())
+        in HTTP_BAD_REQUEST until HTTP_INTERNAL_ERROR ->
+            NetworkError.ClientError(errorMessage, code())
         else -> NetworkError.ServerError(errorMessage, code())
     }
 
-val <T> Response<T>.errorMessage: String
+private val <T> Response<T>.errorMessage: String
     get() = errorBody()?.string() ?: message()

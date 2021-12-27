@@ -15,11 +15,9 @@ class GameViewHolder(
     override fun bind(item: Game) {
         itemView.setOnClickListener { onGameSelected.invoke(item) }
 
-        binding.homeTeamNameTextView.text = item.homeTeam.nickname
         binding.homeTeamLogoImageView.bindImage(item.homeTeam.imageUrl, R.drawable.circle_grey)
         binding.homeScoreTextView.text = item.homeScore ?: "-"
 
-        binding.visitorTeamNameTextView.text = item.visitorTeam.nickname
         binding.visitorTeamLogoImageView.bindImage(item.visitorTeam.imageUrl, R.drawable.circle_grey)
         binding.visitorScoreTextView.text = item.visitorScore ?: "-"
     }

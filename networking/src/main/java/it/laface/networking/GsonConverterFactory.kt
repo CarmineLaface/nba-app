@@ -68,7 +68,7 @@ class GsonConverterFactory(
             val buffer = Buffer()
             val writer = OutputStreamWriter(buffer.outputStream(), UTF_8)
             val jsonWriter = gson.newJsonWriter(writer)
-            adapter.write(jsonWriter, value as T)
+            adapter.write(jsonWriter, value)
             jsonWriter.close()
             buffer.readByteString().toRequestBody(MEDIA_TYPE)
         }

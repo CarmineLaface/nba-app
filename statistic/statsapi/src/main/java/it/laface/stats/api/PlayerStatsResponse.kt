@@ -1,17 +1,19 @@
 package it.laface.stats.api
 
+import com.google.gson.annotations.SerializedName
+
 data class PlayerStatsResponse(
-    val sections: List<StatsSectionResponse>
+    @SerializedName("sections") val sections: List<StatsSectionResponse>
 )
 
 data class StatsSectionResponse(
-    val players: List<PlayerResponse>,
-    val title: String
+    @SerializedName("players") val players: List<PlayerResponse>,
+    @SerializedName("title") val title: String
 )
 
 data class PlayerResponse(
-    val playerId: Int,
-    val playerName: String,
-    val teamId: Int,
-    val value: String
+    @SerializedName("playerId") val playerId: Int,
+    @SerializedName("playerName") val playerName: String,
+    @SerializedName("teamId") val teamId: Int,
+    @SerializedName("value") val value: String
 )

@@ -37,7 +37,7 @@ dependencies {
     //Test
     api("junit:junit:4.13.2")
     api("androidx.test.ext:junit-ktx:1.1.4-alpha03")
-    api("org.mockito:mockito-core:4.1.0")
+    api("org.mockito:mockito-core:4.2.0")
 
     api("com.adevinta.android:barista:4.2.0") {
         exclude(group = "org.jetbrains.kotlin")

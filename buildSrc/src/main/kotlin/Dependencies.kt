@@ -3,7 +3,7 @@ object Dependencies {
 
     object Version {
 
-        const val minSdk = 26
+        const val minSdk = 24
         const val compileSdk = 31
         const val targetSdk = 31
         const val constraintlayout = "2.1.2"
@@ -14,7 +14,7 @@ object Dependencies {
         const val recyclerview = "1.2.1"
         const val okhttp = "4.9.3"
         const val kotlin = "1.6.0"
-        const val coroutines = "1.6.0-RC2"
+        const val coroutines = "1.6.0"
         const val fragment = "1.4.0"
         const val activity = "1.4.0"
     }
