@@ -2,24 +2,24 @@ package it.laface.ranking.networking
 
 import com.google.gson.annotations.SerializedName
 
-data class RankingResponse(
+class RankingResponse(
     @SerializedName("league") val league: League
 )
 
-data class League(
+class League(
     @SerializedName("standard") val standard: Standard
 )
 
-data class Standard(
+class Standard(
     @SerializedName("conference") val conference: Conference
 )
 
-data class Conference(
+class Conference(
     @SerializedName("east") val east: List<TeamResponseModel>,
     @SerializedName("west") val west: List<TeamResponseModel>
 )
 
-data class TeamResponseModel(
+class TeamResponseModel(
     @SerializedName("teamId") val id: String,
     @SerializedName("win") val win: String,
     @SerializedName("loss") val loss: String,
@@ -27,7 +27,7 @@ data class TeamResponseModel(
     @SerializedName("teamSitesOnly") val info: TeamInfo
 )
 
-data class TeamInfo(
+class TeamInfo(
     @SerializedName("teamKey") val key: String,
     @SerializedName("teamName") val name: String,
     @SerializedName("teamCode") val code: String,

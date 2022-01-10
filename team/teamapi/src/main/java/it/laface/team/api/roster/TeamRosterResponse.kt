@@ -2,11 +2,11 @@ package it.laface.team.api.roster
 
 import com.google.gson.annotations.SerializedName
 
-data class TeamRosterResponse(
+class TeamRosterResponse(
     @SerializedName("t") val roasterInfo: RoasterInfo
 )
 
-data class RoasterInfo(
+class RoasterInfo(
     @SerializedName("tid") val teamId: Int,
     @SerializedName("ta") val teamTricode: String,
     @SerializedName("tn") val teamName: String,
@@ -14,7 +14,7 @@ data class RoasterInfo(
     @SerializedName("pl") val players: List<PlayerResponse>
 )
 
-data class PlayerResponse(
+class PlayerResponse(
     @SerializedName("fn") val name: String,
     @SerializedName("ln") val surname: String,
     @SerializedName("pid") val id: Int,

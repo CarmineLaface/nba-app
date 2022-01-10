@@ -6,19 +6,20 @@ class PlayerStatsResponse(
     @SerializedName("league") val league: League
 )
 
-data class League(
+class League(
     @SerializedName("standard") val standard: Standard
 )
 
-data class Standard(
+class Standard(
     @SerializedName("stats") val stats: Stats
 )
 
-data class Stats(
+class Stats(
     @SerializedName("latest") val latest: Latest
 )
 
-data class Latest(
+@Suppress("LongParameterList")
+class Latest(
     @SerializedName("ppg") val pointsPerGame: String,
     @SerializedName("rpg") val reboundsPerGame: String,
     @SerializedName("apg") val assistsPerGame: String,

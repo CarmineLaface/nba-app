@@ -4,6 +4,8 @@ import com.google.gson.JsonArray
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
+import it.laface.stats.domain.Leader
+import it.laface.stats.domain.StatsSection
 import java.lang.reflect.Type
 
 object StatsDeserializer : JsonDeserializer<PlayerStatsResponse> {
@@ -18,7 +20,7 @@ object StatsDeserializer : JsonDeserializer<PlayerStatsResponse> {
         return PlayerStatsResponse(jsonArray.getStatsSections())
     }
 
-    private fun JsonArray.getStatsSections(): List<StatsSectionResponse> {
+    private fun JsonArray.getStatsSections(): List<StatsSection> {
         return map { it.asJsonObject }
             .filter {
                 it.has("playerstats")
@@ -27,23 +29,42 @@ object StatsDeserializer : JsonDeserializer<PlayerStatsResponse> {
                 val keyName = jsonObject["name"].asString
                 val players = jsonObject["playerstats"].asJsonArray.getLeaders(keyName)
                 val title = jsonObject["title"].asString
-                StatsSectionResponse(
+                StatsSection(
                     title = title,
                     players = players
                 )
             }
     }
 
-    private fun JsonArray.getLeaders(keyName: String): List<PlayerResponse> {
-        return map { jsonElement ->
+    private fun JsonArray.getLeaders(keyName: String): List<Leader> {
+        return mapIndexed { index, jsonElement ->
             val playerJsonObject = jsonElement.asJsonObject
             val customValue = playerJsonObject[keyName].asJsonPrimitive.asString
-            PlayerResponse(
-                playerId = playerJsonObject["PLAYER_ID"].asInt,
+            Leader(
+                playerId = playerJsonObject["PLAYER_ID"].asInt.toString(),
                 playerName = playerJsonObject["PLAYER_NAME"].asString,
-                teamId = playerJsonObject["TEAM_ID"].asInt,
-                value = customValue
+                teamId = playerJsonObject["TEAM_ID"].asInt.toString(),
+                rank = index + 1,
+                customValue = customValue.parseCustomValue()
             )
         }
     }
+
+    @Suppress("MagicNumber")
+    private fun String.parseCustomValue(): String {
+        if (contains('.').not()) return this
+        val pointIndex = indexOf('.')
+        return if (startsWith("0.")) {
+            safeSubstring(1, pointIndex + 4)
+        } else {
+            safeSubstring(0, pointIndex + 3)
+        }
+    }
+
+    private fun String.safeSubstring(startIndex: Int, endIndex: Int): String =
+        if (endIndex > length) {
+            substring(startIndex)
+        } else {
+            substring(startIndex, endIndex)
+        }
 }

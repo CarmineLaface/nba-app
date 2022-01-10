@@ -2,15 +2,15 @@ package it.laface.playerlist.api
 
 import com.google.gson.annotations.SerializedName
 
-data class PlayerListResponse(
+class PlayerListResponse(
     @SerializedName("league") val league: NbaLeague
 )
 
-data class NbaLeague(
+class NbaLeague(
     @SerializedName("standard") val standard: List<NbaPlayer>
 )
 
-data class NbaPlayer(
+class NbaPlayer(
     @SerializedName("firstName") val firstName: String,
     @SerializedName("lastName") val lastName: String,
     @SerializedName("personId") val personId: String,

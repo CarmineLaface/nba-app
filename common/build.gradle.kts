@@ -39,8 +39,5 @@ dependencies {
     api("androidx.appcompat:appcompat:${Dependencies.Version.appcompat}")
 
     //Image loader
-    implementation("io.coil-kt:coil:1.4.0")
-
-    //Date
-    api("org.jetbrains.kotlinx:kotlinx-datetime:0.3.1")
+    implementation("io.coil-kt:coil:2.0.0-alpha06")
 }

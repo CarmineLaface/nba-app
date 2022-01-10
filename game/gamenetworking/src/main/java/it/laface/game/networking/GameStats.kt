@@ -2,17 +2,18 @@ package it.laface.game.networking
 
 import com.google.gson.annotations.SerializedName
 
-data class GameStats(
+class GameStats(
     @SerializedName("vTeam") val visitorTeam: TeamStatsResponse,
     @SerializedName("hTeam") val homeTeam: TeamStatsResponse,
 )
 
-data class TeamStatsResponse(
+class TeamStatsResponse(
     @SerializedName("totals") val totals: TotalStats,
     @SerializedName("leaders") val leaders: Leaders,
 )
 
-data class TotalStats(
+@Suppress("LongParameterList")
+class TotalStats(
     @SerializedName("fgm") val fieldGoalsMade: String,
     @SerializedName("fga") val fieldGoalsAttempted: String,
     @SerializedName("fgp") val fieldGoalPercentage: String,
@@ -31,18 +32,18 @@ data class TotalStats(
     @SerializedName("blocks") val blocks: String,
 )
 
-data class Leaders(
+class Leaders(
     @SerializedName("points") val points: TeamLeadersResponse,
     @SerializedName("rebounds") val rebounds: TeamLeadersResponse,
     @SerializedName("assists") val assists: TeamLeadersResponse,
 )
 
-data class TeamLeadersResponse(
+class TeamLeadersResponse(
     @SerializedName("value") val value: String,
     @SerializedName("players") val players: List<PlayerResponse>,
 )
 
-data class PlayerResponse(
+class PlayerResponse(
     @SerializedName("personId") val id: String,
     @SerializedName("firstName") val firstName: String,
     @SerializedName("lastName") val lastName: String,
