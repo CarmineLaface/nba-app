@@ -7,3 +7,22 @@
 [![Android CI](https://github.com/carlaf92/nba-app/workflows/Android%20CI/badge.svg)](https://github.com/carlaf92/nba-app/actions)
 
 Android app that uses [open source API](https://github.com/jasonroman/nba-api) to show NBA news and current season info
+
+## Screenshots
+
+<p>
+  <img src="screenshots/news.png" width="250" alt="News">
+  <img src="screenshots/player_list.png" width="250" alt="Player list">
+  <img src="screenshots/ranking.png" width="250" alt="Team ranking">
+</p>
+
+<p>
+  <img src="screenshots/team_info.png" width="250" alt="Team info">
+  <img src="screenshots/team_roster.png" width="250" alt="Team roster">
+  <img src="screenshots/statistics.png" width="250" alt="Statistics">
+</p>
+<!--
+<p>
+  <img src="screenshots/stats_leaders.png" width="250" alt="Stats leaders">
+</p>
+-->
