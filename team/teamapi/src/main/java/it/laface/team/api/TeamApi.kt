@@ -1,6 +1,7 @@
 package it.laface.team.api
 
 import com.google.gson.Gson
+import it.laface.networking.ApiHelper
 import it.laface.networking.getApiService
 import it.laface.networking.getClient
 import it.laface.networking.getConverterFactory
@@ -13,13 +14,13 @@ import it.laface.team.api.teaminfo.TeamDetailsService
 object TeamApi {
 
     val teamRosterGson: Gson
-        get() = getGson(BuildConfig.NBA_API_DATE_FORMAT)
+        get() = getGson(ApiHelper.DATE_FORMAT)
 
     val teamRosterService: TeamRosterService by lazy {
         val client = getClient()
         val converter = getConverterFactory(teamRosterGson)
         getApiService(
-            baseUrl = BuildConfig.NBA_API_BASE_URL,
+            baseUrl = ApiHelper.BASE_URL,
             converterFactory = converter,
             client = client
         )

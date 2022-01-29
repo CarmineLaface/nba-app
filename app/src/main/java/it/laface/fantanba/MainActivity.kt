@@ -2,6 +2,7 @@ package it.laface.fantanba
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -13,7 +14,7 @@ import it.laface.ranking.presentation.RankingFragment
 import it.laface.schedule.presentation.ScheduleFragment
 
 @Suppress("UNCHECKED_CAST")
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
+class MainActivity : AppCompatActivity() {
 
     private val firstFragmentClass
         get() = NewsFragment::class.java
@@ -29,6 +30,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         supportFragmentManager.fragmentFactory = CustomFragmentFactory
         super.onCreate(savedInstanceState)
+
+        installSplashScreen()
+
+        setContentView(R.layout.activity_main)
 
         setBottomNavigation()
 

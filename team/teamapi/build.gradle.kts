@@ -1,38 +1,13 @@
 plugins {
-    id("com.android.library")
-    kotlin("android")
+    id("java-library")
+    id("kotlin")
     id("io.gitlab.arturbosch.detekt")
 }
 apply(from = "../../ktlint.gradle.kts")
 
-android {
-    compileSdk = Dependencies.Version.compileSdk
-
-    defaultConfig {
-        minSdk = Dependencies.Version.minSdk
-        targetSdk = Dependencies.Version.targetSdk
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-        val nba_data_api_base_url: String by project
-        val nba_data_api_date_format: String by project
-        buildConfigField("String", "NBA_API_DATE_FORMAT", "\"${nba_data_api_date_format}\"")
-        buildConfigField("String", "NBA_API_BASE_URL", "\"${nba_data_api_base_url}\"")
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }
 
 dependencies {
