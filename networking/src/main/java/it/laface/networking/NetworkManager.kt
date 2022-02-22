@@ -8,9 +8,9 @@ import retrofit2.Retrofit
 import java.lang.reflect.Type
 
 inline fun <reified T> getApiService(
-    baseUrl: String,
+    baseUrl: String = ApiHelper.BASE_URL,
     converterFactory: Converter.Factory,
-    client: OkHttpClient.Builder
+    client: OkHttpClient.Builder = baseClient
 ): T {
     return Retrofit.Builder()
         .baseUrl(baseUrl)
@@ -20,9 +20,11 @@ inline fun <reified T> getApiService(
         .create(T::class.java)
 }
 
-fun getClient(): OkHttpClient.Builder =
+val baseClient: OkHttpClient.Builder by lazy {
     OkHttpClient.Builder()
+        .fastFallback(true)
         .addInterceptor(IOExceptionInterceptor())
+}
 
 fun getGson(
     dateFormat: String? = null,

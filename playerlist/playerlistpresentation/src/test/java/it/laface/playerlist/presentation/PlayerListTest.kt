@@ -1,3 +1,5 @@
+@file:Suppress("MaxLineLength")
+
 package it.laface.playerlist.presentation
 /*
 import androidx.fragment.app.testing.launchFragmentInContainer

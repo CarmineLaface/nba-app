@@ -1,3 +1,5 @@
+@file:Suppress("MaxLineLength")
+
 package it.laface.news.presentation
 /*
 import androidx.fragment.app.testing.launchFragmentInContainer
@@ -24,7 +26,6 @@ import com.google.android.material.R as MR
 import it.laface.common.R as CR
 
 @RunWith(AndroidJUnit4::class)
-@Suppress("MaxLineLength")
 class NewsFragmentTest {
 
     private val newsDataSource: NewsDataSource = mock()

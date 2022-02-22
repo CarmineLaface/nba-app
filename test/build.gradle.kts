@@ -17,11 +17,11 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:${Dependencies.Version.okhttp}")
 
     //Json Converter
-    implementation("com.google.code.gson:gson:2.8.9")
+    implementation("com.google.code.gson:gson:2.9.0")
 
     api("org.jetbrains.kotlinx:kotlinx-coroutines-test:${Dependencies.Version.coroutines}")
     //Test
     api("junit:junit:4.13.2")
-    //api("androidx.test.ext:junit-ktx:1.1.4-alpha03")
-    api("org.mockito:mockito-core:4.3.0")
+    //api("androidx.test.ext:junit-ktx:1.1.4-alpha04")
+    api("org.mockito:mockito-core:4.3.1")
 }

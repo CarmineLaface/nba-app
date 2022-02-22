@@ -2,7 +2,6 @@ package it.laface.news.api
 
 import com.google.gson.Gson
 import it.laface.networking.getApiService
-import it.laface.networking.getClient
 import it.laface.networking.getConverterFactory
 import it.laface.networking.getGson
 
@@ -12,8 +11,7 @@ object NewsApi {
         get() = getGson()
 
     val service: NewsService by lazy {
-        val client = getClient()
         val converter = getConverterFactory(gson)
-        getApiService(NewsService.BASE_URL, converter, client)
+        getApiService(NewsService.BASE_URL, converter)
     }
 }
