@@ -12,7 +12,7 @@ object Dependencies {
         const val appcompat = "1.4.1"
         const val material = "1.5.0"
         const val recyclerview = "1.2.1"
-        const val okhttp = "5.0.0-alpha.5"
+        const val okhttp = "5.0.0-alpha.6"
         const val kotlin = "1.6.10"
         const val coroutines = "1.6.0"
         const val fragment = "1.4.1"
