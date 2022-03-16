@@ -39,5 +39,5 @@ dependencies {
     api("androidx.appcompat:appcompat:${Dependencies.Version.appcompat}")
 
     //Image loader
-    implementation("io.coil-kt:coil:2.0.0-alpha09")
+    implementation("io.coil-kt:coil:2.0.0-rc01")
 }
