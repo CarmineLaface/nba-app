@@ -23,5 +23,5 @@ dependencies {
     //Test
     api("junit:junit:4.13.2")
     //api("androidx.test.ext:junit-ktx:1.1.4-alpha04")
-    api("org.mockito:mockito-core:4.3.1")
+    api("org.mockito:mockito-core:4.4.0")
 }
