@@ -14,8 +14,4 @@ dependencies {
     api(project(":base"))
     api(project(":domain"))
     api(project(":navigation:navpublic"))
-
-    //Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Dependencies.Version.coroutines}")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Dependencies.Version.coroutines}")
 }

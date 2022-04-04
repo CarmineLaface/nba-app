@@ -13,8 +13,4 @@ java {
 dependencies {
     api(project(":statistic:statsdomain"))
     implementation(project(":networking"))
-
-    //Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Dependencies.Version.coroutines}")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Dependencies.Version.coroutines}")
 }

@@ -19,6 +19,9 @@ dependencies {
     //Json Converter
     implementation("com.google.code.gson:gson:2.9.0")
 
+    //Coroutines
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Dependencies.Version.coroutines}")
+
     api("org.jetbrains.kotlinx:kotlinx-coroutines-test:${Dependencies.Version.coroutines}")
     //Test
     api("junit:junit:4.13.2")

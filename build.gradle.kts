@@ -7,9 +7,9 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:7.1.1")
+        classpath("com.android.tools.build:gradle:7.1.2")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Dependencies.Version.kotlin}")
-        classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.19.0")
+        classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.20.0-RC2")
     }
 }
 

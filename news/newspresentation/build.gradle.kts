@@ -57,6 +57,7 @@ dependencies {
     //Browser
     implementation("androidx.browser:browser:1.4.0")
 
+    //Test
     testImplementation(project(":test"))
     debugImplementation("androidx.fragment:fragment-testing:${Dependencies.Version.fragment}")
 }

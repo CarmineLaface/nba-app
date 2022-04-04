@@ -10,7 +10,7 @@ object Dependencies {
         const val core = "1.7.0"
         const val lifecycle = "2.4.1"
         const val appcompat = "1.4.1"
-        const val material = "1.5.0"
+        const val material = "1.6.0-beta01"
         const val recyclerview = "1.2.1"
         const val okhttp = "5.0.0-alpha.6"
         const val kotlin = "1.6.10"

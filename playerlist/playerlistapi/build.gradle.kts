@@ -14,9 +14,5 @@ dependencies {
     implementation(project(":playerdetail:playerdomain"))
     implementation(project(":networking"))
 
-    //Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Dependencies.Version.coroutines}")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Dependencies.Version.coroutines}")
-
     testImplementation(project(":test"))
 }

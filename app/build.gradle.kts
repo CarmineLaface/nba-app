@@ -60,11 +60,7 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:${Dependencies.Version.fragment}")
     implementation("androidx.activity:activity-ktx:${Dependencies.Version.activity}")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${Dependencies.Version.lifecycle}")
-    implementation("androidx.core:core-splashscreen:1.0.0-beta01")
-
-    //Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Dependencies.Version.coroutines}")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Dependencies.Version.coroutines}")
+    implementation("androidx.core:core-splashscreen:1.0.0-beta02")
 
     //Leak detection
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.8.1")

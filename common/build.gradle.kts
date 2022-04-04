@@ -39,5 +39,9 @@ dependencies {
     api("androidx.appcompat:appcompat:${Dependencies.Version.appcompat}")
 
     //Image loader
-    implementation("io.coil-kt:coil:2.0.0-rc01")
+    implementation("io.coil-kt:coil:2.0.0-rc02")
+
+    //Coroutines
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Dependencies.Version.coroutines}")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Dependencies.Version.coroutines}")
 }
